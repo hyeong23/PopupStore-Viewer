@@ -8,7 +8,7 @@
 <link href="/css/home.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1>home.jsp</h1>
+	<h1>Changed</h1>
 	${dept}
 </body>
 </html>
