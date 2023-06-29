@@ -6,7 +6,8 @@ public class Test {
 		System.out.println("print");
 
 		System.out.println("test123");
-
+		
+		System.out.println("main Test");
 		
 		System.out.println("print2");
 
