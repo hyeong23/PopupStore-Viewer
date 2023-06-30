@@ -19,6 +19,8 @@ import lombok.ToString;
 public class Favorite {
 
 	private int favorite_num;
+	private int member_num;
+	private int store_num;
 	private char favorite_status;
 	
 }

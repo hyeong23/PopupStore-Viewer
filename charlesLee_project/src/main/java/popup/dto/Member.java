@@ -18,6 +18,7 @@ public class Member {
 	private String member_id;
 	private String member_pw;
 	private String member_nickname;
+	private String member_email;
 	private int member_type;
 	private String member_company_name;
 	private int member_company_num;
