@@ -7,6 +7,10 @@
 <title>home.jsp</title>
 <link href="/css/home.css" rel="stylesheet" type="text/css">
 </head>
+
+<%@ include file="header.jsp" %>
+
+
 <body>
 	<h1>치킨먹고싶다</h1>
 	${dept}

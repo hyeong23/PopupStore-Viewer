@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.spring.dto.Favorite;
+import popup.dto.Favorite;
 
 @SpringBootTest
 class Step16BootMybatisApplicationTests {
