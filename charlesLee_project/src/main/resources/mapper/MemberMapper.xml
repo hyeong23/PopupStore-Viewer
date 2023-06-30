@@ -2,10 +2,24 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.spring.mapper.MemberMapper">
+  <mapper namespace="popup.mapper.MemberMapper">
   
   
-  
+  <select id = "getMemberByIdAndPw" resultType="popup.dto.Member">
+	SELECT  
+  		member_num,
+  		member_id,
+  		member_pw,
+  		member_nickname,
+  		member_type,
+  		member_company_name,
+  		member_company_num,
+  		member_create,
+  		member_update
+  	From Member
+  	WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+  	  
+  </select>
   
   
   
