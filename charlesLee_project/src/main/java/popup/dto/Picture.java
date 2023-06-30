@@ -15,6 +15,7 @@ import lombok.ToString;
 @ToString 
 public class Picture {
 	private int picture_num;
+	private int store_num;
 	private String picture_path;
 	private String picture_name;
 	private String picture_original_name;

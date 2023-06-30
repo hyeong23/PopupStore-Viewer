@@ -16,6 +16,7 @@ import lombok.ToString;
 @ToString
 public class Store {
 	private int store_num;
+	private int member_num;
 	private String store_title;
 	private String store_intro;
 	private String store_body;
@@ -24,7 +25,7 @@ public class Store {
 	private int store_favorite;				// 파일 등록 일자
 	private String store_loc; 			// 파일 크기
 	private String store_site;
-	private String store_count;
+	private int store_count;
 	private int store_status;
 
 }

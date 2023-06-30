@@ -15,6 +15,8 @@ import lombok.ToString;
 @ToString 
 public class Reply {
 	private int reply_num;
+	private int member_num;
+	private int store_num;
 	private String reply;
 	private Date reply_date;
 }

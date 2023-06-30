@@ -15,6 +15,7 @@ import lombok.ToString;
 @ToString 
 public class Announcement {
 	private int announcement_num;
+	private int member_num;
 	private String announcement_title;
 	private String announcement_body;
 	private Date announcement_time;
