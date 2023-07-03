@@ -39,7 +39,7 @@ public class LoginController {
 		 session.setAttribute("member_id", member.getMember_id());
 		 session.setAttribute("member_pw", member.getMember_pw());
 			 
-		 view = "redirect:/home";
+		 view = "redirect:/main";
 	
 		 return view;
 	}
@@ -51,7 +51,7 @@ public class LoginController {
 			session.invalidate();
 		}
 		
-		return "redirect:/home";
+		return "redirect:/main";
 	}
 	
 	
