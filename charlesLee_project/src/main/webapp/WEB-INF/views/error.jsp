@@ -12,6 +12,7 @@
 </head>
 <body>
 
+
 	<div align="center">
 		<h2>죄송합니다. 문제가 발생하였습니다.</h2>
 	</div>
