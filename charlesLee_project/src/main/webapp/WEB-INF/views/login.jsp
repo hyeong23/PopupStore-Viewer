@@ -1,94 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Login</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/css/layout.css" rel="stylesheet" type="text/css"> 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+        <!-- Font online-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      
+<!--        Animate.css-->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+                
+                                
+        <link rel="stylesheet" href="css/main.css" type="text/css" >
+        
+        <!-- Google JQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script src="js/form.js"></script>
 
-<%@ include file="header.jsp" %>
-
-<!-- action, method -->
-<form action="/login" method="POST">
-	<table align="center" cellpadding="5" cellspacing="1" width="600" border="1">
-	    <tr>
-	        <td width="1220" height="20" colspan="2" bgcolor="#336699">
-	            <p align="center">
-	            	<font color="white" size="3">
-	            		<b>로그인</b>
-	            	</font>
-	            </p>
-	        </td>
-	    </tr>
-	    <tr>
-	        <td width="150" height="20">
-	            <p align="center"><b><span style="font-size:12pt;">ID</span></b></p>
-	        </td>
-	        <td width="450" height="20" align="center">
-	        	<b>
-	        		<span style="font-size:12pt;">
-	        			<input id="member_id" type="text" name="member_id" size="30">
-	        		</span>
-	        		<br/>
-	        		<span id="empnoMsg" style="font-size:8pt;"></span>
-	        	</b>
-	        </td>
-	    </tr>
-	    <tr>
-	        <td width="150" height="20">
-	            <p align="center"><b><span style="font-size:12pt;">PW</span></b></p>
-	        </td>
-	        <td width="450" height="20" align="center">
-	        	<b>
-	        		<span style="font-size:12pt;">
-	        			<!-- input 박스 -->
-	        			<input type="text" name="member_pw" size="30">
-	        		</span>
-	        	</b>
-	        </td>
-	    </tr>
-	    <tr>
-	        <td width="150" height="20">
-	            <p><b><span style="font-size:12pt;">&nbsp;</span></b></p>
-	        </td>
-	        <td width="450" height="20" align="center">
-	        	<b>
-	        		<span style="font-size:12pt;">
-						<input type="submit" value="로그인">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="reset" value="다시작성">
-					</span>
-				</b>
-			</td>
-	    </tr>
-	</table>
-</form>
-<hr>
-<div align=center>
-	<span style="font-size:12pt;"><input type="button" value="메인으로" onclick="location.href='/home'"></span>
-</div>
-
-<%@ include file="footer.jsp" %>
-
-<!-- <script type="text/javascript">
-const inputEmpno = document.getElementById('empno');
-const empnoMsg = document.getElementById('empnoMsg');
-	
-inputEmpno.addEventListener('blur', () => {
-	axios.get('http://localhost:8082/api/emp/'+inputEmpno.value)
-		.then(response => {
-			empnoMsg.innerHTML = '존재하는 회원입니다. 로그인을 진행해주세요.';
-		})
-		.catch(error => {
-			empnoMsg.innerHTML = error.response.data;
-		})
-});
-</script> -->
-
-</body>
+    </head>
+    
+    <body>
+   
+        <div>
+           <div class="panel shadow1">
+                <form class="login-form" action="/login" method="POST">
+                    <div class="panel-switch animated fadeIn">
+                        <button type="button" id="sign_up" class="active-button">Sign Up</button>
+                        <button type="button" id="log_in" class="" disabled>Log in</button>
+                    </div>
+                    <h1 class="animated fadeInUp animate1" id="title-login">Welcome Back !</h1>
+                    <h1 class="animated fadeInUp animate1 hidden" id="title-signup">Welcome !</h1>
+                    <fieldset id="login-fieldset">
+                        <input class="login animated fadeInUp animate2" name="member_id" type="text"  required   placeholder="Username" value="" id="member_id">
+                        <input class="login animated fadeInUp animate3" name="member_pw" type="password" required placeholder="Password" value="" id="member_pw">
+                    </fieldset>
+                    <fieldset id="signup-fieldset" class="hidden">
+                        <input class="login animated fadeInUp animate2" name="member_id" type="text"  required   placeholder="Username" value="" id="member_id">
+                        <input class="login animated fadeInUp animate3" name="member_pw" type="password" placeholder="Choose password"  required  value=""id="member_pw">
+                    </fieldset>
+                    <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="Log in">
+                    <input type="submit" id="signup-form-submit" class="login_form button animated fadeInUp animate4 hidden" value="Sign up">
+                    <p><a id="lost-password-link" href="" class="animated fadeIn animate5">I forgot my  login or password (!)</a></p>
+                </form>
+            </div>
+        </div>
+        
+        <script src="form.js"></script>
+    </body>
 </html>
