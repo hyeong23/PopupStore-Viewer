@@ -21,6 +21,13 @@ public class HomeController {
 		return "main";
 	}
 	
+	@RequestMapping(value = "/card")
+	public String card() {
+
+		System.out.println("cardView test");
+    
+		return "card";
+	}
 	
 	
 }
