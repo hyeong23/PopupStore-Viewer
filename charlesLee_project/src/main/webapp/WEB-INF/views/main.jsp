@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -54,9 +55,9 @@
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
-            <div class="header__top__right__auth">
+<!--             <div class="header__top__right__auth">
                 <a href="/login"><i class="fa fa-user"></i> Login</a>
-            </div>
+            </div> -->
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -120,9 +121,15 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-                            <div class="header__top__right__auth">
-                                <a href="/login"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                            <c:if test="${empty sessionScope.member_id}"> 
+	                            <div class="header__top__right__auth">
+	                                <a href="/login"><i class="fa fa-user"></i> Login</a>
+                            </c:if>
+                            
+                            <c:if test="${not empty sessionScope.member_id}">
+	                            <div class="header__top__right__auth">
+								   <a href="/logout"><i class="fa fa-user"></i> Logout</a>
+							</c:if>  
                         </div>
                     </div>
                 </div>
