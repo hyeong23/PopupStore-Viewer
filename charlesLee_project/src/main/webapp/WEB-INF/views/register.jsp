@@ -13,7 +13,7 @@
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
                 
                                 
-        <link rel="stylesheet" href="css/main.css" type="text/css" >
+        <link rel="stylesheet" href="css/main.css" >
         
         <!-- Google JQuery CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,20 +24,19 @@
     <body>
         <div>
            <div class="panel shadow1">
-                <form action="/login" class="login-form" method="POST">
+                <form  class="login-form" >
                     
-                    <h1 class="animated fadeInUp animate1" id="title-login">Welcome</h1>
+                    <h1 class="animated fadeInUp animate1" id="title-login">Register</h1>
                     
-                    <fieldset id="login-fieldset">
-                        <input class="login animated fadeInUp animate2" name="member_id" id="username" type="text"  required   placeholder="Username" value="" >
-                        <input class="login animated fadeInUp animate3" name="member_pw" id="password" type="password" required placeholder="Password" value="">
-                    </fieldset>
-                    
-                    <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="Log in" style=" margin-top: 70px;">
-                     
                    
-                    <p><br><a id="register-link" href="/register" class="animated fadeIn animate5">register</a></p>
                     
+                    <input type="button" id="register-form-submit" class="login_form button animated fadeInUp animate2" value="general" onclick="location.href='/general'" style=" margin-top: 70px;"> 
+                    
+                    
+                    <input type="button" id="register-form-submit" class="login_form button animated fadeInUp animate2" value="business" onclick="location.href='/business'" style=" margin-top: 70px;">
+					
+					 <p><br><br><a id="login-link" href="/login" class="animated fadeIn animate5">back to login</a></p>
+					
                 </form>
             </div>
         </div>

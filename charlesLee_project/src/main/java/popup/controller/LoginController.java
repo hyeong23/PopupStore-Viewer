@@ -34,7 +34,6 @@ public class LoginController {
 	
 		String view = "error";
 		
-
 		Member member = memberService.getMemberByIdAndPw(member_id,member_pw);
 		 session.setAttribute("member_id", member.getMember_id());
 		 session.setAttribute("member_pw", member.getMember_pw());
@@ -51,8 +50,27 @@ public class LoginController {
 			session.invalidate();
 		}
 		
-		return "redirect:/main";
+		return "redirect:/login";
 	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerForm() {
+		return "register";
+	}
+	
+	
+	@RequestMapping(value = "/general", method = RequestMethod.GET)
+	public String generalForm() {
+		return "general";
+	}
+	
+	@RequestMapping(value = "/business", method = RequestMethod.GET)
+	public String businessForm() {
+		return "business";
+	}
+	
+	
+	
 	
 	
 }

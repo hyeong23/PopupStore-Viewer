@@ -18,7 +18,7 @@ body {
 }
 
 .panel{
-    width: 450px;
+    width: 1000px;
     max-width: 90%;
     height: 700px;
     background:url('https://picsum.photos/1000/1500?image=827')  #fff;
@@ -52,7 +52,7 @@ form{
     display: inline-block;
     width: 100px;
     height: 40px;
-    background: #f03699;
+    background: #8181F7;
     margin: 0px 10px 50px;
     border: none;
     color: #fff;
@@ -159,7 +159,7 @@ fieldset input{
     background: rgba(255, 255, 255, 0.2);
     border: none;
     border-radius: 5em;
-    height: 20px;
+    height: 35px;
     width: 80%;
     margin: 10px 0;
     padding: 5px;
@@ -188,7 +188,7 @@ fieldset input:focus {
     margin-top: 150px;
     border: none;
     border-radius: 10em;
-    background: #f03699;
+    background: #8181F7;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
@@ -210,8 +210,8 @@ p , a{
 }
 
 a{
-    color: #898787;
-    font-size: 0.7em;
+    color: #fff;
+    font-size: 0.8em;
     text-decoration: none;
 }
 
