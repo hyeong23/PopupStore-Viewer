@@ -123,7 +123,7 @@
                             </div>
                             <c:if test="${empty sessionScope.member_id}"> 
 	                            <div class="header__top__right__auth">
-	                                <a href="/login"><i class="fa fa-user"></i> Login</a>
+	                                <a href="/login"><i class="fa fa-user"></i> Login ¡Ù</a>
                             </c:if>
                             
                             <c:if test="${not empty sessionScope.member_id}">
