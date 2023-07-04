@@ -7,20 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MapController {
 
 	
-	@RequestMapping(value = "/temp")
-	public String getTemp() {
+	@RequestMapping(value = "/map")
+	public String getMap() {
 		
-		return "tempMap";
+		return "map";
 	}
 	
-	@RequestMapping(value = "/temp2")
-	public String getTemp2() {
-		
-		return "tempMap2";
-	}
-	
-	@RequestMapping(value = "/temp3")
-	public String getTemp3() {
+	@RequestMapping(value = "/tempMap")
+	public String get() {
 		
 		return "tempMap3";
 	}
