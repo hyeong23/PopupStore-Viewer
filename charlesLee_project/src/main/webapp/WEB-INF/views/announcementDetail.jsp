@@ -54,11 +54,6 @@
 		<tr>
 			<td>
 				<p align="center">
-					<b><span style="font-size: 12pt;">글번호</span></b>
-				</p>
-			</td>
-			<td>
-				<p align="center">
 					<b><span style="font-size: 12pt;">제목</span></b>
 				</p>
 			</td>
@@ -72,56 +67,44 @@
 					<b><span style="font-size: 12pt;">날짜</span></b>
 				</p>
 			</td>
+
 		</tr>
 
-		<!-- 부서 객체 유무 검증 -->
-		<c:if test="${empty requestScope.list}">
-			<tr>
-				<td colspan="5">
-					<p align="center">
-						<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
-					</p>
-				</td>
-			</tr>
-		</c:if>
-		<!-- 반복 출력 -->
-		<c:forEach items="${requestScope.list}" var="announcement">
-			<tr>
-
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcement_num}</b>
-						</span>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<a href="/announcement/${announcement.announcement_num}"> <span
-							style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcement_title}</b>
-						</span>
-						</a>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.member_num}</b>
-						</span>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcement_time}</b>
-						</span>
-					</p>
-				</td>
-			</tr>
-		</c:forEach>
+		<tr>
+			<td bgcolor="">
+				<p align="center">
+					<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcement_title}</b>
+					</span>
+				</p>
+			</td>
+			<td bgcolor="">
+				<p align="center">
+					<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.member_num}</b>
+					</span>
+				</p>
+			</td>
+			<td bgcolor="">
+				<p align="center">
+					<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcement_time}</b>
+					</span>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p align="left" width="80%">
+					<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcement_body}</b>
+					</span>
+				</p>
+			</td>
+		</tr>
 	</table>
+
 	<hr>
 	<div align=center>
 
-		<span style="font-size: 12pt;"><input type="button"
-			value="메인으로" onclick="location.href='/main'"></span> <span
+		<span style="font-size: 12pt;"><input type="button" value="목록"
+			onclick="location.href='/announcement'"></span> <span
 			style="font-size: 12pt;"><input type="button" value="수정"
 			onclick="location.href='/update'"></span> <span
 			style="font-size: 12pt;"><input type="button" value="업로드"
@@ -134,28 +117,5 @@
 
 	<%@ include file="footer.jsp"%>
 
-	<script type="text/javascript">
-		
-	/* https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript */
-	/* https://www.javascripttutorial.net/javascript-dom/javascript-form/ */
-	
-	function delete(){
-	  let detailForm = document.getElementById("detailForm");
-	  let deptno = document.getElementById("deptno").innerText;
-	  
-	  // type:hidden, 
-	  // name:_method, 
-	  // value:'DELETE' 값을 가지는 input 태그 내부에서 생성!
-  	  let input = document.createElement('input'); 
-	  input.type = 'hidden'; 
-	  input.name = '_method'; 
-	  input.value  = 'DELETE'; 
-	  detailForm.appendChild(input); 
-	  
-	  detailForm.action = '/dept/' + deptno;
-	  detailForm.method = 'POST';
-	  detailForm.submit();
-	}
-	</script>
 </body>
 </html>
