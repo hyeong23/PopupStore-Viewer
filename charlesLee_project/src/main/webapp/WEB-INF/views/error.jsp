@@ -12,8 +12,6 @@
 </head>
 <body>
 
-	<%@ include file="header.jsp" %>
-
 	<div align="center">
 		<h2>죄송합니다. 문제가 발생하였습니다.</h2>
 	</div>
@@ -30,6 +28,5 @@
 		<span style="font-size:12pt;"><input type="button" value="메인으로" onclick="location.href='/main'"></span>
 	</div>
 	
-	<%@ include file="footer.jsp" %>
 </body>
 </html>
