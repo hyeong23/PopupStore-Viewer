@@ -2859,8 +2859,12 @@ ol {
 }
 
 .contact-form {
-	padding-top: 80px;
+	padding-top: 30px;
 	padding-bottom: 80px;
+	width: 500px;
+	height: 600px;
+
+	margin: auto;
 }
 
 .contact-form form input {
@@ -2900,6 +2904,32 @@ ol {
 	letter-spacing: 2px;
 }
 
+#ask_stc{
+	width: 100%;
+	height: 40px;
+	display:flex;
+	background-color: #fff;
+align-items:center;
+justify-content: center;
+margin-top:-15px;
+margin-bottom: 10px;
+}
+
+#ask_stc1{
+	width: 300px;
+
+}
+
+#ask_chk{
+	height: 30px;
+
+	position:relative; 
+}
+
+#check1{
+		height: 30px;
+		margin: 0px;
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {
