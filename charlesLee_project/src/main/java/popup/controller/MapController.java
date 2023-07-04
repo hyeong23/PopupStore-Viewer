@@ -19,4 +19,10 @@ public class MapController {
 		return "tempMap2";
 	}
 	
+	@RequestMapping(value = "/temp3")
+	public String getTemp3() {
+		
+		return "tempMap3";
+	}
+	
 }
