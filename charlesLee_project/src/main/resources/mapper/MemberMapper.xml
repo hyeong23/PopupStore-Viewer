@@ -21,16 +21,60 @@
   	  
   </select>
   
-  <insert id="insertMember" parameterType="popup.dto.Member">
+  <select id = "getMemberById" resultType="popup.dto.Member">
+	SELECT  
+  		*
+  	From Member
+  	WHERE member_id = #{member_id}
+  	  
+  </select>
+  
+   <select id = "getMemberByEmail" resultType="popup.dto.Member">
+	SELECT  
+  		*
+  	From Member
+  	WHERE member_email = #{member_email}
+  	  
+  </select>
+  
+   <select id = "getMemberByNickName" resultType="popup.dto.Member">
+	SELECT  
+  		*
+  	From Member
+  	WHERE member_nickname = #{member_nickname}
+  	  
+  </select>
+  
+  <select id = "getMemberByCompanyName" resultType="popup.dto.Member">
+	SELECT  
+  		*
+  	From Member
+  	WHERE member_company_name = #{member_company_name}
+  	  
+  </select>
+  
+  <select id = "getMemberByCompanyNum" resultType="popup.dto.Member">
+	SELECT  
+  		*
+  	From Member
+  	WHERE member_company_num = #member_company_num}
+  	  
+  </select>
+  
+  
+  <insert id="insertGeneralMember" parameterType="popup.dto.Member">
   	INSERT INTO
   	Member(member_num,member_id,member_pw,member_nickname,member_email,member_type)
   	Values(member_sequence.nextval,#{member_id},#{member_pw},#{member_nickname},#{member_email},#{member_type})
-  
-  
-  
+    
   </insert>
   
-  
+  <insert id="insertBusinessMember" parameterType="popup.dto.Member">
+  	INSERT INTO
+  	Member(member_num,member_id,member_pw,member_email, member_company_name,member_company_num,member_type)
+  	Values(member_sequence.nextval,#{member_id},#{member_pw},#{member_email},#{member_company_name},#{member_company_num},#{member_type})
+    
+  </insert>
   
   
   

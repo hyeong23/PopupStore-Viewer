@@ -13,7 +13,7 @@
                	     	       <li><a href="/card">전체보기</a></li>
                	     	       <li><a href="/calendar">캘린더</a>     </li>                             
                	   	           <li><a href="/map">지도</a></li>
-               	  	           <li><a href="/notice">공지사항</a></li>
+               	  	           <li><a href="/announcement">공지사항</a></li>
              	 	         </ul>
              		     </nav>
       

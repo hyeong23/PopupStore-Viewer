@@ -28,6 +28,8 @@ public class RegisterController {
 	}
 	
 	
+	
+	//일반 회원가입
 	@RequestMapping(value = "/general", method = RequestMethod.GET)
 	public String generalForm() {
 		return "general";
@@ -36,20 +38,26 @@ public class RegisterController {
 	@RequestMapping(value = "/general", method = RequestMethod.POST)
 	public String general(@RequestParam("member_id") String member_id,
 						  @RequestParam("member_pw") String member_pw,
-						  @RequestParam("member_email") String member_email,
 						  @RequestParam("member_nickname") String member_nickname,
-						  Model model) throws SQLException, Exception{
+						  @RequestParam("member_email") String member_email,
+						  Model model) throws  Exception{
 		String view = "/error";
-		
 		int member_type = 1;
 		
+		boolean check1 = memberService.getMemberById(member_id);
+		boolean check2 = memberService.getMemberByNickName(member_nickname);
+		boolean check3 = memberService.getMemberByEmail(member_email);
 		
-		boolean member = memberService.insertMember(member_id,member_pw,member_nickname,member_email,member_type);
 		
-		if(member == true) {
-		 view = "/login";
+		if(check1 || check2 || check3) {
+			
+			boolean member = memberService.insertGeneralMember(member_id,member_pw,member_nickname,member_email,member_type);
+			if(member == true) {
+				 view = "/login";
+				}	
+		
 		}
-		
+
 		return view;
 	}
 	
@@ -59,7 +67,7 @@ public class RegisterController {
 	
 	
 	
-	
+	//비지니스 회원가입
 	@RequestMapping(value = "/business", method = RequestMethod.GET)
 	public String businessForm() {
 		return "business";
@@ -67,6 +75,31 @@ public class RegisterController {
 	
 	
 	
+	@RequestMapping(value = "/business", method = RequestMethod.POST)
+	public String business(@RequestParam("member_id") String member_id,
+						  @RequestParam("member_pw") String member_pw,
+						  @RequestParam("member_email") String member_email,
+						  @RequestParam("member_company_name") String member_company_name,
+						  @RequestParam("member_company_num") int member_company_num,
+						  Model model) throws Exception{
+		String view = "/error";
+		int member_type = -1;
+		
+		boolean check1 = memberService.getMemberById(member_id);
+		boolean check2 = memberService.getMemberByEmail(member_email);
+		boolean check3 = memberService.getMemberByCompanyName(member_company_name);
+		boolean check4 = memberService.getMemberByCompanyNum(member_company_num);
 	
+		if(check1 || check2 || check3 || check4 ) {
+			
+			boolean member = memberService.insertBusinessMember(member_id,member_pw,member_email, member_company_name,member_company_num,member_type);
+			
+			if(member == true) {
+			 view = "/login";
+			}
+		}
+	
+		return view;
+	}
 	
 }
