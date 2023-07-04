@@ -21,7 +21,14 @@
   	  
   </select>
   
+  <insert id="insertMember" parameterType="popup.dto.Member">
+  	INSERT INTO
+  	Member(member_num,member_id,member_pw,member_nickname,member_email,member_type)
+  	Values(member_sequence.nextval,#{member_id},#{member_pw},#{member_nickname},#{member_email},#{member_type})
   
+  
+  
+  </insert>
   
   
   
