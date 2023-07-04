@@ -53,21 +53,6 @@ public class LoginController {
 		return "redirect:/login";
 	}
 	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String registerForm() {
-		return "register";
-	}
-	
-	
-	@RequestMapping(value = "/general", method = RequestMethod.GET)
-	public String generalForm() {
-		return "general";
-	}
-	
-	@RequestMapping(value = "/business", method = RequestMethod.GET)
-	public String businessForm() {
-		return "business";
-	}
 	
 	
 	

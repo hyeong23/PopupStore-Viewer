@@ -25,4 +25,15 @@ public class MemberService {
 		return member;
 	}
 
+	public boolean insertMember(String member_id, String member_pw, String member_nickname ,String member_email , int member_type) throws SQLException , Exception {
+		
+		boolean member = memberMapper.insertMember(member_id,member_pw,member_nickname,member_email,member_type);
+		
+		if(member == false) {
+			throw new Exception("회원가입 실패");
+		}
+		
+		return member;
+	}
+
 }
