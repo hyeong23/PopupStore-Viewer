@@ -35,10 +35,13 @@ public class LoginController {
 		String view = "error";
 		
 		Member member = memberService.getMemberByIdAndPw(member_id,member_pw);
+		if(member.getMember_type() != -1) {
+			
 		 session.setAttribute("member_id", member.getMember_id());
 		 session.setAttribute("member_pw", member.getMember_pw());
-			 
 		 view = "redirect:/main";
+		}	 
+		
 	
 		 return view;
 	}
