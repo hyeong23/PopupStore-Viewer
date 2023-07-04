@@ -18,5 +18,10 @@ public class AnnouncementService {
 	public List<Announcement> selectAnnouncementList() throws Exception {
 		return announcementMapper.selectAnnouncementList();
 	}
-	
+
+	// select one
+	public Announcement selectAnnouncement(int announcement_num) throws Exception {
+		return announcementMapper.selectAnnouncement(announcement_num);
+	}
+
 }
