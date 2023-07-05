@@ -101,13 +101,13 @@
             <form action="/ask" method="POST">
                 <div class="row">
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="Your Email" name="ask_email" id="ask_email">
+                        <input type="text" placeholder="Your Email" name="askEmail" id="askEmail">
                     </div>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="Title" name="ask_title" id="ask_title">
+                        <input type="text" placeholder="Title" name="askTitle" id="askTitle">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message" name="ask_body" id="ask_body"></textarea>
+                        <textarea placeholder="Your message" name="askBody" id="askBody"></textarea>
                         <div id="ask_stc">
                         	<div id="ask_stc1">개인정보 수집 및 이용 약관에 동의합니다</div>
                         	<div id="ask_chk"><input type="checkbox" id="check1"> </div>                    

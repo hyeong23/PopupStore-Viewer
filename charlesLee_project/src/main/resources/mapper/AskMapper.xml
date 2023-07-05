@@ -11,27 +11,20 @@
  						 ask_body, 
  						 ask_check)
 					VALUES (ask_sequence.nextval,
-							#{ask_email},
-							#{ask_title},
-							#{ask_body},
+							#{askEmail},
+							#{askTitle},
+							#{askBody},
 							0)
  	</insert>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      <resultMap id="askResultMap" type="popup.dto.Ask">
+        <result property="askNum" column="ask_num" />
+        <result property="askEmail" column="ask_email" />
+        <result property="askTitle" column="ask_title" />
+        <result property="askBody" column="ask_body" />
+         <result property="askCheck" column="ask_check" />
+           
+    </resultMap>
   
   
 </mapper>
