@@ -14,11 +14,11 @@ import lombok.ToString;
 @Setter
 @ToString 
 public class Picture {
-	private int picture_num;
-	private int store_num;
-	private String picture_path;
-	private String picture_name;
-	private String picture_original_name;
-	private int picture_size;
-	private Date picture_date;
+	private int pictureNum;
+	private int storeNum;
+	private String picturePath;
+	private String pictureName;
+	private String pictureOriginalName;
+	private int pictureSize;
+	private Date pictureDate;
 }

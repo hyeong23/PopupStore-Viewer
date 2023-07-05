@@ -14,9 +14,9 @@ public class MemberService {
 	@Autowired
 	MemberMapper memberMapper; 
 	//로그인
-	public Member getMemberByIdAndPw(String member_id, String member_pw) throws  Exception{
+	public Member getMemberByIdAndPw(String memberId, String memberPw) throws  Exception{
 		
-		Member member = memberMapper.getMemberByIdAndPw(member_id, member_pw);
+		Member member = memberMapper.getMemberByIdAndPw(memberId, memberPw);
 		
 		if(member == null) {
 			throw new Exception("존재하지 않는 회원 입니다.");
@@ -25,26 +25,26 @@ public class MemberService {
 		return member;
 	}
 	//회원가입(일반)
-	public boolean insertGeneralMember(String member_id, String member_pw, String member_nickname ,String member_email , int member_type) throws  Exception {
+	public boolean insertGeneralMember(String memberId, String memberPw, String memberNickname ,String memberEmail , int memberType) throws  Exception {
 		
-		boolean member = memberMapper.insertGeneralMember(member_id,member_pw,member_nickname,member_email,member_type);
+		boolean member = memberMapper.insertGeneralMember(memberId,memberPw,memberNickname,memberEmail,memberType);
 			
 		return member;
 	}
 	//회원가입(비지니스)
-	public boolean insertBusinessMember(String member_id, String member_pw, String member_email,String member_company_name,
-			int member_company_num, int member_type) throws Exception{
+	public boolean insertBusinessMember(String memberId, String memberPw, String memberEmail,String memberCompanyName,
+			int memberCompanyNum, int memberType) throws Exception{
 		
-		boolean member = memberMapper.insertBusinessMember(member_id,member_pw,member_email, member_company_name,member_company_num,member_type);
+		boolean member = memberMapper.insertBusinessMember(memberId,memberPw,memberEmail, memberCompanyName,memberCompanyNum,memberType);
 			
 		return member;
 	}
 	//ID체크
-	public boolean getMemberById(String member_id) throws Exception {
+	public boolean getMemberById(String memberId) throws Exception {
 		
 		boolean result = true;
 		
-		Member check = memberMapper.getMemberById(member_id);
+		Member check = memberMapper.getMemberById(memberId);
 		
 		if(check != null) {
 			throw new Exception("이미 존재하는 아이디 입니다.");
@@ -54,11 +54,11 @@ public class MemberService {
 		return result;
 	}
 	//Email체크
-		public boolean getMemberByEmail(String member_email) throws Exception {
+		public boolean getMemberByEmail(String memberEmail) throws Exception {
 			
 			boolean result = true;
 			
-			Member check = memberMapper. getMemberByEmail(member_email);
+			Member check = memberMapper. getMemberByEmail(memberEmail);
 			
 			if(check != null) {
 				throw new Exception("이미 존재하는 이메일 입니다.");
@@ -68,11 +68,11 @@ public class MemberService {
 			return result;
 		}
 	//NickName체크
-		public boolean getMemberByNickName(String member_nickname) throws  Exception {
+		public boolean getMemberByNickName(String memberNickname) throws  Exception {
 			
 			boolean result = true;
 			
-			Member check = memberMapper.getMemberByNickName(member_nickname);
+			Member check = memberMapper.getMemberByNickName(memberNickname);
 			
 			if(check != null) {
 				throw new Exception("이미 존재하는 닉네임 입니다.");
@@ -83,11 +83,11 @@ public class MemberService {
 		}
 		
 	//CompanyName체크
-		public boolean getMemberByCompanyName(String member_company_name) throws Exception {
+		public boolean getMemberByCompanyName(String memberCompanyName) throws Exception {
 			
 			boolean result = true;
 			
-			Member check = memberMapper.getMemberByCompanyName(member_company_name);
+			Member check = memberMapper.getMemberByCompanyName(memberCompanyName);
 			
 			if(check != null) {
 				throw new Exception("이미 존재하는 회사명 입니다.");
@@ -97,11 +97,11 @@ public class MemberService {
 			return result;
 		}
 	//CompanyNum체크
-		public boolean getMemberByCompanyNum(int member_company_num) throws Exception {
+		public boolean getMemberByCompanyNum(int memberCompanyNum) throws Exception {
 	
 			boolean result = true;
 	
-			Member check = memberMapper.getMemberByCompanyNum(member_company_num);
+			Member check = memberMapper.getMemberByCompanyNum(memberCompanyNum);
 	
 			if(check != null) {
 				throw new Exception("이미 존재하는 사업자 번호 입니다.");

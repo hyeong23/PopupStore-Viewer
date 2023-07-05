@@ -5,7 +5,24 @@
   <mapper namespace="popup.mapper.MemberMapper">
   
   
-  <select id = "getMemberByIdAndPw" resultType="popup.dto.Member">
+  <resultMap id="memberResultMap" type="popup.dto.Member">
+        <result property="memberNum" column="member_num" />
+        <result property="memberId" column="member_id" />
+        <result property="memberPw" column="member_pw" />
+        <result property="memberNickname" column="member_nickname" />
+         <result property="memberEmail" column="member_email" />
+        <result property="memberType" column="member_type" />
+        <result property="memberCompanyName" column="member_company_name" />
+        <result property="memberCompanyNum" column="member_company_num" />
+        <result property="memberCreate" column="member_create" />
+        <result property="memberUpdate" column="member_update" />
+           
+    </resultMap>
+  
+
+  
+  
+  <select id = "getMemberByIdAndPw" resultMap="memberResultMap">
 	SELECT  
   		member_num,
   		member_id,
@@ -17,47 +34,47 @@
   		member_create,
   		member_update
   	From Member
-  	WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+  	WHERE member_id = #{memberId} AND member_pw = #{memberPw}
   	  
   </select>
   
-  <select id = "getMemberById" resultType="popup.dto.Member">
+  <select id = "getMemberById" resultMap="memberResultMap">
 	SELECT  
   		*
   	From Member
-  	WHERE member_id = #{member_id}
+  	WHERE member_id = #{memberId}
   	  
   </select>
   
-   <select id = "getMemberByEmail" resultType="popup.dto.Member">
+   <select id = "getMemberByEmail" resultMap="memberResultMap">
 	SELECT  
   		*
   	From Member
-  	WHERE member_email = #{member_email}
+  	WHERE member_email = #{memberEmail}
   	  
   </select>
   
-   <select id = "getMemberByNickName" resultType="popup.dto.Member">
+   <select id = "getMemberByNickName" resultMap="memberResultMap">
 	SELECT  
   		*
   	From Member
-  	WHERE member_nickname = #{member_nickname}
+  	WHERE member_nickname = #{memberNickname}
   	  
   </select>
   
-  <select id = "getMemberByCompanyName" resultType="popup.dto.Member">
+  <select id = "getMemberByCompanyName" resultMap="memberResultMap">
 	SELECT  
   		*
   	From Member
-  	WHERE member_company_name = #{member_company_name}
+  	WHERE member_company_name = #{memberCompanyName}
   	  
   </select>
   
-  <select id = "getMemberByCompanyNum" resultType="popup.dto.Member">
+  <select id = "getMemberByCompanyNum" resultMap="memberResultMap">
 	SELECT  
   		*
   	From Member
-  	WHERE member_company_num = #member_company_num}
+  	WHERE member_company_num = #{memberCompanyNum}
   	  
   </select>
   
@@ -65,14 +82,14 @@
   <insert id="insertGeneralMember" parameterType="popup.dto.Member">
   	INSERT INTO
   	Member(member_num,member_id,member_pw,member_nickname,member_email,member_type)
-  	Values(member_sequence.nextval,#{member_id},#{member_pw},#{member_nickname},#{member_email},#{member_type})
+  	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberNickname},#{memberEmail},#{memberType})
     
   </insert>
   
   <insert id="insertBusinessMember" parameterType="popup.dto.Member">
   	INSERT INTO
   	Member(member_num,member_id,member_pw,member_email, member_company_name,member_company_num,member_type)
-  	Values(member_sequence.nextval,#{member_id},#{member_pw},#{member_email},#{member_company_name},#{member_company_num},#{member_type})
+  	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberEmail},#{memberCompanyName},#{memberCompanyNum},#{memberType})
     
   </insert>
   

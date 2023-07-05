@@ -90,27 +90,27 @@
 
 				<td bgcolor="">
 					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcement_num}</b>
+						<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcementNum}</b>
 						</span>
 					</p>
 				</td>
 				<td bgcolor="">
 					<p align="center">
-						<a href="/announcement/${announcement.announcement_num}"> <span
-							style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcement_title}</b>
+						<a href="/announcement/${announcement.announcementNum}"> <span style="font-size: 12pt;"> 
+						<!-- 제목 --> <b>${announcement.announcementTitle}</b>
 						</span>
 						</a>
 					</p>
 				</td>
 				<td bgcolor="">
 					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.member_num}</b>
+						<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.memberNum}</b>
 						</span>
 					</p>
 				</td>
 				<td bgcolor="">
 					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcement_time}</b>
+						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
 						</span>
 					</p>
 				</td>

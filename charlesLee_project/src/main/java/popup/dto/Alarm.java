@@ -14,12 +14,12 @@ import lombok.ToString;
 @Setter
 @ToString 
 public class Alarm {
-	private int alam_num;
-	private int member_num;
-	private int store_num;
-	private String alam_content;
-	private int alam_read;
-	private Date alam_time;
-	private Date alam_checked_time;
-	private char alam_status;
+	private int alamNum;
+	private int memberNum;
+	private int storeNum;
+	private String alamContent;
+	private int alamRead;
+	private Date alamTime;
+	private Date alamCheckedTime;
+	private char alamStatus;
 }

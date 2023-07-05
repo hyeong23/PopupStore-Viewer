@@ -4,18 +4,31 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="popup.mapper.AnnouncementMapper">
 
+	
+	<resultMap id="AnnouncementResultMap" type="popup.dto.Announcement">
+        <result property="announcementNum" column="announcement_num" />
+        <result property="memberNum" column="member_num" />
+        <result property="announcementTitle" column="announcement_title" />
+        <result property="announcementBody" column="announcement_body" />
+         <result property="announcementTime" column="announcement_time" />
+        <result property="announcementCount" column="announcement_count" />
+       
+    </resultMap>
+  
+
+
 	<!-- select all -->
 	<select id="selectAnnouncementList"
-		resultType="popup.dto.Announcement">
+		resultMap="AnnouncementResultMap">
 		select *
 		from announcement
 	</select>
 	
 	<!-- select one -->
 	<select id="selectAnnouncement"
-		resultType="popup.dto.Announcement">
+		resultMap="AnnouncementResultMap">
 		select *
 		from announcement
-		where announcement_num = #{announcement_num}
+		where announcement_num = #{announcementNum}
 	</select>
 </mapper>
