@@ -27,18 +27,18 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("member_id") String member_id,
-						@RequestParam("member_pw") String member_pw,
+	public String login(@RequestParam("memberId") String memberId,
+						@RequestParam("memberPw") String memberPw,
 						HttpSession session,
 						Model model) throws SQLException, Exception {
 	
 		String view = "error";
 		
-		Member member = memberService.getMemberByIdAndPw(member_id,member_pw);
-		if(member.getMember_type() != -1) {
+		Member member = memberService.getMemberByIdAndPw(memberId,memberPw);
+		if(member.getMemberType() != -1) {
 			
-		 session.setAttribute("member_id", member.getMember_id());
-		 session.setAttribute("member_pw", member.getMember_pw());
+		 session.setAttribute("memberId", member.getMemberId());
+		 session.setAttribute("memberPw", member.getMemberPw());
 		 view = "redirect:/main";
 		}	 
 		

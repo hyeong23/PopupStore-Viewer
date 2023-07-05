@@ -73,19 +73,19 @@
 		<tr>
 			<td bgcolor="">
 				<p align="center">
-					<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcement_title}</b>
+					<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
 					</span>
 				</p>
 			</td>
 			<td bgcolor="">
 				<p align="center">
-					<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.member_num}</b>
+					<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.memberNum}</b>
 					</span>
 				</p>
 			</td>
 			<td bgcolor="">
 				<p align="center">
-					<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcement_time}</b>
+					<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
 					</span>
 				</p>
 			</td>
@@ -93,7 +93,7 @@
 		<tr>
 			<td>
 				<p align="left" width="80%">
-					<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcement_body}</b>
+					<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcementBody}</b>
 					</span>
 				</p>
 			</td>

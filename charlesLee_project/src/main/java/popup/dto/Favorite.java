@@ -18,9 +18,9 @@ import lombok.ToString;
 @Component
 public class Favorite {
 
-	private int favorite_num;
-	private int member_num;
-	private int store_num;
-	private char favorite_status;
+	private int favoriteNum;
+	private int memberNum;
+	private int storeNum;
+	private char favoriteStatus;
 	
 }

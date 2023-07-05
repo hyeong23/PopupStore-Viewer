@@ -14,9 +14,9 @@ import lombok.ToString;
 @Setter
 @ToString 
 public class Reply {
-	private int reply_num;
-	private int member_num;
-	private int store_num;
+	private int replyNum;
+	private int memberNum;
+	private int storeNum;
 	private String reply;
-	private Date reply_date;
+	private Date replyDate;
 }

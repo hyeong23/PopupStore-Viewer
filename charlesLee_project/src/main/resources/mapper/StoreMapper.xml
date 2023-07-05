@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="popup.mapper.StoreMapper">
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+<mapper namespace="popup.mapper.StoreMapper">
+ 
+ 
   
+  <select id="getStoreList" resultMap="storeResultMap">
+    
+      SELECT s.store_num, s.store_title, m.member_company_name, s.store_count, s.store_status
+      FROM store s
+      JOIN member m ON s.member_num = m.member_num
+      ORDER BY s.store_num DESC
+    
+  </select>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+ 	<resultMap id="storeResultMap" type="popup.vo.StoreVo">
+        <result property="storeNum" column="store_num" />
+        <result property="storeTitle" column="store_title" />
+        <result property="memberCompanyName" column="member_company_name" />
+        <result property="storeCount" column="store_count" />
+        <result property="storeStatus" column="store_status" />
+    </resultMap>
+ 
+ 
+
   
   
 </mapper>

@@ -29,8 +29,8 @@
                     <h1 class="animated fadeInUp animate1" id="title-login">Welcome</h1>
                     
                     <fieldset id="login-fieldset">
-                        <input class="login animated fadeInUp animate2" name="member_id" id="username" type="text"  required   placeholder="Username" value="" >
-                        <input class="login animated fadeInUp animate3" name="member_pw" id="password" type="password" required placeholder="Password" value="">
+                        <input class="login animated fadeInUp animate2" name="memberId" id="username" type="text"  required   placeholder="Username" value="" >
+                        <input class="login animated fadeInUp animate3" name="memberPw" id="password" type="password" required placeholder="Password" value="">
                     </fieldset>
                     
                     <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="Log in" style=" margin-top: 70px;">

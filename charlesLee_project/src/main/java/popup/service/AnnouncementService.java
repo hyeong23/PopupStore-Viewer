@@ -20,8 +20,8 @@ public class AnnouncementService {
 	}
 
 	// select one
-	public Announcement selectAnnouncement(int announcement_num) throws Exception {
-		return announcementMapper.selectAnnouncement(announcement_num);
+	public Announcement selectAnnouncement(int announcementNum) throws Exception {
+		return announcementMapper.selectAnnouncement(announcementNum);
 	}
 
 }
