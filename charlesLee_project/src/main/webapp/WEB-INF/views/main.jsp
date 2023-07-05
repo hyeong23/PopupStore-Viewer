@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/modal.css" type="text/css">
 </head>
 
 <body>
@@ -121,12 +122,12 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
+                            <h5><a href="#exampleModalCenter" data-toggle="modal">drink fruits</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
+                            <h5><a href="#exampleModalCenter" data-toggle="modal">drink fruits</a></h5>
                         </div>
                     </div>
                 </div>
@@ -577,9 +578,112 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 수정 -->
+	<!-- Modal -->
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h2 class="modal-title" id="exampleModalCenterTitle">나이키 신발 팝업</h2>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        	<h5>나이키</h5>
+	        	<p> 7/5~7/21 </p>
+	        	<p> 신세계에서 열린 나이키 신발 팝업스토어입니다. </p>
+	      </div>
+<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
+	      
+			<div class="slider">
+			    <input type="radio" name="slide" id="slide1" checked>
+			    <input type="radio" name="slide" id="slide2">
+			    <input type="radio" name="slide" id="slide3">
+			    <input type="radio" name="slide" id="slide4">
+			    <ul id="imgholder" class="imgs">
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			    </ul>
+			    <div class="bullets">
+			        <label for="slide1">&nbsp;</label>
+			        <label for="slide2">&nbsp;</label>
+			        <label for="slide3">&nbsp;</label>
+			        <label for="slide4">&nbsp;</label>
+			    </div>
+			    
+			    
+			</div>	
+	      
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfjeotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfjeotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
 
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
 
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
 
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      	 <div>
+			    	eotedfjkfsadjlkfjsdlfjlsadjfkljasldfjklsdlfj
+			 </div>
+	      
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
+
+
 
 </html>
