@@ -44,9 +44,8 @@
 				<td>
 					<p align="center">
 
-						<b><span style="font-size: 12pt;">글번호</span></b>
-
-						<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcementNum}</b>
+						<b><span style="font-size: 12pt;">글번호</span></b> <span
+							style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcementNum}</b>
 						</span>
 
 					</p>
@@ -54,10 +53,9 @@
 				<td>
 					<p align="center">
 
-						<b><span style="font-size: 12pt;">제목</span></b>
-
-						<a href="/announcement/${announcement.announcementNum}"> <span style="font-size: 12pt;"> 
-						<!-- 제목 --> <b>${announcement.announcementTitle}</b>
+						<b><span style="font-size: 12pt;">제목</span></b> <a
+							href="/announcement/${announcement.announcementNum}"> <span
+							style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
 						</span>
 						</a>
 
@@ -66,19 +64,8 @@
 				<td>
 					<p align="center">
 
-						<b><span style="font-size: 12pt;">작성자</span></b>
-
-						<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.memberNum}</b>
-						</span>
-
-					</p>
-				</td>
-				<td>
-					<p align="center">
-
-						<b><span style="font-size: 12pt;">날짜</span></b>
-
-						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
+						<b><span style="font-size: 12pt;">날짜</span></b> <span
+							style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
 						</span>
 
 					</p>
@@ -101,27 +88,21 @@
 
 					<td bgcolor="">
 						<p align="center">
-							<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcement_num}</b>
+							<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcementNum}</b>
 							</span>
 						</p>
 					</td>
 					<td bgcolor="">
 						<p align="center">
-							<a href="/announcement/${announcement.announcement_num}"> <span
-								style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcement_title}</b>
+							<a href="/announcement/${announcement.announcementNum}"> <span
+								style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
 							</span>
 							</a>
 						</p>
 					</td>
 					<td bgcolor="">
 						<p align="center">
-							<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.member_num}</b>
-							</span>
-						</p>
-					</td>
-					<td bgcolor="">
-						<p align="center">
-							<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcement_time}</b>
+							<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
 							</span>
 						</p>
 					</td>
@@ -131,16 +112,15 @@
 		<hr>
 	</div>
 	<div align=center>
-		<span style="font-size: 12pt;"><input type="button"
-			value="메인으로" onclick="location.href='/main'"></span> <span
-			style="font-size: 12pt;"><input type="button" value="수정"
-			onclick="location.href='/update'"></span> <span
-			style="font-size: 12pt;"><input type="button" value="업로드"
-			onclick="location.href='/upload'"></span>
-
-		<!-- 부서 삭제 로직 -->
-		<span style="font-size: 12pt;"><input type="button" value="삭제"
-			onclick="delete()"></span>
+	
+		<span style="font-size: 12pt;">
+			<input type="button" value="메인으로" onclick="location.href='/main'">
+		</span> 
+			
+		<span style="font-size: 12pt;">
+			<input type="button" value="업로드" onclick="location.href='/announcement/insert'">
+		</span>
+			
 	</div>
 
 	<!-- Footer Section Begin -->

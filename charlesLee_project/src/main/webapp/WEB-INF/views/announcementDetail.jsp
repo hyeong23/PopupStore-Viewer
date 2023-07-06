@@ -33,72 +33,84 @@
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
 
+	<form action="/announcement/modify/${announcement.announcementNum}"
+		method="GET" name="detailForm" id="detailForm">
+		<h3>공지사항</h3>
+		<table align="center" border="0" cellpadding="5" cellspacing="2"
+			width="100%" bordercolordark="white" bordercolorlight="black">
+			<tr>
+				<td>
+					<p align="center">
+						<b><span style="font-size: 12pt;">번호</span></b>
+					</p>
+				</td>
+				<td>
+					<p align="center">
+						<b><span style="font-size: 12pt;">제목</span></b>
+					</p>
+				</td>
+				<td>
+					<p align="center">
+						<b><span style="font-size: 12pt;">날짜</span></b>
+					</p>
+				</td>
+				<td>
+					<p align="center">
+						<b><span style="font-size: 12pt;">조회수</span></b>
+					</p>
+				</td>
 
-	<h3>공지사항</h3>
-	<table align="center" border="0" cellpadding="5" cellspacing="2"
-		width="100%" bordercolordark="white" bordercolorlight="black">
-		<tr>
-			<td>
-				<p align="center">
-					<b><span style="font-size: 12pt;">제목</span></b>
-				</p>
-			</td>
-			<td>
-				<p align="center">
-					<b><span style="font-size: 12pt;">작성자</span></b>
-				</p>
-			</td>
-			<td>
-				<p align="center">
-					<b><span style="font-size: 12pt;">날짜</span></b>
-				</p>
-			</td>
+			</tr>
 
-		</tr>
-
-		<tr>
-			<td bgcolor="">
-				<p align="center">
-					<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
-					</span>
-				</p>
-			</td>
-			<td bgcolor="">
-				<p align="center">
-					<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.memberNum}</b>
-					</span>
-				</p>
-			</td>
-			<td bgcolor="">
-				<p align="center">
-					<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
-					</span>
-				</p>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<p align="left" width="80%">
-					<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcementBody}</b>
-					</span>
-				</p>
-			</td>
-		</tr>
-	</table>
-
+			<tr>
+				<td bgcolor="">
+					<p align="center">
+						<span id="announcementNum" style="font-size: 12pt;"><!-- 번호 -->${announcement.announcementNum}
+						</span>
+			
+					</p>
+				</td>
+				<td bgcolor="">
+					<p align="center">
+						<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
+						</span>
+					</p>
+				</td>
+				<td bgcolor="">
+					<p align="center">
+						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
+						</span>
+					</p>
+				</td>
+				<td bgcolor="">
+					<p align="center">
+						<span style="font-size: 12pt;"> <!-- 조회수 --> <b>${announcement.announcementCount}</b>
+						</span>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p align="left" width="80%">
+						<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcementBody}</b>
+						</span>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</form>
 	<hr>
 	<div align=center>
 
-		<span style="font-size: 12pt;"><input type="button" value="목록"
-			onclick="location.href='/announcement'"></span> <span
-			style="font-size: 12pt;"><input type="button" value="수정"
-			onclick="location.href='/update'"></span> <span
-			style="font-size: 12pt;"><input type="button" value="업로드"
-			onclick="location.href='/upload'"></span>
+		<span style="font-size: 12pt;"> <input type="button" value="목록"
+			onclick="location.href='/announcement'">
+		</span> <span style="font-size: 12pt;"> <input type="button"
+			value="수정"
+			onclick="location.href='/announcement/modify/${announcementNum}'">
+		</span> <span style="font-size: 12pt;"> <input type="button"
+			value="삭제" onclick="deleteAnnouncement()">
+		</span>
 
-		<!-- 부서 삭제 로직 -->
-		<span style="font-size: 12pt;"><input type="button" value="삭제"
-			onclick="delete()"></span>
 	</div>
 
 	<!-- Footer Section Begin -->
@@ -114,6 +126,23 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+
+	<script type="text/javascript">
+		function deleteAnnouncement() {
+			let detailForm = document.getElementById("detailForm");
+			let announcementNum = document.getElementById("announcementNum").innerText;
+
+			let input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = '_method';
+			input.value = 'DELETE';
+			detailForm.appendChild(input);
+
+			detailForm.action = '/announcement/' + announcementNum;
+			detailForm.method = 'POST';
+			detailForm.submit();
+		}
+	</script>
 
 </body>
 </html>
