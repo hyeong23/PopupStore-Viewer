@@ -1,36 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8">
+<meta name="description" content="Ogani Template">
+<meta name="keywords" content="Ogani, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>공지사항</title>
+
+<!-- Google Font -->
 <link
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
-
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap"
-	rel="stylesheet">
-
-
-<link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
-
-<link href='/calendar/fullcalendar/packages/core/main.css'
-	rel='stylesheet' />
-<link href='/calendar/fullcalendar/packages/daygrid/main.css'
-	rel='stylesheet' />
-
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="/calendar/css/bootstrap.min.css">
-
-<!-- Style -->
-<link rel="stylesheet" href="/calendar/css/style.css">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -41,13 +26,14 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-<title>공지사항</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/css/layout.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
+	<!-- Header Section Begin -->
 	<%@ include file="header.jsp"%>
+	<!-- Header Section End -->
+
+
 	<h3>공지사항</h3>
 	<table align="center" border="0" cellpadding="5" cellspacing="2"
 		width="100%" bordercolordark="white" bordercolorlight="black">
@@ -115,7 +101,19 @@
 			onclick="delete()"></span>
 	</div>
 
+	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>
+	<!-- Footer Section End -->
+
+	<!-- Js Plugins -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
 </html>

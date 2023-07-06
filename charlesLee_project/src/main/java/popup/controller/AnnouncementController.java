@@ -49,4 +49,12 @@ public class AnnouncementController {
 		return "announcementDetail";
 	}
 
+	// 게시물 작성
+	// http://localhost:8081/announcement/
+	
+	// 수정
+	
+	// 삭제
+
+	
 }
