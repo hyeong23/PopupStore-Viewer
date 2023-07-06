@@ -16,14 +16,29 @@
     
   </select>
   
- 	<resultMap id="storeResultMap" type="popup.vo.StoreVo">
+  <resultMap id="storeResultMap" type="popup.vo.StoreVo">
         <result property="storeNum" column="store_num" />
         <result property="storeTitle" column="store_title" />
         <result property="memberCompanyName" column="member_company_name" />
         <result property="storeCount" column="store_count" />
         <result property="storeStatus" column="store_status" />
     </resultMap>
- 
+    
+  <insert id="insertStore" parameterType="popup.dto.Store"> 
+        INSERT INTO store
+        (store_num, member_num, store_title, store_intro, store_body, store_start, store_end, store_loc, store_site)
+        VALUES
+        (store_sequence.nextval, #{memberNum}, #{storeTitle}, #{storeIntro}, #{storeBody}, #{storeStart}, #{storeEnd}, #{storeLoc}, #{storeSite})
+  </insert>
+
+
+  <select id="getMaxStoreNum" resultType="int">
+    SELECT MAX(store_num) FROM store
+  </select>
+  
+ 	
+    
+ 	
  
 
   

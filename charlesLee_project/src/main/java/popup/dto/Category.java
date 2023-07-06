@@ -16,5 +16,5 @@ import lombok.ToString;
 public class Category {
 	private int categoryNum;
 	private int storeNum;
-	private String cateGory;
+	private String category;
 }

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -23,6 +24,10 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    
+    
+    
 </head>
 
 <body>
@@ -31,145 +36,10 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Humberger End -->
-
     <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
+   <%@ include file="header.jsp" %>
     <!-- Header Section End -->
-
+    
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -223,223 +93,72 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Checkout</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Checkout</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- Checkout Section Begin -->
-    <section class="checkout spad">
+    <!-- Contact Form Begin -->
+    <div class="contact-form spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
-                    </h6>
+                    <div class="contact__form__title">
+                        <h2>팝업스토어 등록신청</h2>
+                    </div>
                 </div>
             </div>
-            <div class="checkout__form">
-                <h4>Billing Details</h4>
-                <form action="#">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Ship to a different address?
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                    placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="checkout__order">
-                                <h4>Your Order</h4>
-                                <div class="checkout__order__products">Products <span>Total</span></div>
-                                <ul>
-                                    <li>Vegetable��s Package <span>$75.99</span></li>
-                                    <li>Fresh Vegetable <span>$151.99</span></li>
-                                    <li>Organic Bananas <span>$53.99</span></li>
-                                </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="acc-or">
-                                        Create an account?
-                                        <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
-                            </div>
-                        </div>
+            <form action="/storeRegister" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                   
+                    <div class="col-lg-12 col-md-6">
+                        <input type="text" placeholder="제목" name="storeTitle" id="storeTitle">
                     </div>
-                </form>
-            </div>
+                     <div class="col-lg-12 col-md-6">
+                        <input type="text" placeholder="인트로" name="storeIntro" id="storeIntro">
+                    </div>
+                     <div class="col-lg-12 col-md-6" >
+                        <span>시작일 : </span><input type="date"  name="storeStart" id="storeStart" style="width: auto">
+                        <span>종료일 : </span><input type="date"  name="storeEnd" id="storeEnd" style="width: auto">
+                        <textarea placeholder="내용" name="storeBody" id="storeBody"></textarea>
+                        
+                    </div>
+                    <div id="store_stc">
+                    주 카테고리:
+							<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="character">캐릭터</div>    
+                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="food">식음료 </div>               
+                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="media">미디어 </div>    
+                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="fashion">패션/뷰티 </div>    
+                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="other">기타 </div>         
+                          </div>
+                          <br> <br> <br>
+                     <div id="store_stc">
+                    부 카테고리:
+							<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="character">캐릭터</div>    
+                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="food">식음료 </div>               
+                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="media">미디어 </div>    
+                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="fashion">패션/뷰티 </div>    
+                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="other">기타 </div>         
+                          </div>
+                          <br> <br> <br>
+                    <div class="col-lg-12 col-md-6">
+                        <input type="text" placeholder="장소" name="storeLoc" id="storeLoc">
+                    </div>
+                    <div class="col-lg-12 col-md-6">
+                        <input type="text" placeholder="공식 사이트" name="storeSite" id="storeSite">
+                    </div>
+                   
+                        <input type="file"  name="picture" id="picture" multiple="multiple"  style="width: 50%; height: auto;"> 
+                    
+                    
+                    
+                    	
+                        <div id="store_stc" style="margin-top: auto;">     
+                        <input type="submit" value="submit" class="site-btn" id="submit"/>
+                        </div>
+                
+            </form>
         </div>
-    </section>
-    <!-- Checkout Section End -->
+    </div>
+    <!-- Contact Form End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                        <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+ <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
@@ -451,8 +170,20 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+  $(document).ready(function() {
+    // 버튼 클릭 이벤트 처리
+    $('#submit').on('click', function(event) {
+      if (!$('#check1').is(':checked')) {
+        // 체크되지 않은 상태에서 버튼 클릭 시 동작
+        alert('이용 약관에 동의해주세요');
+        event.preventDefault(); // submit 동작 막기
+      }
+    });
+  });
+</script>
 
- 
+
 
 </body>
 
