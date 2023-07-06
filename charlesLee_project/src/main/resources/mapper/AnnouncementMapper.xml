@@ -23,12 +23,28 @@
 		select *
 		from announcement
 	</select>
-	
+
 	<!-- select one -->
 	<select id="selectAnnouncement"
 		resultMap="AnnouncementResultMap">
 		select *
 		from announcement
 		where announcement_num = #{announcementNum}
+
 	</select>
+
+	<!-- insert -->
+	<insert id="insertAnnouncement"
+		parameterType="popup.dto.Announcement">
+		INSERT INTO announcement (announcement_num,
+		announcement_title, announcement_body) VALUES
+		(#{announcement_sequence.nextval},
+		#{announcement_title},
+		#{announcement_body})
+	</insert>
+	
+	<!-- update -->
+	
+	<!-- delete -->
+	
 </mapper>
