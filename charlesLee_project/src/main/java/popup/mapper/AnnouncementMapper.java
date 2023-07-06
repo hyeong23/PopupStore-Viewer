@@ -23,6 +23,6 @@ public interface AnnouncementMapper {
 	public int updateAnnouncement(Announcement announcement);
 
 	// 삭제
-	public int deleteAnnouncementByannouncement_num(int announcement_num) throws SQLException;
+	public int deleteAnnouncement(int announcementNum) throws SQLException;
 
 }

@@ -12,7 +12,6 @@
         <result property="announcementBody" column="announcement_body" />
          <result property="announcementTime" column="announcement_time" />
         <result property="announcementCount" column="announcement_count" />
-       
     </resultMap>
   
 
@@ -30,21 +29,26 @@
 		select *
 		from announcement
 		where announcement_num = #{announcementNum}
-
 	</select>
 
 	<!-- insert -->
-	<insert id="insertAnnouncement"
-		parameterType="popup.dto.Announcement">
-		INSERT INTO announcement (announcement_num,
-		announcement_title, announcement_body) VALUES
-		(#{announcement_sequence.nextval},
-		#{announcement_title},
-		#{announcement_body})
-	</insert>
+	<insert id="insertAnnouncement" parameterType="popup.dto.Announcement">
+ 		INSERT INTO announcement (announcement_num, announcement_title, announcement_body) 
+ 		VALUES (announcement_sequence.nextval, #{announcementTitle}, #{announcementBody})
+ 	</insert>
 	
-	<!-- update -->
+	<!-- update --> 
+	<update id="updateAnnouncement" parameterType="popup.dto.Announcement">
+ 		UPDATE announcement 
+ 		SET announcement_title = #{announcementTitle}, 
+ 			announcement_body = #{announcementBody} 
+ 		WHERE announcement_num = #{announcementNum}
+ 	</update>
 	
 	<!-- delete -->
+	<delete id="deleteAnnouncement" parameterType="_int">
+		DELETE FROM announcement
+		WHERE announcement_num = #{announcementNum}
+	</delete>
 	
 </mapper>

@@ -56,10 +56,10 @@ public class AnnouncementService {
 	}
 
 	// delete
-	public boolean deleteAnnouncementByannouncement_num(int announcement_num) throws SQLException, Exception {
+	public boolean deleteAnnouncement(int announcementNum) throws SQLException, Exception {
 		boolean result = false;
 
-		int res = announcementMapper.deleteAnnouncementByannouncement_num(announcement_num);
+		int res = announcementMapper.deleteAnnouncement(announcementNum);
 
 		if (res != 0) {
 			result = true;
