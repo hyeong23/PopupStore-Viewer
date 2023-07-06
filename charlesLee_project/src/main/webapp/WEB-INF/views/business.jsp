@@ -33,14 +33,17 @@
                         <input class="login animated fadeInUp animate1" name="memberId" id= memberId type="text"  required   placeholder="ID"  >
                         	<br/>
                         		<span class=login_id id = "memberIdMsg" style="font-size:8pt"></span>
+                        	<br/>
                         <input class="login animated fadeInUp animate2" name="memberPw" id="password" type="password" required placeholder="Password">
                         	<br/>
                         <input class="login animated fadeInUp animate3" name="memberEmail" id="memberEmail" type="text"  required   placeholder="Email">
                         	<br/>
                         		<span class=login_email id = "memberEmailMsg" style="font-size:8pt"></span>
+                        	<br/>
                         <input class="login animated fadeInUp animate4" name="memberCompanyName" id="memberCompanyName" type="text"  required   placeholder="CompanyName" >
                         	<br/>
                         		<span class=login_company_name id = "memberCompanyNameMsg" style="font-size:8pt"></span>
+                        	<br/>
                         <input class="login animated fadeInUp animate5" name="memberCompanyNum" id="memberCompanyNum" type="number"  required   placeholder="Business Number" >
                    			<br/>
                    				<div class="login animated fadeInUp animate5">
