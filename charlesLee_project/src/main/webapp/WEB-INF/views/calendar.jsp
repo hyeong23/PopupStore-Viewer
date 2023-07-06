@@ -76,7 +76,15 @@
     <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
     
-    
+<%-- <c:forEach items="${openStoreList}" var="store">
+  <!-- 정보를 사용하여 동적으로 HTML 표시 -->
+  <div>
+    <p>${store.storeTitle}</p>
+    <p>${store.storeIntro}</p>
+    <p>${store.storeStart}</p>
+    <p>${store.storeEnd}</p>
+  </div>
+</c:forEach> --%>
 
     <script src="/calendar/js/jquery-3.3.1.min.js"></script>
     <script src="/calendar/js/popper.min.js"></script>
@@ -87,74 +95,27 @@
     <script src='/calendar/fullcalendar/packages/daygrid/main.js'></script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+    document.addEventListener('DOMContentLoaded', function() {
+    	  var calendarEl = document.getElementById('calendar');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'interaction', 'dayGrid' ],
-      defaultDate: new Date(),
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2020-02-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2023-07-07',
-          end: '2023-07-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-07-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-07-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2023-07-11',
-          end: '2023-07-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-07-12T10:30:00',
-          end: '2023-07-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2023-07-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-07-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2023-07-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2023-07-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2023-07-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2023-07-28'
-        }
-      ]
-    });
+    	  var calendar = new FullCalendar.Calendar(calendarEl, {
+    	    plugins: [ 'interaction', 'dayGrid' ],
+    	    defaultDate: new Date(),
+    	    editable: true,
+    	    eventLimit: true, // allow "more" link when too many events,
+    	    events: [
+    	      <c:forEach items="${openStoreList}" var="store">
+    	        {
+    	          title: '${store.storeTitle}',
+    	          start: '${store.storeStart}',
+    	          end: '${store.storeEnd}'
+    	        },
+    	      </c:forEach>
+    	    ]
+    	  });
 
-    calendar.render();
-  });
+    	  calendar.render();
+    	});
 
     </script>
 
