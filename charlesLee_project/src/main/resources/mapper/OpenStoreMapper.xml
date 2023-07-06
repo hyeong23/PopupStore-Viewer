@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="popup.mapper.OpenStoreMapper">
+ 
+ 
+  
+  <select id="getOpenStoreList" resultMap="openStoreList">
+    
+      SELECT store_title, store_intro, store_start, store_end
+      FROM store
+    
+  </select>
+  
+ 	<resultMap id="openStoreList" type="popup.vo.StoreVo">
+        <result property="storeTitle" column="store_title" />
+        <result property="storeIntro" column="store_intro" />
+        <result property="storeStart" column="store_start" />
+        <result property="storeEnd" column="store_end" />
+    </resultMap>
+ 
+ 
+
+  
+  
+</mapper>

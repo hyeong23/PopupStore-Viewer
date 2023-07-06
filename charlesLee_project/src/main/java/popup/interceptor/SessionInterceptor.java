@@ -21,7 +21,7 @@ public class SessionInterceptor implements HandlerInterceptor {
 		// session 유무 검증
 		HttpSession session = request.getSession(false);
 		
-		if(session == null || session.getAttribute("member_id") == null) {
+		if(session == null || session.getAttribute("memberId") == null) {
 			// Exception 발생 시키거나 혹은 *main 전환해주거나
 			
 			response.sendRedirect("/home");

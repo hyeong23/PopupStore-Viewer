@@ -1,4 +1,4 @@
-package popup.dto;
+package popup.vo;
 
 import java.sql.Date;
 
@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Store {
+public class StoreVo {
 	private int storeNum;
 	private int memberNum;
 	private String storeTitle;
@@ -27,5 +27,6 @@ public class Store {
 	private String storeSite;
 	private int storeCount;
 	private int storeStatus;
+	private String memberCompanyName;
 
 }

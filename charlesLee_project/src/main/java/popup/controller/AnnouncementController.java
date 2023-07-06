@@ -28,23 +28,19 @@ public class AnnouncementController {
 
 		model.addAttribute("list", list);
 
-		System.out.println("announcement test");
-		System.out.println(list);
 
 		return "announcement";
 	}
 
 	// 상세 조회
-	// http://localhost:8081/announcement/announcement_num
-	@RequestMapping(value = "/announcement/{announcement_num}", method = RequestMethod.GET)
-	public String announcement(@PathVariable int announcement_num, Model model) throws Exception {
+	// http://localhost:8081/announcement/announcementNum
+	@RequestMapping(value = "/announcement/{announcementNum}", method = RequestMethod.GET)
+	public String announcement(@PathVariable int announcementNum, Model model) throws Exception {
 
-		Announcement announcement = announcementService.selectAnnouncement(announcement_num);
+		Announcement announcement = announcementService.selectAnnouncement(announcementNum);
 
 		model.addAttribute("announcement", announcement);
 
-		System.out.println("announcement one test");
-		System.out.println(announcement);
 
 		return "announcementDetail";
 	}

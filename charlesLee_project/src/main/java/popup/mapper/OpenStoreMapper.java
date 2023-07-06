@@ -5,12 +5,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-
 import popup.vo.StoreVo;
 
 @Mapper
-public interface StoreMapper {
+public interface OpenStoreMapper {
 
-	public List<StoreVo> getStoreList() throws Exception;
+	public List<StoreVo> getOpenStoreList();
 
 }

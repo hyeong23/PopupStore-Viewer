@@ -43,22 +43,44 @@
 			<tr>
 				<td>
 					<p align="center">
+
 						<b><span style="font-size: 12pt;">글번호</span></b>
+
+						<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcementNum}</b>
+						</span>
+
 					</p>
 				</td>
 				<td>
 					<p align="center">
+
 						<b><span style="font-size: 12pt;">제목</span></b>
+
+						<a href="/announcement/${announcement.announcementNum}"> <span style="font-size: 12pt;"> 
+						<!-- 제목 --> <b>${announcement.announcementTitle}</b>
+						</span>
+						</a>
+
 					</p>
 				</td>
 				<td>
 					<p align="center">
+
 						<b><span style="font-size: 12pt;">작성자</span></b>
+
+						<span style="font-size: 12pt;"> <!-- 작성자 --> <b>${announcement.memberNum}</b>
+						</span>
+
 					</p>
 				</td>
 				<td>
 					<p align="center">
+
 						<b><span style="font-size: 12pt;">날짜</span></b>
+
+						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
+						</span>
+
 					</p>
 				</td>
 			</tr>

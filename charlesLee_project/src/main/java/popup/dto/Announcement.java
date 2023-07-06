@@ -14,10 +14,10 @@ import lombok.ToString;
 @Setter
 @ToString 
 public class Announcement {
-	private int announcement_num;
-	private int member_num;
-	private String announcement_title;
-	private String announcement_body;
-	private Date announcement_time;
-	private int announcement_count;
+	private int announcementNum;
+	private int memberNum;
+	private String announcementTitle;
+	private String announcementBody;
+	private Date announcementTime;
+	private int announcementCount;
 }

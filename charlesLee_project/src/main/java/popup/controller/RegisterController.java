@@ -36,22 +36,22 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(value = "/general", method = RequestMethod.POST)
-	public String general(@RequestParam("member_id") String member_id,
-						  @RequestParam("member_pw") String member_pw,
-						  @RequestParam("member_nickname") String member_nickname,
-						  @RequestParam("member_email") String member_email,
+	public String general(@RequestParam("memberId") String memberId,
+						  @RequestParam("memberPw") String memberPw,
+						  @RequestParam("memberNickname") String memberNickname,
+						  @RequestParam("memberEmail") String memberEmail,
 						  Model model) throws  Exception{
 		String view = "/error";
-		int member_type = 1;
+		int memberType = 1;
 		
-		boolean check1 = memberService.getMemberById(member_id);
-		boolean check2 = memberService.getMemberByNickName(member_nickname);
-		boolean check3 = memberService.getMemberByEmail(member_email);
+		boolean check1 = memberService.getMemberById(memberId);
+		boolean check2 = memberService.getMemberByNickName(memberNickname);
+		boolean check3 = memberService.getMemberByEmail(memberEmail);
 		
 		
 		if(check1 || check2 || check3) {
 			
-			boolean member = memberService.insertGeneralMember(member_id,member_pw,member_nickname,member_email,member_type);
+			boolean member = memberService.insertGeneralMember(memberId,memberPw,memberNickname,memberEmail,memberType);
 			if(member == true) {
 				 view = "/login";
 				}	
@@ -76,23 +76,23 @@ public class RegisterController {
 	
 	
 	@RequestMapping(value = "/business", method = RequestMethod.POST)
-	public String business(@RequestParam("member_id") String member_id,
-						  @RequestParam("member_pw") String member_pw,
-						  @RequestParam("member_email") String member_email,
-						  @RequestParam("member_company_name") String member_company_name,
-						  @RequestParam("member_company_num") int member_company_num,
+	public String business(@RequestParam("memberId") String memberId,
+						  @RequestParam("memberPw") String memberPw,
+						  @RequestParam("memberEmail") String memberEmail,
+						  @RequestParam("memberCompanyName") String memberCompanyName,
+						  @RequestParam("memberCompanyNum") int memberCompanyNum,
 						  Model model) throws Exception{
 		String view = "/error";
-		int member_type = -1;
+		int memberType = -1;
 		
-		boolean check1 = memberService.getMemberById(member_id);
-		boolean check2 = memberService.getMemberByEmail(member_email);
-		boolean check3 = memberService.getMemberByCompanyName(member_company_name);
-		boolean check4 = memberService.getMemberByCompanyNum(member_company_num);
+		boolean check1 = memberService.getMemberById(memberId);
+		boolean check2 = memberService.getMemberByEmail(memberEmail);
+		boolean check3 = memberService.getMemberByCompanyName(memberCompanyName);
+		boolean check4 = memberService.getMemberByCompanyNum(memberCompanyNum);
 	
 		if(check1 || check2 || check3 || check4 ) {
 			
-			boolean member = memberService.insertBusinessMember(member_id,member_pw,member_email, member_company_name,member_company_num,member_type);
+			boolean member = memberService.insertBusinessMember(memberId,memberPw,memberEmail, memberCompanyName,memberCompanyNum,memberType);
 			
 			if(member == true) {
 			 view = "/login";

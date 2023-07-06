@@ -1,7 +1,5 @@
 package popup.dto;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +12,9 @@ import lombok.ToString;
 @Setter
 @ToString 
 public class Ask {
-	private int ask_num;
-	private String ask_email;
-	private String ask_title;
-	private String ask_body;
-	private int ask_check;
+	private int askNum;
+	private String askEmail;
+	private String askTitle;
+	private String askBody;
+	private int askCheck;
 }

@@ -19,18 +19,18 @@
       
                          <div class="header__top__right"  style="width: 200px">
                             <a href="/ask"><span style="font-size: 10px; color: black;">문의하기 |</span></a>
-                            <a href="/storeRegister"><span style="font-size: 10px; color: black;">팝업등록신청 |</span></a>
+                            <a href="/storeList"><span style="font-size: 10px; color: black;">팝업등록신청 |</span></a>
                             <a href="/mypage"><span style="font-size: 10px; color: black;">마이페이지</span></a>
                            
                            
                            <br>
-                            <c:if test="${empty sessionScope.member_id}"> 
+                            <c:if test="${empty sessionScope.memberId}"> 
 	                            <div class="header__top__right__auth">
 	                                <a href="/login"><i class="fa fa-user"></i> Login </a>
 	                                </div>
                             </c:if>
                             
-                            <c:if test="${not empty sessionScope.member_id}">
+                            <c:if test="${not empty sessionScope.memberId}">
 	                            <div class="header__top__right__auth">
 								   <a href="/logout"><i class="fa fa-user"></i> Logout</a>
 								   </div>

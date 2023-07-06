@@ -5,18 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import popup.mapper.StoreMapper;
+import popup.mapper.OpenStoreMapper;
 import popup.vo.StoreVo;
 
 @Service
-public class StoreService {
+public class OpenStoreService {
 
 	@Autowired
-	StoreMapper storeMapper;
+	OpenStoreMapper openStoreMapper;
 
-	public List<StoreVo> getStoreList() throws Exception{
-		
-		return storeMapper.getStoreList();
+	public List<StoreVo> getAllStore() {
+		return openStoreMapper.getOpenStoreList();
 	}
 }

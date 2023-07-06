@@ -14,7 +14,7 @@ public interface AnnouncementMapper {
 	public List<Announcement> selectAnnouncementList() throws Exception;
 
 	// 게시글 상세 조회
-	public Announcement selectAnnouncement(int announcement_num) throws Exception;
+	public Announcement selectAnnouncement(int announcementNum) throws Exception;
 
 	// 게시글 작성
 	public int insertAnnouncement(Announcement announcement) throws SQLException;
