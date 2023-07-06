@@ -40,7 +40,7 @@
 			<table>
 				<tr>
 					<td>* 아이디</td>
-					<td><input type="text" id="memberId" name="memberId" value="${member.member_id }" readonly>
+					<td><input type="text" id="memberId" name="memberId" value="${member.memberId }" readonly>
 					</td>
 				</tr>
 				<tr>
@@ -49,12 +49,12 @@
 				</tr>
 				<tr>
 					<td>* 이름</td>
-					<td><input type="text" name="memberName" value="${member.member_name }" readonly></td>
+					<td><input type="text" name="memberName" value="${member.memberName }" readonly></td>
 				</tr>
 
 				<tr>
 					<td>* 이메일</td>
-					<td><input type="text" name="memberEmail" value="${member.member_email }"></td>
+					<td><input type="text" name="memberEmail" value="${member.memberEmail }"></td>
 				</tr>
 							
 				<tr>
