@@ -103,17 +103,18 @@
     	    defaultDate: new Date(),
     	    editable: true,
     	    eventLimit: true, // allow "more" link when too many events,
+      	    displayEventTime: false,
     	    events: [
     	      <c:forEach items="${openStoreList}" var="store">
     	        {
     	          title: '${store.storeTitle}',
-    	          start: '${store.storeStart}',
-    	          end: '${store.storeEnd}'
+    	          start: '${store.storeStart}T00:00:00',
+    	          end: '${store.storeEnd}T23:59:59'
     	        },
     	      </c:forEach>
     	    ]
     	  });
-
+    	  
     	  calendar.render();
     	});
 
