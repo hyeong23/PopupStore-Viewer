@@ -31,8 +31,8 @@ public class MyPageController {
 	@GetMapping
 	public String viewMyPage(Model model,HttpSession session) throws SQLException {
 	    // 현재 로그인한 사용자의 정보를 가져옵니다.
-	    String member_id = session.getId();
-	    Member member = myPageService.getMemberById(member_id);
+	    String memberId = session.getId();
+	    Member member = myPageService.getMemberById(memberId);
 
 	    // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리디렉션합니다.
 //	    if (member == null) {
@@ -51,8 +51,8 @@ public class MyPageController {
 		myPageService.modifyMember(modifiedMember);
 		
 		// 수정된 회원 정보를 다시 조회하여 모델에 추가
-		String member_id = modifiedMember.getMember_id();
-		Member member = myPageService.getMemberById(member_id);
+		String memberId = modifiedMember.getMemberId();
+		Member member = myPageService.getMemberById(memberId);
 		model.addAttribute("member", member);
 		System.out.println("mypage test");
 		// 마이페이지로 리디렉션합니다.

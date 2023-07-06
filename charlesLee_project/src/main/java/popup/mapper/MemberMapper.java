@@ -26,4 +26,6 @@ public interface MemberMapper {
 
 	Member getMemberByCompanyNum(int memberCompanyNum) throws SQLException;
 
+	void updateMember(Member modifiedMember);
+
 }

@@ -15,13 +15,13 @@ public class MyPageService {
 	@Autowired
 	private MemberMapper memberMapper;
 
-	public Member printOneById(String member_id) {
-		Member member = memberMapper.selectMemberById(member_id);
+	public Member printOneById(String memberId) throws SQLException {
+		Member member = memberMapper.getMemberById(memberId);
 		return member;
 	}
 
-	public Member getMemberById(String member_id) throws SQLException {
-	    return memberMapper.getMemberById(member_id);
+	public Member getMemberById(String memberId) throws SQLException {
+	    return memberMapper.getMemberById(memberId);
 	}
 
 	public void modifyMember(Member modifiedMember) {
