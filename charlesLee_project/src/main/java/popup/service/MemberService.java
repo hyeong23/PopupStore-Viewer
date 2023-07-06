@@ -39,6 +39,8 @@ public class MemberService {
 			
 		return member;
 	}
+
+		
 	//ID체크
 	public boolean getMemberById(String memberId) throws Exception {
 		
@@ -68,11 +70,11 @@ public class MemberService {
 			return result;
 		}
 	//NickName체크
-		public boolean getMemberByNickName(String memberNickname) throws  Exception {
+		public boolean getMemberByNickname(String memberNickname) throws  Exception {
 			
 			boolean result = true;
 			
-			Member check = memberMapper.getMemberByNickName(memberNickname);
+			Member check = memberMapper.getMemberByNickname(memberNickname);
 			
 			if(check != null) {
 				throw new Exception("이미 존재하는 닉네임 입니다.");
@@ -80,7 +82,8 @@ public class MemberService {
 			
 			
 			return result;
-		}
+		}	
+			
 		
 	//CompanyName체크
 		public boolean getMemberByCompanyName(String memberCompanyName) throws Exception {

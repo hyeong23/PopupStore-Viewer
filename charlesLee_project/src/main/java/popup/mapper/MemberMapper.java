@@ -20,7 +20,7 @@ public interface MemberMapper {
 
 	Member getMemberByEmail(String memberEmail)throws SQLException;
 
-	Member getMemberByNickName(String memberNickname)throws SQLException;
+	Member getMemberByNickname(String memberNickname)throws SQLException;
 
 	Member getMemberByCompanyName(String memberCompanyName) throws SQLException;
 

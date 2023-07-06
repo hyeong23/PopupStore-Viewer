@@ -54,7 +54,7 @@
   	  
   </select>
   
-   <select id = "getMemberByNickName" resultMap="memberResultMap">
+   <select id = "getMemberByNickname" resultMap="memberResultMap">
 	SELECT  
   		*
   	From Member

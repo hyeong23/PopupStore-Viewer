@@ -45,7 +45,7 @@ public class RegisterController {
 		int memberType = 1;
 		
 		boolean check1 = memberService.getMemberById(memberId);
-		boolean check2 = memberService.getMemberByNickName(memberNickname);
+		boolean check2 = memberService.getMemberByNickname(memberNickname);
 		boolean check3 = memberService.getMemberByEmail(memberEmail);
 		
 		
