@@ -3,11 +3,17 @@ package popup.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import popup.mapper.CategroyMapper;
+import popup.mapper.CategoryMapper;
 
 @Service
 public class CategoryService {
 
 	@Autowired
-	CategroyMapper categoryMapper;
+	CategoryMapper categoryMapper;
+
+	public boolean insertCategory(int storeNum, String category1) throws Exception{
+		
+		return categoryMapper.insertCategory(storeNum, category1);
+		
+	}
 }

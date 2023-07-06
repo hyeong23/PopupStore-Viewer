@@ -2929,6 +2929,31 @@ margin-bottom: 10px;
 		height: 30px;
 		margin: 0px;
 }
+#check2{
+		height: 30px;
+		margin: 0px;
+}
+#store_stc{
+	width: 100%;
+	height: 40px;
+	display:flex;
+	background-color: #fff;
+align-items:center;
+justify-content: center;
+margin-top:-15px;
+margin-bottom: 10px;
+}
+
+#store_stc1{
+	width: 300px;
+
+}
+
+#store_chk{
+	height: 30px;
+
+	position:relative; 
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {

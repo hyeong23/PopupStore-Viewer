@@ -7,9 +7,18 @@
   
   
   
+  <insert id="insertCategory"> 
+        INSERT INTO category
+        (category_num ,store_num, category)
+        VALUES
+        (category_sequence.nextval, #{storeNum},#{category1})
+  </insert>
   
-  
-  
+    <resultMap id="categoryResultMap" type="popup.dto.Category">
+        <result property="categoryNum" column="category_num" />
+        <result property="storeNum" column="store_num" />
+        <result property="category" column="category" />
+    </resultMap> 
   
   
   
