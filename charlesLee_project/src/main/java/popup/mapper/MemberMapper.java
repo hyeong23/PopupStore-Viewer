@@ -2,7 +2,9 @@ package popup.mapper;
 
 import java.sql.SQLException;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import popup.dto.Member;
 
@@ -14,7 +16,8 @@ public interface MemberMapper {
 	boolean insertGeneralMember(String memberId, String memberPw, String memberNickname ,String memberEmail , int memberType) throws SQLException;
 
 	boolean insertBusinessMember(String memberId, String memberPw, String memberEmail, String memberCompanyName,
-			int memberCompanyNum, int memberType) throws SQLException;
+	
+    int memberCompanyNum, int memberType) throws SQLException;
 
 	Member getMemberById(String memberId) throws SQLException;
 
@@ -26,6 +29,9 @@ public interface MemberMapper {
 
 	Member getMemberByCompanyNum(int memberCompanyNum) throws SQLException;
 
-	void updateMember(Member modifiedMember);
+	void updateMember(Member modifiedMember)throws IllegalArgumentException;
+	
+	@Delete("DELETE FROM Member WHERE member_id = #{memberId}")
+	void deleteMember(@Param("memberId") String memberId);
 
 }

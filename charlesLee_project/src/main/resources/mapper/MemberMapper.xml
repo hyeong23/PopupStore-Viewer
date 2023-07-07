@@ -92,9 +92,19 @@
   	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberEmail},#{memberCompanyName},#{memberCompanyNum},#{memberType})
     
   </insert>
+  <!-- 회원정보 수정 -->
+  <update id="updateMember" parameterType="popup.dto.Member">
+  UPDATE scott.member
+  SET member_pw = #{memberPw}, member_email = #{memberEmail}
+  WHERE member_id = #{memberId}
+</update>
   
-  
-  
+  <!-- 회원 비밀번호 수정 -->
+<!-- <update id="updateMemberPassword" parameterType="popup.dto.Member">
+  UPDATE scott.member
+  SET member_pw = #{newPassword}
+  WHERE member_id = #{memberId}
+</update> -->
   
   
   
