@@ -5,7 +5,20 @@
   <mapper namespace="popup.mapper.PictureMapper">
   
   
-  
+  <insert id="insertPicture" parameterType = "popup.dto.Picture">
+ 		INSERT INTO 
+ 		picture (picture_num,store_num,picture_path,picture_name,picture_original_name,picture_size,picture_date)
+ 		VALUES(
+			    picture_sequence.nextval,
+				#{storeNum}, 
+				#{picturePath},
+				#{pictureName},
+				#{pictureOriginalName},
+				#{pictureSize},      
+				SYSDATE
+	
+ 		)
+ 	</insert>
   
   
   

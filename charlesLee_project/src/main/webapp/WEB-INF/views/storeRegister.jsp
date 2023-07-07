@@ -143,22 +143,36 @@
                         <input type="text" placeholder="공식 사이트" name="storeSite" id="storeSite">
                     </div>
                    
-                        <input type="file"  name="picture" id="picture" multiple="multiple"  style="width: 50%; height: auto;"> 
-                    
-                    
-                    
+                     <!--   <div id="fileContainer">
+         			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)">	     
+         			      <img id="preview" src="#" alt="미리보기" style="display: none; max-width: 300px; max-height: 300px;"> 
+       				   </div>
+       				   <div class="button" >
+       				   <button type="button" onclick="addFileInput()">사진 추가</button><br>
+                     </div>
                     	
                         <div id="store_stc" style="margin-top: auto;">     
                         <input type="submit" value="submit" class="site-btn" id="submit"/>
-                        </div>
+                        </div> -->
                 
             </form>
         </div>
     </div>
+    <div id="fileContainer">
+         			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)">	     
+         			      <img id="preview" src="#" alt="미리보기" style="display: none; max-width: 300px; max-height: 300px;"> 
+       				   </div>
+       				   <div class="button" >
+       				   <button type="button" onclick="addFileInput()">사진 추가</button><br>
+                     </div>
+                    	
+                        <div id="store_stc" style="margin-top: auto;">     
+                        <input type="submit" value="submit" class="site-btn" id="submit"/>
+                        </div>
     <!-- Contact Form End -->
 
     <!-- Footer Section Begin -->
- <%@ include file="footer.jsp" %>
+         <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
@@ -182,8 +196,33 @@
     });
   });
 </script>
+ <script>
+    function addFileInput() {
+        var fileInput = document.createElement("input");
+        var preview = document.createElement("img");
+        fileInput.type = "file";
+        fileInput.name = "picture";
+        fileInput.onchange = function(event) {
+            previewImage(event, preview);
+        };
 
+        var fileContainer = document.getElementById("fileContainer");
+        fileContainer.appendChild(fileInput);
+        fileContainer.appendChild(preview);
+    }
 
+    function previewImage(event, preview) {
+        var input = event.target;
+        var reader = new FileReader();
+
+        reader.onload = function() {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>
 
 </body>
 
