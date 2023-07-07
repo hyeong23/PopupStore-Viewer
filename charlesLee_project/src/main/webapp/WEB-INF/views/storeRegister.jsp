@@ -25,7 +25,21 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
+   <style>
+    /* 주 카테고리 라디오 버튼 스타일 */
+    #store_stc input[type="radio"][name="category1"] {
+        height: 25px;
+        margin: auto;
+        
+    }
+    
+    /* 부 카테고리 라디오 버튼 스타일 */
+    #store_stc input[type="radio"][name="category2"] {
+          height: 25px;
+        margin: auto;
+    }
    
+</style>
     
 </head>
 
@@ -118,22 +132,42 @@
                         
                     </div>
                     <div id="store_stc">
-                    주 카테고리:
-							<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="character">캐릭터</div>    
-                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="food">식음료 </div>               
-                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="media">미디어 </div>    
-                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="fashion">패션/뷰티 </div>    
-                        	<div id="store_chk"><input type="checkbox" id="check1" name="category1" value="other">기타 </div>         
-                          </div>
+    						주 카테고리:
+   							 <div id="store_chk">
+      							  <input type="radio" id="radio1" name="category1" value="character">캐릭터
+  							  </div>    
+   							 <div id="store_chk">                            
+     							   <input type="radio" id="radio2" name="category1" value="food">식음료
+   							 </div>               
+   							 <div id="store_chk">
+    						    <input type="radio" id="radio3" name="category1" value="media">미디어
+  							 </div>    
+   							 <div id="store_chk">
+   						     <input type="radio" id="radio4" name="category1" value="fashion">패션/뷰티
+   							 </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio5" name="category1" value="other">기타
+                                </div>         
+                            </div>
                           <br> <br> <br>
-                     <div id="store_stc">
-                    부 카테고리:
-							<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="character">캐릭터</div>    
-                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="food">식음료 </div>               
-                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="media">미디어 </div>    
-                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="fashion">패션/뷰티 </div>    
-                        	<div id="store_chk"><input type="checkbox" id="check2" name="category2" value="other">기타 </div>         
-                          </div>
+                   <div id="store_stc">
+                                부 카테고리:
+                                <div id="store_chk">
+                                    <input type="radio" id="radio6" name="category2" value="character">캐릭터
+                                </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio7" name="category2" value="food">식음료
+                                </div>               
+                                <div id="store_chk">
+                                    <input type="radio" id="radio8" name="category2" value="media">미디어
+                                </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio9" name="category2" value="fashion">패션/뷰티
+                                </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio10" name="category2" value="other">기타
+                                </div>         
+                            </div>
                           <br> <br> <br>
                     <div class="col-lg-12 col-md-6">
                         <input type="text" placeholder="장소" name="storeLoc" id="storeLoc">
@@ -143,13 +177,13 @@
                     </div>
                    
                     <div id="fileContainer">
-         			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)">	     
-         			      <img id="preview" src="#" alt="미리보기" style="display: none; max-width: 300px; max-height: 300px;"> 
+         			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)" style="width: auto;">	    
+         			      <button type="button" onclick="addFileInput()">사진 추가</button><br> 
+         			      <img id="preview" src="#" style="display: none"> 
        				   </div>
-       				   <div class="button" >
-       				   <button type="button" onclick="addFileInput()">사진 추가</button><br>
-                     </div>
-                    	
+       				   
+       				 
+                    	<br><br><br><br><br><br>
                         <div id="store_stc" style="margin-top: auto;">     
                         <input type="submit" value="submit" class="site-btn" id="submit"/>
                         </div>
@@ -174,7 +208,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-  $(document).ready(function() {
+ /*  $(document).ready(function() {
     // 버튼 클릭 이벤트 처리
     $('#submit').on('click', function(event) {
       if (!$('#check1').is(':checked')) {
@@ -183,7 +217,7 @@
         event.preventDefault(); // submit 동작 막기
       }
     });
-  });
+  }); */
 </script>
  <script>
     function addFileInput() {
@@ -191,6 +225,7 @@
         var preview = document.createElement("img");
         fileInput.type = "file";
         fileInput.name = "picture";
+        fileInput.style.width = "auto";
         fileInput.onchange = function(event) {
             previewImage(event, preview);
         };

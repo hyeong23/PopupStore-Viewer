@@ -16,7 +16,7 @@ public class SessionInterceptor implements HandlerInterceptor {
 							HttpServletResponse response, 
 							Object handler) throws Exception {
 		
-		log.info("preHandle");
+		
 		
 		// session 유무 검증
 		HttpSession session = request.getSession(false);

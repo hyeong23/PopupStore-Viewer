@@ -71,6 +71,11 @@ public class StoreController {
 		
 		int storeNum = 0;
 
+		if(category1 == category2) {
+			category2 = null;
+		}
+		
+		
 		
 		try {
 			//login 하면 memberNum session에 보관 시킨 후 가져와서 store의 memberNum에 추가
@@ -92,12 +97,12 @@ public class StoreController {
 			
 			//for문으로 여러파일 업로드
 			for (MultipartFile picture : pictures) {
-	            System.out.println(picture.getOriginalFilename());
+	            
 	            pictureResult = pictureService.insertPicture(storeNum,picture);
 	        }
 			
 			
-			if(storeResult) {
+			if(storeResult && categoryResult1 && pictureResult) {
 				view = "redirect:storeList";
 			}
 			
