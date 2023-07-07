@@ -21,8 +21,8 @@ public class AnnouncementService {
 	}
 
 	// select one
-	public Announcement selectAnnouncement(int announcementNum) throws Exception {
-		return announcementMapper.selectAnnouncement(announcementNum);
+	public Announcement getAnnouncement(int announcementNum) throws Exception {
+		return announcementMapper.getAnnouncement(announcementNum);
 	}
 
 	// insert
@@ -69,4 +69,11 @@ public class AnnouncementService {
 
 		return result;
 	}
+	
+	// count
+//		public int countAnnouncement(Announcement announcement) throws SQLException, Exception {
+//			boolean result = false;
+//
+//			return announcementMapper.countAnnouncement(announcement);
+//		}
 }

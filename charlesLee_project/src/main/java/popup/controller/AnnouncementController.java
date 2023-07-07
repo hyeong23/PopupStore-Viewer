@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -37,7 +38,7 @@ public class AnnouncementController {
 	@RequestMapping(value = "/announcement/{announcementNum}", method = RequestMethod.GET)
 	public String announcement(@PathVariable int announcementNum, Model model) throws Exception {
 
-		Announcement announcement = announcementService.selectAnnouncement(announcementNum);
+		Announcement announcement = announcementService.getAnnouncement(announcementNum);
 
 		model.addAttribute("announcement", announcement);
 
@@ -80,7 +81,7 @@ public class AnnouncementController {
 	// http://localhost:8081/announcement/modify/announcementNum
 	@RequestMapping(value = "/announcement/modify/{announcementNum}", method = RequestMethod.GET)
 	public String updateAnnouncementForm(@PathVariable int announcementNum, Model model) throws Exception {
-		Announcement announcement = announcementService.selectAnnouncement(announcementNum);
+		Announcement announcement = announcementService.getAnnouncement(announcementNum);
 
 		model.addAttribute("announcement", announcement);
 
@@ -95,7 +96,7 @@ public class AnnouncementController {
 
 		boolean result = false;
 
-		Announcement announcement = announcementService.selectAnnouncement(announcementNum);
+		Announcement announcement = announcementService.getAnnouncement(announcementNum);
 		announcement.setAnnouncementTitle(announcementTitle);
 		announcement.setAnnouncementBody(announcementBody);
 
@@ -132,5 +133,17 @@ public class AnnouncementController {
 
 		return view;
 	}
+
+	// 조회수
+//	 @GetMapping("/announcement/*")
+//	    public String announcementCount(@PathVariable int announcementNum ,int announcementCount, Model model) {
+//	     
+//		Announcement announcement = announcementService.getAnnouncement(announcementNum);
+//		announcementService.countAnnouncement(announcementNum); // counting
+//		model.addAttribute("announcement", announcement);
+//
+//
+//	        return "view";
+//	    }
 
 }

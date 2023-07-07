@@ -24,7 +24,7 @@
 	</select>
 
 	<!-- select one -->
-	<select id="selectAnnouncement"
+	<select id="getAnnouncement"
 		resultMap="AnnouncementResultMap">
 		select *
 		from announcement
@@ -51,4 +51,11 @@
 		WHERE announcement_num = #{announcementNum}
 	</delete>
 	
+	<!-- counting  
+	<update id="countAnnouncement" parameterType="popup.dto.Announcement">
+ 		UPDATE announcement 
+ 		SET announcement_count = #{announcementCount}
+ 		WHERE announcement_num = #{announcementNum}
+ 	</update>
+	-->
 </mapper>
