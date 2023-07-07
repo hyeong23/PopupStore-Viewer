@@ -1,0 +1,27 @@
+.mypage-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  justify-content: flex-start !important; /* ¿ÞÂÊ Á¤·Ä */
+  align-items: flex-start !important; /* ¿ÞÂÊ Á¤·Ä */
+}
+
+.mypage-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mypage-item h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #333333;
+}
+
+.mypage-item {
+  margin: 10px;
+  text-align: left;
+}

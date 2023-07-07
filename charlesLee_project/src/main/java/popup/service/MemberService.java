@@ -114,10 +114,31 @@ public class MemberService {
 			return result;
 		}
 
+	// 회원정보 수정 시 변경된 비밀번호 일치 체크
+		public void updateMember(Member modifiedMember, String confirmPassword) {
+			  try {
+			    if (!modifiedMember.getMemberPw().equals(confirmPassword)) {
+			      throw new IllegalArgumentException("비밀번호와 비밀번호 확인 값이 일치하지 않습니다.");
+			    }
+			    memberMapper.updateMember(modifiedMember);
+			  } catch (IllegalArgumentException e) {
+			    System.out.println(e.getMessage()); // 예외 메시지 출력 또는 원하는 처리 방식으로 변경
+			  }
+			}
+		
+	// 회원 탈퇴 	
+		public void deleteMember(String memberId) throws SQLException {
+	        try {
+	            // 회원 삭제 로직 수행
+	            memberMapper.deleteMember(memberId);
+	        } catch (Exception e) {
+	            // 예외 처리 로직
+	            e.printStackTrace();
+	            // 오류 발생 시 적절한 예외를 던지거나 오류 처리 로직을 수행
+	        }
+	    }
+	}		
 		
 		
 		
-		
-		
-		
-}
+

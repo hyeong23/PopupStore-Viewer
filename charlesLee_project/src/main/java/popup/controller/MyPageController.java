@@ -1,12 +1,12 @@
 package popup.controller;
 
-import java.security.Principal;
+
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import popup.dto.Member;
 import popup.service.MyPageService;
@@ -35,7 +33,7 @@ public class MyPageController {
 	    Member member = myPageService.getMemberById(memberId);
 
 	    // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리디렉션합니다.
-//	    if (member == null) {
+//	    if (session.getAttribute("member") == null) {
 //	        return "redirect:/login";
 //	    }
 
