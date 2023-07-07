@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    
-    
+   
     
 </head>
 
@@ -143,22 +142,7 @@
                         <input type="text" placeholder="공식 사이트" name="storeSite" id="storeSite">
                     </div>
                    
-                     <!--   <div id="fileContainer">
-         			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)">	     
-         			      <img id="preview" src="#" alt="미리보기" style="display: none; max-width: 300px; max-height: 300px;"> 
-       				   </div>
-       				   <div class="button" >
-       				   <button type="button" onclick="addFileInput()">사진 추가</button><br>
-                     </div>
-                    	
-                        <div id="store_stc" style="margin-top: auto;">     
-                        <input type="submit" value="submit" class="site-btn" id="submit"/>
-                        </div> -->
-                
-            </form>
-        </div>
-    </div>
-    <div id="fileContainer">
+                    <div id="fileContainer">
          			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)">	     
          			      <img id="preview" src="#" alt="미리보기" style="display: none; max-width: 300px; max-height: 300px;"> 
        				   </div>
@@ -169,6 +153,11 @@
                         <div id="store_stc" style="margin-top: auto;">     
                         <input type="submit" value="submit" class="site-btn" id="submit"/>
                         </div>
+                
+            </form>
+        </div>
+    </div>
+    
     <!-- Contact Form End -->
 
     <!-- Footer Section Begin -->
