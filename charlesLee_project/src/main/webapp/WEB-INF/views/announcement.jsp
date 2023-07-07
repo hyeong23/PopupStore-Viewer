@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-
 <html lang="zxx">
 
 <head>
@@ -29,15 +27,78 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
+
 <body>
+
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
 	<!-- Header Section Begin -->
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
+
+	<!-- Hero Section Begin -->
+	<section class="hero hero-normal">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="hero__categories">
+						<div class="hero__categories__all">
+							<i class="fa fa-bars"></i> <span>All departments</span>
+						</div>
+						<ul>
+							<li><a href="#">Fresh Meat</a></li>
+							<li><a href="#">Vegetables</a></li>
+							<li><a href="#">Fruit & Nut Gifts</a></li>
+							<li><a href="#">Fresh Berries</a></li>
+							<li><a href="#">Ocean Foods</a></li>
+							<li><a href="#">Butter & Eggs</a></li>
+							<li><a href="#">Fastfood</a></li>
+							<li><a href="#">Fresh Onion</a></li>
+							<li><a href="#">Papayaya & Crisps</a></li>
+							<li><a href="#">Oatmeal</a></li>
+							<li><a href="#">Fresh Bananas</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<div class="hero__search">
+						<div class="hero__search__form">
+							<form action="#">
+								<div class="hero__search__categories">
+									All Categories <span class="arrow_carrot-down"></span>
+								</div>
+								<input type="text" placeholder="What do yo u need?">
+								<button type="submit" class="site-btn">SEARCH</button>
+							</form>
+						</div>
+						<div class="hero__search__phone">
+							<div class="hero__search__phone__icon">
+								<i class="fa fa-phone"></i>
+							</div>
+							<div class="hero__search__phone__text">
+								<h5>+65 11.188.888</h5>
+								<span>support 24/7 time</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Hero Section End -->
+
+	<!-- content Begin -->
 	<div class="content">
-		<h3>공지사항</h3>
-
-
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="contact__form__title">
+					<h2>Notice</h2>
+				</div>
+			</div>
+		</div>
 		<table align="center" border="0" cellpadding="5" cellspacing="2"
 			width="100%" bordercolordark="white" bordercolorlight="black">
 			<tr>
@@ -112,15 +173,13 @@
 		<hr>
 	</div>
 	<div align=center>
-	
-		<span style="font-size: 12pt;">
-			<input type="button" value="메인으로" onclick="location.href='/main'">
-		</span> 
-			
-		<span style="font-size: 12pt;">
-			<input type="button" value="업로드" onclick="location.href='/announcement/insert'">
+
+		<span style="font-size: 12pt;"> <input type="button"
+			value="메인으로" onclick="location.href='/main'">
+		</span> <span style="font-size: 12pt;"> <input type="button"
+			value="업로드" onclick="location.href='/announcement/insert'">
 		</span>
-			
+
 	</div>
 
 	<!-- Footer Section Begin -->

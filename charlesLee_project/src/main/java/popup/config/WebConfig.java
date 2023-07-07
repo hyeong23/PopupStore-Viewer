@@ -40,6 +40,8 @@ public class WebConfig implements WebMvcConfigurer{
 			        .addPathPatterns("/storeList")
 			        .addPathPatterns("/storeRegister")
 			        .addPathPatterns("/logout")
+			        .addPathPatterns("/announcement***")
+			        .addPathPatterns("/announcement/***")
 			        .excludePathPatterns("/main")
 			        .excludePathPatterns("/login");
     }
