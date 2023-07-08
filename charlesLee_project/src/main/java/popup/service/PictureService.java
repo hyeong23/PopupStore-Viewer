@@ -23,7 +23,7 @@ public class PictureService {
 			throw new Exception("파일 전달 오류 발생");
 		}
 		
-		String picturePath = "C:\\multi\\team3\\charlesLee_project\\src\\main\\resources\\static\\picture";
+		String picturePath = "charlesLee_project/src/main/resources/static/picture";
 		String pictureOriginalName = picture.getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
 		String pictureName = uuid.toString() + "_" + pictureOriginalName;
@@ -40,7 +40,7 @@ public class PictureService {
 		
 		if(res != 0) {
 			
-			picture.transferTo(new File(picturePath + "\\" + pictureName)); 
+			picture.transferTo(new File(picturePath + "/" + pictureName)); 
 			
 			result = true;
 		} else {
