@@ -23,14 +23,22 @@
   
   
  	<resultMap id="openStoreList" type="popup.vo.StoreVo">
+        <result property="storeNum" column="store_num" />
         <result property="storeTitle" column="store_title" />
-        <result property="storeIntro" column="store_intro" />
         <result property="storeStart" column="store_start" />
         <result property="storeEnd" column="store_end" />
         <result property="storeFavorite" column="store_favorite" />
         <result property="storeLoc" column="store_loc" />
         <result property="storeSite" column="store_site" />
     </resultMap>
+    
+    <select id="getStoreByTitle" resultMap="openStoreList">
+   	 	SELECT * FROM store
+    	WHERE store_title LIKE '%' || UPPER(#{inputText}) || '%'
+    	OR store_loc LIKE '%' || UPPER(#{inputText}) || '%'
+	</select>
+    
+
  
  
 
