@@ -127,7 +127,9 @@
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
 	
-	var address = '울산시';
+	<c:forEach items="${getMapList}" var="map">
+
+	var address = '${map.storeLoc}';
 	
 	var geocoder = new kakao.maps.services.Geocoder();
 	
@@ -153,7 +155,7 @@
 	var content = '<div class="wrap">' + 
 	'    <div class="info">' + 
 	'        <div class="title">' + 
-	'            카카오 스페이스닷원' + 
+	'${map.storeTitle}' + 
 	'            <div class="close" id= "close" title="닫기"></div>' + 
 	'        </div>' + 
 	'        <div class="body">' + 
@@ -161,9 +163,9 @@
 	'                <img src="img/logo.png" width="73" height="70">' +
 	'           </div>' + 
 	'            <div class="desc">' + 
-	'                <div class="ellipsis">' + address + '</div>' + 
-	'                <div class="jibun ellipsis"> 7/4 ~ 7/21 </div>' + 
-	'                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+	'                <div class="ellipsis">' + '${map.storeLoc}' + '</div>' + 
+	'                <div class="jibun ellipsis">' + '${map.storeStart}' + "~" + '${map.storeEnd}' + '</div>' + 
+	'                <div><a href="${map.storeSite}" target="_blank" class="link">${map.storeTitle} 홈페이지</a></div>' + 
 	'            </div>' + 
 	'        </div>' + 
 	'    </div>' +    
@@ -196,7 +198,7 @@
 	
 	
 	geocoder.addressSearch(address, callback);
-
+	</c:forEach>
 
 </script>
 </html>

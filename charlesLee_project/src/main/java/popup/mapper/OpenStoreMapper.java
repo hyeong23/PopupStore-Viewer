@@ -11,5 +11,7 @@ import popup.vo.StoreVo;
 public interface OpenStoreMapper {
 
 	public List<StoreVo> getOpenStoreList();
-
+	
+	public List<StoreVo> getMapList();
+	
 }
