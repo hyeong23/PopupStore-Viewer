@@ -138,8 +138,6 @@
 		</c:if>
 	
 	
-	
-	
   <table align="center" border="0" cellpadding="5" cellspacing="2"
 		width="100%" bordercolordark="white" bordercolorlight="black">
     <thead>
@@ -156,7 +154,15 @@
         <tr>
           <td>${store.storeNum}</td>
           <td><a href="/storeRegister">${store.storeTitle}</a></td>
-          <td>${store.memberCompanyName}</td>
+          <td>
+		<c:if test="${store.memberCompanyName eq null}">
+			${store.memberNickname}
+		</c:if>
+		<c:if test="${store.memberCompanyName ne null}">
+			${store.memberCompanyName}
+		</c:if>
+		</td>
+         
           <td>${store.storeCount}</td>
           <td>${store.storeStatus}</td>
         </tr>
