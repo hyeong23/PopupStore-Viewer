@@ -9,7 +9,7 @@
   
   <select id="getStoreList" resultMap="storeResultMap">
     
-      SELECT s.store_num, s.store_title, m.member_company_name, s.store_count, s.store_status
+      SELECT s.store_num, s.store_title, m.member_company_name,m.member_nickname ,s.store_count, s.store_status
       FROM store s
       JOIN member m ON s.member_num = m.member_num
       ORDER BY s.store_num DESC
@@ -20,6 +20,7 @@
         <result property="storeNum" column="store_num" />
         <result property="storeTitle" column="store_title" />
         <result property="memberCompanyName" column="member_company_name" />
+         <result property="memberNickname" column="member_nickname" />
         <result property="storeCount" column="store_count" />
         <result property="storeStatus" column="store_status" />
     </resultMap>

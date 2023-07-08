@@ -28,5 +28,5 @@ public class StoreVo {
 	private int storeCount;
 	private int storeStatus;
 	private String memberCompanyName;
-
+	private String memberNickname;
 }
