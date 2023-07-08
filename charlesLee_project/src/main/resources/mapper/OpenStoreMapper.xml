@@ -14,11 +14,22 @@
     
   </select>
   
+  <select id="getMapList" resultMap="openStoreList">
+    
+      SELECT store_loc,store_title, store_intro, store_start, store_end, store_site
+      FROM store
+    
+  </select>
+  
+  
  	<resultMap id="openStoreList" type="popup.vo.StoreVo">
         <result property="storeNum" column="store_num" />
         <result property="storeTitle" column="store_title" />
         <result property="storeStart" column="store_start" />
         <result property="storeEnd" column="store_end" />
+        <result property="storeFavorite" column="store_favorite" />
+        <result property="storeLoc" column="store_loc" />
+        <result property="storeSite" column="store_site" />
     </resultMap>
     
     <select id="getStoreByTitle" resultMap="openStoreList">

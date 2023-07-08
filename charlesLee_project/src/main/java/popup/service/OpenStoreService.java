@@ -18,7 +18,15 @@ public class OpenStoreService {
 		return openStoreMapper.getOpenStoreList();
 	}
 
+	
+	public List<StoreVo> getMapStore() {
+		return openStoreMapper.getMapList();
+	}
+	
+
+
 	public List<StoreVo> getStoreByTitle(String inputText) {
 		return openStoreMapper.getStoreByTitle(inputText);
 	}
+
 }
