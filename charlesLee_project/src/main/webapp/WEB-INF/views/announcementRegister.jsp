@@ -113,15 +113,11 @@
 					<div class="col-lg-12 text-center">
 						
 					</div>
-					<div width="450" height="20" align="center">
-						<b> <span style="font-size: 12pt;"> 
-								<input type="reset"
-								value="다시작성">
-						</span> <span style="font-size: 12pt;"> <input type="button"
-								value="목록" onclick="location.href='/announcement'">
-						</span>
-						</b>
+					<div class="col-lg-12 text-center">
+							<input type="reset" value="다시작성">
+							<input type="button" value="목록" onclick="location.href='/announcement'">
 					</div>
+					
 				</div>
 			</form>
 		</div>

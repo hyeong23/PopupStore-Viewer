@@ -34,8 +34,8 @@
 
 	<!-- insert -->
 	<insert id="insertAnnouncement" parameterType="popup.dto.Announcement">
- 		INSERT INTO announcement (announcement_num, announcement_title, announcement_body) 
- 		VALUES (announcement_sequence.nextval, #{announcementTitle}, #{announcementBody})
+ 		INSERT INTO announcement (announcement_num, member_num, announcement_title, announcement_body) 
+ 		VALUES (announcement_sequence.nextval, 1, #{announcementTitle}, #{announcementBody})
  	</insert>
 	
 	<!-- update --> 
@@ -51,12 +51,10 @@
 		DELETE FROM announcement
 		WHERE announcement_num = #{announcementNum}
 	</delete>
-	
-	<!-- counting  
+	  
 	<update id="countAnnouncement" parameterType="popup.dto.Announcement">
  		UPDATE announcement 
- 		SET announcement_count = #{announcementCount}
+ 		SET announcement_count = #{announcementCount} + 1
  		WHERE announcement_num = #{announcementNum}
  	</update>
-	-->
 </mapper>

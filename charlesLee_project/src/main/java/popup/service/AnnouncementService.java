@@ -71,9 +71,7 @@ public class AnnouncementService {
 	}
 	
 	// count
-//		public int countAnnouncement(Announcement announcement) throws SQLException, Exception {
-//			boolean result = false;
-//
-//			return announcementMapper.countAnnouncement(announcement);
-//		}
+		public int countAnnouncement(int announcementNum) throws SQLException, Exception {
+			return announcementMapper.countAnnouncement(announcementNum);
+		}
 }
