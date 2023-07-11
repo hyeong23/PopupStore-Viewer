@@ -26,7 +26,7 @@
            <div class="panel shadow1">
                 <form  class="login-form" >
                     
-                    <h1 class="animated fadeInUp animate1" id="title-login">Register</h1>
+                    <h1 class="animated fadeInUp animate1" id="title-login" style="margin-block: 70px">Register</h1>
                     
                    
                     

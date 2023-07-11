@@ -40,23 +40,19 @@ public class RegisterController {
 						  @RequestParam("memberPw") String memberPw,
 						  @RequestParam("memberNickname") String memberNickname,
 						  @RequestParam("memberEmail") String memberEmail,
+						  @RequestParam("memberPhoneNum") long memberPhoneNum,
 						  Model model) throws  Exception{
 		String view = "/error";
 		int memberType = 1;
 		
-		boolean check1 = memberService.getMemberById(memberId);
-		boolean check2 = memberService.getMemberByNickname(memberNickname);
-		boolean check3 = memberService.getMemberByEmail(memberEmail);
-		
-		
-		if(check1 || check2 || check3) {
+	
+			boolean member = memberService.insertGeneralMember(memberId,memberPw,memberNickname,memberEmail,memberPhoneNum,memberType);
 			
-			boolean member = memberService.insertGeneralMember(memberId,memberPw,memberNickname,memberEmail,memberType);
 			if(member == true) {
 				 view = "/login";
 				}	
 		
-		}
+		
 
 		return view;
 	}
@@ -81,23 +77,20 @@ public class RegisterController {
 						  @RequestParam("memberEmail") String memberEmail,
 						  @RequestParam("memberCompanyName") String memberCompanyName,
 						  @RequestParam("memberCompanyNum") int memberCompanyNum,
+						  @RequestParam("memberPhoneNum") long memberPhoneNum,
 						  Model model) throws Exception{
 		String view = "/error";
 		int memberType = -1;
 		
-		boolean check1 = memberService.getMemberById(memberId);
-		boolean check2 = memberService.getMemberByEmail(memberEmail);
-		boolean check3 = memberService.getMemberByCompanyName(memberCompanyName);
-		boolean check4 = memberService.getMemberByCompanyNum(memberCompanyNum);
 	
-		if(check1 || check2 || check3 || check4 ) {
+		
 			
-			boolean member = memberService.insertBusinessMember(memberId,memberPw,memberEmail, memberCompanyName,memberCompanyNum,memberType);
+			boolean member = memberService.insertBusinessMember(memberId,memberPw,memberEmail, memberCompanyName,memberCompanyNum,memberPhoneNum,memberType);
 			
 			if(member == true) {
 			 view = "/login";
 			}
-		}
+		
 	
 		return view;
 	}
