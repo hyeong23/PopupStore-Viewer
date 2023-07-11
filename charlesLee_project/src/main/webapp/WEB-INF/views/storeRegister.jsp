@@ -107,7 +107,7 @@
     <!-- Hero Section End -->
 
     <!-- Contact Form Begin -->
-    <div class="contact-form spad">
+    <div class="contact-form spad" style="height: auto">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -187,15 +187,17 @@
                         <div id="store_stc" style="margin-top: auto;">     
                         <input type="submit" value="submit" class="site-btn" id="submit"/>
                         </div>
-                
+                </div>  
             </form>
         </div>
     </div>
+  
+    
     
     <!-- Contact Form End -->
 
     <!-- Footer Section Begin -->
-         <%@ include file="footer.jsp" %>
+        <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

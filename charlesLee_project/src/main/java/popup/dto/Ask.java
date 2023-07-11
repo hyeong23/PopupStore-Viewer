@@ -1,5 +1,7 @@
 package popup.dto;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,5 @@ public class Ask {
 	private String askTitle;
 	private String askBody;
 	private int askCheck;
+	private Date askCreate;
 }

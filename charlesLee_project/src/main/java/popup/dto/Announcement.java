@@ -18,6 +18,7 @@ public class Announcement {
 	private int memberNum;
 	private String announcementTitle;
 	private String announcementBody;
-	private Date announcementTime;
+	private Date announcementCreate;
+	private Date announcementUpdate;
 	private int announcementCount;
 }

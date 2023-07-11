@@ -18,5 +18,6 @@ public class Reply {
 	private int memberNum;
 	private int storeNum;
 	private String reply;
-	private Date replyDate;
+	private Date replyCreate;
+	private Date replyUpdate;
 }

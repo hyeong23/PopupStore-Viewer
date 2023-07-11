@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     
-<footer class="footer spad">
+<footer class="footer spad	">
         <div class="container">
 
             <div class="row">
