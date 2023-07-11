@@ -35,6 +35,8 @@ public interface MemberMapper {
 	
 	@Delete("DELETE FROM Member WHERE member_id = #{memberId}")
 	void deleteMember(@Param("memberId") String memberId);
+	// 회원 정보 수정일자 업데이트
+    void updateMemberUpdateDate(@Param("memberId") String memberId);
 
 
 

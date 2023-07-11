@@ -1,5 +1,6 @@
 package popup.service;
 
+import java.sql.Date;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,18 +128,28 @@ public class MemberService {
 	
 			return result;
 		}
+				
 
 	// 회원정보 수정 시 변경된 비밀번호 일치 체크
-		public void updateMember(Member modifiedMember, String confirmPassword) {
+		public void updateMember(Member updateMember, String confirmPassword) {
 			  try {
-			    if (!modifiedMember.getMemberPw().equals(confirmPassword)) {
+			    if (!updateMember.getMemberPw().equals(confirmPassword)) {
 			      throw new IllegalArgumentException("비밀번호와 비밀번호 확인 값이 일치하지 않습니다.");
 			    }
-			    memberMapper.updateMember(modifiedMember);
-			  } catch (IllegalArgumentException e) {
-			    System.out.println(e.getMessage()); // 예외 메시지 출력 또는 원하는 처리 방식으로 변경
-			  }
-			}
+			 
+			 // 현재 시간을 가져와서 수정일자로 설정(자동 업데이트)
+		        Date currentDate = new Date(System.currentTimeMillis());
+		        updateMember.setMemberUpdate(currentDate);
+	            
+	            
+	            memberMapper.updateMember(updateMember);
+	        } catch (IllegalArgumentException e) {
+	            
+	           
+	            e.printStackTrace();
+	        }
+	    }
+	
 		
 	// 회원 탈퇴 	
 		public void deleteMember(String memberId) throws SQLException {
@@ -151,7 +162,13 @@ public class MemberService {
 	            // 오류 발생 시 적절한 예외를 던지거나 오류 처리 로직을 수행
 	        }
 	    }
+
+		public void updateMember(Member updateMember) {
+			// TODO Auto-generated method stub
+			
+		}
 		
+
 	}		
 		
 		
