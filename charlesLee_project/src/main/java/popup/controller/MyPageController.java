@@ -29,7 +29,7 @@ public class MyPageController {
 	public String viewMyPage(Model model,HttpSession session) throws Exception {
 	    // 현재 로그인한 사용자의 정보를 가져옵니다.
 	    String memberId = (String) session.getAttribute("memberId");
-	    Member member = memberService.getMemberById(memberId);
+	    Member member = memberService.getMemberById2(memberId);
 
         System.out.println(member);
 	    // 모델에 사용자 정보를 추가합니다.
@@ -46,7 +46,7 @@ public class MyPageController {
 		
 		// 수정된 회원 정보를 다시 조회하여 모델에 추가
 		String memberId = updateMember.getMemberId();
-		Member member = memberService.getMemberById(memberId);
+		Member member = memberService.getMemberById2(memberId);
 		model.addAttribute("member", member);
 		System.out.println("mypage test");
 		// 마이페이지로 리디렉션합니다.

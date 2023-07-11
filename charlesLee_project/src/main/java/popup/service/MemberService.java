@@ -57,6 +57,16 @@ public class MemberService {
 		
 		return result;
 	}
+	
+	//ID체크
+		public Member getMemberById2(String memberId) throws Exception {
+			
+			Member check = memberMapper.getMemberById(memberId);
+		    
+		    
+		    return check;
+		}
+	
 	//Email체크
 		public boolean getMemberByEmail(String memberEmail) throws Exception {
 			
