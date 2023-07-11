@@ -16,7 +16,7 @@
   
   <select id="getMapList" resultMap="openStoreList">
     
-	SELECT s.store_num, s.store_loc, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name
+	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name
 	FROM store s
 	JOIN (
 	  SELECT store_num, MIN(picture_num) AS min_picture_num
@@ -24,7 +24,7 @@
 	  GROUP BY store_num
 	) p_min ON s.store_num = p_min.store_num
 	JOIN picture p ON p_min.store_num = p.store_num AND p_min.min_picture_num = p.picture_num
-
+	
       
   </select>
   
@@ -38,6 +38,7 @@
         <result property="storeEnd" column="store_end" />
         <result property="storeFavorite" column="store_favorite" />
         <result property="storeLoc" column="store_loc"/>
+        <result property="storeLocDetail" column="store_loc_detail"/>
         <result property="storeSite" column="store_site"/>
         <result property="storeNum" column="store_num" />
         <result property="storeStatus" column="store_status" />      
