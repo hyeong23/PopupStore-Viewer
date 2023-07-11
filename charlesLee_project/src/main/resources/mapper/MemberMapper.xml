@@ -80,18 +80,25 @@
   	  
   </select>
   
+  <select id = "getMemberByPhoneNum" resultMap="memberResultMap">
+	SELECT  
+  		*
+  	From Member
+  	WHERE member_phone_num = #{memberPhoneNum}
+  	  
+  </select>
   
   <insert id="insertGeneralMember" parameterType="popup.dto.Member">
   	INSERT INTO
-  	Member(member_num,member_id,member_pw,member_nickname,member_email,member_type)
-  	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberNickname},#{memberEmail},#{memberType})
+  	Member(member_num,member_id,member_pw,member_nickname,member_email,member_phone_num,member_type)
+  	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberNickname},#{memberEmail},#{memberPhoneNum},#{memberType})
     
   </insert>
   
   <insert id="insertBusinessMember" parameterType="popup.dto.Member">
   	INSERT INTO
-  	Member(member_num,member_id,member_pw,member_email, member_company_name,member_company_num,member_type)
-  	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberEmail},#{memberCompanyName},#{memberCompanyNum},#{memberType})
+  	Member(member_num,member_id,member_pw,member_email, member_company_name,member_company_num,member_phone_num,member_type)
+  	Values(member_sequence.nextval,#{memberId},#{memberPw},#{memberEmail},#{memberCompanyName},#{memberCompanyNum},#{memberPhoneNum},#{memberType})
     
   </insert>
   <!-- 회원정보 수정 -->

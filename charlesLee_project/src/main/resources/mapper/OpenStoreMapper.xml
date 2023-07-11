@@ -16,20 +16,33 @@
   
   <select id="getMapList" resultMap="openStoreList">
     
-      SELECT store_loc,store_title, store_intro, store_start, store_end, store_site
-      FROM store
-    
+	SELECT s.store_num, s.store_loc, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name
+	FROM store s
+	JOIN (
+	  SELECT store_num, MIN(picture_num) AS min_picture_num
+	  FROM picture
+	  GROUP BY store_num
+	) p_min ON s.store_num = p_min.store_num
+	JOIN picture p ON p_min.store_num = p.store_num AND p_min.min_picture_num = p.picture_num
+
+      
   </select>
   
   
  	<resultMap id="openStoreList" type="popup.vo.StoreVo">
         <result property="storeNum" column="store_num" />
         <result property="storeTitle" column="store_title" />
+        <result property="storeIntro" column="store_intro" />
+        <result property="storeBody" column="store_body" />
         <result property="storeStart" column="store_start" />
         <result property="storeEnd" column="store_end" />
         <result property="storeFavorite" column="store_favorite" />
-        <result property="storeLoc" column="store_loc" />
-        <result property="storeSite" column="store_site" />
+        <result property="storeLoc" column="store_loc"/>
+        <result property="storeSite" column="store_site"/>
+        <result property="storeNum" column="store_num" />
+        <result property="storeStatus" column="store_status" />      
+        <result property="pictureName" column="picture_name" />
+        <result property="pictureNum" column="picture_num" />
     </resultMap>
     
     <select id="getStoreByTitle" resultMap="openStoreList">

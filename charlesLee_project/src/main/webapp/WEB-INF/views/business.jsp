@@ -36,6 +36,7 @@
                         	<br/>
                         <input class="login animated fadeInUp animate2" name="memberPw" id="password" type="password" required placeholder="Password">
                         	<br/>
+                        	<br/>
                         <input class="login animated fadeInUp animate3" name="memberEmail" id="memberEmail" type="text"  required   placeholder="Email">
                         	<br/>
                         		<span class=login_email id = "memberEmailMsg" style="font-size:8pt"></span>
@@ -51,11 +52,18 @@
                    				</div>
                         		<span class=login_company_num id = "memberCompanyNumMsg" style="font-size:8pt"></span>
                         	<br/>
+                        <input class="login animated fadeInUp animate6" name="memberPhoneNum" id="memberPhoneNum" type="number"  required   placeholder="Phone Number" >
+                   			<br/>
+                   				<div class="login animated fadeInUp animate6">
+	                        		<span class=login_phone_input_num id = "memberPhoneNumMsg2" style="font-size:8pt"></span>                    			
+                   				</div>
+                        		<span class=login_phone_num id = "memberPhoneNumMsg" style="font-size:8pt"></span>
+                        	
                     </fieldset>
                     
                     <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="SIGN UP" style=" margin-top: 70px;">
                      		
-                   <p><br><a id="login-link" href="/register" class="animated fadeIn animate5">back to register</a></p>
+                   <p><br><a id="login-link" href="/register" class="animated fadeIn animate6">back to register</a></p>
                     
                 </form>
             </div>
@@ -67,7 +75,7 @@
     var checkEmail = 0;
     var checkComName = 0;
     var checkComNum = 0;
-    
+    var checkPhoneNum = 0;
     
  	const inputMemberId = document.getElementById('memberId'); //객체생성
 	const memberIdMsg = document.getElementById("memberIdMsg");
@@ -143,7 +151,6 @@
 		}});
 	
 	const inputMemberCompanyNum = document.getElementById('memberCompanyNum'); //객체생성
-	const inputMemberCompanyNum2 = document.getElementById('memberCompanyNum'); //객체생성
 	const memberCompanyNumMsg = document.getElementById("memberCompanyNumMsg"); 
 	const memberCompanyNumMsg2 = document.getElementById("memberCompanyNumMsg2");
 	memberCompanyNumMsg2.innerHTML = '숫자로 입력해주십시오.';
@@ -169,7 +176,35 @@
 			memberCompanyNumMsg.innerHTML = error.response.data;
 		})
 		}});	
+		
 	
+	
+	const inputMemberPhoneNum = document.getElementById('memberPhoneNum'); //객체생성
+	const memberPhoneNumMsg = document.getElementById("memberPhoneNumMsg"); 
+	const memberPhoneNumMsg2 = document.getElementById("memberPhoneNumMsg2");
+	memberPhoneNumMsg2.innerHTML = '숫자로 입력해주십시오.';
+	inputMemberPhoneNum.addEventListener('blur', () => {
+		if(inputMemberPhoneNum.value == "" || inputMemberPhoneNum.value == null){
+			checkPhoneNum = 0;
+			memberPhoneNumMsg.innerHTML = '';	
+		}else{axios.get('http://localhost:8081/api/phoneNum/' + inputMemberPhoneNum.value)
+			.then(response => {
+				console.log(response.data);
+				if(response.data == true){
+					checkPhoneNum = 0;
+					memberPhoneNumMsg.innerHTML = '이미 존재하는 전화번호 입니다.';
+					memberPhoneNumMsg2.innerHTML = '';
+				}else{
+					checkPhoneNum = 1;
+					memberPhoneNumMsg.innerHTML = '사용가능합니다.';
+					memberPhoneNumMsg2.innerHTML = '';
+				}
+		})
+		// 여기서 컨트롤러에서 보낸 errorMsg 받는것인지
+		.catch(error => {
+			memberPhoneNumMsg.innerHTML = error.response.data;
+		})
+		}});	
 	
 	
 
@@ -188,7 +223,10 @@
 		if(checkComName == 0 || checkComNum == 0){
 			alert("이미 등록된 회사입니다. 중복 가입은 불가합니다.")
 			return false;		
-		}		
+		}if(checkPhoneNum == 0 ){
+			alert("중복된 전화번호입니다. 다시 입력해주십시오.")
+			return false;		
+		}	
 		
 		return true;
 	};

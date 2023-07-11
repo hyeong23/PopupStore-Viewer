@@ -31,20 +31,27 @@
                    <h1 class="animated fadeInUp animate1" id="title-login">General</h1>
                     
                     <fieldset id="login-fieldset">
-                        <input class="login animated fadeInUp animate2" name="memberId" id="memberid" type="text"  required   placeholder="ID" value="" >
+                        <input class="login animated fadeInUp animate1" name="memberId" id="memberid" type="text"  required   placeholder="ID" value="" >
                         	<br/>
                         		<span class=login_id id = "memberIdMsg" style="font-size:8pt"></span>
                         	<br/>
-                        <input class="login animated fadeInUp animate3" name="memberPw" id="password" type="password" required placeholder="Password" value="">
+                        <input class="login animated fadeInUp animate2" name="memberPw" id="password" type="password" required placeholder="Password" value="">
 	                        <br/>
 	                        <br/>
-                        <input class="login animated fadeInUp animate4" name="memberEmail" id="memberEmail" type="text"  required   placeholder="Email" value="" >
+                        <input class="login animated fadeInUp animate3" name="memberEmail" id="memberEmail" type="text"  required   placeholder="Email" value="" >
 	                        <br/>
 	                        	<span class=login_email id = "memberEmailMsg" style="font-size:8pt"></span>
 	                        <br/>
-                        <input class="login animated fadeInUp animate5" name="memberNickname" id="memberNickname" type="text"  required   placeholder="Nickname" value="" >
+                        <input class="login animated fadeInUp animate4" name="memberNickname" id="memberNickname" type="text"  required   placeholder="Nickname" value="" >
 	                    	<br/>
 	                    		<span class=login_nick_name id = "memberNicknameMsg" style="font-size:8pt"></span>
+	                    	<br/>
+	                      <input class="login animated fadeInUp animate5" name="memberPhoneNum" id="memberPhoneNum" type="number"  required   placeholder="Phone Number" >
+                   			<br/>
+                   				<div class="login animated fadeInUp animate5">
+	                        		<span class=login_phone_input_num id = "memberPhoneNumMsg2" style="font-size:8pt"></span>                    			
+                   				</div>
+                        		<span class=login_phone_num id = "memberPhoneNumMsg" style="font-size:8pt"></span>
                     </fieldset>
                     
                     <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="SIGN UP" style=" margin-top: 70px;">
@@ -61,7 +68,8 @@
     var checkId = 0;
     var checkEmail = 0;
     var checkNickname = 0;
-
+    var checkPhoneNum = 0;
+    
  	const inputMemberId = document.getElementById('memberid'); //객체생성
 	const memberIdMsg = document.getElementById("memberIdMsg");
 	inputMemberId.addEventListener('blur', () => {
@@ -138,6 +146,35 @@
 		}});
 	
 	
+	const inputMemberPhoneNum = document.getElementById('memberPhoneNum'); //객체생성
+	const memberPhoneNumMsg = document.getElementById("memberPhoneNumMsg"); 
+	const memberPhoneNumMsg2 = document.getElementById("memberPhoneNumMsg2");
+	memberPhoneNumMsg2.innerHTML = '숫자로 입력해주십시오.';
+	inputMemberPhoneNum.addEventListener('blur', () => {
+		if(inputMemberPhoneNum.value == "" || inputMemberPhoneNum.value == null){
+			checkPhoneNum = 0;
+			memberPhoneNumMsg.innerHTML = '';	
+		}else{axios.get('http://localhost:8081/api/phoneNum/' + inputMemberPhoneNum.value)
+			.then(response => {
+				console.log(response.data);
+				if(response.data == true){
+					checkPhoneNum = 0;
+					memberPhoneNumMsg.innerHTML = '이미 존재하는 전화번호 입니다.';
+					memberPhoneNumMsg2.innerHTML = '';
+				}else{
+					checkPhoneNum = 1;
+					memberPhoneNumMsg.innerHTML = '사용가능합니다.';
+					memberPhoneNumMsg2.innerHTML = '';
+				}
+		})
+		// 여기서 컨트롤러에서 보낸 errorMsg 받는것인지
+		.catch(error => {
+			memberPhoneNumMsg.innerHTML = error.response.data;
+		})
+		}});	
+	
+	
+	
 	
 	function formChecking(){
 		if(checkId == 0){
@@ -152,6 +189,9 @@
 			return false;
 		}if(checkNickname == 0){
 			alert("중복된 닉네임입니다. 다시 입력해주십시오.")
+			return false;		
+		}if(checkPhoneNum == 0 ){
+			alert("중복된 전화번호입니다. 다시 입력해주십시오.")
 			return false;		
 		}		
 		

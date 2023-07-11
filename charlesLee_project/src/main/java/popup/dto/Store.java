@@ -22,8 +22,9 @@ public class Store {
 	private String storeBody;
 	private Date storeStart;
 	private Date storeEnd;
-	private int storeFavorite;				// 파일 등록 일자
-	private String storeLoc; 			// 파일 크기
+	private int storeFavorite;				
+	private String storeLoc; 
+	private String storeLocDetail;
 	private String storeSite;
 	private int storeCount;
 	private int storeStatus;

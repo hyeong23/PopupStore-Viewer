@@ -13,11 +13,11 @@ public interface MemberMapper {
 
 	Member getMemberByIdAndPw(String memberId, String memberPw) throws SQLException;
 
-	boolean insertGeneralMember(String memberId, String memberPw, String memberNickname ,String memberEmail , int memberType) throws SQLException;
+	boolean insertGeneralMember(String memberId, String memberPw, String memberNickname ,String memberEmail , long memberPhoneNum ,int memberType) throws SQLException;
 
 	boolean insertBusinessMember(String memberId, String memberPw, String memberEmail, String memberCompanyName,
 	
-    int memberCompanyNum, int memberType) throws SQLException;
+    int memberCompanyNum,long memberPhoneNum , int memberType) throws SQLException;
 
 	Member getMemberById(String memberId) throws SQLException;
 
@@ -28,12 +28,16 @@ public interface MemberMapper {
 	Member getMemberByCompanyName(String memberCompanyName) throws SQLException;
 
 	Member getMemberByCompanyNum(int memberCompanyNum) throws SQLException;
-    // 회원 정보 수정
-	void updateMember(Member updateMember)throws IllegalArgumentException;
-	// 회원탈퇴
+	
+	Member getMemberByPhoneNum(long memberPhoneNum) throws SQLException;
+
+	void updateMember(Member modifiedMember)throws IllegalArgumentException;
+	
 	@Delete("DELETE FROM Member WHERE member_id = #{memberId}")
 	void deleteMember(@Param("memberId") String memberId);
 	// 회원 정보 수정일자 업데이트
     void updateMemberUpdateDate(@Param("memberId") String memberId);
+
+
 
 }
