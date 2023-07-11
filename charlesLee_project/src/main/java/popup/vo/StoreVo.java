@@ -32,4 +32,7 @@ public class StoreVo {
 	private Date storeUpdate;
 	private String memberCompanyName;
 	private String memberNickname;
+	private int pictureNum;
+	private String pictureName;
+
 }

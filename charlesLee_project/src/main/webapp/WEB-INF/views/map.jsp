@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
+    <link rel="stylesheet" href="css/modal.css" type="text/css">
 </head>
 
 <body>
@@ -108,8 +109,62 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+	<!-- 수정 -->
+	<!-- Modal -->
+	<c:forEach items="${getMapList}" var="map" varStatus="vs">
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h2 class="modal-title" id="exampleModalCenterTitle">${map.storeTitle}</h2>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        	<h5>작성자 : </h5>
+	        	<p> ${map.storeStart} ~ ${map.storeEnd} </p>
+	        	<p> ${map.storeIntro} </p>
+	      </div>
+<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
+	      
+			<div class="slider">
+			    <input type="radio" name="slide" id="slide1" checked>
+			    <input type="radio" name="slide" id="slide2">
+			    <input type="radio" name="slide" id="slide3">
+			    <input type="radio" name="slide" id="slide4">
+			    <ul id="imgholder" class="imgs">
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			        <li><img src="modal-images/singleimage.jpg"></li>
+			    </ul>
+			    <div class="bullets">
+			        <label for="slide1">&nbsp;</label>
+			        <label for="slide2">&nbsp;</label>
+			        <label for="slide3">&nbsp;</label>
+			        <label for="slide4">&nbsp;</label>
+			    </div>
+			    
+			    
+			</div>	
+	      
+	      	 <div>
+			    	${map.storeBody}
+			 </div>
+	      
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	</c:forEach>
 
 
 </body>
@@ -127,7 +182,7 @@
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
 	
-	<c:forEach items="${getMapList}" var="map">
+	<c:forEach items="${getMapList}" var="map" varStatus="vs">
 
 	var address = '${map.storeLoc}';
 	
@@ -154,22 +209,25 @@
 	
 	var content = '<div class="wrap">' + 
 	'    <div class="info">' + 
+	'		<a href="#exampleModalCenter${vs.index}" data-toggle="modal">' +
 	'        <div class="title">' + 
-	'${map.storeTitle}' + 
-	'            <div class="close" id= "close" title="닫기"></div>' + 
+	'			${map.storeTitle}' + 
+	'		</a>				' +
+	'            <div class="close" id= "${map.storeNum}" title="닫기"></div>' + 
 	'        </div>' + 
 	'        <div class="body">' + 
 	'            <div class="img">' +
-	'                <img src="img/logo.png" width="73" height="70">' +
-	'           </div>' + 
-	'            <div class="desc">' + 
+	'                <img src="picture/${map.pictureName}" width="73" height="70" alt = "img">' +
+	'        </div>' + 
+	'        <div class="desc">' + 
 	'                <div class="ellipsis">' + '${map.storeLoc}' + '</div>' + 
-	'                <div class="jibun ellipsis">' + '${map.storeStart}' + "~" + '${map.storeEnd}' + '</div>' + 
+	'                	<div class="jibun ellipsis">' + '${map.storeStart}' + "~" + '${map.storeEnd}' + '</div>' + 
 	'                <div><a href="${map.storeSite}" target="_blank" class="link">${map.storeTitle} 홈페이지</a></div>' + 
-	'            </div>' + 
+	'        </div>' + 
 	'        </div>' + 
 	'    </div>' +    
 	'</div>';
+
 		
 		
 	var overlay = new kakao.maps.CustomOverlay({
@@ -179,7 +237,7 @@
 	});
 	
 	
-	var close = document.getElementById('close')
+	var close = document.getElementById('${map.storeNum}')
 	
 	close.addEventListener('click', function() {
 		overlay.setMap(null);  
