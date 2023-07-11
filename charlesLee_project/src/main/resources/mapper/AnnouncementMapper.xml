@@ -17,7 +17,7 @@
 
 
 	<!-- select all -->
-	<select id="selectAnnouncementList"
+	<select id="getAnnouncementList"
 		resultMap="AnnouncementResultMap">
 		select *
 		from announcement

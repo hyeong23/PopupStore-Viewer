@@ -38,78 +38,109 @@
 	<!-- Header Section Begin -->
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
-
-	<!-- content Begin -->
-	<div class="content">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="contact__form__title">
-					<h2>Notice</h2>
+	<!-- Hero Section Begin -->
+	<section class="hero hero-normal">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="hero__categories">
+						<div class="hero__categories__all">
+							<i class="fa fa-bars"></i> <span>All departments</span>
+						</div>
+						<ul>
+							<li><a href="#">Fresh Meat</a></li>
+							<li><a href="#">Vegetables</a></li>
+							<li><a href="#">Fruit & Nut Gifts</a></li>
+							<li><a href="#">Fresh Berries</a></li>
+							<li><a href="#">Ocean Foods</a></li>
+							<li><a href="#">Butter & Eggs</a></li>
+							<li><a href="#">Fastfood</a></li>
+							<li><a href="#">Fresh Onion</a></li>
+							<li><a href="#">Papayaya & Crisps</a></li>
+							<li><a href="#">Oatmeal</a></li>
+							<li><a href="#">Fresh Bananas</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<div class="hero__search">
+						<div class="hero__search__form">
+							<form action="#">
+								<div class="hero__search__categories">
+									All Categories <span class="arrow_carrot-down"></span>
+								</div>
+								<input type="text" placeholder="What do yo u need?">
+								<button type="submit" class="site-btn">SEARCH</button>
+							</form>
+						</div>
+						<div class="hero__search__phone">
+							<div class="hero__search__phone__icon">
+								<i class="fa fa-phone"></i>
+							</div>
+							<div class="hero__search__phone__text">
+								<h5>+65 11.188.888</h5>
+								<span>support 24/7 time</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<!-- action, method -->
-		<form action="/announcement/insert" method="POST"
-			enctype="multipart/form-data">
-			<table align="center" cellpadding="5" cellspacing="1" width="600"
-				border="1">
-				<tr>
-					<td width="200" height="20">
-						<p align="center">
-							<b><span style="font-size: 12pt;">제목</span></b>
-						</p>
-					</td>
-					<td width="450" height="20" align="center"><b> <span
-							style="font-size: 12pt;"> <input id="announcementTitle"
-								type="text" name="announcementTitle" size="30">
-						</span>
-					</b></td>
-				</tr>
-				<tr>
-					<td width="200" height="500">
-						<p align="center">
-							<b><span style="font-size: 12pt;">내용</span></b>
-						</p>
-					</td>
-					<td width="450" height="500" align="center"><b> <span
-							style="font-size: 12pt;"> <!-- input 박스 --> <input
-								type="textarea" name="announcementBody" size="30" col="50"
-								, row="400">
-						</span>
-					</b></td>
-				</tr>
-
-				<tr>
-					<td width="150" height="20">
-						<p>
-							<b><span style="font-size: 12pt;">&nbsp;</span></b>
-						</p>
-					</td>
-					<td width="450" height="20" align="center"><b> <span
-							style="font-size: 12pt;"> <input type="submit" value="업로드">
-								<input type="reset" value="다시작성">
+	</section>
+	<!-- Hero Section End -->
+	<!-- Contact Form Begin -->
+	<div class="contact-form spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="contact__form__title">
+						<h2>Notice</h2>
+					</div>
+				</div>
+			</div>
+			<form action="/announcement/insert" method="POST">
+				<div class="row">
+					<div class="col-lg-12 col-md-6">
+						<input type="text" placeholder="Title" name="announcementTitle"
+							id="announcementTitle">
+					</div>
+					<div class="col-lg-12 text-center">
+						<textarea placeholder="Your content" name="announcementBody"
+							id="announcementBody"></textarea>
+						<input type="submit" value="업로드" class="site-btn" >
+					</div>
+					
+					<div class="col-lg-12 text-center">
+						
+					</div>
+					<div width="450" height="20" align="center">
+						<b> <span style="font-size: 12pt;"> 
+								<input type="reset"
+								value="다시작성">
 						</span> <span style="font-size: 12pt;"> <input type="button"
 								value="목록" onclick="location.href='/announcement'">
 						</span>
-					</b></td>
-				</tr>
-			</table>
-		</form>
+						</b>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Contact Form End -->
 
 
+	<!-- Footer Section Begin -->
+	<%@ include file="footer.jsp"%>
+	<!-- Footer Section End -->
 
-		<!-- Footer Section Begin -->
-		<%@ include file="footer.jsp"%>
-		<!-- Footer Section End -->
-
-		<!-- Js Plugins -->
-		<script src="/js/jquery-3.3.1.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/jquery.nice-select.min.js"></script>
-		<script src="/js/jquery-ui.min.js"></script>
-		<script src="/js/jquery.slicknav.js"></script>
-		<script src="/js/mixitup.min.js"></script>
-		<script src="/js/owl.carousel.min.js"></script>
-		<script src="/js/main.js"></script>
+	<!-- Js Plugins -->
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.nice-select.min.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/jquery.slicknav.js"></script>
+	<script src="/js/mixitup.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>

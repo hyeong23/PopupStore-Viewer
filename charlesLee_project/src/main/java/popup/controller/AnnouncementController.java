@@ -26,7 +26,7 @@ public class AnnouncementController {
 	@RequestMapping(value = "/announcement", method = RequestMethod.GET)
 	public String announcementList(Model model) throws Exception {
 
-		List<Announcement> list = announcementService.selectAnnouncementList();
+		List<Announcement> list = announcementService.getAnnouncementList();
 
 		model.addAttribute("list", list);
 

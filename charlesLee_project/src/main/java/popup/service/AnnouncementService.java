@@ -16,8 +16,8 @@ public class AnnouncementService {
 	AnnouncementMapper announcementMapper;
 
 	// List
-	public List<Announcement> selectAnnouncementList() throws Exception {
-		return announcementMapper.selectAnnouncementList();
+	public List<Announcement> getAnnouncementList() throws Exception {
+		return announcementMapper.getAnnouncementList();
 	}
 
 	// select one

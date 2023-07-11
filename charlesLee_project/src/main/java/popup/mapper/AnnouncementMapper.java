@@ -11,7 +11,7 @@ import popup.dto.Announcement;
 public interface AnnouncementMapper {
 
 	// 게시물 리스트 조회
-	public List<Announcement> selectAnnouncementList() throws Exception;
+	public List<Announcement> getAnnouncementList() throws Exception;
 
 	// 게시글 상세 조회
 	public Announcement getAnnouncement(int announcementNum) throws Exception;
