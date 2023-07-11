@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -57,12 +58,11 @@
 							</div>
 						</div>
 						 <h2 align="center" style="margin-top: -600px; text-align: right;">회원정보수정</h2>
-						<form action="/mypage" method="post"> 
+						<form action="/mypage" method="POST"> 
 							<table>
 								<tr>
 									<td style="text-align: right;">* 아이디</td>
-									<td style="text-align: left;"><input type="text"
-										id="memberId" name="memberId" value="${member.memberId}"></td>
+									<td style="text-align: left;">${member.memberId }</td>
 								</tr>
 								<tr>
 									<td style="text-align: right;">* 비밀번호</td>
@@ -72,7 +72,7 @@
 								<tr>
 									<td style="text-align: right;">* 비밀번호 확인</td>
 									<td style="text-align: left;"><input type="password"
-										name="confirmPassword" value=""></td>
+										name="memberPwCheck" value=""></td>
 								</tr>
 								<tr>
 									<td colspan="2" align="center"><c:if
@@ -83,25 +83,40 @@
 								<tr>
 									<td style="text-align: right;">* 닉네임</td>
 									<td style="text-align: left;"><input type="text"
-										name="memberName" value="${member.memberName}">
+										name="memberNickname" value="${member.memberNickname}">
 									</td>
 								</tr>
 								<tr>
 									<td style="text-align: right;">* 업체명</td>
 									<td style="text-align: left;"><input type="text"
-										id="memberId" name="memberId" value="${member.memberId}" readonly></td>
+										id="memberCompanyName" name="memberCompanyName" value="${member.memberCompanyName}" readonly></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;">* 이메일</td>
 									<td style="text-align: left;"><input type="text"
 										name="memberEmail" value="${member.memberEmail}" readonly></td>
 								</tr>
-								<tr>
-									<td style="text-align: right;">* 유저타입</td>
-									<td style="text-align: left;"><input type="text"
-										id="memberId" name="memberId" value="${member.memberType}" readonly></td>
-								</tr>
-								<tr>
+							
+							 <tr>
+								<td style="text-align: right;">* 사업자번호</td>
+								<td style="text-align: left;"><input type="text"
+									name="memberCompanyNum"
+									value="${member.memberCompanyNum}"></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 유저타입</td>
+								<td style="text-align: left;"><input type="text"
+									name="memberType" value="${member.memberType}">
+								</td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 수정일</td>
+								<td style="text-align: left;"><input type="text"
+									name="memberUpdate" value="${member.memberUpdate}">
+							</td>
+							</tr> 
+							
+							<tr>
 								<tr>
 									<td colspan="2" align="center"><input type="submit"
 										value="수정하기">
@@ -114,12 +129,28 @@
 				</div>
 
 				<script>
-					function removeMember() {
-						if (window.confirm("탈퇴하시겠습니까?")) {
-							location.href = "/main";
-						}
-
-					}
-				</script>
+    function removeMember() {
+        if (window.confirm("탈퇴하시겠습니까?")) {
+            // 서버로 회원 탈퇴 요청
+            fetch('/deleteMember', {
+                method: 'POST',
+                credentials: 'same-origin' // 쿠키 정보를 함께 보냄
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 탈퇴 성공 시 메인 페이지로 이동
+                    location.href = "/main";
+                } else {
+                    // 탈퇴 실패 시 에러 메시지 표시
+                    alert("회원 탈퇴 중 오류가 발생했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("회원 탈퇴 중 오류가 발생했습니다.");
+            });
+        }
+    }
+</script>
 </body>
 </html>

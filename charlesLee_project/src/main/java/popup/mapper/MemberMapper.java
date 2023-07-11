@@ -28,10 +28,12 @@ public interface MemberMapper {
 	Member getMemberByCompanyName(String memberCompanyName) throws SQLException;
 
 	Member getMemberByCompanyNum(int memberCompanyNum) throws SQLException;
-
-	void updateMember(Member modifiedMember)throws IllegalArgumentException;
-	
+    // 회원 정보 수정
+	void updateMember(Member updateMember)throws IllegalArgumentException;
+	// 회원탈퇴
 	@Delete("DELETE FROM Member WHERE member_id = #{memberId}")
 	void deleteMember(@Param("memberId") String memberId);
+	// 회원 정보 수정일자 업데이트
+    void updateMemberUpdateDate(@Param("memberId") String memberId);
 
 }
