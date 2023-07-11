@@ -126,7 +126,7 @@
 					<p align="center">
 
 						<b><span style="font-size: 12pt;">날짜</span></b> <span
-							style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
+							style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementCreate}</b>
 						</span>
 
 					</p>
@@ -163,7 +163,7 @@
 					</td>
 					<td bgcolor="">
 						<p align="center">
-							<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementTime}</b>
+							<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementCreate}</b>
 							</span>
 						</p>
 					</td>

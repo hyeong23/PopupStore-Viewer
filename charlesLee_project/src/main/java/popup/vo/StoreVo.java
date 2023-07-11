@@ -27,6 +27,8 @@ public class StoreVo {
 	private String storeSite;
 	private int storeCount;
 	private int storeStatus;
+	private Date storeCreate;
+	private Date storeUpdate;
 	private String memberCompanyName;
 	private String memberNickname;
 }

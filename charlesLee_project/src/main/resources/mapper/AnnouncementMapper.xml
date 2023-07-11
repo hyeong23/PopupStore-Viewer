@@ -10,7 +10,8 @@
         <result property="memberNum" column="member_num" />
         <result property="announcementTitle" column="announcement_title" />
         <result property="announcementBody" column="announcement_body" />
-         <result property="announcementTime" column="announcement_time" />
+         <result property="announcementCreate" column="announcement_create" />
+          <result property="announcementUpdate" column="announcement_update" />
         <result property="announcementCount" column="announcement_count" />
     </resultMap>
   

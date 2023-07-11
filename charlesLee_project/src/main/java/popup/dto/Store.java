@@ -27,5 +27,6 @@ public class Store {
 	private String storeSite;
 	private int storeCount;
 	private int storeStatus;
-
+	private Date storeCreate;
+	private Date storeUpdate;
 }

@@ -23,7 +23,7 @@
         <result property="askTitle" column="ask_title" />
         <result property="askBody" column="ask_body" />
          <result property="askCheck" column="ask_check" />
-           
+          <result property="askCreate" column="ask_create" /> 
     </resultMap>
   
   
