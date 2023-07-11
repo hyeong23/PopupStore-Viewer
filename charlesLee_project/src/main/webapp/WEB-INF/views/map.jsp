@@ -129,7 +129,6 @@
 	        	<p> ${map.storeStart} ~ ${map.storeEnd} </p>
 	        	<p> ${map.storeIntro} </p>
 	      </div>
-<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
 	      
 			<div class="slider">
 			    <input type="radio" name="slide" id="slide1" checked>
@@ -221,6 +220,7 @@
 	'        </div>' + 
 	'        <div class="desc">' + 
 	'                <div class="ellipsis">' + '${map.storeLoc}' + '</div>' + 
+	'                <div class="ellipsis">' + '${map.storeLocDetail}' + '</div>' + 
 	'                	<div class="jibun ellipsis">' + '${map.storeStart}' + "~" + '${map.storeEnd}' + '</div>' + 
 	'                <div><a href="${map.storeSite}" target="_blank" class="link">${map.storeTitle} 홈페이지</a></div>' + 
 	'        </div>' + 
