@@ -20,7 +20,7 @@ body {
 .panel{
     width: 1000px;
     max-width: 90%;
-    height: 700px;
+    height: 850px;
     background:url('https://picsum.photos/1000/1500?image=827')  #fff;
     background-repeat:no-repeat;
     background-position: top center;
@@ -92,7 +92,7 @@ fieldset{
     border: none;
 }
 
-.animate1 , .animate2 , .animate3 , .animate4{
+.animate1 , .animate2 , .animate3 , .animate4 ,.animate5 ,.animate6 {
     -webkit-animation-duration: 2s;
     -moz-animation-duration: 2s;
 }
@@ -123,8 +123,13 @@ fieldset{
 
 .animate5
 {
-    -webkit-animation-delay: 2.2s;
-    -moz-animation-delay: 2.2s;
+    -webkit-animation-delay: 2.0s;
+    -moz-animation-delay: 2.0s;
+}
+.animate6
+{
+    -webkit-animation-delay: 2.5s;
+    -moz-animation-delay: 2.5s;
 }
 
 @-webkit-keyframes fadeInUp {

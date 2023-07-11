@@ -22,7 +22,7 @@ public class Member {
 	private int memberType;
 	private String memberCompanyName;
 	private int memberCompanyNum;
-	private int memberPhoneNum;
+	private long memberPhoneNum;
 	private Date memberCreate;
 	private Date memberUpdate;
 }

@@ -18,13 +18,20 @@
 	font-size: 10px;
 	color: #ffffff;
 }
+.login_phone_num{
+	font-size: 10px;
+	color: #ffffff;
+}
 
 
 .login_company_input_num{
 	font-size: 8px;
 	color: #ffffff;
 }
-
+.login_phone_input_num{
+	font-size: 8px;
+	color: #ffffff;
+}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

@@ -26,7 +26,7 @@
            <div class="panel shadow1">
                 <form action="/login" class="login-form" method="POST">
                     
-                    <h1 class="animated fadeInUp animate1" id="title-login">Welcome</h1>
+                    <h1 class="animated fadeInUp animate1" id="title-login"  style="margin-block: 100px">Welcome</h1>
                     
                     <fieldset id="login-fieldset">
                         <input class="login animated fadeInUp animate2" name="memberId" id="username" type="text"  required   placeholder="Username" value="" >

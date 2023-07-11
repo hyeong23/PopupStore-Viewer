@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import popup.service.LoginAPIService;
+import popup.service.MemberService;
 
 @RestController
 @RequiredArgsConstructor
 public class LoginAPIController {
 	
 	@Autowired
-	final LoginAPIService loginService;
+	final MemberService memberService;
 	
 	@RequestMapping(value = "/api/member/{memberId}", method = RequestMethod.GET)
 	public boolean loginId(@PathVariable String memberId) throws Exception {
 	
-		boolean result =  loginService.getAPIMemberById(memberId);
+		boolean result =  memberService.getMemberById(memberId);
 
 		return result;
 	}
@@ -43,7 +43,7 @@ public class LoginAPIController {
 	@RequestMapping(value = "/api/email/{memberEmail}", method = RequestMethod.GET)
 	public boolean loginEmail(@PathVariable String memberEmail) throws Exception {
 	
-		boolean result =  loginService.getAPIMemberByEmail(memberEmail);
+		boolean result =  memberService.getMemberByEmail(memberEmail);
 
 		return result;
 	}	
@@ -52,7 +52,7 @@ public class LoginAPIController {
 	@RequestMapping(value = "/api/nickname/{memberNickname}", method = RequestMethod.GET)
 	public boolean loginNickname(@PathVariable String memberNickname) throws Exception {
 	
-		boolean result =  loginService.getAPIMemberByNickname(memberNickname);
+		boolean result =  memberService.getMemberByNickname(memberNickname);
 
 		return result;
 	}
@@ -61,7 +61,7 @@ public class LoginAPIController {
 	@RequestMapping(value = "/api/companyName/{memberCompanyName}", method = RequestMethod.GET)
 	public boolean loginCompanyName(@PathVariable String memberCompanyName) throws Exception {
 	
-		boolean result =  loginService.getMemberByCompanyName(memberCompanyName);
+		boolean result =  memberService.getMemberByCompanyName(memberCompanyName);
 
 		return result;
 	}	
@@ -69,7 +69,15 @@ public class LoginAPIController {
 	@RequestMapping(value = "/api/companyNum/{memberCompanyNum}", method = RequestMethod.GET)
 	public boolean loginCompanyNum(@PathVariable int memberCompanyNum) throws Exception {
 	
-		boolean result =  loginService.getMemberByCompanyNum(memberCompanyNum);
+		boolean result =  memberService.getMemberByCompanyNum(memberCompanyNum);
+
+		return result;
+	}	
+	
+	@RequestMapping(value = "/api/phoneNum/{memberPhoneNum}", method = RequestMethod.GET)
+	public boolean loginPhoneNum(@PathVariable long memberPhoneNum) throws Exception {
+	
+		boolean result =  memberService.getMemberByPhoneNum(memberPhoneNum);
 
 		return result;
 	}	
