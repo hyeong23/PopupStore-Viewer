@@ -69,9 +69,19 @@ public class AnnouncementService {
 
 		return result;
 	}
-	
+
 	// count
-		public int countAnnouncement(int announcementNum) throws SQLException, Exception {
-			return announcementMapper.countAnnouncement(announcementNum);
+	public boolean countAnnouncement(int announcementNum) throws SQLException, Exception {
+		boolean result = false;
+
+		int res = announcementMapper.countAnnouncement(announcementNum);
+
+		if (res != 0) {
+			result = true;
+		} else {
+			throw new Exception("count fail");
 		}
+
+		return result;
+	}
 }

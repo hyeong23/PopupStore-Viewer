@@ -41,7 +41,10 @@ public class AnnouncementController {
 	public String announcement(@PathVariable int announcementNum, Model model) throws Exception {
 
 		Announcement announcement = announcementService.getAnnouncement(announcementNum);
-
+		
+		// 조회수
+		boolean result = announcementService.countAnnouncement(announcementNum);
+		
 		model.addAttribute("announcement", announcement);
 
 		return "announcementDetail";
@@ -139,12 +142,21 @@ public class AnnouncementController {
 	// 조회수
 	// http://localhost:8081/announcement/announcementNum
 //	@RequestMapping("/announcement/{announcementNum}")
-//	public ModelAndView announcementCount(@RequestParam("announcementNum") int announcementNum) throws Exception{
-//		
-//	// 기존의 게시글 자세히 보기에서 추가된 부분
-//		announcementService.countAnnouncement(announcementNum);
+//	public String countAnnouncement(@PathVariable int announcementNum, Model model) throws Exception {
+//		String view = "error";
+//		try {
 //			
-//		return new ModelAndView("announcementDetail", announcementService.getAnnouncement(announcementNum));
-//	    }
+//
+//			if (result) {
+//				view = "redirect:/announcement";
+//				return view;
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return view;
+//	}
 
 }
