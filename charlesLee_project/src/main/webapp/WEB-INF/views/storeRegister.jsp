@@ -116,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <form action="/storeRegister" method="POST" enctype="multipart/form-data">
+            <form action="/storeRegister" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
                 <div class="row">
                    
                     <div class="col-lg-12 col-md-6">
@@ -267,6 +267,18 @@ window.onload = function(){
 }
 </script>
 
+<script>
+const storeStart = document.getElementById('storeStart'); //객체생성
+const storeEnd = document.getElementById("storeEnd"); 
+function formChecking(){
+	if(storeStart.value > storeEnd.value){
+		alert("시작일이 종료일 이후로 설정되어 있습니다.");
+		return false;		
+	}
+
+	return true;
+};
+</script>
 
 
 

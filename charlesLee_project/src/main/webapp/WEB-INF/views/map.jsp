@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
     <link rel="stylesheet" href="css/modal.css" type="text/css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -136,10 +138,7 @@
 			    <input type="radio" name="slide" id="slide3">
 			    <input type="radio" name="slide" id="slide4">
 			    <ul id="imgholder" class="imgs">
-			        <li><img src="modal-images/singleimage.jpg"></li>
-			        <li><img src="modal-images/singleimage.jpg"></li>
-			        <li><img src="modal-images/singleimage.jpg"></li>
-			        <li><img src="modal-images/singleimage.jpg"></li>
+
 			    </ul>
 			    <div class="bullets">
 			        <label for="slide1">&nbsp;</label>
@@ -150,7 +149,6 @@
 			    
 			    
 			</div>	
-	      
 	      	 <div>
 			    	${map.storeBody}
 			 </div>
@@ -210,9 +208,11 @@
 	'    <div class="info">' + 
 	'		<a href="#exampleModalCenter${vs.index}" data-toggle="modal">' +
 	'        <div class="title">' + 
-	'			${map.storeTitle}' + 
+	'			<div class="storeTitle" onclick = "modalClick('+ ${map.storeNum} + ')">'	+
+	'				${map.storeTitle}' + 
+	'			</div>'				+
 	'		</a>				' +
-	'            <div class="close" id= "${map.storeNum}" title="닫기"></div>' + 
+	'            <div class="close" id="${map.storeNum}" title="닫기"></div>' + 
 	'        </div>' + 
 	'        <div class="body">' + 
 	'            <div class="img">' +
@@ -238,8 +238,9 @@
 	
 	
 	var close = document.getElementById('${map.storeNum}')
-	
+	console.log(close);
 	close.addEventListener('click', function() {
+		console.log(close.id);
 		overlay.setMap(null);  
 	});
 	
@@ -256,7 +257,40 @@
 	
 	
 	geocoder.addressSearch(address, callback);
-	</c:forEach>
+	
 
+
+	</c:forEach>
+	function modalClick(storeNum){
+			// 현재 map의 storeNum의 번호가 안바뀜
+			// 클릭 시 해당 storeNum
+			console.log(storeNum);
+			
+			alert(storeNum +"번 예시");
+			// 1을 우선 예시로 사용하는 중
+			axios.get('http://localhost:8081/api/map/' + storeNum)
+			.then(response => {
+				var pictureData = response.data;
+				console.log(pictureData);
+				for(var i = 0; i <= pictureData.length; i++){
+					var getPictureName = pictureData[i].pictureName;
+					console.log(getPictureName);
+					var showPicture = document.querySelector('#imgholder');
+					var li = document.createElement("li");
+					var picture = document.createElement("img");
+					picture.src = "picture/" + getPictureName;
+					console.log(picture);	
+					
+					li.appendChild(picture);
+					showPicture.appendChild(li);
+					
+				};
+				
+			})
+	};
 </script>
+
+
+
+
 </html>
