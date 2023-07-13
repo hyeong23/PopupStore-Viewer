@@ -42,7 +42,7 @@
 	<update id="updateAnnouncement" parameterType="popup.dto.Announcement">
  		UPDATE announcement 
  		SET announcement_title = #{announcementTitle}, 
- 			announcement_body = #{announcementBody} 
+ 			announcement_body = #{announcementBody}
  		WHERE announcement_num = #{announcementNum}
  	</update>
 	
@@ -51,7 +51,8 @@
 		DELETE FROM announcement
 		WHERE announcement_num = #{announcementNum}
 	</delete>
-	  
+	
+	<!-- count -->  
 	<update id="countAnnouncement" parameterType="popup.dto.Announcement">
  		UPDATE announcement 
  		SET announcement_count = #{announcementCount} + 1

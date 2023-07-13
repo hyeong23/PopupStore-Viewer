@@ -36,7 +36,7 @@ public class PictureService {
 											   .pictureOriginalName(pictureOriginalName)
 											   .pictureSize(pictureSize)
 											   .build();
-		
+											
 		int res = pictureMapper.insertPicture(pictureFile);
 		
 		if(res != 0) {
