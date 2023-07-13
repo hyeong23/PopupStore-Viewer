@@ -162,18 +162,21 @@
 	      	 
 	      
 	      
-	      <div class="modal-footer">
+	      <!-- <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
+	      </div> -->
+            </div>
             </div>
 			<div class="modal-replywindow">
             <div class="title">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
-                <h2>댓글</h2>
+	        <h2>댓글</h2>
+                
                 <div class="reply-list">
+                
                <c:forEach items="${getReplyList}" var="reply">
                 <c:if test="${reply.storeNum eq map.storeNum}">
                <div class="reply-each">
@@ -186,23 +189,21 @@
       
       </div>
                 <div class="reply-send">
-               			 <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">
-               			 
-<%--                			 <!-- hidden 영역 -->
+               			 <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
+						<%-- <!-- hidden 영역 -->
   					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
-  					      
    					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
-
-        <!-- 입력 영역 -->
-                        <textarea placeholder="Your Reply" name="reply" id="reply"></textarea>
-                        <input type="submit" onclick="return checkReply(event)" value="Send" class="site-btn" id="send_message"/>
+     				   <!-- 입력 영역 -->    				
+                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
+                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="site-btn" id="send_message"/></div>
                         </form>
                     </div>
             </div>
 <!--             <div class="close-area">X</div> -->
 	    	</div>
+	  
 	  </div>
-	  </div>
+	</div>
 	</div>
 	</c:forEach>
 <div style="width: 500px; height: 500px; background-color: #a191a5">
