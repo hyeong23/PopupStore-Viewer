@@ -7,7 +7,7 @@
     margin: auto;
 }
 .slider input[type=radio]{
-    display: none;
+    display: auto;
 }
 
 ul.imgs{

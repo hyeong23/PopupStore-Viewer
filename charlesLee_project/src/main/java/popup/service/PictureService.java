@@ -1,6 +1,7 @@
 package popup.service;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class PictureService {
 											   .pictureOriginalName(pictureOriginalName)
 											   .pictureSize(pictureSize)
 											   .build();
-		
+											
 		int res = pictureMapper.insertPicture(pictureFile);
 		
 		if(res != 0) {
@@ -49,5 +50,9 @@ public class PictureService {
 		
 		
 		return result;
+	}
+
+	public List<Picture> getPictureByStoreNum(int storeNum) {
+		return pictureMapper.getPictureByStoreNum(storeNum);
 	}
 }
