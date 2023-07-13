@@ -171,12 +171,14 @@
 	        </button>
                 <h2>댓글</h2>
                 <div class="reply-list">
-               <c:forEach items="${getReplyList}" var="reply" varStatus="vst">
-               <div class="reply-each${vst.index}">
+               <c:forEach items="${getReplyList}" var="reply">
+                <c:if test="${reply.storeNum eq map.storeNum}">
+               <div class="reply-each">
         		 	<p>${reply.memberNickname}<p>
      	    	 	<p>${reply.reply}<p>
       				<p>${reply.replyUpdate}<p> 
       		   </div>
+      		   </c:if>
 		      </c:forEach>
       
       </div>
