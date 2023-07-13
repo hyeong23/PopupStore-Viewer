@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
+    <link rel="stylesheet" href="css/picture.css" type="text/css">
    <style>
     /* 주 카테고리 라디오 버튼 스타일 */
     #store_stc input[type="radio"][name="category1"] {
@@ -40,7 +40,7 @@
     }
    
 </style>
-    
+  
 </head>
 
 <body>
@@ -170,26 +170,59 @@
                             </div>
                           <br> <br> <br>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="주소" name="storeLoc" id="storeLoc">
-                    </div>
+    				<input type="text" placeholder="주소" name="storeLoc" id="storeLoc" readonly style="width: 70%">
+    				<button type="button" id="addressButton">주소 검색</button>
+					</div>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="상세주소" name="storeLoc" id="storeDetailLoc">
+                        <input type="text" placeholder="상세주소" name="storeLocDetail" id="storeLocDetail">
                     </div>
                     <div class="col-lg-12 col-md-6">
                         <input type="text" placeholder="공식 사이트" name="storeSite" id="storeSite">
                     </div>
+      				 
+                    <div class="picture-content">
+         				   <div class="picture-header">
+           					     <h2 class="picture-title" id="PictureCenterTitle">썸네일</h2>
+                		    </div>
+							<div>
+  
+  				          <div class="thumbnail" >  
+            	
+                			<input type="file" name="thumbnail" id="thumbnail" onchange="previewImage2(event)" style="margin-bottom: 0px;">
+  							<img id="preview" src="#" alt="Preview">
+							</div>
+           				  </div>
+
+           				  <div class="picture-footer">
+                			
+                		  </div>
+        	       </div>	
                    
-                    <div id="fileContainer">
-         			      <input type="file" name="picture" id="fileInput" onchange="previewImage(event,preview)" style="width: auto;">	    
-         			      <button type="button" onclick="addFileInput()">사진 추가</button><br> 
-         			      <img id="preview" src="#" style="display: none"> 
-       				   </div>
-       				   
-       				 
-                    	<br><br><br><br><br><br>
-                        <div id="store_stc" style="margin-top: auto;">     
-                        <input type="submit" value="submit" class="site-btn" id="submit"/>
-                        </div>
+                        
+      				<div class="picture-content">
+         				   <div class="picture-header">
+           					     <h2 class="picture-title" id="PictureCenterTitle">사진 추가</h2>
+                		    </div>
+
+  				          <div class="slider">  
+            	
+                			<div class="bullets"></div>
+                			<ul id="imgholder" class="imgs"></ul>
+           				  </div>
+
+           				  <div class="picture-footer">
+                			<div id="fileContainer"></div>             
+            			   	<button type="button" onclick="deleteImg()" style="height: 60px; width: 60px; border-radius: 50%">삭제</button><br>
+                			<button type="button" onclick="addFileInput()" style="height: 60px; width: 60px; border-radius: 50%">추가</button><br>
+                		  </div>
+        	       </div>
+                        
+                       
+                        
+                         <div id="store_stc" style="margin-top: 150px;">     
+                           <input type="submit" value="submit" class="site-btn" id="submit"/>
+                         </div>
+                 
                 </div>  
             </form>
         </div>
@@ -202,7 +235,126 @@
     <!-- Footer Section Begin -->
         <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
+    
+    
 
+
+<script>
+
+
+function addFileInput() {
+    var fileInput = document.createElement("input");
+    var imgholder = document.getElementById("imgholder");
+    var fileContainer = document.getElementById("fileContainer");
+
+    // 이미 10개 이상의 파일이 업로드되었을 경우 종료
+    if (imgholder.children.length >= 10) {
+        return;
+    }
+
+    fileInput.type = "file";
+    fileInput.name = "picture";
+    fileInput.id = "imageInput";
+    fileInput.style.width = "auto";
+    fileInput.hidden="true"
+    fileInput.onchange = function(event) {
+        previewImage(event);
+    };
+
+    imgholder.parentNode.style.display = "block";
+
+    fileInput.click();
+
+    // fileContainer에 파일 입력란 추가
+    fileContainer.appendChild(fileInput);
+}
+
+function previewImage(event) {
+    var input = event.target;
+    var reader = new FileReader();
+
+    reader.onload = function() {
+        var imgholder = document.getElementById("imgholder");
+        var li = document.createElement("li");
+        var preview = document.createElement("img");
+        var deleteButton = document.createElement("button");
+
+        preview.src = reader.result;
+        preview.style.display = 'block';
+        
+
+        li.appendChild(preview);
+        imgholder.appendChild(li);
+
+        var slideId = "slide" + (imgholder.children.length);
+        var bulletLabel = document.createElement("label");
+        bulletLabel.htmlFor = slideId;
+        bulletLabel.innerHTML = "&nbsp;";
+
+        var bullets = document.querySelector(".bullets");
+        bullets.appendChild(bulletLabel);
+
+        var slideInput = document.createElement("input");
+        slideInput.type = "radio";
+        slideInput.name = "slide";
+        slideInput.id = slideId;
+        slideInput.checked = true;
+        bullets.parentNode.insertBefore(slideInput, bullets);
+    };
+
+    if (input.files && input.files[0]) {
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function deleteImg() {
+    var imgholder = document.getElementById("imgholder");
+    var imageInput = document.getElementById("imageInput");
+    var bullets = document.querySelector(".bullets");
+	
+    
+    // 이미지가 존재하지 않으면 종료
+    if (imgholder.children.length === 0) {
+        return;
+    }
+
+    var lastImg = imgholder.lastElementChild;
+    imgholder.removeChild(lastImg);
+
+    var lastBullet = bullets.lastElementChild;
+    bullets.removeChild(lastBullet);
+    
+   
+    var lastSlideInput = bullets.previousElementSibling;
+    lastSlideInput.parentNode.removeChild(lastSlideInput);
+    
+    imageInput.parentNode.removeChild(imageInput);
+    
+    
+}
+
+
+</script>
+
+
+<script>
+function previewImage2(event) {
+  var input = event.target;
+  var preview = document.getElementById("preview");
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+
+
+
+	      
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -224,39 +376,11 @@
     });
   }); */
 </script>
- <script>
-    function addFileInput() {
-        var fileInput = document.createElement("input");
-        var preview = document.createElement("img");
-        fileInput.type = "file";
-        fileInput.name = "picture";
-        fileInput.style.width = "auto";
-        fileInput.onchange = function(event) {
-            previewImage(event, preview);
-        };
-
-        var fileContainer = document.getElementById("fileContainer");
-        fileContainer.appendChild(fileInput);
-        fileContainer.appendChild(preview);
-    }
-
-    function previewImage(event, preview) {
-        var input = event.target;
-        var reader = new FileReader();
-
-        reader.onload = function() {
-            preview.src = reader.result;
-            preview.style.display = 'block';
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-</script>
-
+ 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 window.onload = function(){
-    document.getElementById("storeLoc").addEventListener("click", function(){ //주소입력칸을 클릭하면
+    document.getElementById("addressButton").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
@@ -267,8 +391,9 @@ window.onload = function(){
 }
 </script>
 
-
-
+      	 
+	      
+	      
 
 </body>
 

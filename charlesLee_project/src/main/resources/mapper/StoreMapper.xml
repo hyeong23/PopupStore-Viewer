@@ -29,9 +29,9 @@
     
   <insert id="insertStore" parameterType="popup.dto.Store"> 
         INSERT INTO store
-        (store_num, member_num, store_title, store_intro, store_body, store_start, store_end, store_loc, store_site)
+        (store_num, member_num, store_title, store_intro, store_body, store_start, store_end, store_loc,store_loc_detail, store_site)
         VALUES
-        (store_sequence.nextval, #{memberNum}, #{storeTitle}, #{storeIntro}, #{storeBody}, #{storeStart}, #{storeEnd}, #{storeLoc}, #{storeSite})
+        (store_sequence.nextval, #{memberNum}, #{storeTitle}, #{storeIntro}, #{storeBody}, #{storeStart}, #{storeEnd}, #{storeLoc},#{storeLocDetail}, #{storeSite})
   </insert>
 
 
