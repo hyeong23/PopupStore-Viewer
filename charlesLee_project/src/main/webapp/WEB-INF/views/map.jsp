@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -145,8 +146,6 @@
 			        <label for="slide3">&nbsp;</label>
 			        <label for="slide4">&nbsp;</label>
 			    </div>
-			    
-			    
 			</div>	
 	      
 	        	<h5>작성자 : </h5>
@@ -171,7 +170,29 @@
 	          <span aria-hidden="true">&times;</span>
 	        </button>
                 <h2>댓글</h2>
-                
+                <div class="reply-list">
+               <c:forEach items="${getReplyList}" var="reply" varStatus="vst">
+               <div class="reply-each${vst.index}">
+        		 	<p>${reply.memberNickname}<p>
+     	    	 	<p>${reply.reply}<p>
+      				<p>${reply.replyUpdate}<p> 
+      		   </div>
+		      </c:forEach>
+      
+      </div>
+                <div class="reply-send">
+               			 <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">
+               			 
+<%--                			 <!-- hidden 영역 -->
+  					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
+  					      
+   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
+
+        <!-- 입력 영역 -->
+                        <textarea placeholder="Your Reply" name="reply" id="reply"></textarea>
+                        <input type="submit" onclick="return checkReply(event)" value="Send" class="site-btn" id="send_message"/>
+                        </form>
+                    </div>
             </div>
 <!--             <div class="close-area">X</div> -->
 	    	</div>
@@ -179,7 +200,13 @@
 	  </div>
 	</div>
 	</c:forEach>
-
+<div style="width: 500px; height: 500px; background-color: #a191a5">
+	댓글리스트 
+	<c:forEach items="${getReplyList}" var="reply" varStatus="vs">
+		<p> ${reply.reply} </p>
+	</c:forEach>
+	
+ </div>
 
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=690096255b88e30ead8c02ac790dd149&libraries=services">
