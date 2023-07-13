@@ -188,16 +188,18 @@
 		      </c:forEach>
       
       </div>
+      <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
                 <div class="reply-send">
-               			 <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
+               			 
 						<%-- <!-- hidden 영역 -->
   					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
    					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
      				   <!-- 입력 영역 -->    				
                       <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
-                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="site-btn" id="send_message"/></div>
-                        </form>
+                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="reply-send-btn" id="send_message"/></div>
+                        
                     </div>
+                    </form>
             </div>
 <!--             <div class="close-area">X</div> -->
 	    	</div>

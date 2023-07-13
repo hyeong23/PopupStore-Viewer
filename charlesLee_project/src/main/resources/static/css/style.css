@@ -177,6 +177,18 @@ ol {
 	border: none;
 }
 
+.reply-send-btn {
+	font-size: 14px;
+	color: #ffffff;
+	font-weight: 800;
+	text-transform: uppercase;
+	display: inline-block;
+	background: #7fad39;
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+
 .reply-send{
 	display:flex;
 	background-color:#568214;
@@ -185,7 +197,7 @@ ol {
 }
 
  .reply_textarea{
- 			width:200px;
+ 			width:250px;
  			height:100px;
  			background-color: #545334;
  }
