@@ -2,19 +2,21 @@ package popup.controller;
 
 
 import java.sql.SQLException;
-
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
-
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import popup.dto.Member;
 import popup.service.MemberService;
@@ -37,24 +39,113 @@ public class MyPageController {
 
 	    return "mypage";
 	}
-	
+
 	// 회원정보 수정
-	@RequestMapping(value = "/mypage/update/{memberId}", method = RequestMethod.POST)
-	public String updateMyPage(@ModelAttribute Member updateMember, Model model) throws Exception {
-		// 마이페이지 수정 로직을 수행
-		memberService.updateMember(updateMember);
-		
-		// 수정된 회원 정보를 다시 조회하여 모델에 추가
-		String memberId = updateMember.getMemberId();
-		Member member = memberService.getMemberById2(memberId);
-		model.addAttribute("member", member);
-		System.out.println("mypage test");
-		// 마이페이지로 리디렉션합니다.
-		return "mypageUpdate";
+	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	public String updateMember(
+	        @RequestParam("memberId") String memberId,
+	        @RequestParam("memberPw") String memberPw,
+	        @RequestParam("memberPwCheck") String memberPwCheck,
+	        @RequestParam(value = "memberNickname", required = false) String memberNickname,
+	        @RequestParam("memberEmail") String memberEmail,
+	        @RequestParam("memberType") int memberType,
+	        @RequestParam("memberCompanyNum") int memberCompanyNum, // 사업자 번호
+	        Model model,
+	        RedirectAttributes redirectAttributes
+	) throws Exception {
+	    System.out.println("Here In Controller");
+	    try {
+	        if (!memberPw.equals(memberPwCheck)) {
+	            // 비밀번호와 비밀번호 확인이 일치하지 않을 경우
+	            return "mypage";
+	        }
+
+	     // 회원 정보를 HashMap으로 구성
+	        HashMap<String, Object> memberInfo = new HashMap<>();
+	        memberInfo.put("memberId", memberId);
+	        memberInfo.put("memberPw", memberPwCheck);
+	        memberInfo.put("memberNickname", memberNickname);
+	        memberInfo.put("memberEmail", memberEmail);
+	        memberInfo.put("memberType", memberType);
+	        
+	        // 비즈니스 회원인 경우에만 사업자 번호 업데이트
+	        if (memberType == 2) {
+	            memberInfo.put("memberCompanyNum", memberCompanyNum);
+	        }
+
+	        // 생성일을 회원가입 날짜로 설정
+	        LocalDate signUpDate = LocalDate.now();
+	        Date memberCreate = Date.valueOf(signUpDate);
+	        memberInfo.put("memberCreate", memberCreate);
+
+	        // 수정일을 현재 날짜로 설정
+	        LocalDateTime now = LocalDateTime.now();
+	        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	        String formattedModifiedDate = now.format(dateTimeFormatter);
+	        Date memberUpdate = Date.valueOf(LocalDate.parse(formattedModifiedDate.substring(0, 10)));
+	        memberInfo.put("memberUpdate", memberUpdate);
+
+	        // 회원 정보 업데이트
+	        updateMember(memberInfo);
+
+	        // 수정된 회원 정보를 다시 조회하여 모델에 추가
+	        Member updatedMember = memberService.getMemberById2(memberId);
+	        model.addAttribute("member", updatedMember);
+
+	        redirectAttributes.addFlashAttribute("success", "회원 정보가 수정되었습니다.");
+	        return "redirect:/mypage";
+	    } catch (IllegalArgumentException e) {
+	        redirectAttributes.addFlashAttribute("error", e.getMessage());
+	        return "redirect:/mypage";
+	    }
 	}
+
+	// 회원 정보 업데이트
+	private void updateMember(HashMap<String, Object> memberInfo) {
+	    // memberId 가져오기
+	    String memberId = (String) memberInfo.get("memberId");
+
+	    // memberPw 가져오기
+	    String memberPw = (String) memberInfo.get("memberPw");
+
+	    // nickname 가져오기
+	    String memberNickname = (String) memberInfo.get("memberNickname");
+
+	    // email 가져오기
+	    String memberEmail = (String) memberInfo.get("memberEmail");
+
+	    // memberType 가져오기
+	    int memberType = (int) memberInfo.get("memberType");
+
+	    // createdDate 가져오기
+	    // 필요에 따라 적절한 처리를 수행하여 생성일 정보를 설정
+
+	    // modifiedDate 가져오기
+	    // 필요에 따라 적절한 처리를 수행하여 수정일 정보를 설정
+
+	    // Member 객체 생성
+	    Member modifiedMember = new Member();
+	    modifiedMember.setMemberId(memberId);
+	    modifiedMember.setMemberPw(memberPw);
+	    modifiedMember.setMemberNickname(memberNickname);
+	    modifiedMember.setMemberEmail(memberEmail);
+	    modifiedMember.setMemberType(memberType);
+
+	 // 비즈니스 회원인 경우에만 사업자 번호 업데이트
+	    if (memberType == 2) {
+	        int memberCompanyNum = (int) memberInfo.get("memberCompanyNum");
+	        modifiedMember.setMemberCompanyNum(memberCompanyNum);
+	    }
+
+	    
+	    // 업데이트 로직 구현
+	    memberService.updateMember(modifiedMember);
+	}
+
+
 	
 	// 회원 탈퇴
-	@RequestMapping(value = "/mypage/{memberId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteMember", method = RequestMethod.POST)
     public String deleteMember(HttpSession session) {
         String memberId = (String) session.getAttribute("memberId");
         try {
