@@ -34,8 +34,11 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    
 
     <title>Calendar #9</title>
+    
   </head>
   <body>
 
@@ -71,6 +74,15 @@
  </div>
  </div>
   </div>
+  
+<!-- 모달 창 열기 버튼 -->
+    <div id="container">
+        <button id="btn-modal">모달 창 열기 버튼</button>
+    </div>
+    <div id="modal" class="modal-overlay">
+    <%@ include file="modal-content.jsp" %>
+        
+    </div>
   
     <!-- Footer Section Begin -->
     <%@ include file="footer.jsp" %>
@@ -119,7 +131,39 @@
     	});
 
     </script>
-
     <script src="/calendar/js/main.js"></script>
+    <script>
+    const modal = document.getElementById("modal")
+    function modalOn() {
+        modal.style.display = "flex"
+    }
+    function isModalOn() {
+        return modal.style.display === "flex"
+    }
+    function modalOff() {
+        modal.style.display = "none"
+    }
+    const btnModal = document.getElementById("btn-modal")
+    btnModal.addEventListener("click", e => {
+        modalOn()
+    })
+    const closeBtn = modal.querySelector(".close-area")
+    closeBtn.addEventListener("click", e => {
+        modalOff()
+    })
+    modal.addEventListener("click", e => {
+        const evTarget = e.target
+        if(evTarget.classList.contains("modal-overlay")) {
+            modalOff()
+        }
+    })
+    window.addEventListener("keyup", e => {
+        if(isModalOn() && e.key === "Escape") {
+            modalOff()
+        }
+    })
+    
+    modalOff();
+    </script>
   </body>
 </html>

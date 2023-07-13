@@ -26,6 +26,6 @@ public interface AnnouncementMapper {
 	public int deleteAnnouncement(int announcementNum) throws SQLException;
 	
 	// 조회수
-//	public int countAnnouncement(Announcement announcement) throws SQLException;
+	public int countAnnouncement(int announcementNum) throws SQLException;
 
 }

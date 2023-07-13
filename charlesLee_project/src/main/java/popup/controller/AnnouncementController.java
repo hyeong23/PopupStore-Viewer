@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.servlet.ModelAndView;
 
 import popup.dto.Announcement;
 import popup.service.AnnouncementService;
@@ -39,7 +41,10 @@ public class AnnouncementController {
 	public String announcement(@PathVariable int announcementNum, Model model) throws Exception {
 
 		Announcement announcement = announcementService.getAnnouncement(announcementNum);
-
+		
+		// 조회수
+		boolean result = announcementService.countAnnouncement(announcementNum);
+		
 		model.addAttribute("announcement", announcement);
 
 		return "announcementDetail";
@@ -135,15 +140,23 @@ public class AnnouncementController {
 	}
 
 	// 조회수
-//	 @GetMapping("/announcement/*")
-//	    public String announcementCount(@PathVariable int announcementNum ,int announcementCount, Model model) {
-//	     
-//		Announcement announcement = announcementService.getAnnouncement(announcementNum);
-//		announcementService.countAnnouncement(announcementNum); // counting
-//		model.addAttribute("announcement", announcement);
+	// http://localhost:8081/announcement/announcementNum
+//	@RequestMapping("/announcement/{announcementNum}")
+//	public String countAnnouncement(@PathVariable int announcementNum, Model model) throws Exception {
+//		String view = "error";
+//		try {
+//			
 //
+//			if (result) {
+//				view = "redirect:/announcement";
+//				return view;
+//			}
 //
-//	        return "view";
-//	    }
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return view;
+//	}
 
 }

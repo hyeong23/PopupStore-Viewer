@@ -131,7 +131,7 @@
 				</td>
 				<td bgcolor="">
 					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementCreate}</b>
+						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementUpdate}</b>
 						</span>
 					</p>
 				</td>
