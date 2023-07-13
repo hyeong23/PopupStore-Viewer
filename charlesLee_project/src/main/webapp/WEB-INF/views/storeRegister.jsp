@@ -173,7 +173,7 @@
                         <input type="text" placeholder="주소" name="storeLoc" id="storeLoc">
                     </div>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="상세주소" name="storeLoc" id="storeDetailLoc">
+                        <input type="text" placeholder="상세주소" name="storeLocDetail" id="storeLocDetail">
                     </div>
                     <div class="col-lg-12 col-md-6">
                         <input type="text" placeholder="공식 사이트" name="storeSite" id="storeSite">

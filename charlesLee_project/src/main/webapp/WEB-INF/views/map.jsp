@@ -235,6 +235,7 @@
 	'        </div>' + 
 	'        <div class="desc">' + 
 	'                <div class="ellipsis">' + '${map.storeLoc}' + '</div>' + 
+	'                <div class="ellipsis">' + '${map.storeLocDetail}' + '</div>' + 
 	'                	<div class="jibun ellipsis">' + '${map.storeStart}' + "~" + '${map.storeEnd}' + '</div>' + 
 	'                <div><a href="${map.storeSite}" target="_blank" class="link">${map.storeTitle} 홈페이지</a></div>' + 
 	'        </div>' + 
