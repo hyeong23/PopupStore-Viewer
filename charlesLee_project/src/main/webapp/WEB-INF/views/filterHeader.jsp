@@ -46,11 +46,6 @@
 		<div id="leftHeader">
 		<form action="/filterTested" method="GET" name="searchForm">
 		<span>통합검색</span>
-<!-- 			<select name="selectValue" class="selectField">
-				<option value="Title">제목</option>
-				<option value="name">작성자</option>
-				<option value="content">내용</option>
-			</select> -->
 			<input type="text" name="inputText"/>
 			<input type="submit" value="검색하기">	
 		</form>				
@@ -66,7 +61,7 @@
 		<input type="checkbox" name="item" value="fashion">패션/뷰티
 		<input type="checkbox" name="item" value="others">기타
 		<br><br>
-		<input type="submit" value="확인">
+		<input type="submit" value="적용">
 	</form>
 	</div>
 	

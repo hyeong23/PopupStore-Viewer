@@ -115,22 +115,19 @@
 	<!-- 수정 -->
 	<!-- Modal -->
 	<c:forEach items="${getMapList}" var="map" varStatus="vs">
-	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   		<div class="modal-dialog modal-lg">
+  		<div class="modal-container">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h2 class="modal-title" id="exampleModalCenterTitle">${map.storeTitle}</h2>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<!-- 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
-	        </button>
+	        </button> -->
 	      </div>
-	      <div class="modal-body">
-	        	<h5>작성자 : </h5>
-	        	<p> ${map.storeStart} ~ ${map.storeEnd} </p>
-	        	<p> ${map.storeIntro} </p>
-	      </div>
-<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
 	      
+<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
+	      <div class="modal-body">
 			<div class="slider">
 			    <input type="radio" name="slide" id="slide1" checked>
 			    <input type="radio" name="slide" id="slide2">
@@ -152,16 +149,33 @@
 			    
 			</div>	
 	      
-	      	 <div>
+	        	<h5>작성자 : </h5>
+	        	<p> 개최 기간: ${map.storeStart} ~ ${map.storeEnd} </p>
+	        	<p> 개최 장소: ${map.storeLoc} </p>
+	        	<p> ${map.storeIntro} </p>
+	        	<div class="modal_bodytext">
 			    	${map.storeBody}
-			 </div>
+				 </div>
+	      </div>
+	      	 
 	      
 	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Save changes</button>
 	      </div>
-	    </div>
+            </div>
+			<div class="modal-replywindow">
+            <div class="title">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+                <h2>댓글</h2>
+                
+            </div>
+<!--             <div class="close-area">X</div> -->
+	    	</div>
+	  </div>
 	  </div>
 	</div>
 	</c:forEach>
