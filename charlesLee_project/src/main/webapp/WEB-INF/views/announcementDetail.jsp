@@ -85,85 +85,67 @@
 	</section>
 	<!-- Hero Section End -->
 
-	<form action="/announcement/modify/${announcement.announcementNum}"
-		method="GET" name="detailForm" id="detailForm">
-		<h3>공지사항</h3>
-		<table align="center" border="0" cellpadding="5" cellspacing="2"
-			width="100%" bordercolordark="white" bordercolorlight="black">
-			<tr>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">번호</span></b>
-					</p>
-				</td>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">제목</span></b>
-					</p>
-				</td>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">날짜</span></b>
-					</p>
-				</td>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">조회수</span></b>
-					</p>
-				</td>
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg"
+		data-setbg="/img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Notice</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
 
-			</tr>
+	<!-- content Begin -->
+	<br>
+	<br>
+	<!-- Page content-->
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-lg-8">
+				<article>
+					<!-- Post title-->
+					<h2 class="fw-bolder mb-1">
+						<div class="section-title product__discount__title">
+							<h2>${announcement.announcementTitle}</h2>
+						</div>
+					</h2>
+					<!-- Post meta content-->
+					<div class="text-muted fst-italic mb-2" >
+						<div class = "left">${announcement.announcementUpdate}</div>
+						<div class= "right">${announcement.announcementCount}</div>
+					</div>
+					<hr>
+					<!-- Post content-->
+					<section class="mb-5">
+						<p class="fs-5 mb-4">${announcement.announcementBody}</p>
+					</section>
+				</article>
 
-			<tr>
-				<td bgcolor="">
-					<p align="center">
-						<span id="announcementNum" style="font-size: 12pt;">
-							<!-- 번호 -->${announcement.announcementNum}
-						</span>
+			</div>
 
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
-						</span>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementUpdate}</b>
-						</span>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 조회수 --> <b>${announcement.announcementCount}</b>
-						</span>
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p align="left" width="80%">
-						<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcementBody}</b>
-						</span>
-					</p>
-				</td>
-			</tr>
-		</table>
-	</form>
-	<hr>
+		</div>
+	</div>
+
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button" value="목록"
 			onclick="location.href='/announcement'">
-		</span> <span style="font-size: 12pt;"> <input type="button"
-			value="수정"
-			onclick="location.href='/announcement/modify/${announcementNum}'">
-		</span> <span style="font-size: 12pt;"> <input type="button"
-			value="삭제" onclick="deleteAnnouncement()">
 		</span>
-
+		<c:if test="${memberId == 'admin'}">
+			<span style="font-size: 12pt;"> <input type="button"
+				value="수정"
+				onclick="location.href='/announcement/modify/${announcementNum}'">
+			</span>
+			<span style="font-size: 12pt;"> <input type="button"
+				value="삭제" onclick="deleteAnnouncement()">
+			</span>
+		</c:if>
 	</div>
 
 	<!-- Footer Section Begin -->

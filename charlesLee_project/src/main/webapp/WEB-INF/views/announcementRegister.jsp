@@ -88,7 +88,10 @@
 		</div>
 	</section>
 	<!-- Hero Section End -->
+	
+	
 	<!-- Contact Form Begin -->
+	<c:if test="${memberId == 'admin'}">
 	<div class="contact-form spad">
 		<div class="container">
 			<div class="row">
@@ -122,8 +125,12 @@
 			</form>
 		</div>
 	</div>
+	</c:if>
+	<c:if test="${memberId != 'admin'}">
+   		<p align="center"><b><span style="font-size:12pt;">관리자 전용 서비스입니다.</span></b></p>
+	</c:if>
 	<!-- Contact Form End -->
-
+	
 
 	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>
