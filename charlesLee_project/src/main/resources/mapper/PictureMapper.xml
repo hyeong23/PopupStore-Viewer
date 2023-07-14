@@ -21,11 +21,12 @@
  	</insert>
   	
   	<select id="getPictureByStoreNum" resultMap="pictureResultMap">
-  		SELECT picture_name FROM picture WHERE store_num = #{storeNum}
+  		SELECT store_num, picture_name FROM picture WHERE store_num = #{storeNum}
   	</select>
   
   	 <resultMap id="pictureResultMap" type="popup.dto.Picture">
         <result property="pictureName" column="picture_name" />
+        <result property="storeNum" column="store_num" />
     </resultMap>
   
   

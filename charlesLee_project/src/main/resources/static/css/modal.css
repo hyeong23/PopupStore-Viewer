@@ -18,7 +18,7 @@ ul.imgs{
 ul.imgs li{
     position: absolute;
     left: 640px;
-    transition-delay: 1s; /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
+    transition-delay: 0.4s; /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
     padding: 0;
     margin: auto;
 }
