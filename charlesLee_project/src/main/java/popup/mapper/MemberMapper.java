@@ -2,6 +2,7 @@ package popup.mapper;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -46,6 +47,8 @@ public interface MemberMapper {
 	// 회원 탈퇴
 	@Delete("DELETE FROM Member WHERE member_id = #{memberId}")
 	void deleteMember(@Param("memberId") String memberId);
+
+	List<String> getBussinessMember() throws SQLException;
 
 
 

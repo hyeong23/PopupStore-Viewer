@@ -7,7 +7,7 @@
   
   <insert id="insertPicture" parameterType = "popup.dto.Picture">
  		INSERT INTO 
- 		picture (picture_num,store_num,picture_path,picture_name,picture_original_name,picture_size,picture_date)
+ 		picture (picture_num,store_num,picture_path,picture_name,picture_original_name,picture_size,picture_date,picture_type)
  		VALUES(
 			    picture_sequence.nextval,
 				#{storeNum}, 
@@ -15,7 +15,8 @@
 				#{pictureName},
 				#{pictureOriginalName},
 				#{pictureSize},      
-				SYSDATE
+				SYSDATE,
+				#{pictureType}
 	
  		)
  	</insert>

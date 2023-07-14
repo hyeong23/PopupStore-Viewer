@@ -129,7 +129,12 @@
 	</update>
 
 
-
+    <select id="getBussinessMember" resultType="String">
+		SELECT
+		member_company_name
+		From Member
+		WHERE member_company_name is Not null
+	</select>
 
 
 

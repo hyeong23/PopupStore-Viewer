@@ -58,6 +58,7 @@ public class StoreController {
 	public String insertStore(@ModelAttribute Store store,
 							  @Param("category1") String category1,
 							  @Param("category2") String category2,
+							  @RequestPart("thumbnail") MultipartFile thumbnail,
 							  @RequestPart("picture") MultipartFile[] pictures,
 							  HttpSession session,
 							  Model model)  {
@@ -67,10 +68,13 @@ public class StoreController {
 		boolean storeResult = false;
 		boolean categoryResult1 = false;
 		boolean categoryResult2 = false;
+		boolean thumbnailResult = false;
 		boolean pictureResult = false;
 		
 		int storeNum = 0;
-
+		int thumbnailType = 1;
+		int pictureType = 0;
+		
 		if(category1 == category2) {
 			category2 = null;
 		}
@@ -95,14 +99,15 @@ public class StoreController {
 				categoryResult1 = categoryService.insertCategory(storeNum,category1);
 			}
 			
+			thumbnailResult = pictureService.insertPicture(storeNum,thumbnail,thumbnailType);
 			//for문으로 여러파일 업로드
 			for (MultipartFile picture : pictures) {
 	            
-	            pictureResult = pictureService.insertPicture(storeNum,picture);
+	            pictureResult = pictureService.insertPicture(storeNum,picture,pictureType);
 	        }
 			
 			
-			if(storeResult && categoryResult1 && pictureResult) {
+			if(storeResult && categoryResult1 && pictureResult && thumbnailResult) {
 				view = "redirect:storeList";
 			}
 			

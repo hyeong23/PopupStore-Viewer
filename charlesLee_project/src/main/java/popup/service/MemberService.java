@@ -3,6 +3,7 @@ package popup.service;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -181,6 +182,13 @@ public class MemberService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<String> getBussinessMember() throws SQLException {
+		
+		List<String> companyName = memberMapper.getBussinessMember();
+
+		return companyName;
 	}
 
 
