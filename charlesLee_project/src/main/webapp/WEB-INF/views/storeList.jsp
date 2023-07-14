@@ -53,7 +53,8 @@
    <%@ include file="header.jsp" %>
     <!-- Header Section End -->
     
-<section class="breadcrumb-section set-bg"
+   <!-- 맨위 배너 --> 
+	<section class="breadcrumb-section set-bg"
 		data-setbg="img/breadcrumb.jpg">
 		<div class="container">
 			<div class="row">
@@ -66,73 +67,105 @@
 		</div>
 		
 	</section>
-
-<div id="table-responsive table-scroll">
-
+	<!-- 맨위 배너 End-->
 	
-	<div id="bbsList_header">
-		<div id="leftHeader">
-		<form action="" method="get" name="searchForm">
-			<select name="searchKey" class="selectField">
-				<option value="subject">제목</option>
-				<option value="name">작성자</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="text" name="searchValue" class="textField"/>
-			<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>		
-		</form>				
-		</div>
-		
-	</div>
-	<div id="bbsList_list">
-	<c:if test="${empty requestScope.store}">
-			<tr>
-				<td colspan="5">
-					<p align="center">
-						<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
-					</p>
-				</td>
-			</tr>
-		</c:if>
-	
-	
-  <table align="center" border="0" cellpadding="5" cellspacing="2"
-		width="100%" bordercolordark="white" bordercolorlight="black">
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>조회수</th>
-        <th>승인/거부</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach items="${requestScope.store}" var="store">
-        <tr>
-          <td>${store.storeNum}</td>
-          <td><a href="/storeRegister">${store.storeTitle}</a></td>
-          <td>
-		<c:if test="${store.memberCompanyName eq null}">
-			${store.memberNickname}
-		</c:if>
-		<c:if test="${store.memberCompanyName ne null}">
-			${store.memberCompanyName}
-		</c:if>
-		</td>
+	 <!-- nav바 -->
+<!-- <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>All departments</span>
+                        </div>
+                        <ul>
+                            <li><a href="#">Fresh Meat</a></li>
+                            <li><a href="#">Vegetables</a></li>
+                            <li><a href="#">Fruit & Nut Gifts</a></li>
+                            <li><a href="#">Fresh Berries</a></li>
+                            <li><a href="#">Ocean Foods</a></li>
+                            <li><a href="#">Butter & Eggs</a></li>
+                            <li><a href="#">Fastfood</a></li>
+                            <li><a href="#">Fresh Onion</a></li>
+                            <li><a href="#">Papayaya & Crisps</a></li>
+                            <li><a href="#">Oatmeal</a></li>
+                            <li><a href="#">Fresh Bananas</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section> -->
+	<!-- nav바  End-->
+<br><br>
+<div class="container">
+<div class="card">
+		<div class="table-responsive table-scroll"data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+			<table class="table table-striped mb-0">
+				<thead style="background-color: #7fad39; text-align: center; color: white">
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">조회수</th>
+						<th scope="col">승인/거부</th>
+					</tr>
+				</thead>
+			<tbody style="text-align: center;">
+				<c:if test="${empty requestScope.store}">
+					<tr>
+						<td colspan="5">
+							<p align="center">
+								<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
+							</p>
+						</td>
+					</tr>
+				</c:if>
+    		    <c:forEach items="${requestScope.store}" var="store">
+      			  <tr>
+      			 	    <td>
+      			 	  		 <p align="center">
+      			 				 <b><span style="font-size: 12pt;">  ${store.storeNum}</span></b>
+      			 			 </p>
+      			 	   </td>
+      			 	 
+      			 	   <td> 
+      			 	   		 <p align="center">
+      			 				 	<b><span style="font-size: 12pt;"><a href="/storeRegister">${store.storeTitle}</a></span></b>
+      			 			 </p></td>
+      			 	   <td>
+							<c:if test="${store.memberCompanyName eq null}">
+							 <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">
+								${store.memberNickname}</span></b>
+      			 			 </p>
+							</c:if>
+							<c:if test="${store.memberCompanyName ne null}">
+							 <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">
+								${store.memberCompanyName}</span></b>
+      			 			 </p>
+							</c:if>
+						</td>
          
-          <td>${store.storeCount}</td>
-          <td>${store.storeStatus}</td>
-        </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+        			   <td> <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
+      			 			 </p>
+      			 	  </td>
+        			   <td> <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
+      			 			 </p>
+      			 	  </td>
+      		   	  </tr>
+   			   </c:forEach>   			
+
+			</tbody>
+		</table>
+	 </div>
+  </div>
 </div>
-	
-</div>
-
-
-
     <!-- Footer Section Begin -->
     <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
