@@ -37,13 +37,27 @@
 </head>
 <body>
 	<!-- Page Preloder -->
-	<!-- <div id="preloder">
-        <div class="loader"></div>
-    </div> -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
 	<!-- Header Section Begin -->
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
+
+	<section class="breadcrumb-section set-bg"
+		data-setbg="img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Mypage</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
 
 	<div class="container" style="padding: 0;">
 		<div class="row">
@@ -63,22 +77,23 @@
 						</div>
 					</div>
 					<h2 align="center" style="margin-top: -600px; text-align: right;">회원정보수정</h2>
-					<form action="/mypage" method="POST">
+					<form id="mypageForm" action="/mypage" method="POST">
 						<table>
 							<tr>
 								<td style="text-align: right;">* 아이디</td>
 								<td style="text-align: left;">${member.memberId }</td>
+								<td><input type="hidden" name="memberId"
+									value="${member.memberId}"></td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 비밀번호</td>
+								<td style="text-align: right;">* 새 비밀번호</td>
 								<td style="text-align: left;"><input type="password"
-									name="memberPw" value=""></td>
+									name="memberPw" id="memberPw" value="" required></td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 비밀번호 확인</td>
+								<td style="text-align: right;">*새 비밀번호 확인</td>
 								<td style="text-align: left;"><input type="password"
-									name="memberPwCheck" id="memberPwCheck" value="">
-									<button onclick="checkPassword()">확인</button></td>
+									name="memberPwCheck" id="memberPwCheck" value="" required></td>
 								<td id="errorMessage" style="color: red;"></td>
 							</tr>
 							<tr>
@@ -87,11 +102,12 @@
 										<p style="color: red;">${error}</p>
 									</c:if></td>
 							</tr>
+
 							<tr id="nicknameRow">
 								<td style="text-align: right;">* 닉네임</td>
 								<td style="text-align: left;"><input type="text"
-									name="memberNickname" value="<%=member.getMemberNickname()%>">
-								</td>
+									id="memberNickname" name="memberNickname"
+									value="${member.memberNickname}"></td>
 							</tr>
 							<tr id="companyNameRow">
 								<td style="text-align: right;">* 업체명</td>
@@ -102,8 +118,8 @@
 							<tr id="companyNumRow">
 								<td style="text-align: right;">* 사업자번호</td>
 								<td style="text-align: left;"><input type="text"
-									name="memberCompanyNum" value="${member.memberCompanyNum}">
-								</td>
+									id="memberCompanyNum" name="memberCompanyNum"
+									value="${member.memberCompanyNum}"></td>
 							</tr>
 							<tr>
 								<td style="text-align: right;">* 이메일</td>
@@ -113,85 +129,135 @@
 
 							<tr>
 								<td style="text-align: right;">* 유저타입</td>
-								<td style="text-align: left;"><input type="text"
-									name="memberType" value="${member.memberType}"></td>
+								<td style="text-align: left;">${member.memberType}</td>
+								<td><input type="hidden" name="memberType"
+									value="${member.memberType}"></td>
 							</tr>
 							<tr>
 								<td style="text-align: right;">* 생성일</td>
-								<td style="text-align: left;"><input type="text"
-									name="memberCreate" value="${member.memberCreate}" readonly>
-								</td>
+								<td style="text-align: left;">${member.memberCreate}</td>
+								<td><input type="hidden" name="memberCreate"
+									value="${member.memberCreate}"></td>
 							</tr>
 							<tr>
 								<td style="text-align: right;">* 수정일</td>
-								<td style="text-align: left;"><input type="text"
-									name="memberUpdate" value="${member.memberUpdate}"></td>
+								<td style="text-align: left;">${member.memberUpdate}</td>
+								<td><input type="hidden" name="memberUpdate"
+									value="${member.memberUpdate}"></td>
 							</tr>
 
 							<tr>
 							<tr>
-								<td colspan="2" align="center"><input type="submit"
-									value="수정하기">
-									<button type="button" onclick="removeMember();">탈퇴하기</button> <!-- //type을 button으로 꼭 적어줘야! submit이 되지 않는다!! 꼭 기억하기!--></td>
+								<td colspan="2" align="center">
+									<button type="submit" onclick="confirmModification()">정보
+										수정</button> <!-- //type을 button으로 꼭 적어줘야! submit이 되지 않는다!! 꼭 기억하기!-->
+									<button type="button" onclick="removeMember()">회원탈퇴</button>
+								</td>
 							</tr>
 						</table>
 
 					</form>
+
+
+
 				</div>
+			</div>
+		</div>
+		<!-- Footer Section Begin -->
+		<%@ include file="footer.jsp"%>
+		<!-- Footer Section End -->
 
-				<script>
-    function removeMember() {
-        if (window.confirm("탈퇴하시겠습니까?")) {
-            // 서버로 회원 탈퇴 요청
-            fetch('/deleteMember', {
-                method: 'POST',
-                credentials: 'same-origin' // 쿠키 정보를 함께 보냄
-            })
-            .then(response => {
-                if (response.ok) {
-                    // 탈퇴 성공 시 메인 페이지로 이동
-                    location.href = "/main";
-                } else {
-                    // 탈퇴 실패 시 에러 메시지 표시
-                    alert("회원 탈퇴 중 오류가 발생했습니다.");
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("회원 탈퇴 중 오류가 발생했습니다.");
-            });
-        }
-    }
-    
-    function checkPassword() {
-        var password = document.getElementById('memberPw').value;
-        var passwordCheck = document.getElementById('memberPwCheck').value;
-        var errorMessage = document.getElementById('errorMessage');
+		<!-- Js Plugins -->
+		<script src="/js/jquery-3.3.1.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.nice-select.min.js"></script>
+		<script src="/js/jquery-ui.min.js"></script>
+		<script src="/js/jquery.slicknav.js"></script>
+		<script src="/js/mixitup.min.js"></script>
+		<script src="/js/owl.carousel.min.js"></script>
+		<script src="/js/main.js"></script>
 
-        if (password !== passwordCheck) {
-            errorMessage.textContent = '비밀번호가 일치하지 않습니다.';
-        } else {
-            errorMessage.textContent = '';
-        }
-    }
-    
-    // 비즈니스(2)로 로그인 시 닉네임 창 X,일반회원(1)으로 로그인 시  사업자번호와 업체명 행 삭제
-    window.onload = function() {
-        var memberType = <%=member.getMemberType()%>;
-        
-        if (memberType === 2) {
-            var nicknameRow = document.getElementById("nicknameRow");
-            nicknameRow.style.display = "none";
-        }
-        
-        if (memberType === 1) {
-            var companyNumRow = document.getElementById("companyNumRow");
-            var companyNameRow = document.getElementById("companyNameRow");
-            companyNumRow.style.display = "none";
-            companyNameRow.style.display = "none";
-        }
-    };
-    
-</script>
+		<script>
+                    
+		function confirmModification() {
+		    var password = document.getElementById('memberPw').value;
+
+		    if (window.confirm("수정하시겠습니까?")) {
+		        if (password.trim() === '') {
+		            alert('비밀번호를 입력해주세요.');
+		            return;
+		        }
+		        if (!checkPassword()) {
+		            alert('비밀번호가 일치하지 않습니다.');
+		            goToMyPage();
+		            return;
+		        }
+		        document.getElementById("mypageForm").submit();
+		        showCompletionMessage();
+		    }
+		}
+
+		function showCompletionMessage() {
+		    alert("수정이 완료되었습니다.");
+		}
+
+		function checkPassword() {
+		    var password = document.getElementById('memberPw').value;
+		    var passwordCheck = document.getElementById('memberPwCheck').value;
+		    var errorMessage = document.getElementById('errorMessage');
+
+		    if (password !== passwordCheck) {
+		        errorMessage.textContent = '비밀번호가 일치하지 않습니다.';
+		        return false;
+		    } else {
+		        errorMessage.textContent = '';
+		        return true;
+		    }
+		}
+
+		function goToMyPage() {
+		    location.assign("/mypage");
+		}
+
+                    function removeMember() {
+                        if (window.confirm("탈퇴하시겠습니까?")) {
+                            // 서버로 회원 탈퇴 요청
+                            fetch('/deleteMember', {
+                                method: 'POST',
+                                credentials: 'same-origin' // 쿠키 정보를 함께 보냄
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    // 탈퇴 성공 시 메인 페이지로 이동
+                                    location.href = "/main";
+                                } else {
+                                    // 탈퇴 실패 시 에러 메시지 표시
+                                    alert("회원 탈퇴 중 오류가 발생했습니다.");
+                                }
+                            })
+                            .catch(error => {
+                                console.error(error);
+                                alert("회원 탈퇴 중 오류가 발생했습니다.");
+                            });
+                        }
+                    }
+
+                    // 비즈니스(2)로 로그인 시 닉네임 창 X, 일반회원(1)으로 로그인 시 사업자번호와 업체명 행 삭제
+                    window.onload = function() {
+                        var memberType = <%=member.getMemberType()%>;
+
+                        if (memberType === 2) {
+                            var nicknameRow = document.getElementById("nicknameRow");
+                            nicknameRow.style.display = "none";
+                        }
+
+                        if (memberType === 1) {
+                            var companyNumRow = document.getElementById("companyNumRow");
+                            var companyNameRow = document.getElementById("companyNameRow");
+                            companyNumRow.style.display = "none";
+                            companyNameRow.style.display = "none";
+                        }
+                    };
+                </script>
 </body>
 </html>

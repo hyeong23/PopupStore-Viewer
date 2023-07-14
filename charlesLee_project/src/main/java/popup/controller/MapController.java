@@ -1,5 +1,6 @@
 package popup.controller;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import popup.dto.Picture;
 import popup.service.OpenStoreService;
+import popup.service.ReplyService;
+import popup.vo.ReplyVo;
 import popup.service.PictureService;
 import popup.vo.StoreVo;
 
@@ -24,15 +27,20 @@ public class MapController {
 	OpenStoreService openStoreService;
 	
 	@Autowired
+	ReplyService replyService;
+  
+  @Autowired
 	PictureService pictureService;
 	
 	@RequestMapping(value = "/map")
 	public String getMap(Model model, HttpSession session) {
 		
 		List<StoreVo> getMapList = openStoreService.getMapStore();
+		List<ReplyVo> getReplyList = replyService.getReplyList();
 		
 		
 		model.addAttribute("getMapList", getMapList);
+		model.addAttribute("getReplyList", getReplyList);
 		
 		
 		
@@ -50,6 +58,7 @@ public class MapController {
 		
 		
 		System.out.println(getMapList);
+		System.out.println(getReplyList);
 		
 		
 		

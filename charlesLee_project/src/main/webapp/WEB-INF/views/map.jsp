@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -43,59 +44,25 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="map" style="width:800px;height:400px; margin : auto"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+	<section class="breadcrumb-section set-bg"
+		data-setbg="img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Map</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
     <!-- Hero Section End -->
-
+    
+    
+  <div id="map" style="width:800px;height:400px; margin : auto"></div>
+  
+  
 
 
     <!-- Footer Section Begin -->
@@ -135,11 +102,13 @@
 			    <div class="bullets" id = "bullets${map.storeNum}">
 			        <label for="slide1">&nbsp;</label>
 			    </div>
+
 			    <ul id="imgholder${map.storeNum}" class="imgs">
 					<li><img src = "picture/${map.pictureName}"></li>
 			    </ul>
 			    
 			    
+
 			</div>	
 
 	      	 <div>
@@ -157,27 +126,59 @@
 	      	 
 	      
 	      
-	      <div class="modal-footer">
+	      <!-- <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
+	      </div> -->
+            </div>
             </div>
 			<div class="modal-replywindow">
             <div class="title">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
-                <h2>댓글</h2>
+	        <h2>댓글</h2>
                 
+                <div class="reply-list">
+                
+               <c:forEach items="${getReplyList}" var="reply">
+                <c:if test="${reply.storeNum eq map.storeNum}">
+               <div class="reply-each">
+        		 	<p>${reply.memberNickname}<p>
+     	    	 	<p>${reply.reply}<p>
+      				<p>${reply.replyUpdate}<p> 
+      		   </div>
+      		   </c:if>
+		      </c:forEach>
+      
+      </div>
+      <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
+                <div class="reply-send">
+               			 
+						<%-- <!-- hidden 영역 -->
+  					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
+   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
+     				   <!-- 입력 영역 -->    				
+                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
+                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="reply-send-btn" id="send_message"/></div>
+                        
+                    </div>
+                    </form>
             </div>
 <!--             <div class="close-area">X</div> -->
 	    	</div>
-	  </div>
+	  
 	  </div>
 	</div>
 	</div>
 	</c:forEach>
-
+<div style="width: 500px; height: 500px; background-color: #a191a5">
+	댓글리스트 
+	<c:forEach items="${getReplyList}" var="reply" varStatus="vs">
+		<p> ${reply.reply} </p>
+	</c:forEach>
+	
+ </div>
 
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=690096255b88e30ead8c02ac790dd149&libraries=services">

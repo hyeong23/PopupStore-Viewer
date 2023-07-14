@@ -55,7 +55,7 @@
 	<!-- count -->  
 	<update id="countAnnouncement" parameterType="popup.dto.Announcement">
  		UPDATE announcement 
- 		SET announcement_count = #{announcementCount} + 1
+ 		SET announcement_count =  announcement_count + 1
  		WHERE announcement_num = #{announcementNum}
  	</update>
 </mapper>

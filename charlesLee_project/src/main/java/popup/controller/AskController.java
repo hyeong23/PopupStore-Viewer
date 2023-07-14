@@ -31,11 +31,7 @@ public class AskController {
 			askResult = askService.insertAsk(newAsk);
 			System.out.println(newAsk);
 		 if(askResult) {
-				// version 1
-////			view = "main";
-////			model.addAttribute("deptList", service.getAllDepts());
-//			
-			// version2 
+
 			view = "redirect:/main";
 			return view;
 		 }

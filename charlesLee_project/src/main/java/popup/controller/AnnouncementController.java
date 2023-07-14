@@ -40,10 +40,11 @@ public class AnnouncementController {
 	@RequestMapping(value = "/announcement/{announcementNum}", method = RequestMethod.GET)
 	public String announcement(@PathVariable int announcementNum, Model model) throws Exception {
 
+		// 조회수
+		announcementService.countAnnouncement(announcementNum);
+		
 		Announcement announcement = announcementService.getAnnouncement(announcementNum);
 		
-		// 조회수
-		boolean result = announcementService.countAnnouncement(announcementNum);
 		
 		model.addAttribute("announcement", announcement);
 
@@ -138,25 +139,5 @@ public class AnnouncementController {
 
 		return view;
 	}
-
-	// 조회수
-	// http://localhost:8081/announcement/announcementNum
-//	@RequestMapping("/announcement/{announcementNum}")
-//	public String countAnnouncement(@PathVariable int announcementNum, Model model) throws Exception {
-//		String view = "error";
-//		try {
-//			
-//
-//			if (result) {
-//				view = "redirect:/announcement";
-//				return view;
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return view;
-//	}
 
 }

@@ -38,12 +38,7 @@ body {
 	font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 	color: #111111;
 	font-weight: 400;
@@ -178,10 +173,41 @@ ol {
 	font-weight: 800;
 	text-transform: uppercase;
 	display: inline-block;
-	padding: 13px 30px 12px;
 	background: #7fad39;
 	border: none;
 }
+
+.reply-send-btn {
+	font-size: 14px;
+	color: #ffffff;
+	font-weight: 800;
+	text-transform: uppercase;
+	display: inline-block;
+	background: #7fad39;
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+
+.reply-send{
+	display:flex;
+	background-color:#568214;
+	width: 325px;
+	height: 100px;
+}
+
+ .reply_textarea{
+ 			width:250px;
+ 			height:100px;
+ 			background-color: #545334;
+ }
+  .reply_sendBtn{
+  			left:200px;
+  			top:-100px;
+ 			width:75px;
+ 			height:100px;
+ 			background-color: #a4a3a4;
+ }
 
 /* Preloder */
 

@@ -34,136 +34,76 @@
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
 
-	<!-- Hero Section Begin -->
-	<section class="hero hero-normal">
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg"
+		data-setbg="/img/breadcrumb.jpg">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3">
-					<div class="hero__categories">
-						<div class="hero__categories__all">
-							<i class="fa fa-bars"></i> <span>All departments</span>
-						</div>
-						<ul>
-							<li><a href="#">Fresh Meat</a></li>
-							<li><a href="#">Vegetables</a></li>
-							<li><a href="#">Fruit & Nut Gifts</a></li>
-							<li><a href="#">Fresh Berries</a></li>
-							<li><a href="#">Ocean Foods</a></li>
-							<li><a href="#">Butter & Eggs</a></li>
-							<li><a href="#">Fastfood</a></li>
-							<li><a href="#">Fresh Onion</a></li>
-							<li><a href="#">Papayaya & Crisps</a></li>
-							<li><a href="#">Oatmeal</a></li>
-							<li><a href="#">Fresh Bananas</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-9">
-					<div class="hero__search">
-						<div class="hero__search__form">
-							<form action="#">
-								<div class="hero__search__categories">
-									All Categories <span class="arrow_carrot-down"></span>
-								</div>
-								<input type="text" placeholder="What do yo u need?">
-								<button type="submit" class="site-btn">SEARCH</button>
-							</form>
-						</div>
-						<div class="hero__search__phone">
-							<div class="hero__search__phone__icon">
-								<i class="fa fa-phone"></i>
-							</div>
-							<div class="hero__search__phone__text">
-								<h5>+65 11.188.888</h5>
-								<span>support 24/7 time</span>
-							</div>
-						</div>
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Notice</h2>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</section>
-	<!-- Hero Section End -->
+	<!-- Breadcrumb Section End -->
 
-	<form action="/announcement/modify/${announcement.announcementNum}"
-		method="GET" name="detailForm" id="detailForm">
-		<h3>공지사항</h3>
-		<table align="center" border="0" cellpadding="5" cellspacing="2"
-			width="100%" bordercolordark="white" bordercolorlight="black">
-			<tr>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">번호</span></b>
-					</p>
-				</td>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">제목</span></b>
-					</p>
-				</td>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">날짜</span></b>
-					</p>
-				</td>
-				<td>
-					<p align="center">
-						<b><span style="font-size: 12pt;">조회수</span></b>
-					</p>
-				</td>
+	<!-- content Begin -->
+	<br>
+	<br>
+	<!-- Page content-->
+	<form action="/announcemnet/modify/${announcement.announcementNum}"
+		method="GET" name="detailForm" id="detailForm"">
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-lg-8">
+					<article>
+						<!-- Post title-->
+						<div class="text-muted fst-italic mb-2">
+							<span id="announcementNum">${announcement.announcementNum}
+							</span>
+						</div>
+						<h2 class="fw-bolder mb-1">
+							<div class="section-title product__discount__title">
+								<h2>${announcement.announcementTitle}</h2>
+							</div>
+						</h2>
+						<!-- Post meta content-->
+						<div class="text-muted fst-italic mb-2">
+							<div class="left">작성일 : ${announcement.announcementUpdate}</div>
+							<div class="right">조회수 : ${announcement.announcementCount}</div>
+						</div>
+						<hr>
+						<!-- Post content-->
+						<section class="mb-5">
+						<div class="scrollBody" data-mdb-perfect-scrollbar="true" style="position: relative; height: 500px">
+							<h5>${announcement.announcementBody}</h5>
+						</div>
+						</section>
+					</article>
 
-			</tr>
+				</div>
 
-			<tr>
-				<td bgcolor="">
-					<p align="center">
-						<span id="announcementNum" style="font-size: 12pt;">
-							<!-- 번호 -->${announcement.announcementNum}
-						</span>
-
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 제목 --> <b>${announcement.announcementTitle}</b>
-						</span>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 작성일 --> <b>${announcement.announcementUpdate}</b>
-						</span>
-					</p>
-				</td>
-				<td bgcolor="">
-					<p align="center">
-						<span style="font-size: 12pt;"> <!-- 조회수 --> <b>${announcement.announcementCount}</b>
-						</span>
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p align="left" width="80%">
-						<span style="font-size: 12pt;"> <!-- 글내용 --> <b>${announcement.announcementBody}</b>
-						</span>
-					</p>
-				</td>
-			</tr>
-		</table>
+			</div>
+		</div>
 	</form>
-	<hr>
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button" value="목록"
 			onclick="location.href='/announcement'">
-		</span> <span style="font-size: 12pt;"> <input type="button"
-			value="수정"
-			onclick="location.href='/announcement/modify/${announcementNum}'">
-		</span> <span style="font-size: 12pt;"> <input type="button"
-			value="삭제" onclick="deleteAnnouncement()">
 		</span>
-
+		<c:if test="${memberId == 'admin'}">
+			<span style="font-size: 12pt;"> <input type="button"
+				value="수정"
+				onclick="location.href='/announcement/modify/${announcementNum}'">
+			</span>
+			<span style="font-size: 12pt;"> <input type="button"
+				value="삭제" onclick="deleteAnnouncement()">
+			</span>
+		</c:if>
 	</div>
 
 	<!-- Footer Section Begin -->

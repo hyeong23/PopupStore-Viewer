@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/list.css" type="text/css">
+    
  <style>
 #bbsList_list {
   display: flex;
@@ -53,8 +53,24 @@
    <%@ include file="header.jsp" %>
     <!-- Header Section End -->
     
- <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+   <!-- 맨위 배너 --> 
+	<section class="breadcrumb-section set-bg"
+		data-setbg="img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>StoreList</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+	<!-- 맨위 배너 End-->
+	
+	 <!-- nav바 -->
+<!-- <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -64,7 +80,7 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="/storeRegister">팝업스토어 등록</a></li>
+                            <li><a href="#">Fresh Meat</a></li>
                             <li><a href="#">Vegetables</a></li>
                             <li><a href="#">Fruit & Nut Gifts</a></li>
                             <li><a href="#">Fresh Berries</a></li>
@@ -78,103 +94,78 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    
             </div>
         </div>
-    </section>
-    <!-- Hero Section End -->
-
-<div id="bbsList">
-
-	
-	<div id="bbsList_header">
-		<div id="leftHeader">
-		<form action="" method="get" name="searchForm">
-			<select name="searchKey" class="selectField">
-				<option value="subject">제목</option>
-				<option value="name">작성자</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="text" name="searchValue" class="textField"/>
-			<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>		
-		</form>				
-		</div>
-		<div id="rightHeader" style="text-align: right;">
-			<input type="button" value=" 글올리기 " class="btn2" 
-			onclick="javascript:location.href='/board/created.jsp';"/>			
-		</div>	
-	</div>
-	<div id="bbsList_list">
-	<c:if test="${empty requestScope.store}">
-			<tr>
-				<td colspan="5">
-					<p align="center">
-						<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
-					</p>
-				</td>
-			</tr>
-		</c:if>
-	
-	
-  <table align="center" border="0" cellpadding="5" cellspacing="2"
-		width="100%" bordercolordark="white" bordercolorlight="black">
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>조회수</th>
-        <th>승인/거부</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach items="${requestScope.store}" var="store">
-        <tr>
-          <td>${store.storeNum}</td>
-          <td><a href="/storeRegister">${store.storeTitle}</a></td>
-          <td>
-		<c:if test="${store.memberCompanyName eq null}">
-			${store.memberNickname}
-		</c:if>
-		<c:if test="${store.memberCompanyName ne null}">
-			${store.memberCompanyName}
-		</c:if>
-		</td>
+    </section> -->
+	<!-- nav바  End-->
+<br><br>
+<div class="container">
+<div class="card">
+		<div class="table-responsive table-scroll"data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+			<table class="table table-striped mb-0">
+				<thead style="background-color: #7fad39; text-align: center; color: white">
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">조회수</th>
+						<th scope="col">승인/거부</th>
+					</tr>
+				</thead>
+			<tbody style="text-align: center;">
+				<c:if test="${empty requestScope.store}">
+					<tr>
+						<td colspan="5">
+							<p align="center">
+								<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
+							</p>
+						</td>
+					</tr>
+				</c:if>
+    		    <c:forEach items="${requestScope.store}" var="store">
+      			  <tr>
+      			 	    <td>
+      			 	  		 <p align="center">
+      			 				 <b><span style="font-size: 12pt;">  ${store.storeNum}</span></b>
+      			 			 </p>
+      			 	   </td>
+      			 	 
+      			 	   <td> 
+      			 	   		 <p align="center">
+      			 				 	<b><span style="font-size: 12pt;"><a href="/storeRegister">${store.storeTitle}</a></span></b>
+      			 			 </p></td>
+      			 	   <td>
+							<c:if test="${store.memberCompanyName eq null}">
+							 <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">
+								${store.memberNickname}</span></b>
+      			 			 </p>
+							</c:if>
+							<c:if test="${store.memberCompanyName ne null}">
+							 <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">
+								${store.memberCompanyName}</span></b>
+      			 			 </p>
+							</c:if>
+						</td>
          
-          <td>${store.storeCount}</td>
-          <td>${store.storeStatus}</td>
-        </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+        			   <td> <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
+      			 			 </p>
+      			 	  </td>
+        			   <td> <p align="center">
+      			 				 	<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
+      			 			 </p>
+      			 	  </td>
+      		   	  </tr>
+   			   </c:forEach>   			
+
+			</tbody>
+		</table>
+	 </div>
+  </div>
 </div>
-	
-</div>
-
-
-
     <!-- Footer Section Begin -->
     <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->

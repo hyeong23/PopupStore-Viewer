@@ -53,59 +53,33 @@
    <%@ include file="header.jsp" %>
     <!-- Header Section End -->
     
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
+    <!-- 맨위 배너 -->
+    <section class="breadcrumb-section set-bg"
+		data-setbg="img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>StoreRegister</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+	<!-- 맨위 배너 End-->
+	
+	 <!-- nav바 -->
 
+	<!-- nav바  End-->
+	
+	
+	
+	
+	
+	
+	
+	
     <!-- Contact Form Begin -->
     <div class="contact-form spad" style="height: auto">
         <div class="container">
@@ -193,8 +167,8 @@
 							</div>
            				  </div>
 
-           				  <div class="picture-footer">
-                			
+           				  <div class="picture-footer" >
+                			<span><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
                 		  </div>
         	       </div>	
                    
@@ -267,6 +241,8 @@ function addFileInput() {
 
     // fileContainer에 파일 입력란 추가
     fileContainer.appendChild(fileInput);
+    
+	
 }
 
 function previewImage(event) {
@@ -364,18 +340,7 @@ function previewImage2(event) {
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
- /*  $(document).ready(function() {
-    // 버튼 클릭 이벤트 처리
-    $('#submit').on('click', function(event) {
-      if (!$('#check1').is(':checked')) {
-        // 체크되지 않은 상태에서 버튼 클릭 시 동작
-        alert('이용 약관에 동의해주세요');
-        event.preventDefault(); // submit 동작 막기
-      }
-    });
-  }); */
-</script>
+    
  
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -393,19 +358,59 @@ window.onload = function(){
 
 
 <script>
-const storeStart = document.getElementById('storeStart'); //객체생성
-const storeEnd = document.getElementById("storeEnd"); 
+
 function formChecking(){
-	if(storeStart.value > storeEnd.value){
+	var storeTitle = document.getElementById("storeTitle").value;
+	var storeIntro = document.getElementById("storeIntro").value;
+	var storeStart = document.getElementById("storeStart").value;
+	var storeEnd = document.getElementById("storeEnd").value;
+	var storeBody = document.getElementById("storeBody").value;
+	var storeLoc = document.getElementById("storeLoc").value;
+	var storeLocDetail = document.getElementById("storeLocDetail").value;
+	var storeSite = document.getElementById("storeSite").value;
+
+	var category1 = document.querySelector('input[name="category1"]:checked');
+
+	var thumbnail = document.getElementById("thumbnail");
+	var imgholder = document.getElementById("imgholder");
+	
+	
+	if (storeTitle === "" || storeIntro === "" || storeStart === "" || storeEnd === "" || storeBody === "" || storeLoc === ""|| storeLocDetail === ""|| storeSite === "") {
+		  alert("빈 칸을 채워주세요.");
+		  return false; // 폼 제출 방지
+	}
+
+	
+	if(storeStart > storeEnd){
 		alert("시작일이 종료일 이후로 설정되어 있습니다.");
 		return false;		
 	}
-
+	
+	if(!category1){
+		 alert("주 카테고리를 선택해 주세요.");
+	        return false;
+	}
+	
+	if (thumbnail.files.length === 0) {
+        alert("썸네일을 선택해주세요.");
+        return false;
+    }
+	
+	
+	
+	 // 추가된 파일이 없을 경우 알림 표시
+    if (imgholder.children.length === 0) {
+        alert("사진을 선택해주세요.");
+        return false;
+    }
+	
+	
 	return true;
 };
 </script>
 
 
+  
 </body>
 
 </html>
