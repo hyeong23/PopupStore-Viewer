@@ -99,18 +99,16 @@
 	      <div class="modal-body">
 			<div class="slider">
 			    <input type="radio" name="slide" id="slide1" checked>
-			    <input type="radio" name="slide" id="slide2">
-			    <input type="radio" name="slide" id="slide3">
-			    <input type="radio" name="slide" id="slide4">
-			    <ul id="imgholder" class="imgs">
-
-			    </ul>
-			    <div class="bullets">
+			    <div class="bullets" id = "bullets${map.storeNum}">
 			        <label for="slide1">&nbsp;</label>
-			        <label for="slide2">&nbsp;</label>
-			        <label for="slide3">&nbsp;</label>
-			        <label for="slide4">&nbsp;</label>
 			    </div>
+
+			    <ul id="imgholder${map.storeNum}" class="imgs">
+					<li><img src = "picture/${map.pictureName}"></li>
+			    </ul>
+			    
+			    
+
 			</div>	
 
 	      	 <div>
@@ -276,36 +274,59 @@
 	
 	geocoder.addressSearch(address, callback);
 	
+	
 
-
-	</c:forEach>
+	
 	function modalClick(storeNum){
 			// 현재 map의 storeNum의 번호가 안바뀜
 			// 클릭 시 해당 storeNum
 			console.log(storeNum);
 			
-			alert(storeNum +"번 예시");
 			// 1을 우선 예시로 사용하는 중
 			axios.get('http://localhost:8081/api/map/' + storeNum)
 			.then(response => {
 				var pictureData = response.data;
 				console.log(pictureData);
-				for(var i = 0; i <= pictureData.length; i++){
+				for(var i = 1; i < pictureData.length; i++){
 					var getPictureName = pictureData[i].pictureName;
+					var showPicture = document.querySelector('#imgholder' + pictureData[i].storeNum);
 					console.log(getPictureName);
-					var showPicture = document.querySelector('#imgholder');
 					var li = document.createElement("li");
 					var picture = document.createElement("img");
 					picture.src = "picture/" + getPictureName;
 					console.log(picture);	
-					
-					li.appendChild(picture);
-					showPicture.appendChild(li);
+					if (showPicture.children.length < pictureData.length) {
+				        
+						li.appendChild(picture);
+						showPicture.appendChild(li);
+						
+						// 추가는 되는데 1번 위치에서만 추가됨
+					 	var slideId = "slide" + (showPicture.children.length);
+				        var bulletLabel = document.createElement("label");
+				        bulletLabel.htmlFor = slideId;
+				        bulletLabel.innerHTML = "&nbsp;";
+
+				        var bullets = document.querySelector('#bullets' + pictureData[i].storeNum);
+				        bullets.appendChild(bulletLabel);
+
+				        var slideInput = document.createElement("input");
+				        slideInput.type = "radio";
+				        slideInput.name = "slide";
+				        slideInput.id = slideId;
+				        slideInput.checked = true;
+				        bullets.parentNode.insertBefore(slideInput, bullets);
+
+				        
+					}
 					
 				};
 				
 			})
+			
+			
+			
 	};
+	</c:forEach>
 </script>
 
 
