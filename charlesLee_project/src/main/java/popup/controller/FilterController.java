@@ -3,6 +3,8 @@ package popup.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,27 +21,16 @@ public class FilterController {
 	@Autowired
 	OpenStoreService openStoreService;
 	
-	@RequestMapping(value = "/filterMain", method = RequestMethod.GET)
-	public String storeListForm(Model model) throws Exception{
-		
-		List<StoreVo> openStoreList = openStoreService.getAllStore();
-		
-		model.addAttribute("openStoreList", openStoreList);
+	@RequestMapping(value = "/filter")
+	public String filterHeader(Model model, HttpSession session) throws SQLException {
 
-		return "filterMain";
-	}
+
+	List<StoreVo> openStoreList = openStoreService.getAllStore();
 	
-	@RequestMapping(value = "/filterTested", method = RequestMethod.GET)
-	public String searchStore(Model model, @RequestParam("inputText") String inputText) throws SQLException {       
-	    List<StoreVo> openStoreList = openStoreService.getStoreByTitle(inputText);
-	    String view = "error";
-	    
-	    if (openStoreList != null) {
-	        model.addAttribute("openStoreList", openStoreList);
-	        view = "filterMain";
-	    }
-	    
-	    return view;
+
+	
+	return "calendar";
+	
 	}
 	
 }

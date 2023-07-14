@@ -26,18 +26,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/list.css" type="text/css">
  
- <style>
-#bbsList_list {
-  display: flex;
-}
-#bbsList_list dl {
-  display: flex;
-  flex-direction: row;
-}
-#bbsList_list dd {
-  flex: 1;
-}
-</style>
+
 
 </head>
 
@@ -53,15 +42,61 @@
 		</div>	
 <br/>
     <div>
-    <form method="get" action="CheckboxServlet">
-    <p>Categories</p>
-		<input type="checkbox" name="item" value="character">캐릭터
-		<input type="checkbox" name="item" value="media">미디어
-		<input type="checkbox" name="item" value="food">식음료
-		<input type="checkbox" name="item" value="fashion">패션/뷰티
-		<input type="checkbox" name="item" value="others">기타
-		<br><br>
+    <form action="/filter" method="GET" >	
+	
+	<div>
+	<p>Categories</p>
+	<select name="category" id="category">
+   	 <option value="select">카테고리</option>
+   	 <option value="character">캐릭터</option>
+   	 <option value="media">미디어</option>
+   	 <option value="food">식음료</option>
+   	 <option value="fashion">패션</option>
+   	 <option value="others">기타</option>
+   </select>
+	</div>
+ <br><br>
+ 
+ <p>Company</p>
+ <c:forEach items="${getBussinessMember}" var="member">
+ 	<div>
+		<input type="checkbox" id="memberCompanyName" name="memberCompanyName" value="${member}">
+ 		  <label for="companyName">${member}</label>
+	</div>
+</c:forEach>
+	<p>Heart</p>
+	<div id ="store_stc">
+		
+		 <div id="store_chk">
+				<input type="radio" id="heart" name="heart" value=0 checked="checked">전체
+		 </div>
+  	   	 <div id="store_chk">
+				<input type="radio" id="heart" name="heart" value=1>좋아요만
+		 </div>
+	</div>
+	<p>Date</p>
+	<div id ="store_stc">
+		 <div id="store_chk">
+			    <input type="radio" id="startDate" name="startDate" value=0 checked="checked">전체
+		 </div>
+	 	 <div id="store_chk">
+				<input type="radio" id="startDate" name="startDate" value=1>진행중
+		 </div>
+		 <div id="store_chk">
+				<input type="radio" id="startDate" name="startDate" value=2>진행 예정
+		 </div>
+  		
+	</div>
+	<p>Store</p>
+	<c:forEach items="${openStoreList}" var="openStoreList">
+    <div>	
+ 		  <input type="checkbox" id="storeName" name="storeName" value=${openStoreList.storeTitle}>
+ 		  <label for="storeName">${openStoreList.storeTitle}</label>
+ 		 
+	</div>
+	</c:forEach>
 		<input type="submit" value="적용">
+		
 	</form>
 	</div>
 	
@@ -74,6 +109,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    
   
 
 

@@ -9,7 +9,7 @@
   
   <select id="getOpenStoreList" resultMap="openStoreList">
     
-      SELECT store_title, store_intro, store_start, store_end
+      SELECT store_title, store_intro, store_start, store_end 
       FROM store
     
   </select>
@@ -40,7 +40,6 @@
         <result property="storeLoc" column="store_loc"/>
         <result property="storeLocDetail" column="store_loc_detail"/>
         <result property="storeSite" column="store_site"/>
-        <result property="storeNum" column="store_num" />
         <result property="storeStatus" column="store_status" />      
         <result property="pictureName" column="picture_name" />
         <result property="pictureNum" column="picture_num" />
