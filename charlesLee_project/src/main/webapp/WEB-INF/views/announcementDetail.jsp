@@ -34,7 +34,7 @@
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
 
-	
+
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section set-bg"
 		data-setbg="/img/breadcrumb.jpg">
@@ -55,33 +55,41 @@
 	<br>
 	<br>
 	<!-- Page content-->
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-lg-8">
-				<article>
-					<!-- Post title-->
-					<h2 class="fw-bolder mb-1">
-						<div class="section-title product__discount__title">
-							<h2>${announcement.announcementTitle}</h2>
+	<form action="/announcemnet/modify/${announcement.announcementNum}"
+		method="GET" name="detailForm" id="detailForm"">
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-lg-8">
+					<article>
+						<!-- Post title-->
+						<div class="text-muted fst-italic mb-2">
+							<span id="announcementNum">${announcement.announcementNum}
+							</span>
 						</div>
-					</h2>
-					<!-- Post meta content-->
-					<div class="text-muted fst-italic mb-2" >
-						<div class = "left">${announcement.announcementUpdate}</div>
-						<div class= "right">${announcement.announcementCount}</div>
-					</div>
-					<hr>
-					<!-- Post content-->
-					<section class="mb-5">
-						<p class="fs-5 mb-4">${announcement.announcementBody}</p>
-					</section>
-				</article>
+						<h2 class="fw-bolder mb-1">
+							<div class="section-title product__discount__title">
+								<h2>${announcement.announcementTitle}</h2>
+							</div>
+						</h2>
+						<!-- Post meta content-->
+						<div class="text-muted fst-italic mb-2">
+							<div class="left">작성일 : ${announcement.announcementUpdate}</div>
+							<div class="right">조회수 : ${announcement.announcementCount}</div>
+						</div>
+						<hr>
+						<!-- Post content-->
+						<section class="mb-5">
+						<div class="scrollBody" data-mdb-perfect-scrollbar="true" style="position: relative; height: 500px">
+							<h5>${announcement.announcementBody}</h5>
+						</div>
+						</section>
+					</article>
+
+				</div>
 
 			</div>
-
 		</div>
-	</div>
-
+	</form>
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button" value="목록"
