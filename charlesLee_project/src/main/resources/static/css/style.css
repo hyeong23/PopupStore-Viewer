@@ -173,10 +173,29 @@ ol {
 	font-weight: 800;
 	text-transform: uppercase;
 	display: inline-block;
-	padding: 13px 30px 12px;
 	background: #7fad39;
 	border: none;
 }
+
+.reply-send{
+	display:flex;
+	background-color:#568214;
+	width: 325px;
+	height: 100px;
+}
+
+ .reply_textarea{
+ 			width:200px;
+ 			height:100px;
+ 			background-color: #545334;
+ }
+  .reply_sendBtn{
+  			left:200px;
+  			top:-100px;
+ 			width:75px;
+ 			height:100px;
+ 			background-color: #a4a3a4;
+ }
 
 /* Preloder */
 
