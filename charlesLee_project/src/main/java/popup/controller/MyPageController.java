@@ -52,14 +52,14 @@ public class MyPageController {
 	        @RequestParam("memberCompanyNum") int memberCompanyNum, // 사업자 번호
 	        Model model,
 	        RedirectAttributes redirectAttributes
-	) throws Exception {
-	    System.out.println("Here In Controller");
-	    try {
-	        if (!memberPw.equals(memberPwCheck)) {
+	){
+	   System.out.println("Here In Controller");
+	   
+	   if (!memberPw.equals(memberPwCheck)) {
 	            // 비밀번호와 비밀번호 확인이 일치하지 않을 경우
-	            return "mypage";
+	            return "redirect:/mypage";
 	        }
-
+       try {
 	     // 회원 정보를 HashMap으로 구성
 	        HashMap<String, Object> memberInfo = new HashMap<>();
 	        memberInfo.put("memberId", memberId);
@@ -89,7 +89,14 @@ public class MyPageController {
 	        updateMember(memberInfo);
 
 	        // 수정된 회원 정보를 다시 조회하여 모델에 추가
-	        Member updatedMember = memberService.getMemberById2(memberId);
+	        Member updatedMember;
+			try {
+				updatedMember = memberService.getMemberById2(memberId);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return "/mypage";
+			}
 	        model.addAttribute("member", updatedMember);
 
 	        redirectAttributes.addFlashAttribute("success", "회원 정보가 수정되었습니다.");
