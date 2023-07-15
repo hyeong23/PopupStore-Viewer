@@ -39,9 +39,23 @@ public class MyPageController {
 
 	    return "mypage";
 	}
+	
+	
+	@RequestMapping(value = "/mypageUpdate", method = RequestMethod.GET)
+	public String viewMyPageUpdate(Model model,HttpSession session) throws Exception {
+	    // 현재 로그인한 사용자의 정보를 가져옵니다.
+	    String memberId = (String) session.getAttribute("memberId");
+	    Member member = memberService.getMemberById2(memberId);
 
+        System.out.println(member);
+	    // 모델에 사용자 정보를 추가합니다.
+	    model.addAttribute("member", member);
+
+	    return "mypageUpdate";
+	}
+	
 	// 회원정보 수정
-	@RequestMapping(value = "/mypage", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypageUpdate", method = RequestMethod.POST)
 	public String updateMember(
 	        @RequestParam("memberId") String memberId,
 	        @RequestParam("memberPw") String memberPw,
@@ -57,7 +71,7 @@ public class MyPageController {
 	   
 	   if (!memberPw.equals(memberPwCheck)) {
 	            // 비밀번호와 비밀번호 확인이 일치하지 않을 경우
-	            return "redirect:/mypage";
+	            return "redirect:/mypageUpdate";
 	        }
        try {
 	     // 회원 정보를 HashMap으로 구성
@@ -95,15 +109,15 @@ public class MyPageController {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return "/mypage";
+				return "/mypageUpdate";
 			}
 	        model.addAttribute("member", updatedMember);
 
 	        redirectAttributes.addFlashAttribute("success", "회원 정보가 수정되었습니다.");
-	        return "redirect:/mypage";
+	        return "redirect:/mypageUpdate";
 	    } catch (IllegalArgumentException e) {
 	        redirectAttributes.addFlashAttribute("error", e.getMessage());
-	        return "redirect:/mypage";
+	        return "redirect:/mypageUpdate";
 	    }
 	}
 

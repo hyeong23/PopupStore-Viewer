@@ -69,7 +69,7 @@
 						<div class="mypage-item">
 							<h3>내 정보</h3>
 							<!-- 내 정보 내용 추가 -->
-							<a href="/mypageUpdate">회원정보 수정 및 탈퇴</a>
+							<a href="/mypage">회원정보 수정 및 탈퇴</a>
 						</div>
 						<div class="mypage-item">
 							<h3>좋아요 목록</h3>
@@ -78,37 +78,54 @@
 					</div>
 					<div style="margin: 0 auto; max-width: 400px;">
 						<h2 style="text-align: right;">회원정보수정</h2>
-						<form id="mypageForm" action="/mypage" method="POST">
+						<form id="mypageForm" action="/mypageUpdate" method="POST">
 							<table>
 								<tr>
 									<td style="text-align: right;">* 아이디</td>
 									<td style="text-align: left;">${member.memberId }</td>
-									
+									<td><input type="hidden" name="memberId"
+										value="${member.memberId}"></td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">* 새 비밀번호</td>
+									<td style="text-align: left;"><input type="password"
+										name="memberPw" id="memberPw" value="" required></td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">*새 비밀번호 확인</td>
+									<td style="text-align: left;"><input type="password"
+										name="memberPwCheck" id="memberPwCheck" value="" required></td>
+									<td id="errorMessage" style="color: red;"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><c:if
+											test="${not empty error}">
+											<p style="color: red;">${error}</p>
+										</c:if></td>
 								</tr>
 
 								<tr id="nicknameRow">
 									<td style="text-align: right;">* 닉네임</td>
-									<td style="text-align: left;">
-									${member.memberNickname}
-									</td>
+									<td style="text-align: left;"><input type="text"
+										id="memberNickname" name="memberNickname"
+										value="${member.memberNickname}"></td>
 								</tr>
 								<tr id="companyNameRow">
 									<td style="text-align: right;">* 업체명</td>
-									<td style="text-align: left;">
-									${member.memberCompanyName}
-									</td>
+									<td style="text-align: left;"><input type="text"
+										id="memberCompanyName" name="memberCompanyName"
+										value="${member.memberCompanyName}" readonly></td>
 								</tr>
 								<tr id="companyNumRow">
 									<td style="text-align: right;">* 사업자번호</td>
-									<td style="text-align: left;">
-									${member.memberCompanyNum}
-									</td>
+									<td style="text-align: left;"><input type="text"
+										id="memberCompanyNum" name="memberCompanyNum"
+										value="${member.memberCompanyNum}"></td>
 								</tr>
 								<tr>
 									<td style="text-align: right;">* 이메일</td>
-									<td style="text-align: left;">
-									${member.memberEmail}
-									</td>
+									<td style="text-align: left;"><input type="text"
+										name="memberEmail" value="${member.memberEmail}"></td>
 								</tr>
 
 								<tr>
@@ -149,7 +166,14 @@
 										value="${member.memberUpdate}"></td>
 								</tr>
 
-								
+								<tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" onclick="confirmModification()">정보
+											수정</button> <!-- //type을 button으로 꼭 적어줘야! submit이 되지 않는다!! 꼭 기억하기!-->
+										<button type="button" onclick="removeMember()">회원탈퇴</button>
+									</td>
+								</tr>
 							</table>
 
 						</form>
