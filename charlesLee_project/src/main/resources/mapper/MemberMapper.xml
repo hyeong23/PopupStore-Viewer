@@ -106,7 +106,7 @@
 	</insert>
 	<!-- 회원정보 수정 -->
 	<update id="updateMember" parameterType="popup.dto.Member">
-    <if test="memberType == 1"> <!-- 일반 회원인 경우 -->
+    <if test="memberType == 0 || 1"> <!-- 일반 회원인 경우 -->
         UPDATE Member
         SET member_pw = #{memberPw}, member_nickname = #{memberNickname},
         member_email = #{memberEmail}

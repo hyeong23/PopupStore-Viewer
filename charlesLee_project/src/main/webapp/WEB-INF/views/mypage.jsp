@@ -57,9 +57,9 @@
 				</div>
 			</div>
 		</div>
-
 	</section>
 
+	<!-- content Begin -->
 	<div class="container" style="padding: 0;">
 		<div class="row">
 			<div class="col-lg-12">
@@ -83,55 +83,47 @@
 								<tr>
 									<td style="text-align: right;">* 아이디</td>
 									<td style="text-align: left;">${member.memberId }</td>
-									
+
 								</tr>
 
 								<tr id="nicknameRow">
 									<td style="text-align: right;">* 닉네임</td>
-									<td style="text-align: left;">
-									${member.memberNickname}
-									</td>
+									<td style="text-align: left;">${member.memberNickname}</td>
 								</tr>
 								<tr id="companyNameRow">
 									<td style="text-align: right;">* 업체명</td>
-									<td style="text-align: left;">
-									${member.memberCompanyName}
+									<td style="text-align: left;">${member.memberCompanyName}
 									</td>
 								</tr>
 								<tr id="companyNumRow">
 									<td style="text-align: right;">* 사업자번호</td>
-									<td style="text-align: left;">
-									${member.memberCompanyNum}
-									</td>
+									<td style="text-align: left;">${member.memberCompanyNum}</td>
 								</tr>
 								<tr>
 									<td style="text-align: right;">* 이메일</td>
-									<td style="text-align: left;">
-									${member.memberEmail}
-									</td>
+									<td style="text-align: left;">${member.memberEmail}</td>
 								</tr>
 
 								<tr>
 									<td style="text-align: right;">* 유저타입</td>
 									<td style="text-align: left;">
-										<%-- memberType 값을 문자열로 변환 후 출력 --%>
-									    <%
-				 							String memberTypeString;
-				                            switch (member.getMemberType()) {
-				 	                          case 0 :
-				 	                            	memberTypeString = "관리자";
-				 	                               	break;
-				 	                          case 1 :
-				 		                            memberTypeString = "일반";
-				 	                            	break;
-			                           	 	  case 2 :
-				                            		memberTypeString = "비즈니스";
-				                               		break;
-			                            	  default :
-				 		                             memberTypeString = "";
-				                              }
-				                              out.println(memberTypeString);
-				                         %>
+										<%-- memberType 값을 문자열로 변환 후 출력 --%> <%
+ 	String memberTypeString;
+ switch (member.getMemberType()) {
+ 	case 0 :
+ 		memberTypeString = "관리자";
+ 		break;
+ 	case 1 :
+ 		memberTypeString = "일반";
+ 		break;
+ 	case 2 :
+ 		memberTypeString = "비즈니스";
+ 		break;
+ 	default :
+ 		memberTypeString = "";
+ }
+ out.println(memberTypeString);
+ %>
 									</td>
 									<td><input type="hidden" name="memberType"
 										value="<%=member.getMemberType()%>"></td>
@@ -149,7 +141,7 @@
 										value="${member.memberUpdate}"></td>
 								</tr>
 
-								
+
 							</table>
 
 						</form>

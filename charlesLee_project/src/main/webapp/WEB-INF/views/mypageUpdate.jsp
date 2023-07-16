@@ -57,8 +57,20 @@
 				</div>
 			</div>
 		</div>
-
 	</section>
+
+<div class="contact-form spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2>Edit My page</h2>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
 	<div class="container" style="padding: 0;">
 		<div class="row">
