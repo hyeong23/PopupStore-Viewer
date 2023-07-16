@@ -78,7 +78,7 @@
 					</div>
 					<div style="margin: 0 auto; max-width: 400px;">
 						<h2 style="text-align: right;">회원정보수정</h2>
-						<form id="mypageForm" action="/mypageUpdate" method="POST">
+						<form id="mypageUpdateForm" action="/mypageUpdate" method="POST">
 							<table>
 								<tr>
 									<td style="text-align: right;">* 아이디</td>
@@ -199,10 +199,11 @@
 	<script>
                     
 		function confirmModification() {
-		    var password = document.getElementById('memberPw').value;
+			var oldPassword = '<%= member.getMemberPw() %>';
+		    var newPassword = document.getElementById('memberPw').value;
 
 		    if (window.confirm("수정하시겠습니까?")) {
-		        if (password.trim() === '') {
+		        if (newPassword.trim() === '') {
 		            alert('비밀번호를 입력해주세요.');
 		            return;
 		        }
@@ -211,7 +212,15 @@
 		            goToMyPage();
 		            return;
 		        }
-		        document.getElementById("mypageForm").submit();
+		        if (oldPassword === newPassword) {
+		            alert('새 비밀번호가 기존 비밀번호와 동일합니다.');
+		            return;
+		        }
+		        if (newPassword.length < 8) {
+		            alert('비밀번호는 최소 8자 이상이어야 합니다.');
+		            return;
+		        }
+		        document.getElementById("mypageUpdateForm").submit();
 		        showCompletionMessage();
 		    }
 		}
@@ -235,7 +244,7 @@
 		}
 
 		function goToMyPage() {
-		    location.assign("/mypage");
+		    location.assign("/mypageUpdate");
 		}
 
                     function removeMember() {
