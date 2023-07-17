@@ -40,7 +40,7 @@ public class CalendarController {
 	List<StoreVo> openStoreList = openStoreService.getAllStore();
 	List<ReplyVo> getReplyList = replyService.getReplyList();
 	List<String> getBussinessMember = memberService.getBussinessMember();
-	List<String> location = Arrays.asList("서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+	List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
 	
 
 	model.addAttribute("openStoreList", openStoreList);

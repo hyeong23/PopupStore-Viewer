@@ -81,22 +81,8 @@
     <div id='calendar'>
     </div>
     <div id=scrolls>
-    <div id=of1 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 250px;">
-
- <p>Store</p>
-	<div>
-			<ul>
-			<c:forEach items="${openStoreList}" var="openStoreList">		
-  		    	<li>
- 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
- 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
-				</li>			
-			</c:forEach>
-			</ul>
-	</div>		
-
- </div>
-     <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 465px;">
+    
+     <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 815px;">
      <div>마커같은썸네일존</div>
  </div>
  </div>
@@ -122,6 +108,7 @@
 	
 	<!-- 수정 -->
 	<!-- Modal -->
+	
 	
 	
 	

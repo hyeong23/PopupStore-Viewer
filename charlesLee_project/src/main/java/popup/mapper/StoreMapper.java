@@ -35,4 +35,6 @@ public interface StoreMapper {
 
 	public List<Integer> getStoreByStoreTitle(@Param("storeTitle") String[] storeTitle) throws Exception;
 
+	public List<Integer> getStoreByLoc(String storeLoc) throws Exception;
+
 }
