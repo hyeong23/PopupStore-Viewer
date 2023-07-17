@@ -9,7 +9,7 @@
   
   <select id="getOpenStoreList" resultMap="openStoreList">
     
-      SELECT store_title, store_intro, store_start, store_end 
+      SELECT store_num ,store_title, store_intro, store_start, store_end ,store_loc
       FROM store
     
   </select>
@@ -31,6 +31,7 @@
   
  	<resultMap id="openStoreList" type="popup.vo.StoreVo">
         <result property="storeNum" column="store_num" />
+         <result property="memberNum" column="member_num" />
         <result property="storeTitle" column="store_title" />
         <result property="storeIntro" column="store_intro" />
         <result property="storeBody" column="store_body" />
@@ -51,8 +52,18 @@
     	OR store_loc LIKE '%' || UPPER(#{inputText}) || '%'
 	</select>
     
-
- 
+	
+     <select id="filterStoreList" resultMap="openStoreList">
+    
+      SELECT store_num ,member_num ,store_title, store_intro, store_body , store_start, store_end , store_favorite , store_loc , store_loc_detail , store_site , store_status 
+      FROM store
+      WHERE store_num IN 
+        <foreach item="item" collection="storeNum" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+      	
+  </select>
+ 	
  
 
   

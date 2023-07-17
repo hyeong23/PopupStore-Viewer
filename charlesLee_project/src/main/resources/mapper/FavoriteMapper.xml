@@ -5,7 +5,10 @@
   <mapper namespace="popup.mapper.FavoriteMapper">
   
   
-  
+   <select id="getStoreByHeart" resultType="int">
+   	 	SELECT store_num FROM favorite
+    	WHERE member_num = #{customerNum}
+	</select>
   
   
   
