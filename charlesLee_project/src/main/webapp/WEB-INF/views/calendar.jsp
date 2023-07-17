@@ -26,14 +26,14 @@
     <link rel="stylesheet" href="/calendar/css/style.css">
     
         <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
     
     
 
@@ -45,7 +45,7 @@
    <%@ include file="header.jsp" %>
    
 	<section class="breadcrumb-section set-bg"
-		data-setbg="img/breadcrumb.jpg">
+		data-setbg="/img/breadcrumb.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -56,24 +56,27 @@
 			</div>
 		</div>
 		
-	</section>
+	</section>	
 	
-   <%@ include file="filterHeader.jsp" %>
+  
  
   <div class="content">
+   <%@ include file="filterHeader.jsp" %>
     <div id='calendar'>
     </div>
     <div id=scrolls>
     <div id=of1 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 250px;">
- This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll. This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
+ <p>Store</p>
+	<div>
+			<ul>
+			<c:forEach items="${openStoreList}" var="openStoreList">		
+  		    	<li>
+ 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
+ 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
+				</li>			
+			</c:forEach>
+			</ul>
+	</div>		
  </div>
      <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 465px;">
  This is an example of using <code>.overflow-auto</code>
@@ -217,7 +220,8 @@
     	    eventLimit: true, // allow "more" link when too many events,
       	    displayEventTime: false,
     	    events: [
-    	      <c:forEach items="${openStoreList}" var="store">
+
+    	      <c:forEach items="${filterStoreList}" var="store">
     	        { 
     	          number : '${store.storeNum}',
     	          title: '${store.storeTitle}',

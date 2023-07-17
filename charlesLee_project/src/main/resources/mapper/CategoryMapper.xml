@@ -21,7 +21,10 @@
     </resultMap> 
   
   
-  
+  <select id="getStoreByCategory" resultType="int">
+   	 	SELECT store_num FROM category
+    	WHERE category = #{category}
+	</select>
   
   
   

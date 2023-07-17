@@ -41,10 +41,36 @@
   </select>
   
  	
-    
+ 	<select id="getStoreBySmallDate" resultType="int">
+    SELECT store_num FROM store
+    WHERE store_start &lt;= sysDate And store_end &gt;= sysDate
+   </select>
  	
+ 	<select id="getStoreByBigDate" resultType="int">
+    SELECT store_num FROM store
+    WHERE store_start &gt; sysDate
+   </select>
  
-
-  
+	<select id="getStoreByCompanyName" resultType="int">
+    SELECT store_num 
+    FROM store
+    WHERE member_num IN (
+    	 SELECT member_num FROM member WHERE member_company_name IN
+    	 <foreach item="item" collection="memberCompanyName" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    	 )
+    	 ORDER BY store_num ASC
+    </select>
+  	
+  	<select id="getStoreByStoreTitle" resultType="int">
+  	  SELECT store_num FROM store
+  	  WHERE store_title IN
+  	  	<foreach item="storeTitle" collection="storeTitle" open="(" separator="," close=")">
+            #{storeTitle}
+        </foreach>
+	   </select>
+  	
+  	
   
 </mapper>

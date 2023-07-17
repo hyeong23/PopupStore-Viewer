@@ -16,33 +16,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/list.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/list.css" type="text/css">
  
 
 
 </head>
 
 <body>
+
+<!-- 검색 -->
 <div id="bbsList_header">
-		<div id="leftHeader">
+		<!-- <div id="leftHeader">
 		<form action="/filterTested" method="GET" name="searchForm">
 		<span>통합검색</span>
 			<input type="text" name="inputText"/>
 			<input type="submit" value="검색하기">	
 		</form>				
-		</div>	
-		</div>	
-<br/>
-    <div>
-    <form action="/filter" method="GET" >	
+		</div>	 -->
+		
+		
+		<div>
+    <form action="/calendar/filter" method="GET" >	
 	
 	<div>
 	<p>Categories</p>
@@ -58,57 +60,86 @@
  <br><br>
  
  <p>Company</p>
- <c:forEach items="${getBussinessMember}" var="member">
- 	<div>
-		<input type="checkbox" id="memberCompanyName" name="memberCompanyName" value="${member}">
- 		  <label for="companyName">${member}</label>
-	</div>
-</c:forEach>
+ <div>
+	 <ul>
+ 		<c:forEach items="${getBussinessMember}" var="member">
+ 			<li>
+				<input type="checkbox" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
+ 			    <label for="memberCompanyName${member}">${member}</label> 
+			</li>
+		</c:forEach>
+   	 </ul>
+ </div>
 	<p>Heart</p>
 	<div id ="store_stc">
 		
 		 <div id="store_chk">
-				<input type="radio" id="heart" name="heart" value=0 checked="checked">전체
+				<input type="radio" id="heart0" name="heart" value=0 checked="checked">전체
 		 </div>
   	   	 <div id="store_chk">
-				<input type="radio" id="heart" name="heart" value=1>좋아요만
+				<input type="radio" id="heart1" name="heart" value=1>좋아요만
 		 </div>
 	</div>
+	
 	<p>Date</p>
 	<div id ="store_stc">
 		 <div id="store_chk">
-			    <input type="radio" id="startDate" name="startDate" value=0 checked="checked">전체
+			    <input type="radio" id="startDate0" name="startDate" value=0 checked="checked">전체
 		 </div>
 	 	 <div id="store_chk">
-				<input type="radio" id="startDate" name="startDate" value=1>진행중
+				<input type="radio" id="startDate1" name="startDate" value=1>진행중
 		 </div>
 		 <div id="store_chk">
-				<input type="radio" id="startDate" name="startDate" value=2>진행 예정
+				<input type="radio" id="startDate2" name="startDate" value=2>진행 예정
 		 </div>
   		
 	</div>
 	<p>Store</p>
-	<c:forEach items="${openStoreList}" var="openStoreList">
-    <div>	
- 		  <input type="checkbox" id="storeName" name="storeName" value=${openStoreList.storeTitle}>
- 		  <label for="storeName">${openStoreList.storeTitle}</label>
- 		 
-	</div>
-	</c:forEach>
-		<input type="submit" value="적용">
-		
+	<div>
+			<ul>
+			<c:forEach items="${openStoreList}" var="openStoreList" >		
+  		    	<li>
+ 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
+ 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
+				</li>			
+			</c:forEach>
+			</ul>
+	</div>		
+	<p>Loc</p>
+	<div>
+	<select name="category" id="category">
+				<c:forEach items="${location}" var="location">	
+						<option id="storeLoc" name="storeLoc" value="${location}" >${location}</option>		  		
+ 				 </c:forEach>	
+	  </select>
+			<ul>
+							
+  		    		<li>
+ 				  		
+					</li>	
+								
+			</ul>
+	</div>			
+			
+			<input type="submit" value="적용">
+	
 	</form>
 	</div>
+		
+		
+		</div>	
+<br/>
+    
 	
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
     
   
 
