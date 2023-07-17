@@ -165,7 +165,25 @@
 	<script src="/js/mixitup.min.js"></script>
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/main.js"></script>
+      <script>
+		 // 비즈니스(2)로 로그인 시 닉네임 창 X, 관리자(0)및 일반회원(1)으로 로그인 시 사업자번호와 업체명 행 삭제
+                    window.onload = function() {
+                        var memberType = <%=member.getMemberType()%>;
 
-		
+                        if (memberType === 2) {
+                            var nicknameRow = document.getElementById("nicknameRow");
+                            nicknameRow.style.display = "none";
+                        }
+
+                        if (memberType === 0 || memberType === 1) {
+                            var companyNumRow = document.getElementById("companyNumRow");
+                            var companyNameRow = document.getElementById("companyNameRow");
+                            companyNumRow.style.display = "none";
+                            companyNameRow.style.display = "none";
+                        }
+                                               
+                        
+                    };
+     </script>
 </body>
 </html>

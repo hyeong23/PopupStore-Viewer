@@ -114,10 +114,10 @@ public class MyPageController {
 	        model.addAttribute("member", updatedMember);
 
 	        redirectAttributes.addFlashAttribute("success", "회원 정보가 수정되었습니다.");
-	        return "redirect:/mypageUpdate";
+	        return "redirect:/mypage";
 	    } catch (IllegalArgumentException e) {
 	        redirectAttributes.addFlashAttribute("error", e.getMessage());
-	        return "redirect:/mypageUpdate";
+	        return "redirect:/error";
 	    }
 	}
 
