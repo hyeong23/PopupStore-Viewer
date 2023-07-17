@@ -71,6 +71,9 @@
         </foreach>
 	   </select>
   	
-  	
+  	<select id="getStoreByLoc" resultType="int">
+   	 	SELECT store_num FROM store
+    	WHERE store_loc LIKE CONCAT(#{storeLoc}, '%')
+	</select>
   
 </mapper>

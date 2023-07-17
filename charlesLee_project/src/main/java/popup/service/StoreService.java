@@ -59,4 +59,9 @@ public class StoreService {
 	public List<Integer> getStoreByStoreTitle(String[] storeTitle) throws Exception{
 		return storeMapper.getStoreByStoreTitle(storeTitle);
 	}
+
+	public List<Integer> getStoreByLoc(String storeLoc) throws Exception{
+		return storeMapper.getStoreByLoc(storeLoc);
+		
+	}
 }
