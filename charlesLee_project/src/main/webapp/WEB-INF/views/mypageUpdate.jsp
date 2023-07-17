@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/mypage.css" type="text/css">
 <link rel="stylesheet" href="css/mypageUpdate.css" type="text/css">
 
 
@@ -67,103 +68,121 @@
 
 				<div
 					style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-                    <form id="mypageUpdateForm" action="/mypageUpdate" method="POST">
-					<table id="mypageUpdateTable" class="styled-table">
-						<tr>
-							<th colspan="3" style="text-align: center; font-size: 45px;">회원정보수정</th>
-						</tr>
-						<tr>
-							<td style="text-align: right; ">* 아이디</td>
-							<td style="text-align: left;">${member.memberId }</td>
-							<td><input type="hidden" name="memberId"
-								value="${member.memberId}"></td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">* 새 비밀번호</td>
-							<td style="text-align: left;"><input type="password"
-								name="memberPw" id="memberPw" value="" required></td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">* 새 비밀번호 확인</td>
-							<td style="text-align: left;"><input type="password"
-								name="memberPwCheck" id="memberPwCheck" value="" required></td>
-							<td id="errorMessage" style="color: red;"></td>
-						</tr>
-						
-						<tr id="nicknameRow">
-							<td style="text-align: right;">* 닉네임</td>
-							<td style="text-align: left;"><input type="text"
-								id="memberNickname" name="memberNickname"
-								value="${member.memberNickname}"></td>
-						</tr>
-						<tr id="companyNameRow">
-							<td style="text-align: right;">* 업체명</td>
-							<td style="text-align: left;"><input type="text"
-								id="memberCompanyName" name="memberCompanyName"
-								value="${member.memberCompanyName}" readonly></td>
-						</tr>
-						<tr id="companyNumRow">
-							<td style="text-align: right;">* 사업자번호</td>
-							<td style="text-align: left;"><input type="text"
-								id="memberCompanyNum" name="memberCompanyNum"
-								value="${member.memberCompanyNum}"></td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">* 이메일</td>
-							<td style="text-align: left;"><input type="text"
-								name="memberEmail" value="${member.memberEmail}"></td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">* 유저타입</td>
-							<td style="text-align: left;">
-								<%-- memberType 값을 문자열로 변환 후 출력 --%> <%
-							 	String memberTypeString;
-							 switch (member.getMemberType()) {
-							 	case 0 :
-							 		memberTypeString = "관리자";
-							 		break;
-							 	case 1 :
-							 		memberTypeString = "일반";
-							 		break;
-							 	case 2 :
-							 		memberTypeString = "비즈니스";
-							 		break;
-							 	default :
-							 		memberTypeString = "";
-							 }
-							 out.println(memberTypeString);
-							 %>
-							</td>
-							<td><input type="hidden" name="memberType"
-								value="<%=member.getMemberType()%>"></td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">* 생성일</td>
-							<td style="text-align: left;">${member.memberCreate}</td>
-							<td><input type="hidden" name="memberCreate"
-								value="${member.memberCreate}"></td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">* 수정일</td>
-							<td style="text-align: left;">${member.memberUpdate}</td>
-							<td><input type="hidden" name="memberUpdate"
-								value="${member.memberUpdate}"></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="right">
-							<div style="text-align: right;">
-								<button type="submit" onclick="confirmModification()">정보수정</button>
-								<button type="button" onclick="removeMember()">회원탈퇴</button>
-								</div>
-							</td>
-						</tr>
-					</table>
+					<!-- Side bar -->
+					<div class="mypage-box"
+						style="background-color: #EEEEEE; height: 600px;">
+						<div class="mypage-item" style="width: 200;">
+							<h3>My page</h3>
+							<!-- 내 정보 내용 추가 -->
+							<a href="/mypage">내 정보 보기</a>
+						</div>
+						<div class="mypage-item" style="width: 200;">
+							<h3>My page more</h3>
+							<!-- 내 정보 내용 추가 -->
+							<a href="/mypageUpdate">회원정보 수정 및 탈퇴</a>
+						</div>
+						<div class="mypage-item" style="width: 200;">
+							<h3>Like list</h3>
+							<a href="/heart">좋아요 목록 보기</a>
+						</div>
+					</div>
+					<form id="mypageUpdateForm" action="/mypageUpdate" method="POST">
+						<table id="mypageUpdateTable" class="styled-table">
+							<tr>
+								<th colspan="3" style="text-align: center; font-size: 45px;">회원정보수정</th>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 아이디</td>
+								<td style="text-align: left;">${member.memberId }</td>
+								<td><input type="hidden" name="memberId"
+									value="${member.memberId}"></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 새 비밀번호</td>
+								<td style="text-align: left;"><input type="password"
+									name="memberPw" id="memberPw" value="" required></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 새 비밀번호 확인</td>
+								<td style="text-align: left;"><input type="password"
+									name="memberPwCheck" id="memberPwCheck" value="" required></td>
+								<td id="errorMessage" style="color: red;"></td>
+							</tr>
+
+							<tr id="nicknameRow">
+								<td style="text-align: right;">* 닉네임</td>
+								<td style="text-align: left;"><input type="text"
+									id="memberNickname" name="memberNickname"
+									value="${member.memberNickname}"></td>
+							</tr>
+							<tr id="companyNameRow">
+								<td style="text-align: right;">* 업체명</td>
+								<td style="text-align: left;"><input type="text"
+									id="memberCompanyName" name="memberCompanyName"
+									value="${member.memberCompanyName}" readonly></td>
+							</tr>
+							<tr id="companyNumRow">
+								<td style="text-align: right;">* 사업자번호</td>
+								<td style="text-align: left;"><input type="text"
+									id="memberCompanyNum" name="memberCompanyNum"
+									value="${member.memberCompanyNum}"></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 이메일</td>
+								<td style="text-align: left;"><input type="text"
+									name="memberEmail" value="${member.memberEmail}"></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 유저타입</td>
+								<td style="text-align: left;">
+									<%-- memberType 값을 문자열로 변환 후 출력 --%> <%
+ 	String memberTypeString;
+ switch (member.getMemberType()) {
+ 	case 0 :
+ 		memberTypeString = "관리자";
+ 		break;
+ 	case 1 :
+ 		memberTypeString = "일반";
+ 		break;
+ 	case 2 :
+ 		memberTypeString = "비즈니스";
+ 		break;
+ 	default :
+ 		memberTypeString = "";
+ }
+ out.println(memberTypeString);
+ %>
+								</td>
+								<td><input type="hidden" name="memberType"
+									value="<%=member.getMemberType()%>"></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 생성일</td>
+								<td style="text-align: left;">${member.memberCreate}</td>
+								<td><input type="hidden" name="memberCreate"
+									value="${member.memberCreate}"></td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">* 수정일</td>
+								<td style="text-align: left;">${member.memberUpdate}</td>
+								<td><input type="hidden" name="memberUpdate"
+									value="${member.memberUpdate}"></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="right">
+									<div style="text-align: right;">
+										<button type="submit" onclick="confirmModification()">정보수정</button>
+										<button type="button" onclick="removeMember()">회원탈퇴</button>
+									</div>
+								</td>
+							</tr>
+						</table>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 
 	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>
