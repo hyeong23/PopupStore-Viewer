@@ -98,13 +98,10 @@
 <!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
 	      <div class="modal-body">
 			<div class="slider">
-			    <input type="radio" name="slide" id="slide1" checked>
 			    <div class="bullets" id = "bullets${map.storeNum}">
-			        <label for="slide1">&nbsp;</label>
 			    </div>
 
 			    <ul id="imgholder${map.storeNum}" class="imgs">
-					<li><img src = "picture/${map.pictureName}"></li>
 			    </ul>
 			    
 			    
@@ -287,7 +284,7 @@
 			.then(response => {
 				var pictureData = response.data;
 				console.log(pictureData);
-				for(var i = 1; i < pictureData.length; i++){
+				for(var i = 0; i < pictureData.length; i++){
 					var getPictureName = pictureData[i].pictureName;
 					var showPicture = document.querySelector('#imgholder' + pictureData[i].storeNum);
 					console.log(getPictureName);
