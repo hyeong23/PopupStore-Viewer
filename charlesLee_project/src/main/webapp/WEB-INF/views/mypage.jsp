@@ -60,54 +60,58 @@
 	</section>
 
 	<!-- content Begin -->
-	<div class="container" style="padding: 0;">
+	<div class="container" style="margin: 0 auto; padding: 0;">
 		<div class="row">
 			<div class="col-lg-12">
 				<div
-					style="display: flex; justify-content: flex-start; align-items: center; height: 100vh; margin-left: 20px;">
-					<div class="mypage-box" style="height: 400px;">
-						<div class="mypage-item">
-							<h3>내 정보</h3>
+					style="display: flex; justify-content: flex-start; align-items: center; margin-left: 20px;">
+					
+					<!-- Side bar -->
+					<div class="mypage-box" style="background-color: #EEEEEE; height: 600px; ">
+					<br><br><br>
+						<div class="mypage-item" style="width: 200;" >
+							<h3>My page more</h3>
 							<!-- 내 정보 내용 추가 -->
 							<a href="/mypageUpdate">회원정보 수정 및 탈퇴</a>
 						</div>
-						<div class="mypage-item">
-							<h3>좋아요 목록</h3>
+						<div class="mypage-item" style="width: 200;" >
+							<h3>Like list</h3>
 							<a href="/heart">좋아요 목록 보기</a>
 						</div>
 					</div>
-					<div style="margin: 0 auto; max-width: 400px;">
-						<h2 style="text-align: right;">회원정보수정</h2>
-						<form id="mypageForm" action="/mypage" method="POST">
-							<table>
-								<tr>
-									<td style="text-align: right;">* 아이디</td>
-									<td style="text-align: left;">${member.memberId }</td>
 
-								</tr>
+					<!-- Contents -->
+					<div>
+					
+						<table class="table table-striped mb-0"
+							style="text-align: center;">
 
-								<tr id="nicknameRow">
-									<td style="text-align: right;">* 닉네임</td>
-									<td style="text-align: left;">${member.memberNickname}</td>
-								</tr>
-								<tr id="companyNameRow">
-									<td style="text-align: right;">* 업체명</td>
-									<td style="text-align: left;">${member.memberCompanyName}
-									</td>
-								</tr>
-								<tr id="companyNumRow">
-									<td style="text-align: right;">* 사업자번호</td>
-									<td style="text-align: left;">${member.memberCompanyNum}</td>
-								</tr>
-								<tr>
-									<td style="text-align: right;">* 이메일</td>
-									<td style="text-align: left;">${member.memberEmail}</td>
-								</tr>
 
-								<tr>
-									<td style="text-align: right;">* 유저타입</td>
-									<td style="text-align: left;">
-										<%-- memberType 값을 문자열로 변환 후 출력 --%> <%
+							<tr>
+								<td style="background-color: #7fad39; color: white" width="200"><b>ID</b></td>
+								<td style="text-align: center;"width="500">${member.memberId }</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>닉네임</b></td>
+								<td style="text-align: center;">${member.memberNickname}</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>업체명</b></td>
+								<td style="text-align: center;">${member.memberCompanyName}</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>사업자
+										번호</b></td>
+								<td style="text-align: center;">${member.memberCompanyNum}</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>e-mail</b></td>
+								<td style="text-align: center;">${member.memberEmail}</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>유저타입</b></td>
+								<td style="text-align: center;">
+									<%-- memberType 값을 문자열로 변환 후 출력 --%> <%
  	String memberTypeString;
  switch (member.getMemberType()) {
  	case 0 :
@@ -123,37 +127,32 @@
  		memberTypeString = "";
  }
  out.println(memberTypeString);
- %>
-									</td>
-									<td><input type="hidden" name="memberType"
-										value="<%=member.getMemberType()%>"></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;">* 생성일</td>
-									<td style="text-align: left;">${member.memberCreate}</td>
-									<td><input type="hidden" name="memberCreate"
-										value="${member.memberCreate}"></td>
-								</tr>
-								<tr>
-									<td style="text-align: right;">* 수정일</td>
-									<td style="text-align: left;">${member.memberUpdate}</td>
-									<td><input type="hidden" name="memberUpdate"
-										value="${member.memberUpdate}"></td>
-								</tr>
-
-
-							</table>
-
-						</form>
+ %> <input type="hidden" name="memberType"
+									value="<%=member.getMemberType()%>">
+								</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>가입
+										날짜</b></td>
+								<td style="text-align: center;">${member.memberCreate}</td>
+							</tr>
+							<tr>
+								<td style="background-color: #7fad39; color: white"><b>프로필
+										최종 수정</b></td>
+								<td style="text-align: center;">${member.memberUpdate}</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>
 	<!-- Footer Section End -->
-
+	
+	
 	<!-- Js Plugins -->
 	<script src="/js/jquery-3.3.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -164,6 +163,6 @@
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/main.js"></script>
 
-		
+
 </body>
 </html>
