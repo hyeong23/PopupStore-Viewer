@@ -13,7 +13,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -36,12 +37,12 @@
     <!-- Header Section End -->
     
   <section class="breadcrumb-section set-bg"
-		data-setbg="img/breadcrumb.jpg">
+		data-setbg="img/breadcrumb.jpg"  style="margin-bottom:30px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Ask</h2>
+						<h2>문의하기</h2>
 					</div>
 				</div>
 			</div>
@@ -50,30 +51,24 @@
 	</section>
 
     <!-- Contact Form Begin -->
-    <div class="contact-form spad">
+    <div class="contact-form spad" style="margin-bottom:-50px;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave Message</h2>
-                    </div>
-                </div>
-            </div>
+            
             <form action="/ask" method="POST">
                 <div class="row">
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="Your Email" name="askEmail" id="askEmail">
+                        <input type="text" placeholder="답신받을 이메일을 입력하세요" name="askEmail" id="askEmail" style="font-style: italic;">
                     </div>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="Title" name="askTitle" id="askTitle">
+                        <input type="text" placeholder="문의 제목을 입력하세요" name="askTitle" id="askTitle" style="font-style: italic;">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message" name="askBody" id="askBody"></textarea>
+                        <textarea placeholder="문의 내용을 입력하세요" name="askBody" id="askBody" style="font-style: italic;"></textarea>
                         <div id="ask_stc">
                         	<div id="ask_stc1">개인정보 수집 및 이용 약관에 동의합니다</div>
                         	<div id="ask_chk"><input type="checkbox" id="check1"> </div>                    
                           </div>
-                        <input type="submit" value="Send Message" class="site-btn" id="send_message"/>
+                        <input type="submit" value="Send Message" class="site-btn" id="send_message" style="color:white;"/>
                     </div>
                 </div>
             </form>

@@ -16,6 +16,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -48,7 +49,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Notice</h2>
+						<h2>공지사항</h2>
 					</div>
 				</div>
 			</div>
@@ -72,7 +73,7 @@
 										style="position: relative; height: 500px">
 										<table class="table table-striped mb-0">
 											<thead
-												style="background-color: #7fad39; text-align: center; color: white">
+												style="background-color: #ff80c0; text-align: center; color: white">
 												<tr>
 													<th scope="col">Number</th>
 													<th scope="col">Title</th>

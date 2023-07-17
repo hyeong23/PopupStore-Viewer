@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
     
     <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
   
@@ -26,14 +27,17 @@
     <link rel="stylesheet" href="/calendar/css/style.css">
     
         <!-- Css Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/modal.css" type="text/css">
+
     
     
 
@@ -50,7 +54,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Calendar</h2>
+						<h2>팝업스토어 달력</h2>
 					</div>
 				</div>
 			</div>
@@ -58,14 +62,17 @@
 		
 	</section>	
 	
+
   
  
   <div class="content">
    <%@ include file="filterHeader.jsp" %>
+
     <div id='calendar'>
     </div>
     <div id=scrolls>
     <div id=of1 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 250px;">
+
  <p>Store</p>
 	<div>
 			<ul>
@@ -77,22 +84,13 @@
 			</c:forEach>
 			</ul>
 	</div>		
+
  </div>
      <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 465px;">
- This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll. This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
+     <div>마커같은썸네일존</div>
  </div>
  </div>
   </div>
-
-
 
   
     <!-- Footer Section Begin -->

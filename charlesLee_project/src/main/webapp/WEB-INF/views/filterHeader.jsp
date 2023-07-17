@@ -14,6 +14,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -36,10 +38,11 @@
 <div id="bbsList_header">
 		<!-- <div id="leftHeader">
 		<form action="/filterTested" method="GET" name="searchForm">
-		<span>통합검색</span>
+		<div style="font-family: 'Orbit', sans-serif; font-size: 18pt; margin-bottom:10px;">통합검색</div>
 			<input type="text" name="inputText"/>
-			<input type="submit" value="검색하기">	
+			<input type="submit" value="검색">	
 		</form>				
+
 		</div>	 -->
 		
 		
@@ -123,6 +126,7 @@
 			
 			<input type="submit" value="적용">
 	
+
 	</form>
 	</div>
 		

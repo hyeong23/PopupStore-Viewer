@@ -20,13 +20,28 @@
         <!-- Google JQuery CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-       
+          <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 
     </head>
     <body>
+    <!-- Header Section Begin -->
+	<%@ include file="header.jsp"%>
+	<!-- Header Section End -->
         <div>
            <div class="panel shadow1">
-                <form action="/general" class="login-form" method="POST" onsubmit = "return formChecking()">
+                <form action="/general" class="login-form" method="POST" onsubmit = "return formChecking()" style="height: 750px;">
                     
                    <h1 class="animated fadeInUp animate1" id="title-login">General</h1>
                     
@@ -54,9 +69,9 @@
                         		<span class=login_phone_num id = "memberPhoneNumMsg" style="font-size:8pt"></span>
                     </fieldset>
                     
-                    <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="SIGN UP" style=" margin-top: 70px;">
+                    <input type="submit" id="login-form-submit" class="login_form button animated fadeInUp animate4" value="SIGN UP" style="margin-top: 20px;">
                      
-                    <p><br><br><a id="login-link" href="/register" class="animated fadeIn animate5">back to register</a></p>
+                    <p><br><a id="login-link" href="/register" class="animated fadeIn animate5" style="color: white;">back to register</a></p>
                     
                 </form>
             </div>

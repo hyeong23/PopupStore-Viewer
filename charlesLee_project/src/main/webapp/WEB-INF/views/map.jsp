@@ -15,7 +15,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -50,7 +51,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Map</h2>
+						<h2>팝업스토어 지도</h2>
 					</div>
 				</div>
 			</div>
@@ -142,22 +143,23 @@
                 <c:if test="${reply.storeNum eq map.storeNum}">
                <div class="reply-each">
         		 	<p>${reply.memberNickname}<p>
-     	    	 	<p>${reply.reply}<p>
+     	    	 	<p>${reply.replyBody}<p>
       				<p>${reply.replyUpdate}<p> 
       		   </div>
       		   </c:if>
 		      </c:forEach>
       
       </div>
-      <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
+      <form  method="POST" id="replyForm" name="replyInsertForm">  			 
                 <div class="reply-send">
-               			 
-						<%-- <!-- hidden 영역 -->
-  					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
-   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
+						<!-- hidden 영역 -->
+  					      <input type="hidden" name="storeNum" value="${map.storeNum}">
+   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}">
      				   <!-- 입력 영역 -->    				
-                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
-                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="reply-send-btn" id="send_message"/></div>
+                      <div class="reply_textarea"><textarea placeholder="Your Reply" id="replyBody" name=replyBody></textarea></div> 
+                      <div class="reply_sendBtn">
+                      	<input type="submit" value="Send" class="reply-send-btn" id="send_message" name="replyInsertBtn"/>
+                      </div>
                         
                     </div>
                     </form>
@@ -169,13 +171,14 @@
 	</div>
 	</div>
 	</c:forEach>
-<div style="width: 500px; height: 500px; background-color: #a191a5">
+	
+<%-- <div style="width: 500px; height: 500px; background-color: #a191a5">
 	댓글리스트 
 	<c:forEach items="${getReplyList}" var="reply" varStatus="vs">
-		<p> ${reply.reply} </p>
+		<p> ${reply.replyBody} </p>
 	</c:forEach>
-	
- </div>
+</div> --%>
+
 
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=690096255b88e30ead8c02ac790dd149&libraries=services">
@@ -325,6 +328,103 @@
 	};
 	</c:forEach>
 </script>
+ 
+<script>
+var storeNum = '${map.storeNum}'; //게시글 번호
+ 
+$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
+    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+    replyInsert(insertData); //Insert 함수호출(아래)
+});
+ 
+ 
+ 
+//댓글 목록 
+function replyList(){
+    $.ajax({
+        url : '/reply/list',
+        type : 'get',
+        data : {'storeNum':storeNum},
+        success : function(data){
+            var a =''; 
+            $.each(data, function(key, value){ 
+                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+                a += '<div class="commentInfo'+value.cno+'">'+'댓글번호 : '+value.cno+' / 작성자 : '+value.writer;
+                a += '<a onclick="commentUpdate('+value.cno+',\''+value.content+'\');"> 수정 </a>';
+                a += '<a onclick="commentDelete('+value.cno+');"> 삭제 </a> </div>';
+                a += '<div class="commentContent'+value.cno+'"> <p> 내용 : '+value.content +'</p>';
+                a += '</div></div>';
+            });
+            
+            $(".replyList").html(a);
+        }
+    });
+}
+ 
+//댓글 등록
+function insertReply(insertData){
+    $.ajax({
+        url : '/reply/insert',
+        type : 'post',
+        data : insertData,
+        success : function(data){
+            if(data == 1) {
+                replyList(); //댓글 작성 후 댓글 목록 reload
+                $('[name=replyBody]').val('');
+            }
+        }
+    });
+}
+ 
+//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+function updateReply(replyNum, replyBody){
+    var a ='';
+    
+    a += '<div class="input-group">';
+    a += '<input type="text" class="form-control" name="replyBody'+replyNum+'" value="'+replyNum+'"/>';
+    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
+    a += '</div>';
+    
+    $('.commentContent'+cno).html(a);
+    
+}
+ 
+//댓글 수정
+function commentUpdateProc(cno){
+    var updateContent = $('[name=content_'+cno+']').val();
+    
+    $.ajax({
+        url : '/comment/update',
+        type : 'post',
+        data : {'content' : updateContent, 'cno' : cno},
+        success : function(data){
+            if(data == 1) commentList(bno); //댓글 수정후 목록 출력 
+        }
+    });
+}
+ 
+//댓글 삭제 
+function commentDelete(cno){
+    $.ajax({
+        url : '/comment/delete/'+cno,
+        type : 'post',
+        success : function(data){
+            if(data == 1) commentList(bno); //댓글 삭제후 목록 출력 
+        }
+    });
+}
+ 
+ 
+ 
+ 
+$(document).ready(function(){
+    replyList(); //페이지 로딩시 댓글 목록 출력 
+});
+ 
+ 
+ 
+</script>
+
 
 
 

@@ -8,6 +8,8 @@
       
         <!-- Font online-->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+        
       
 <!--        Animate.css-->
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -18,10 +20,25 @@
         <!-- Google JQuery CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
-       
+        <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 
     </head>
     <body>
+    <!-- Header Section Begin -->
+	<%@ include file="header.jsp"%>
+	<!-- Header Section End -->
         <div>
            <div class="panel shadow1">
                 <form  class="login-form" >
@@ -35,7 +52,7 @@
                     
                     <input type="button" id="register-form-submit" class="login_form button animated fadeInUp animate2" value="business" onclick="location.href='/business'" style=" margin-top: 70px;">
 					
-					 <p><br><br><a id="login-link" href="/login" class="animated fadeIn animate5">back to login</a></p>
+					 <p><br><br><a id="login-link" href="/login" class="animated fadeIn animate5" style="color:white;'">back to login</a></p>
 					
                 </form>
             </div>
