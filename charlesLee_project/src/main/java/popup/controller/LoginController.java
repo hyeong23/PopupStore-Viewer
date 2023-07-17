@@ -45,6 +45,17 @@ public class LoginController {
 		
 		 
 		 view = "redirect:/main";
+		}
+		if(member.getMemberType() == 0) {
+			System.out.println(member.getMemberType());
+			 session.setAttribute("memberId", member.getMemberId());
+			 session.setAttribute("memberPw", member.getMemberPw());
+			 session.setAttribute("memberNum", member.getMemberNum());
+			 session.setAttribute("memberType", member.getMemberType());
+			 
+			
+			 
+			 view = "redirect:/adminviews";
 		}	 
 		
 	

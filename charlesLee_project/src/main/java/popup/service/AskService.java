@@ -35,5 +35,16 @@ public class AskService {
 			
 		return result;
 	}
+	public boolean updateAsk(int askNum, int askCheck) throws SQLException, Exception {
+		boolean result = false;
+		int res = askMapper.updateAsk(askNum, askCheck);
+		if(res != 0) {
+			result = true;
+		} else {
+			throw new Exception();
+		}
+			
+		return result;
+	}
 
 }

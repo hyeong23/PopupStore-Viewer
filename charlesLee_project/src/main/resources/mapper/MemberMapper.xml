@@ -40,6 +40,10 @@
 		WHERE member_id = #{memberId} AND member_pw = #{memberPw}
 
 	</select>
+	
+	 <select id = "getMember" resultMap="memberResultMap">
+			SELECT * From member
+ 	</select>
 
 	<select id="getMemberById" resultMap="memberResultMap">
 		SELECT
@@ -135,6 +139,17 @@
 		From Member
 		WHERE member_company_name is Not null
 	</select>
+	 <!-- 비지니스 회원가입 승인 -->
+	<update id="businessupdate" parameterType="_int">
+	 		UPDATE member 
+	 		SET member_type = #{memberType}
+	 		WHERE member_num = #{memberNum}
+ 	  </update>
+ 	 <!-- 비지니스 회원가입 거절(삭제)-->
+ 	  <delete id="businessdelete" parameterType="popup.dto.Member">
+	 		DELETE FROM member
+	 		WHERE member_num = #{memberNum}
+ 	  </delete>
 
 
 

@@ -18,6 +18,8 @@ public interface OpenStoreMapper {
 	
 	public List<StoreVo> getMapList();
 	
+	public List<StoreVo> getMapList2(int storeNum);
+	
 
 
 	public List<StoreVo> getStoreByTitle(@Param("inputText") String inputText);
