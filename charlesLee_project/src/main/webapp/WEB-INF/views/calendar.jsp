@@ -91,29 +91,15 @@
  </div>
  </div>
   </div>
-  
-<!-- 모달 창 열기 버튼 -->
-    <div id="container">
-        <button id="btn-modal">모달 창 열기 버튼</button>
-    </div>
-    <div id="modal" class="modal-overlay">
-    <%@ include file="modal-content.jsp" %>
-        
-    </div>
+
+
+
   
     <!-- Footer Section Begin -->
     <%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
     
-<%-- <c:forEach items="${openStoreList}" var="store">
-  <!-- 정보를 사용하여 동적으로 HTML 표시 -->
-  <div>
-    <p>${store.storeTitle}</p>
-    <p>${store.storeIntro}</p>
-    <p>${store.storeStart}</p>
-    <p>${store.storeEnd}</p>
-  </div>
-</c:forEach> --%>
+
 
     <script src="/calendar/js/jquery-3.3.1.min.js"></script>
     <script src="/calendar/js/popper.min.js"></script>
@@ -122,11 +108,111 @@
     <script src='/calendar/fullcalendar/packages/core/main.js'></script>
     <script src='/calendar/fullcalendar/packages/interaction/main.js'></script>
     <script src='/calendar/fullcalendar/packages/daygrid/main.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+	<!-- 수정 -->
+	<!-- Modal -->
+	<c:forEach items="${openStoreList}" var="store" varStatus="vs">
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+  		<div class="modal-container">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h2 class="modal-title" id="exampleModalCenterTitle">${store.storeTitle}</h2>
+<!-- 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button> -->
+	      </div>
+	      
+<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
+	      <div class="modal-body">
+			<div class="slider">
+			    <input type="radio" name="slide" id="slide1" checked>
+			    <div class="bullets" id = "bullets${store.storeNum}">
+			        <label for="slide1">&nbsp;</label>
+			    </div>
 
+			    <ul id="imgholder${store.storeNum}" class="imgs">
+					<li><img src = "picture/${store.pictureName}"></li>
+			    </ul>
+			    
+			    
+
+			</div>	
+
+	      	 <div>
+
+	      
+	        	<h5>작성자 : </h5>
+	        	<p> 개최 기간: ${store.storeStart} ~ ${store.storeEnd} </p>
+	        	<p> 개최 장소: ${store.storeLoc} </p>
+	        	<p> ${store.storeIntro} </p>
+	        	<div class="modal_bodytext">
+
+			    	${store.storeBody}
+				 </div>
+	      </div>
+	      	 
+	      
+	      
+	      <!-- <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div> -->
+            </div>
+            </div>
+			<div class="modal-replywindow">
+            <div class="title">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h2>댓글</h2>
+                
+                <div class="reply-list">
+                
+               <c:forEach items="${getReplyList}" var="reply">
+                <c:if test="${reply.storeNum eq map.storeNum}">
+               <div class="reply-each">
+        		 	<p>${reply.memberNickname}<p>
+     	    	 	<p>${reply.reply}<p>
+      				<p>${reply.replyUpdate}<p> 
+      		   </div>
+      		   </c:if>
+		      </c:forEach>
+      
+      </div>
+      <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
+                <div class="reply-send">
+               			 
+						<%-- <!-- hidden 영역 -->
+  					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
+   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
+     				   <!-- 입력 영역 -->    				
+                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
+                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="reply-send-btn" id="send_message"/></div>
+                        
+                    </div>
+                    </form>
+            </div>
+<!--             <div class="close-area">X</div> -->
+	    	</div>
+	  
+	  </div>
+	</div>
+	</div>
+	</c:forEach>
+	
+	
+	
+	
+	
+	
+	
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     	  var calendarEl = document.getElementById('calendar');
-
     	  var calendar = new FullCalendar.Calendar(calendarEl, {
     	    plugins: [ 'interaction', 'dayGrid' ],
     	    defaultDate: new Date(),
@@ -134,8 +220,10 @@
     	    eventLimit: true, // allow "more" link when too many events,
       	    displayEventTime: false,
     	    events: [
+
     	      <c:forEach items="${filterStoreList}" var="store">
-    	        {
+    	        { 
+    	          number : '${store.storeNum}',
     	          title: '${store.storeTitle}',
     	          start: '${store.storeStart}T00:00:00',
     	          end: '${store.storeEnd}T23:59:59'
@@ -148,40 +236,18 @@
     	});
 
     </script>
-    <script src="/calendar/js/main.js"></script>
-    <script>
-    const modal = document.getElementById("modal")
-    function modalOn() {
-        modal.style.display = "flex"
-    }
-    function isModalOn() {
-        return modal.style.display === "flex"
-    }
-    function modalOff() {
-        modal.style.display = "none"
-    }
-    const btnModal = document.getElementById("btn-modal")
-    btnModal.addEventListener("click", e => {
-        modalOn()
-    })
-    const closeBtn = modal.querySelector(".close-area")
-    closeBtn.addEventListener("click", e => {
-        modalOff()
-    })
-    modal.addEventListener("click", e => {
-        const evTarget = e.target
-        if(evTarget.classList.contains("modal-overlay")) {
-            modalOff()
-        }
-    })
-    window.addEventListener("keyup", e => {
-        if(isModalOn() && e.key === "Escape") {
-            modalOff()
-        }
-    })
+     <script src="/calendar/js/main.js"></script>
     
-    modalOff();
+    
+    <script>
+   	
+    function tempClick(titleHtml){
+    	alert(titleHtml); 
+    }
+    
+    
     </script>
     
+
   </body>
 </html>

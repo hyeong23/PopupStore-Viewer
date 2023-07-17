@@ -247,12 +247,13 @@ Docs & License: https://fullcalendar.io/
                     ' style="' + skinCss + '"' :
                     '') +
                 '>' +
-                '<div class="fc-content">' +
+                '<c:forEach items="${openStoreList}" var="store">' +
+                '<div class="fc-content" onclick = "tempClick(10)">' +
                 (options.dir === 'rtl' ?
-                    titleHtml + ' ' + timeHtml : // put a natural space in between
-                    timeHtml + ' ' + titleHtml //
-                ) +
+                    titleHtml + ' ' + timeHtml : timeHtml + ' ' + titleHtml 
+                ) + " - main.jsp 253번 " +
                 '</div>' +
+                '</c:forEach>' + 
                 (isResizableFromStart ?
                     '<div class="fc-resizer fc-start-resizer"></div>' :
                     '') +
