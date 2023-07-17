@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
-    
+
     
     <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
   
@@ -37,6 +36,19 @@
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/modal.css" type="text/css">
+
+    
+    <!-- Js Plugins -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     
     
@@ -72,6 +84,7 @@
     <div id='calendar'>
     </div>
     <div id=scrolls>
+
     <div id=of1 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 250px;">
 
  <p>Store</p>
@@ -96,6 +109,7 @@
                                     <p>${store.storeEnd}</p>
                                 </div>
      </div>
+
  </div>
  </div>
   </div>
@@ -120,95 +134,7 @@
 	
 	<!-- 수정 -->
 	<!-- Modal -->
-	<c:forEach items="${openStoreList}" var="store" varStatus="vs">
-	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  		<div class="modal-dialog modal-lg">
-  		<div class="modal-container">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h2 class="modal-title" id="exampleModalCenterTitle">${store.storeTitle}</h2>
-<!-- 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button> -->
-	      </div>
-	      
-<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
-	      <div class="modal-body">
-			<div class="slider">
-			    <input type="radio" name="slide" id="slide1" checked>
-			    <div class="bullets" id = "bullets${store.storeNum}">
-			        <label for="slide1">&nbsp;</label>
-			    </div>
-
-			    <ul id="imgholder${store.storeNum}" class="imgs">
-					<li><img src = "picture/${store.pictureName}"></li>
-			    </ul>
-			    
-			    
-
-			</div>	
-
-	      	 <div>
-
-	      
-	        	<h5>작성자 : </h5>
-	        	<p> 개최 기간: ${store.storeStart} ~ ${store.storeEnd} </p>
-	        	<p> 개최 장소: ${store.storeLoc} </p>
-	        	<p> ${store.storeIntro} </p>
-	        	<div class="modal_bodytext">
-
-			    	${store.storeBody}
-				 </div>
-	      </div>
-	      	 
-	      
-	      
-	      <!-- <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div> -->
-            </div>
-            </div>
-			<div class="modal-replywindow">
-            <div class="title">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	        <h2>댓글</h2>
-                
-                <div class="reply-list">
-                
-               <c:forEach items="${getReplyList}" var="reply">
-                <c:if test="${reply.storeNum eq map.storeNum}">
-               <div class="reply-each">
-        		 	<p>${reply.memberNickname}<p>
-     	    	 	<p>${reply.reply}<p>
-      				<p>${reply.replyUpdate}<p> 
-      		   </div>
-      		   </c:if>
-		      </c:forEach>
-      
-      </div>
-      <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
-                <div class="reply-send">
-               			 
-						<%-- <!-- hidden 영역 -->
-  					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
-   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
-     				   <!-- 입력 영역 -->    				
-                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
-                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="reply-send-btn" id="send_message"/></div>
-                        
-                    </div>
-                    </form>
-            </div>
-<!--             <div class="close-area">X</div> -->
-	    	</div>
-	  
-	  </div>
-	</div>
-	</div>
-	</c:forEach>
+	
 	
 	
 	
@@ -235,10 +161,61 @@
     	          end: '${store.storeEnd}T23:59:59'
     	        },
     	      </c:forEach>
-    	    ]
+    	    ],
+	    	  eventClick:function(event2) {
+	    		alert(event2.event.title);
+	  	    	var event = calendar.getEventById(event2.event.extendedProps.number);
+	  	    	$(".modal-dialog").load("/calendar/" + event2.event.extendedProps.number);
+	  	    	//$("#exampleModalCenter").modal(); 
+	  	    	/*$.ajax({
+		        		type : 'post',
+		        		url : '<c:url value="store2" />',
+		        		data : {
+		            		id : event.id,
+		            	},
+		            	success : function(data){
+		            		console.log('test');
+		            	},error : function(status, error) {
+		      				
+		      				console.log(status, error);
+		      			}
+		  			}); */
+	  	    	//myModal.show();
+	  	    	//var title = $(".modal-header #exampleModalCenterTitle");
+			        //title.val("gtt");
+			        //var body = $(".col-lg-12 col-md-6 #storeBody");
+			        //body.text("test");
+			        //$(".col-lg-12 #storeBody").text(${openStoreList[0].storeNum});
+	  	    	myModal.show();
+	  	    	
+	  	    	//alert(${openStoreList[0].storeNum});
+	  	    	//alert(event);
+	  	    	//alert(event2.event.extendedProps.department);
+	  	    	//alert(event2.event.test1);
+		    	    /*
+			        var title = $(".modal-header #exampleModalCenterTitle");
+			        title.val(event2.event.extendedProps.title);
+			        var title2 = $(".col-lg-12 col-md-6 #storeTitle");
+			        title2.val(event2.event.extendedProps.title);
+			        var intro = $(".col-lg-12 col-md-6 #storeIntro");
+			        intro.val(event2.event.extendedProps.intro);
+			        var body = $(".col-lg-12 col-md-6 #storeBody");
+			        body.val(event2.event.extendedProps.body);
+			        var loc = $(".col-lg-12 col-md-6 #storeLoc");
+			        loc.val(event2.event.extendedProps.loc);
+			        var site = $(".col-lg-12 col-md-6 #storeSite");
+			        site.val(event2.event.extendedProps.site);*/
+	  	    	//var resourceIds = resources.map(function(resource) { return resource.id });
+	  	    	//alert(resources);
+	  	    	///alert(event.id + ' ' + event.title + ' ' + '${openStoreList[2].storeTitle}');
+	  	    	//myModal.show();
+	          }
     	  });
     	  
     	  calendar.render();
+    	  var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
+	      	  keyboard: false
+	      	});
     	});
 
     </script>
@@ -254,6 +231,11 @@
     
     </script>
     
-
+    <!-- Modal -->
+    	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+	</div>
+	</div>
+	
   </body>
 </html>

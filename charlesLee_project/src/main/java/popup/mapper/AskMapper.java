@@ -15,5 +15,7 @@ public interface AskMapper {
 		
 	// insert - Ask
 	public int insertAsk(Ask ask) throws SQLException;
+	
+	public int updateAsk(int askNum, int askCheck) throws SQLException;
 
 }

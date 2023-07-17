@@ -4,7 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="popup.mapper.StoreMapper">
- 
+
+   <select id="test" resultType="HashMap">
+				SELECT DISTINCT 
+			      s.*, p.picture_num, p.picture_original_name, p.picture_size, p.picture_path || '\' ||  p.picture_name as picture_paths, p.picture_date, c.*
+			      FROM store s
+			      JOIN picture p ON s.store_num = p.store_num
+			      JOIN category c ON s.store_num = c.store_num
+			     WHERE s.store_num = #{storeNum}
+  </select>
+  
+  <select id = "getStore" resultType="HashMap">
+			SELECT DISTINCT 
+			      s.*, p.picture_num, p.picture_original_name, p.picture_size, p.picture_path || '\' ||  p.picture_name as picture_paths, p.picture_date, c.*
+			      FROM store s
+			      JOIN picture p ON s.store_num = p.store_num
+			      JOIN category c ON s.store_num = c.store_num
+	  	  
+  </select>
  
   
   <select id="getStoreList" resultMap="storeResultMap">
@@ -34,6 +51,22 @@
         (store_sequence.nextval, #{memberNum}, #{storeTitle}, #{storeIntro}, #{storeBody}, #{storeStart}, #{storeEnd}, #{storeLoc},#{storeLocDetail}, #{storeSite})
 
   </insert>
+  
+  <update id="updateStore" parameterType="popup.dto.Store"> 
+        UPDATE store
+     SET
+         store_title = #{storeTitle},
+         store_intro = #{storeIntro},
+         store_body = #{storeBody},
+         store_start = #{storeStart},
+         store_end = #{storeEnd},
+         store_favorite = 200,
+         store_loc = #{storeLoc},
+         store_site = #{storeSite},
+         store_count = 234,
+         store_status = 2
+     WHERE store_num = #{storeNum}
+  </update>
 
 
   <select id="getMaxStoreNum" resultType="int">
@@ -71,6 +104,9 @@
         </foreach>
 	   </select>
   	
-  	
+  	<select id="getStoreByLoc" resultType="int">
+   	 	SELECT store_num FROM store
+    	WHERE store_loc LIKE CONCAT(#{storeLoc}, '%')
+	</select>
   
 </mapper>

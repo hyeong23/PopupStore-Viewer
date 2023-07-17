@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/list.css" type="text/css">
- 
+	 <link rel="stylesheet" href="/css/mypage.css" type="text/css">
 
 
 </head>
@@ -49,21 +49,24 @@
 		<div>
     <form action="/calendar/filter" method="GET" >	
 	
-	<div>
-	<p>Categories</p>
-	<select name="category" id="category">
-   	 <option value="select">카테고리</option>
-   	 <option value="character">캐릭터</option>
-   	 <option value="media">미디어</option>
-   	 <option value="food">식음료</option>
-   	 <option value="fashion">패션</option>
-   	 <option value="others">기타</option>
-   </select>
-	</div>
- <br><br>
+	<div class="filter-box">
+	<div id=scrolls style="height: 500px">
+	
+	<div id=of1 class="overflow-auto p-3" style="max-width: 186px; max-height: 240px; bottom: 250px; background-color: #ffffff;">
+	<p>Store</p>
+			<ul>
+			<c:forEach items="${openStoreList}" var="openStoreList" >		
+  		    	<li>
+ 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
+ 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
+				</li>			
+			</c:forEach>
+			</ul>
+	</div>	
+	
  
+ <div id=of1 class="overflow-auto p-3 " style="max-width: 186px; max-height: 240px; bottom: 0px; background-color: #ffffff;" >
  <p>Company</p>
- <div>
 	 <ul>
  		<c:forEach items="${getBussinessMember}" var="member">
  			<li style="list-style-type: none;">
@@ -73,8 +76,34 @@
 		</c:forEach>
    	 </ul>
  </div>
+	</div>		
+	
+
+	
+	<div>
+	<p>Categories</p>
+	<select name="category" id="category" class="filter-item">
+   	 <option value="select">카테고리</option>
+   	 <option value="character">캐릭터</option>
+   	 <option value="media">미디어</option>
+   	 <option value="food">식음료</option>
+   	 <option value="fashion">패션</option>
+   	 <option value="others">기타</option>
+   </select>
+	</div>
+ 
+	<p>Loc</p>
+	<div>
+		<select name="storeLoc" id="storeLoc" class="filter-item" >
+				<c:forEach items="${location}" var="location">	
+						<option id="storeLoc" value="${location}" >${location}</option>		  		
+ 				 </c:forEach>	
+	  </select>
+		
+	</div>		
+ 
 	<p>Heart</p>
-	<div id ="store_stc">
+	<div id ="store_stc" class="filter-item">
 		
 		 <div id="store_chk">
 				<input type="radio" id="heart0" name="heart" value=0 checked="checked">전체
@@ -85,7 +114,7 @@
 	</div>
 	
 	<p>Date</p>
-	<div id ="store_stc">
+	<div id ="store_stc" class="filter-item">
 		 <div id="store_chk">
 			    <input type="radio" id="startDate0" name="startDate" value=0 checked="checked">전체
 		 </div>
@@ -97,6 +126,7 @@
 		 </div>
   		
 	</div>
+
 	<p>Store</p>
 	<div>
 			<ul>
@@ -124,16 +154,21 @@
 			</ul>
 	</div>			
 			
-			<input type="submit" value="적용">
-	
+
+		
+		
+		
+			<input type="submit" value="적용" class="filter-item">
+	</div>
+
 
 	</form>
 	</div>
 		
 		
-		</div>	
+</div>	
 <br/>
-    
+   
 	
     <!-- Js Plugins -->
     <script src="/js/jquery-3.3.1.min.js"></script>

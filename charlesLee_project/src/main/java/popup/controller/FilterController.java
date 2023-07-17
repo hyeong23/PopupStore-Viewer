@@ -3,6 +3,7 @@ package popup.controller;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -48,8 +49,14 @@ public class FilterController {
 								@RequestParam(value = "memberCompanyName", required = false) String[] memberCompanyName,						
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
-								@RequestParam(value = "storeTitle", required = false) String[] storeTitle) throws SQLException 
+								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
+								@Param("storeLoc") String storeLoc) throws SQLException 
 										 {
+		
+		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		List<StoreVo> openStoreList = openStoreService.getAllStore();
+		List<String> getBussinessMember = memberService.getBussinessMember();
+		
 		try {
 			List<Integer> storeNum = new ArrayList<>();
 			
@@ -64,6 +71,8 @@ public class FilterController {
 				List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(memberCompanyName);
 				System.out.println("작성자"+getStoreByCompanyName);
 				storeNum.retainAll(getStoreByCompanyName);
+			}else {
+				storeNum = null;
 			}
 			//category가 같은 store_num 가져오기 , select 면 실행x
 			if(!"select".equals(category)) {
@@ -92,23 +101,32 @@ public class FilterController {
 				System.out.println("날짜"+getStoreByBigDate);
 				storeNum.retainAll(getStoreByBigDate);
 			}
+			
+			if(!"전체".equals(storeLoc)) {
+				List<Integer> getStoreByLoc = storeService.getStoreByLoc(storeLoc);
+				System.out.println("장소"+getStoreByLoc);
+				storeNum.retainAll(getStoreByLoc);
+			}
+			
+					
+			
 			System.out.println(storeNum);
-			
-			List<StoreVo> openStoreList = openStoreService.getAllStore();
+						
 			List<StoreVo> filterStoreList = openStoreService.filterStoreList(storeNum);
-			List<String> getBussinessMember = memberService.getBussinessMember();
 			
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
 		} catch (Exception e) {
-			List<StoreVo> openStoreList = openStoreService.getAllStore();
-			List<StoreVo> filterStoreList = openStoreService.getAllStore();
-			List<String> getBussinessMember = memberService.getBussinessMember();
+			
+			List<StoreVo> filterStoreList = null;
+			
 			
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
 		}
 		
 		

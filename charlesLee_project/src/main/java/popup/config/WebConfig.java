@@ -1,5 +1,6 @@
 package popup.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +12,18 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import popup.interceptor.AdminInterceptor;
 import popup.interceptor.SessionInterceptor;
 
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer{
+	
+	@Autowired
+	private SessionInterceptor sessionInterceptor;
+	
+	@Autowired
+	private AdminInterceptor adminInterceptor;
 	
     @Bean
     public ViewResolver viewResolver() {
@@ -35,13 +43,19 @@ public class WebConfig implements WebMvcConfigurer{
 	// 	default void addInterceptors(InterceptorRegistry registry)
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-    	registry.addInterceptor(new SessionInterceptor())
+    	registry.addInterceptor(sessionInterceptor)
 			        .addPathPatterns("/mypage")
 			        .addPathPatterns("/storeList")
 			        .addPathPatterns("/storeRegister")
 			        .addPathPatterns("/logout")
 			        .excludePathPatterns("/main")
 			        .excludePathPatterns("/login");
+    	
+    	registry.addInterceptor(adminInterceptor)
+		.addPathPatterns("/adminpage1")
+		.addPathPatterns("/adminpage2")
+		.addPathPatterns("/adminpage3")
+		.addPathPatterns("/adminviews");
     }
     
     

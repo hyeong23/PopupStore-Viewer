@@ -14,6 +14,8 @@ import popup.dto.Member;
 
 @Mapper
 public interface MemberMapper {
+	
+	public List<Member> getMember() throws SQLException;
 
 	Member getMemberByIdAndPw(String memberId, String memberPw) throws SQLException;
 
@@ -49,6 +51,11 @@ public interface MemberMapper {
 	void deleteMember(@Param("memberId") String memberId);
 
 	List<String> getBussinessMember() throws SQLException;
+	
+	//비지니스 회원 가입 승락
+	public int businessupdate(int memberNum, int memberType) throws SQLException;
+	//비지니스 회원 가입 거절
+	public int businessdelete(int member_num) throws SQLException;
 
 
 

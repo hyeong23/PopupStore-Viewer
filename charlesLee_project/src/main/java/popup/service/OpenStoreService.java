@@ -25,6 +25,10 @@ public class OpenStoreService {
 		return openStoreMapper.getMapList();
 	}
 	
+	public List<StoreVo> getMapStore2(int storeNum) {
+		return openStoreMapper.getMapList2(storeNum);
+		//System.out.println("test2");
+	}
 
 
 	public List<StoreVo> getStoreByTitle(String inputText) {

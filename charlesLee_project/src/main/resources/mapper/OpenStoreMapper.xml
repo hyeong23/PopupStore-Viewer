@@ -13,6 +13,15 @@
 	JOIN picture p ON p.store_num = s.store_num where p.picture_type = 1
   </select>
   
+  <select id="getMapList2" resultMap="openStoreList">
+    
+	SELECT *
+	FROM store
+	WHERE store_num = #{storeNum}
+	
+      
+  </select>
+  
   <select id="getMapList" resultMap="openStoreList">
     
 	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name

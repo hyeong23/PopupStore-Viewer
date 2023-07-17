@@ -16,6 +16,11 @@ public class MemberService {
 
 	@Autowired
 	MemberMapper memberMapper;
+	
+	public List<Member> getMember() throws SQLException, Exception{
+		
+		return memberMapper.getMember();
+	}
 
 	// 로그인
 	public Member getMemberByIdAndPw(String memberId, String memberPw) throws Exception {
@@ -190,6 +195,36 @@ public class MemberService {
 
 		return companyName;
 	}
-
+	
+	//비지니스 회원 가입 승락
+			public boolean businessupdate(int memberNum, int memberType) throws SQLException, Exception{
+				System.out.println("테스트 체크");
+				boolean result = false;
+				
+				int res = memberMapper.businessupdate(memberNum, memberType);
+				System.out.println("테스트 체크3");
+				if(res != 0) {
+					result = true;
+				} else {
+					throw new Exception("수정 실패");
+				}
+				
+				return result;
+		}
+		//비지니스 회원 가입 거절
+		public boolean businessdelete(int member_num) throws SQLException, Exception{
+			
+			boolean result = false;
+			
+			int res = memberMapper.businessdelete(member_num);
+			
+			if(res != 0) {
+				result = true;
+			} else {
+				throw new Exception("삭제 실패");
+			}
+			
+			return result;
+		}
 
 }
