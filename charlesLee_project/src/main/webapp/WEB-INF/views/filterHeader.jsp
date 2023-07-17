@@ -66,7 +66,7 @@
  <div>
 	 <ul>
  		<c:forEach items="${getBussinessMember}" var="member">
- 			<li>
+ 			<li style="list-style-type: none;">
 				<input type="checkbox" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
  			    <label for="memberCompanyName${member}">${member}</label> 
 			</li>
@@ -101,7 +101,7 @@
 	<div>
 			<ul>
 			<c:forEach items="${openStoreList}" var="openStoreList" >		
-  		    	<li>
+  		    	<li style="list-style-type: none;">
  				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
  				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
 				</li>			

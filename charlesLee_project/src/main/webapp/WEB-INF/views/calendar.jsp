@@ -28,15 +28,15 @@
     
         <!-- Css Styles -->
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/modal.css" type="text/css">
 
     
     
@@ -66,8 +66,9 @@
   
  
   <div class="content">
+   <div class="filterBox" style="margin-top:90px;">
    <%@ include file="filterHeader.jsp" %>
-
+	</div>
     <div id='calendar'>
     </div>
     <div id=scrolls>
@@ -87,7 +88,14 @@
 
  </div>
      <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 465px;">
-     <div>마커같은썸네일존</div>
+     <div>마커같은썸네일존
+     	 <div style="background-color: maroon;">
+                                    <p>${store.storeTitle}</p>
+                                    <div class="img" style="width: 50px; height: 50px;"><img src="picture/${store.pictureName}"alt = "img"></div>
+                                    <p>${store.storeStart}</p>
+                                    <p>${store.storeEnd}</p>
+                                </div>
+     </div>
  </div>
  </div>
   </div>
