@@ -69,7 +69,7 @@
  <p>Company</p>
 	 <ul>
  		<c:forEach items="${getBussinessMember}" var="member">
- 			<li>
+ 			<li style="list-style-type: none;">
 				<input type="checkbox" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
  			    <label for="memberCompanyName${member}">${member}</label> 
 			</li>
@@ -126,11 +126,41 @@
 		 </div>
   		
 	</div>
+
+	<p>Store</p>
+	<div>
+			<ul>
+			<c:forEach items="${openStoreList}" var="openStoreList" >		
+  		    	<li style="list-style-type: none;">
+ 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
+ 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
+				</li>			
+			</c:forEach>
+			</ul>
+	</div>		
+	<p>Loc</p>
+	<div>
+	<select name="category" id="category">
+				<c:forEach items="${location}" var="location">	
+						<option id="storeLoc" name="storeLoc" value="${location}" >${location}</option>		  		
+ 				 </c:forEach>	
+	  </select>
+			<ul>
+							
+  		    		<li>
+ 				  		
+					</li>	
+								
+			</ul>
+	</div>			
+			
+
 		
 		
 		
 			<input type="submit" value="적용" class="filter-item">
 	</div>
+
 
 	</form>
 	</div>
