@@ -4,6 +4,7 @@ package popup.mapper;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -13,10 +14,16 @@ import popup.vo.StoreVo;
 
 @Mapper
 public interface StoreMapper {
+	
+	public List<Map<String, String>> test(int storeNum) throws SQLException;
+	
+	public List<Map<String, String>> getStore() throws SQLException;
 
 	public List<StoreVo> getStoreList() throws Exception;
 
 	public int insertStore(Store store) throws Exception;
+	
+	public int updateStore(Store store) throws Exception;
 
 	public int getMaxStoreNum() throws Exception;
 

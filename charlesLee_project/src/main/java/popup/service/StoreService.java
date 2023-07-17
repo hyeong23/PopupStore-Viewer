@@ -1,7 +1,9 @@
 package popup.service;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,18 @@ public class StoreService {
 
 	@Autowired
 	StoreMapper storeMapper;
+	
+	public List<Map<String, String>> getStore2(int storeNum) throws SQLException, Exception{
+		System.out.println("--");
+		System.out.println(storeNum);
+		List<Map<String, String>> store = storeMapper.test(storeNum);
+		return store;
+	}
+	public List<Map<String, String>> getStore() throws SQLException, Exception{
+		
+		System.out.println("testd2");
+		return storeMapper.getStore();
+	}
 
 	public List<StoreVo> getStoreList() throws Exception{
 		
@@ -35,6 +49,25 @@ public class StoreService {
 		return result;
 		
 	}
+	
+	public boolean updateStore(Store store) throws Exception{
+		boolean result = false;
+		System.out.println("check_1");
+		int res = storeMapper.updateStore(store);
+		
+		if(res != 0) {
+			System.out.println("check_2");
+			result = true;
+		} else {
+			
+			System.out.println("check_3");
+			throw new Exception("store update 실패");
+		}
+		System.out.println("check_4");
+		return result;
+		
+	}
+
 
 	public int getMaxStoreNum() throws Exception{
 		
