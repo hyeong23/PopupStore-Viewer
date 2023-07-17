@@ -17,7 +17,7 @@ public class PictureService {
 	@Autowired
 	PictureMapper pictureMapper;
 
-	public boolean insertPicture(int storeNum, MultipartFile picture) throws Exception {
+	public boolean insertPicture(int storeNum, MultipartFile picture , int pictureType) throws Exception {
 		boolean result = false;
 		
 		if(picture == null) {
@@ -35,6 +35,7 @@ public class PictureService {
 											   .pictureName(pictureName)
 											   .pictureOriginalName(pictureOriginalName)
 											   .pictureSize(pictureSize)
+											   .pictureType(pictureType)
 											   .build();
 											
 		int res = pictureMapper.insertPicture(pictureFile);
