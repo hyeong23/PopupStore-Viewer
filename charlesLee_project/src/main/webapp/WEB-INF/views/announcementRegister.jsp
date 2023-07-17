@@ -16,6 +16,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -39,20 +40,6 @@
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
 	
-	<section class="breadcrumb-section set-bg"
-		data-setbg="img/breadcrumb.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="breadcrumb__text">
-						<h2>Register</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	</section>
-	
 	
 	<!-- Contact Form Begin -->
 	<c:if test="${memberId == 'admin'}">
@@ -61,28 +48,28 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="contact__form__title">
-						<h2>Notice</h2>
+						<h2>공지 작성</h2>
 					</div>
 				</div>
 			</div>
 			<form action="/announcement/insert" method="POST">
 				<div class="row">
 					<div class="col-lg-12 col-md-6">
-						<input type="text" placeholder="Title" name="announcementTitle"
+						<input type="text" placeholder="제목을 입력하세요" name="announcementTitle"
 							id="announcementTitle">
 					</div>
 					<div class="col-lg-12 text-center">
-						<textarea placeholder="Your content" name="announcementBody"
+						<textarea placeholder="내용을 입력하세요" name="announcementBody"
 							id="announcementBody"></textarea>
-						<input type="submit" value="업로드" class="site-btn" >
+						<input type="submit" value="업로드" class="site-btn" style="color: white;" >
 					</div>
 					
 					<div class="col-lg-12 text-center">
 						
 					</div>
 					<div class="col-lg-12 text-center">
-							<input type="reset" value="다시작성">
-							<input type="button" value="목록" onclick="location.href='/announcement'">
+							<input type="reset" value="모두 되돌리기">
+							<input type="button" value="목록으로 돌아가기" onclick="location.href='/announcement'">
 					</div>
 					
 				</div>

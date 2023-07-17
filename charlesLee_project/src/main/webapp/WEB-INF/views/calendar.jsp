@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
     
     <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
   
@@ -34,6 +35,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/modal.css" type="text/css">
     
     
 
@@ -50,7 +52,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Calendar</h2>
+						<h2>팝업스토어 달력</h2>
 					</div>
 				</div>
 			</div>
@@ -58,45 +60,38 @@
 		
 	</section>
 	
-   <%@ include file="filterHeader.jsp" %>
+   
  
   <div class="content">
+  <div class=filterBox>
+  <%@ include file="filterHeader.jsp" %>
+  </div>
     <div id='calendar'>
     </div>
     <div id=scrolls>
     <div id=of1 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 250px;">
- This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll. This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
+    <div class="TitleList">
+    <c:forEach items="${openStoreList}" var="store">
+ 		 <div>
+  	 	 <p>${store.storeTitle}</p>
+	  	</div>
+		</c:forEach>
+    </div>
  </div>
      <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 465px;">
- This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
-  This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll. This is an example of using <code>.overflow-auto</code>
- on an element with set width and height dimensions. By design, this content will vertically scroll.
+     <div>마커같은썸네일존</div>
  </div>
  </div>
   </div>
   
 <!-- 모달 창 열기 버튼 -->
-    <div id="container">
+<%--     <div id="container">
         <button id="btn-modal">모달 창 열기 버튼</button>
     </div>
     <div id="modal" class="modal-overlay">
     <%@ include file="modal-content.jsp" %>
         
-    </div>
+    </div> --%>
   
     <!-- Footer Section Begin -->
     <%@ include file="footer.jsp" %>

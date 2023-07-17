@@ -14,6 +14,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -60,7 +62,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>StoreRegister</h2>
+						<h2>등록 신청</h2>
 					</div>
 				</div>
 			</div>
@@ -85,9 +87,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>팝업스토어 등록신청</h2>
-                    </div>
+                   
                 </div>
             </div>
             <form action="/storeRegister" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">

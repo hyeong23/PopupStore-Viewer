@@ -14,6 +14,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -45,23 +47,22 @@
 <div id="bbsList_header">
 		<div id="leftHeader">
 		<form action="/filterTested" method="GET" name="searchForm">
-		<span>통합검색</span>
+		<div style="font-family: 'Orbit', sans-serif; font-size: 18pt; margin-bottom:10px;">통합검색</div>
 			<input type="text" name="inputText"/>
-			<input type="submit" value="검색하기">	
+			<input type="submit" value="검색">	
 		</form>				
 		</div>	
 		</div>	
 <br/>
-    <div>
+    <div id="leftHeaderCategory">
     <form method="get" action="CheckboxServlet">
-    <p>Categories</p>
-		<input type="checkbox" name="item" value="character">캐릭터
-		<input type="checkbox" name="item" value="media">미디어
-		<input type="checkbox" name="item" value="food">식음료
-		<input type="checkbox" name="item" value="fashion">패션/뷰티
-		<input type="checkbox" name="item" value="others">기타
-		<br><br>
-		<input type="submit" value="적용">
+    <p style="font-family: 'Orbit', sans-serif; font-size: 18pt; color: black;">카테고리 선택</p>
+		<input type="checkbox" name="item" value="character">&nbsp 캐릭터 <br>
+		<input type="checkbox" name="item" value="media">&nbsp 미디어 <br>
+		<input type="checkbox" name="item" value="food">&nbsp 식음료 <br>
+		<input type="checkbox" name="item" value="fashion">&nbsp 패션/뷰티 <br>
+ 		<input type="checkbox" name="item" value="others"> &nbsp 기타 <br>
+		<input type="submit" value="적용" style="margin-top:10px;">
 	</form>
 	</div>
 	

@@ -24,8 +24,19 @@
 
 #bbsList_header #leftHeader{
 	float:left;
-	width:345px;
+	width:230px;
+	height:80px;
+	text-align:left;/* 
+  	background-color: olive;  */
+}
+
+#leftHeaderCategory{
+	float:left;
+	width:230px;
+	height:200px;
 	text-align:left;
+/* 	background-color: fuchsia;  */
+  	padding-top:20px;
 }
 #bbsList_header #rightHeader{
 	float:right;
