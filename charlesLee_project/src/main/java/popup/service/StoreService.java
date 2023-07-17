@@ -1,5 +1,6 @@
 package popup.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,24 @@ public class StoreService {
 	public int getMaxStoreNum() throws Exception{
 		
 		return storeMapper.getMaxStoreNum();
+	}
+
+	public List<Integer> getStoreBySmallDate() throws Exception{
+		
+		return storeMapper.getStoreBySmallDate();
+	}
+
+	public List<Integer> getStoreByBigDate() throws Exception{
+		
+		return storeMapper.getStoreByBigDate();
+	}
+
+	public List<Integer> getStoreByCompanyName(String[] memberCompanyName) throws Exception{
+		
+		return storeMapper.getStoreByCompanyName(memberCompanyName);
+	}
+
+	public List<Integer> getStoreByStoreTitle(String[] storeTitle) throws Exception{
+		return storeMapper.getStoreByStoreTitle(storeTitle);
 	}
 }

@@ -1,10 +1,12 @@
 package popup.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import popup.dto.Category;
 import popup.mapper.OpenStoreMapper;
 import popup.vo.StoreVo;
 
@@ -29,4 +31,15 @@ public class OpenStoreService {
 		return openStoreMapper.getStoreByTitle(inputText);
 	}
 
+
+	public List<StoreVo> filterStoreList(List<Integer> storeNum) throws SQLException{
+		
+		return openStoreMapper.filterStoreList(storeNum);
+	}
+
+
+	
+	
+	
+	
 }

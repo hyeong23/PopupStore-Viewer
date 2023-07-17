@@ -7,7 +7,7 @@
   
   <insert id="insertPicture" parameterType = "popup.dto.Picture">
  		INSERT INTO 
- 		picture (picture_num,store_num,picture_path,picture_name,picture_original_name,picture_size,picture_date)
+ 		picture (picture_num,store_num,picture_path,picture_name,picture_original_name,picture_size,picture_date,picture_type)
  		VALUES(
 			    picture_sequence.nextval,
 				#{storeNum}, 
@@ -15,17 +15,19 @@
 				#{pictureName},
 				#{pictureOriginalName},
 				#{pictureSize},      
-				SYSDATE
+				SYSDATE,
+				#{pictureType}
 	
  		)
  	</insert>
   	
   	<select id="getPictureByStoreNum" resultMap="pictureResultMap">
-  		SELECT picture_name FROM picture WHERE store_num = #{storeNum}
+  		SELECT store_num, picture_name FROM picture WHERE store_num = #{storeNum}
   	</select>
   
   	 <resultMap id="pictureResultMap" type="popup.dto.Picture">
         <result property="pictureName" column="picture_name" />
+        <result property="storeNum" column="store_num" />
     </resultMap>
   
   

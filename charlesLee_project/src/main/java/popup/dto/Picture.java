@@ -22,11 +22,12 @@ public class Picture {
 	private String pictureOriginalName;
 	private long pictureSize;
 	private Date pictureDate;
-	
-	
+	private int pictureType;
+
 	
 	@Builder
-	public Picture(int pictureNum,int storeNum,String picturePath,String pictureName,String pictureOriginalName,long pictureSize,Date pictureDate) {
+	public Picture(int pictureNum,int storeNum,String picturePath,String pictureName,String pictureOriginalName,long pictureSize,Date pictureDate,int pictureType) {
+
 		this.pictureNum = pictureNum;
 		this.storeNum = storeNum;
 		this.picturePath = picturePath;
@@ -34,8 +35,8 @@ public class Picture {
 		this.pictureOriginalName = pictureOriginalName;
 		this.pictureSize = pictureSize;
 		this.pictureDate = pictureDate;
-		
-		
+		this.pictureType = pictureType;
+
 	}
 	
 	
