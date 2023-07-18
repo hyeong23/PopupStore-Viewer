@@ -116,10 +116,12 @@
 	        	<p> 개최 기간: ${map.storeStart} ~ ${map.storeEnd} </p>
 	        	<p> 개최 장소: ${map.storeLoc} </p>
 	        	<p> ${map.storeIntro} </p>
+<%-- 	        	<p> 조회수${map.storeCount}</p> --%>
 	        	<div class="modal_bodytext">
 
 			    	${map.storeBody}
-				 </div>
+				</div>
+				<p> 조회수 : ${map.storeCount} </p>
 	      </div>
 	      	 
 	      
@@ -232,7 +234,7 @@
 	'        </div>' + 
 	'        <div class="body">' + 
 	'            <div class="img">' +
-	'                <img src="picture/${map.pictureName}" width="73" height="70" alt = "img">' +
+	'                <img src="/project_image/${map.pictureName}" width="73" height="70" alt = "img">' +
 	'        </div>' + 
 	'        <div class="desc">' + 
 	'                <div class="ellipsis">' + '${map.storeLoc}' + '</div>' + 
@@ -293,7 +295,7 @@
 					console.log(getPictureName);
 					var li = document.createElement("li");
 					var picture = document.createElement("img");
-					picture.src = "picture/" + getPictureName;
+					picture.src = "/project_image/" + getPictureName;
 					console.log(picture);	
 					if (showPicture.children.length < pictureData.length) {
 				        
@@ -307,11 +309,11 @@
 				        bulletLabel.innerHTML = "&nbsp;";
 
 				        var bullets = document.querySelector('#bullets' + pictureData[i].storeNum);
-				        bullets.appendChild(bulletLabel);
+/* 				        bullets.appendChild(bulletLabel); */
 
 				        var slideInput = document.createElement("input");
 				        slideInput.type = "radio";
-				        slideInput.name = "slide";
+				        slideInput.name = "slide" + storeNum.toString();
 				        slideInput.id = slideId;
 				        slideInput.checked = true;
 				        bullets.parentNode.insertBefore(slideInput, bullets);

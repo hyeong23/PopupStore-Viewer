@@ -38,6 +38,13 @@ public class OpenStoreService {
 	}
 
 
+	public int countStoreByStoreNum(int storeNum) {
+		return openStoreMapper.countStoreByStoreNum(storeNum);
+		
+		
+	}
+
+
 	
 	
 	

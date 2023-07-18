@@ -26,6 +26,9 @@ public interface OpenStoreMapper {
 	public List<StoreVo> filterStoreList(@Param("storeNum") List<Integer> storeNum) throws SQLException;
 
 
+	public int countStoreByStoreNum(int storeNum);
+
+
 	
 
 }
