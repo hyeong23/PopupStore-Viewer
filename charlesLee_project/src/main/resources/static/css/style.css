@@ -2986,14 +2986,14 @@ margin-bottom: 10px;
 }
 #store_stc{
 	width: 100%;
-	height: 40px;
+	height: auto;
 	display:flex;
 	background-color: #fff;
-align-items:center;
-justify-content: center;
-margin-top: -15px;
-margin-bottom: 10px;
-padding-top:7px;
+align-items:left;
+justify-content: left;
+margin-top: -5px;
+margin-bottom: 15px;
+padding-top:2px;
 }
 
 #store_stc1{
@@ -3003,9 +3003,11 @@ padding-top:7px;
 
 #store_chk{
 	height: 30px;
-	margin:8px;
 	position:relative; 
 	font-size: 15px;
+	margin-top: 7px;
+	margin-right: 20px;
+	
 }
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
