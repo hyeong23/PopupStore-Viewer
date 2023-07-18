@@ -65,10 +65,5 @@ public class MapController {
 		return "map";
 	}
 	
-	@RequestMapping(value = "/tempMap")
-	public String get() {
-		
-		return "tempMap3";
-	}
 	
 }

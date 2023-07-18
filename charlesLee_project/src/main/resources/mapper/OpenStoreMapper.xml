@@ -24,7 +24,7 @@
   
   <select id="getMapList" resultMap="openStoreList">
     
-	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name
+	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, p.picture_name
 	FROM store s
 	JOIN picture p ON p.store_num = s.store_num where p.picture_type = 1
 	
@@ -47,6 +47,7 @@
         <result property="storeStatus" column="store_status" />      
         <result property="pictureName" column="picture_name" />
         <result property="pictureNum" column="picture_num" />
+        <result property="storeCount" column="store_count" />
     </resultMap>
     
     <select id="getStoreByTitle" resultMap="openStoreList">
@@ -67,7 +68,12 @@
       	
   </select>
  	
- 
+ 	<!-- 스토어 번호를 통한 조회수 증가 -->
+ 	<update id="countStoreByStoreNum" parameterType = "_int">
+ 		UPDATE store
+ 		SET store_count = store_count + 1
+ 		WHERE store_num = #{storeNum}
+ 	</update>
 
   
   

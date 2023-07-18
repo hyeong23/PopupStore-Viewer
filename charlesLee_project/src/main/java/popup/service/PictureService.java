@@ -24,7 +24,7 @@ public class PictureService {
 			throw new Exception("파일 전달 오류 발생");
 		}
 		
-		String picturePath = "charlesLee_project/src/main/resources/static/picture";
+		String picturePath = "C:/project_image";
 		String pictureOriginalName = picture.getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
 		String pictureName = uuid.toString() + "_" + pictureOriginalName;
