@@ -7,7 +7,7 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                     	 <a href="/main" style="padding-top: 10px; padding-left: 10px"><img src="/img/logo.png" alt=""></a>                 
+                     	 <a href="/main" style="margin: auto;"><img src="/img/logo.png" style="height: 50px;"></a>                 
                  	 	 <nav class="header__menu" style="margin-right: 200px; margin-left: 250px; padding-top: 24px;">
               	     	    <ul>                 
                	     	       <li><a href="/card">전체보기</a></li>

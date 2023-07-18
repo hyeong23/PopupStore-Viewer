@@ -49,11 +49,10 @@
 		<div>
     <form action="/calendar/filter" method="GET" >	
 	
-	<div class="filter-box">
-	<div id=scrolls style="height: 500px">
-	
-	<div id=of1 class="overflow-auto p-3" style="max-width: 186px; max-height: 240px; bottom: 250px; background-color: #ffffff;">
-	<p>Store</p>
+	<div class="filter-box" style="margin-top:-10px; margin-left: -30px;">
+	<div>
+	<p >제목</p>
+	<div class="filter-item" style="padding-top: 5px;">
 			<ul>
 			<c:forEach items="${openStoreList}" var="openStoreList" >		
   		    	<li>
@@ -64,12 +63,11 @@
 			</ul>
 	</div>	
 	
- 
- <div id=of1 class="overflow-auto p-3 " style="max-width: 186px; max-height: 240px; bottom: 0px; background-color: #ffffff;" >
- <p>Company</p>
+ <p>브랜드</p>
+ <div class="filter-item" style="padding-top: 5px;" >
 	 <ul>
  		<c:forEach items="${getBussinessMember}" var="member">
- 			<li>
+ 			<li style="list-style-type: none;">
 				<input type="checkbox" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
  			    <label for="memberCompanyName${member}">${member}</label> 
 			</li>
@@ -81,9 +79,8 @@
 
 	
 	<div>
-	<p>Categories</p>
 	<select name="category" id="category" class="filter-item">
-   	 <option value="select">카테고리</option>
+   	 <option value="select">카테고리 선택</option>
    	 <option value="character">캐릭터</option>
    	 <option value="media">미디어</option>
    	 <option value="food">식음료</option>
@@ -102,7 +99,7 @@
 		
 	</div>		
  
-	<p>Heart</p>
+	<p>좋아요</p>
 	<div id ="store_stc" class="filter-item">
 		
 		 <div id="store_chk">
@@ -113,8 +110,8 @@
 		 </div>
 	</div>
 	
-	<p>Date</p>
-	<div id ="store_stc" class="filter-item">
+	<p>오픈 상태</p>
+	<div id ="store_stc" class="filter-item" style="flex-direction: column;">
 		 <div id="store_chk">
 			    <input type="radio" id="startDate0" name="startDate" value=0 checked="checked">전체
 		 </div>
@@ -126,11 +123,10 @@
 		 </div>
   		
 	</div>
-		
-		
-		
+
 			<input type="submit" value="적용" class="filter-item">
 	</div>
+
 
 	</form>
 	</div>

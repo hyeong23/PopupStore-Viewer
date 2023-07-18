@@ -70,7 +70,11 @@
 					
 					<!-- Side bar -->
 					<div class="mypage-box" style="background-color: #EEEEEE; height: 600px; ">
-					<br><br><br>
+						<div class="mypage-item" style="width: 200;" >
+							<h3>My page</h3>
+							<!-- 내 정보 내용 추가 -->
+							<a href="/mypage">내 정보 보기</a>
+						</div>
 						<div class="mypage-item" style="width: 200;" >
 							<h3>My page more</h3>
 							<!-- 내 정보 내용 추가 -->

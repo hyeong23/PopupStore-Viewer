@@ -180,6 +180,13 @@ public class MyPageController {
         }
     }
 	
+	// 좋아요 리스트 
+	@RequestMapping(value = "/heart", method = RequestMethod.GET)
+	public String viewHeart(Model model,HttpSession session) throws Exception {
+	    
+	    return "heart";
+	}
+	
 }
 
 

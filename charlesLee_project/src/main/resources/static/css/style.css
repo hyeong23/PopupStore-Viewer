@@ -36,8 +36,19 @@
 	border-radius: 20px;
 	border: 1px solid black;
 	text-align: center;
-	
 }
+
+.storeCard-img{
+	width:230px;
+	height: 200px;
+	background-color: #fffae3;
+	border-radius: 0px;
+	border: 1px solid black;
+	text-align: center;
+	object-fit: cover;
+	margin-left:-1px;
+}
+
 html,
 body {
 	height: 100%;
@@ -88,7 +99,7 @@ p {
 
 img {
 	max-width: 100%;
-	height:100%;
+ 	height:100%;
 }
 
 input:focus,
@@ -2975,13 +2986,14 @@ margin-bottom: 10px;
 }
 #store_stc{
 	width: 100%;
-	height: 40px;
+	height: auto;
 	display:flex;
 	background-color: #fff;
-align-items:center;
-justify-content: center;
-margin-top:-15px;
-margin-bottom: 10px;
+align-items:left;
+justify-content: left;
+margin-top: -5px;
+margin-bottom: 15px;
+padding-top:2px;
 }
 
 #store_stc1{
@@ -2991,8 +3003,11 @@ margin-bottom: 10px;
 
 #store_chk{
 	height: 30px;
-
 	position:relative; 
+	font-size: 15px;
+	margin-top: 7px;
+	margin-right: 20px;
+	
 }
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
