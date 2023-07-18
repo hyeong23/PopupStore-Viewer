@@ -11,17 +11,26 @@
 	</select>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  	<select id="checkHeart" resultMap ="getfavorite">
+   	 	SELECT favorite_status FROM favorite
+    	WHERE member_num = #{memberNum} AND store_num = #{storeNum}
+	</select>
+	
+	<insert id="insertHeart">
+   	 	INSERT INTO favorite(favorite_num, member_num, store_num, favorite_status) 
+   	 	VALUES(favorite_sequence.nextval, #{memberNum}, #{storeNum}, 1)
+	</insert>
+	
+  	<delete id="deleteHeart">
+   	 	DELETE FROM favorite
+   	 	WHERE member_num = #{memberNum} AND store_num = #{storeNum}
+	</delete>
+  	
+  	
+  	
+  	
+  	<resultMap id="getfavorite" type="popup.dto.Favorite">
+        <result property="favoriteStatus" column="favorite_status" />
+    </resultMap>
   
 </mapper>
