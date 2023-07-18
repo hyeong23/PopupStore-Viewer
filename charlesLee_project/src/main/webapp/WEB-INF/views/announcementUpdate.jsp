@@ -47,7 +47,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Update</h2>
+						<h2>공지 수정</h2>
 					</div>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="contact__form__title">
-						<h2>Notice</h2>
+						<h2>공지사항 수정</h2>
 					</div>
 				</div>
 			</div>

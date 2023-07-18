@@ -13,9 +13,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
- <!-- Css Styles -->
+ 
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Orbit&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css" >
+    
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -34,9 +47,16 @@
 </head>
 
 <body>
-	<span style="font-size:12pt;"><input type="button" value="메인페이지" onclick="location.href='/main'"></span>
+  <!-- Header Section Begin -->
+   <%@ include file="header.jsp" %>
+    <!-- Header Section End -->
+<div class="panel shadow1" style="display:flex;justify-content:center; align-items: center;">
+<div class="adminViewContainer">
+	<span><input type="button" value="메인페이지로" onclick="location.href='/main'" class="adminViewBtn"></span>
 	<!-- 부서생성 클릭 시, 새로운 부서 정보 입력 페이지로 이동 -->
-	<span style="font-size:12pt;"><input type="button" value="관리자페이지" onclick="location.href='/adminpage1'"></span>
+	<span><input type="button" value="관리자페이지로" onclick="location.href='/adminpage1'" class="adminViewBtn"></span>
+</div>
+</div>
 </body>
 
 </html>

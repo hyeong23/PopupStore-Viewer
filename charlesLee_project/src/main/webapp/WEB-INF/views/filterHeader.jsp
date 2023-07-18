@@ -124,7 +124,8 @@
   		
 	</div>
 
-			<input type="submit" value="적용" class="filter-item">
+			<input type="submit" value="적용" class="filter-item" 
+					style="height: 35px; padding-left: 8px; padding-bottom: 5px;">
 	</div>
 
 
