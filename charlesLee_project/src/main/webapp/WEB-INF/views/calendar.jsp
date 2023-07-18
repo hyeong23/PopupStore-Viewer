@@ -120,7 +120,7 @@
 				<div>
 					<c:forEach items="${openStoreList}" var="store">
 					<div class="calendar-miniInfo">
-						<div><img src="picture/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
+						<div><img src="project_image/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
 						<div class="calendar-miniInfo-p">
 						<p>${store.storeTitle}</p><hr>
 						<p>${store.storeStart}</p>

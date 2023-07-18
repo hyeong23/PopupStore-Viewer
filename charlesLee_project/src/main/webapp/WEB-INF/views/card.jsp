@@ -78,7 +78,7 @@
                                 <div class="col-lg-4">
                                 <div class="storeCard">
                                     <p>${store.storeTitle}</p>
-                                    <div class="storeCard-img"><img src="picture/${store.pictureName}" style="object-fit: cover;"></div>
+                                    <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="object-fit: cover;"></div>
                                     <p>${store.storeStart}</p>
                                     <p>${store.storeEnd}</p>
                                 </div>
@@ -109,7 +109,7 @@
                                 <div class="col-lg-4">
                                 <div class="storeCard">
                                   	 <p>${store.storeTitle}</p>
-                                     <div class="storeCard-img"><img src="picture/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
+                                     <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
                                      <p>${store.storeStart}</p>
                                    <p>${store.storeEnd}</p>
                                     <c:choose>
