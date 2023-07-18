@@ -2,6 +2,7 @@ package popup.service;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -96,5 +97,9 @@ public class StoreService {
 	public List<Integer> getStoreByLoc(String storeLoc) throws Exception{
 		return storeMapper.getStoreByLoc(storeLoc);
 		
+	}
+	public Date getDateByStoreNum(int storeNum) throws Exception{
+		
+		return storeMapper.getDateByStoreNum(storeNum);
 	}
 }
