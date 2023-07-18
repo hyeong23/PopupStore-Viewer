@@ -36,6 +36,7 @@
 	border-radius: 20px;
 	border: 1px solid black;
 	text-align: center;
+	margin-bottom:30px;
 }
 
 .storeCard-img{
@@ -90,11 +91,11 @@ h6 {
 
 p {
 	font-size: 16px;
-	font-family: "Cairo", sans-serif;
+	
 	color: #6f6f6f;
 	font-weight: 400;
 	line-height: 15px;
-	margin: 0 0 14px 0;
+	margin: 0 0 10px 0;
 }
 
 img {
@@ -144,8 +145,8 @@ ol {
 	bottom: -15px;
 	right: 0;
 	height: 4px;
-	width: 80px;
-	background: #7fad39;
+	width: 120px;
+	background: #ff80c0;
 	content: "";
 	margin: 0 auto;
 }
@@ -496,7 +497,7 @@ ol {
 }
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
-	color: #7fad39;
+	color: #ff80c0;
 }
 
 .header__menu ul li .header__menu__dropdown li a {
@@ -507,7 +508,7 @@ ol {
 }
 
 .header__menu ul li.active a {
-	color: #7fad39;
+	color: #ff80c0;
 }
 
 .header__menu ul li:hover .header__menu__dropdown {
@@ -517,7 +518,7 @@ ol {
 }
 
 .header__menu ul li:hover>a {
-	color: #7fad39;
+	color: #ff80c0;
 }
 
 .header__menu ul li:last-child {
@@ -1322,7 +1323,7 @@ ol {
 
 .product__discount__title h2:after {
 	margin: 0;
-	width: 100%;
+	width: 105%;
 }
 
 .product__discount__item:hover .product__discount__item__pic .product__item__pic__hover {
@@ -2991,7 +2992,7 @@ margin-bottom: 10px;
 	background-color: #fff;
 align-items:left;
 justify-content: left;
-margin-top: -5px;
+
 margin-bottom: 15px;
 padding-top:2px;
 }
@@ -3009,6 +3010,8 @@ padding-top:2px;
 	margin-right: 20px;
 	
 }
+
+
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {

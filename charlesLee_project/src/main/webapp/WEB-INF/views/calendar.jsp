@@ -1,65 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
-    
-    <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
-  
-    <link href='/calendar/fullcalendar/packages/core/main.css' rel='stylesheet' />
-    <link href='/calendar/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-    
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/calendar/css/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="/calendar/css/style.css">
-    
-        <!-- Css Styles -->
+<link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="stylesheet" href="/css/modal.css" type="text/css">
+<link href='/calendar/fullcalendar/packages/core/main.css'
+	rel='stylesheet' />
+<link href='/calendar/fullcalendar/packages/daygrid/main.css'
+	rel='stylesheet' />
 
-    
-    <!-- Js Plugins -->
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/jquery.slicknav.js"></script>
-    <script src="/js/mixitup.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/main.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    
-    
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/calendar/css/bootstrap.min.css">
 
-    <title>Calendar #9</title>
-    
-  </head>
-  <body>
+<!-- Style -->
+<link rel="stylesheet" href="/calendar/css/style.css">
 
-   <%@ include file="header.jsp" %>
-   
+<!-- Css Styles -->
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/modal.css" type="text/css">
+
+
+<!-- Js Plugins -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery.slicknav.js"></script>
+<script src="/js/mixitup.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/main.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+<title>Calendar #9</title>
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<%@ include file="header.jsp"%>
+
 	<section class="breadcrumb-section set-bg"
 		data-setbg="/img/breadcrumb.jpg">
 		<div class="container">
@@ -71,78 +85,86 @@
 				</div>
 			</div>
 		</div>
-		
-	</section>	
-	
 
-  
- 
-  <div class="content">
-   <div class="filterBox" style="margin-top:90px;">
-   <%@ include file="filterHeader.jsp" %>
+	</section>
+
+
+
+
+	<div class="content">
+		<div class="filterBox" style="margin-top: 90px;">
+			<%@ include file="filterHeader.jsp"%>
+		</div>
+		<div id='calendar'></div>
+		<div id=scrolls>
+
+			<div id=of1 class="overflow-auto p-3 bg-light"
+				style="max-width: 250px; max-height: 250px;">
+
+				<p>Store</p>
+				<div>
+					<ul>
+						<c:forEach items="${openStoreList}" var="openStoreList">
+							<li><input type="checkbox"
+								id="storeTitle${openStoreList.storeNum}" name="storeTitle"
+								value="${openStoreList.storeTitle}" checked="checked"> <label
+								for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+
+			</div>
+			<div id=of2 class="overflow-auto bg-light"
+				style="max-width: 250px; max-height: 465px;">
+				<div>
+					<c:forEach items="${openStoreList}" var="store">
+					<div class="calendar-miniInfo">
+						<div><img src="picture/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
+						<div class="calendar-miniInfo-p">
+						<p>${store.storeTitle}</p><hr>
+						<p>${store.storeStart}</p>
+						<p>${store.storeEnd}</p>
+						</div>
+					</div>
+					</c:forEach> 
+				</div>
+
+			</div>
+		</div>
 	</div>
-    <div id='calendar'>
-    </div>
-    <div id=scrolls>
-
-    <div id=of1 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 250px;">
-
- <p>Store</p>
-	<div>
-			<ul>
-			<c:forEach items="${openStoreList}" var="openStoreList">		
-  		    	<li>
- 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
- 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
-				</li>			
-			</c:forEach>
-			</ul>
-	</div>		
-
- </div>
-     <div id=of2 class="overflow-auto p-3 bg-light" style="max-width: 250px; max-height: 465px;">
-     <div>마커같은썸네일존
-     	 <div style="background-color: maroon;">
-                                    <p>${store.storeTitle}</p>
-                                    <div class="img" style="width: 50px; height: 50px;"><img src="picture/${store.pictureName}"alt = "img"></div>
-                                    <p>${store.storeStart}</p>
-                                    <p>${store.storeEnd}</p>
-                                </div>
-     </div>
-
- </div>
- </div>
-  </div>
-
-  
-    <!-- Footer Section Begin -->
-    <%@ include file="footer.jsp" %>
-    <!-- Footer Section End -->
-    
 
 
-    <script src="/calendar/js/jquery-3.3.1.min.js"></script>
-    <script src="/calendar/js/popper.min.js"></script>
-    <script src="/calendar/js/bootstrap.min.js"></script>
+	<!-- Footer Section Begin -->
+	<%@ include file="footer.jsp"%>
+	<!-- Footer Section End -->
 
-    <script src='/calendar/fullcalendar/packages/core/main.js'></script>
-    <script src='/calendar/fullcalendar/packages/interaction/main.js'></script>
-    <script src='/calendar/fullcalendar/packages/daygrid/main.js'></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	
+
+
+	<script src="/calendar/js/jquery-3.3.1.min.js"></script>
+	<script src="/calendar/js/popper.min.js"></script>
+	<script src="/calendar/js/bootstrap.min.js"></script>
+
+	<script src='/calendar/fullcalendar/packages/core/main.js'></script>
+	<script src='/calendar/fullcalendar/packages/interaction/main.js'></script>
+	<script src='/calendar/fullcalendar/packages/daygrid/main.js'></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 	<!-- 수정 -->
 	<!-- Modal -->
-	
-	
-	
-	
-	
-	
-	
-	
-    <script>
+
+
+
+
+
+
+
+
+	<script>
     document.addEventListener('DOMContentLoaded', function() {
     	  var calendarEl = document.getElementById('calendar');
     	  var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -219,10 +241,10 @@
     	});
 
     </script>
-     <script src="/calendar/js/main.js"></script>
-    
-    
-    <script>
+	<script src="/calendar/js/main.js"></script>
+
+
+	<script>
    	
     function tempClick(titleHtml){
     	alert(titleHtml); 
@@ -230,12 +252,13 @@
     
     
     </script>
-    
-    <!-- Modal -->
-    	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  		<div class="modal-dialog modal-lg">
+
+	<!-- Modal -->
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
+		tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg"></div>
 	</div>
-	</div>
-	
-  </body>
+
+</body>
 </html>
