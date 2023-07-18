@@ -29,22 +29,9 @@ public class HomeController {
 		return "main";
 	}
 	
-	@Autowired
-	OpenStoreService openStoreService;
-	
-	@RequestMapping(value = "/card")
-	public String openStoreList(Model model, HttpSession session) {
 
-	System.out.println("card test");
-
-	List<StoreVo> openStoreList = openStoreService.getAllStore();
-
-	model.addAttribute("openStoreList", openStoreList);
-	
-	
-	return "card";
-	
-	}
-	
 	
 }
+	
+	
+

@@ -15,18 +15,19 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
-    
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/modal.css" type="text/css">
 </head>
 
 <body>
@@ -71,6 +72,7 @@
                         </div>
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
+
                             <c:forEach items="${openStoreList}" var="store">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
@@ -81,6 +83,7 @@
                                 </div>
                                 </div>
                                 </c:forEach>
+
                             </div>
                         </div>
                     </div>
@@ -98,16 +101,54 @@
                         </div>
                     </div>
                     <div class="row">
-                        <c:forEach items="${openStoreList}" var="store">
+
+                        
+                            <div class="product__item">
+                                <c:forEach items="${openStoreList}" var="store" varStatus="vs">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
-                                    <p>${store.storeTitle}</p>
-                                    <div class="storeCard-img"><img src="picture/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
-                                    <p>${store.storeStart}</p>
-                                    <p>${store.storeEnd}</p>
+                                  	 <p>${store.storeTitle}</p>
+                                     <div class="storeCard-img"><img src="picture/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
+                                     <p>${store.storeStart}</p>
+                                   <p>${store.storeEnd}</p>
+                                    <c:choose>
+                                    	<%-- 로그인 했을때 --%>
+                                    	<c:when test="${not empty sessionScope.memberNum}">     
+                                    	 	<!-- 알람 -->
+                          				<c:if test="${getStoreByAlarm.contains(store.storeNum)}">
+                                    		<img id="yellow${store.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${store.storeNum}')" style="width: 10%; height: 10%;" >
+                                    		<img id="bell${store.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${store.storeNum}','${store.storeTitle}')" style="width: 10%; height: 10%; display: none;" >
+										</c:if>
+										<c:if test="${not getStoreByAlarm.contains(store.storeNum)}">
+                     						<img id="yellow${store.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${store.storeNum}')" style="width: 10%; height: 10%; display: none;" >
+                                    		<img id="bell${store.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${store.storeNum}','${store.storeTitle}')" style="width: 10%; height: 10%;" >
+                  						</c:if>
+                                 			<!-- 좋아요 -->
+										<c:if test="${getStoreByHeart.contains(store.storeNum)}">
+                                    		 <img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%;  display: none;">	
+             								 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%;">	
+										</c:if>
+										<c:if test="${not getStoreByHeart.contains(store.storeNum)}">
+                     						<img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%; ">	
+             							 	 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%; display: none;">	
+                  						</c:if>	
+                                    	</c:when>
+                                    	<%-- 로그인 안했을때 --%>
+                                    	<c:otherwise>
+                                    		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 10%; height: 10%;">
+                                    		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 10%; height: 10%;">	   
+                                  	    </c:otherwise>
+                                    
+                                    </c:choose>
+                                    
                                 </div>
                                 </div>
                                 </c:forEach>
+                            </div>
+                      
+                        
+
+                      
                     </div>
                     <div class="product__pagination">
                         <a href="#">1</a>
@@ -124,16 +165,100 @@
 
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+ 
+ 	<script>
+ 	
+ 
+ 	function insertAlarm(storeNum, storeTitle) {
+ 	    // AJAX 요청을 사용하여 컨트롤러 실행
+ 	    $.ajax({
+ 	        url: '/api/insertAlarm',
+ 	        type: 'POST',
+ 	        data: {
+ 	            storeNum: storeNum,
+ 	            storeTitle: storeTitle
+ 	        },
+ 	        success: function(data) {
+ 	            alert(data);
+ 	            // 이미지 속성 변경
+ 	            	const bellId = "bell" + storeNum.toString();
+ 	            	const yellowId = "yellow" + storeNum.toString();
+ 	            	document.getElementById(bellId).style.display = "none";
+ 	            	document.getElementById(yellowId).style.display = "block";
+                  
+ 	        },
+ 	        error: function() {
+ 	            alert("error");
+ 	        }
+ 	    });
+ 	}
 
-
+ 	function deleteAlarm(storeNum) {
+ 	    // AJAX 요청을 사용하여 컨트롤러 실행
+ 	    $.ajax({
+ 	        url: '/api/deleteAlarm',
+ 	        type: 'POST',
+ 	        data: {
+ 	            storeNum: storeNum
+ 	        },
+ 	        success: function(data) {
+ 	            alert(data);
+ 	           const bellId = "bell" + storeNum.toString();
+ 	           const yellowId = "yellow" + storeNum.toString();
+ 	          document.getElementById(bellId).style.display = "block";
+ 	          document.getElementById(yellowId).style.display = "none";
+ 	          
+ 	        },
+ 	        error: function() {
+ 	            alert("error");
+ 	        }
+ 	    });
+ 	}
+	 </script>
+	<script >
+	function clickHeart(storeNum){
+		$.ajax({
+			url : "/api/like",
+			type : 'post',
+			data : {
+				storeNum : storeNum,
+			},
+			success : function(response) {
+				if(response == true){
+					alert("삽입")
+					const heartId = "heart" + storeNum.toString();
+					const heartRedId = "heartRed" + storeNum.toString();
+					document.getElementById(heartId).style.display = "none";
+					document.getElementById(heartRed).style.display = "block";
+				}else{
+					alert("삭제")
+					const heartId = "heart" + storeNum.toString();
+					const heartRedId = "heartRed" + storeNum.toString();
+					document.getElementById(heartId).style.display = "block";
+					document.getElementById(heartRed).style.display = "none";
+				}
+		     },
+			error : function(data) {
+				alert("error");
+			}
+		});
+	}
+	
+	
+		function notLogin(){
+						alert("로그인 후 이용바랍니다.")
+	}
+	
+	
+	</script>
 
 </body>
 

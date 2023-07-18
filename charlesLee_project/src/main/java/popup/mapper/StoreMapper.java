@@ -3,6 +3,7 @@ package popup.mapper;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,7 @@ public interface StoreMapper {
 	public List<Integer> getStoreByStoreTitle(@Param("storeTitle") String[] storeTitle) throws Exception;
 
 	public List<Integer> getStoreByLoc(String storeLoc) throws Exception;
+
+	public Date getDateByStoreNum(int storeNum) throws Exception;
 
 }
