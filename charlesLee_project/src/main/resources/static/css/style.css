@@ -30,6 +30,21 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+.thumbnail img{
+	height : 220px;
+	width: 220px;
+	object-fit: cover;
+}
+#imgholder img{
+	width: 490px;
+    height: 480px;
+    overflow:hidden;
+    margin:0 auto;
+    object-fit:cover;
+}
+
+
+
 .storeCard{
 	width:230px;
 	height:300px;
