@@ -29,6 +29,9 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+.container{
+	display: flex; flex-direction: row;
+}
 
 .thumbnail img{
 	height : 220px;
@@ -53,6 +56,8 @@
 	border: 1px solid black;
 	text-align: center;
 	margin-bottom:30px;
+	font-family: 'Noto Sans KR', sans-serif;
+		font-weight: 300;
 }
 
 .storeCard-img{
@@ -78,7 +83,6 @@ h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 	color: #111111;
 	font-weight: 400;
-	font-family: "Cairo", sans-serif;
 }
 
 h1 {
@@ -107,11 +111,10 @@ h6 {
 
 p {
 	font-size: 16px;
-	
 	color: #6f6f6f;
-	font-weight: 400;
 	line-height: 15px;
 	margin: 0 0 10px 0;
+	font-weight: 400;
 }
 
 img {
