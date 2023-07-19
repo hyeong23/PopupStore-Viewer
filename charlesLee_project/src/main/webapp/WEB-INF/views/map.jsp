@@ -114,16 +114,19 @@
 	      	 <div>
 
 	      
-	        	<h5>작성자 : </h5>
+				<hr>
+	        	<p>작성자 : <p>
 	        	<p> 개최 기간: ${map.storeStart} ~ ${map.storeEnd} </p>
 	        	<p> 개최 장소: ${map.storeLoc} </p>
+				<hr>
 	        	<p> ${map.storeIntro} </p>
-<%-- 	        	<p> 조회수${map.storeCount}</p> --%>
+				<hr>
 	        	<div class="modal_bodytext">
-
 			    	${map.storeBody}
 				</div>
+				<hr>
 				<p> 조회수 : ${map.storeCount} </p>
+	        	<p> <a href="${map.storeSite}" target="_blank" class="link">${map.storeSite} 홈페이지</a></p>
 	      </div>
 	      	 
 	      
