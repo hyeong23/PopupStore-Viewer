@@ -1,61 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+<meta charset="UTF-8">
+<meta name="description" content="Ogani Template">
+<meta name="keywords" content="Ogani, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Ogani | Template</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
-    
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap"
+	rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    
- <style>
+
+<!-- Css Styles -->
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+
+<style>
 #bbsList_list {
-  display: flex;
+	display: flex;
 }
+
 #bbsList_list dl {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
+
 #bbsList_list dd {
-  flex: 1;
+	flex: 1;
 }
 </style>
-    
-    
-    
-    
+
+
+
+
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
-    <!-- Header Section Begin -->
-   <%@ include file="header.jsp" %>
-    <!-- Header Section End -->
-    
-   <!-- 맨위 배너 --> 
+	<!-- Header Section Begin -->
+	<%@ include file="header.jsp"%>
+	<!-- Header Section End -->
+
+	<!-- 맨위 배너 -->
 	<section class="breadcrumb-section set-bg"
 		data-setbg="img/breadcrumb.jpg">
 		<div class="container">
@@ -67,12 +72,12 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</section>
 	<!-- 맨위 배너 End-->
-	
-	 <!-- nav바 -->
-<!-- <section class="hero">
+
+	<!-- nav바 -->
+	<!-- <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -101,87 +106,111 @@
         </div>
     </section> -->
 	<!-- nav바  End-->
-<br><br>
-<div class="container">
-<div class="card">
-		<div class="table-responsive table-scroll"data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
-			<table class="table table-striped mb-0">
-				<thead style="background-color: #7fad39; text-align: center; color: white">
-					<tr>
-						<th scope="col">번호</th>
-						<th scope="col">제목</th>
-						<th scope="col">작성자</th>
-						<th scope="col">조회수</th>
-						<th scope="col">승인/거부</th>
-					</tr>
-				</thead>
-			<tbody style="text-align: center;">
-				<c:if test="${empty requestScope.store}">
-					<tr>
-						<td colspan="5">
-							<p align="center">
-								<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
-							</p>
-						</td>
-					</tr>
-				</c:if>
-    		    <c:forEach items="${requestScope.store}" var="store">
-      			  <tr>
-      			 	    <td>
-      			 	  		 <p align="center">
-      			 				 <b><span style="font-size: 12pt;">  ${store.storeNum}</span></b>
-      			 			 </p>
-      			 	   </td>
-      			 	 
-      			 	   <td> 
-      			 	   		 <p align="center">
-      			 				 	<b><span style="font-size: 12pt;"><a href="/storeRegister">${store.storeTitle}</a></span></b>
-      			 			 </p></td>
-      			 	   <td>
-							<c:if test="${store.memberCompanyName eq null}">
-							 <p align="center">
-      			 				 	<b><span style="font-size: 12pt;">
-								${store.memberNickname}</span></b>
-      			 			 </p>
-							</c:if>
-							<c:if test="${store.memberCompanyName ne null}">
-							 <p align="center">
-      			 				 	<b><span style="font-size: 12pt;">
-								${store.memberCompanyName}</span></b>
-      			 			 </p>
-							</c:if>
-						</td>
-         
-        			   <td> <p align="center">
-      			 				 	<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
-      			 			 </p>
-      			 	  </td>
-        			   <td> <p align="center">
-      			 				 	<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
-      			 			 </p>
-      			 	  </td>
-      		   	  </tr>
-   			   </c:forEach>   			
+	<br>
+	<br>
+	<div class="container">
+		<div class="card">
+			<div class="table-responsive table-scroll"
+				data-mdb-perfect-scrollbar="true"
+				style="position: relative; height: 500px">
+				<table class="table table-striped mb-0">
+					<thead
+						style="background-color: #ff80c0; text-align: center; color: white">
+						<tr>
+							<th scope="col">번호</th>
+							<th scope="col">제목</th>
+							<th scope="col">작성자</th>
+							<th scope="col">조회수</th>
+							<th scope="col">승인/거부</th>
+						</tr>
+					</thead>
+					<tbody style="text-align: center;">
+						<c:if test="${empty requestScope.store}">
+							<tr>
+								<td colspan="5">
+									<p align="center">
+										<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
+									</p>
+								</td>
+							</tr>
+						</c:if>
+						<c:forEach items="${requestScope.store}" var="store">
+							<tr>
+								<td>
+									<p align="center">
+										<b><span style="font-size: 12pt;">
+												${store.storeNum}</span></b>
+									</p>
+								</td>
 
-			</tbody>
-		</table>
-	 </div>
-  </div>
-</div>
-    <!-- Footer Section Begin -->
-    <%@ include file="footer.jsp" %>
-    <!-- Footer Section End -->
+								<td>
+									<p align="center">
+										<b><span style="font-size: 12pt;"><a
+												href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
+									</p>
+								</td>
+								<td><c:if test="${store.memberCompanyName eq null}">
+										<p align="center">
+											<b><span style="font-size: 12pt;">
+													${store.memberNickname}</span></b>
+										</p>
+									</c:if> <c:if test="${store.memberCompanyName ne null}">
+										<p align="center">
+											<b><span style="font-size: 12pt;">
+													${store.memberCompanyName}</span></b>
+										</p>
+									</c:if></td>
 
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-  
+								<td>
+									<p align="center">
+										<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
+									</p>
+								</td>
+								<td>
+									<p align="center">
+										<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
+									</p>
+								</td>
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div align=center>
+
+		<span style="font-size: 12pt;"> <input type="button"
+			value="메인으로" onclick="location.href='/main'">
+		</span>
+		<span style="font-size: 12pt;"> <input type="button"
+			value="업로드" onclick="location.href='/storeRegister'">
+		</span>
+		<!-- 관리자 로그인 상태일때만 활성화  -->
+		<%-- 		<c:if test="${memberId == 'admin'}">
+			<span style="font-size: 12pt;"> <input type="button"
+				value="업로드" onclick="location.href='/storeRegister'">
+			</span>
+		</c:if> --%>
+
+	</div>
+
+	<!-- Footer Section Begin -->
+	<%@ include file="footer.jsp"%>
+	<!-- Footer Section End -->
+
+	<!-- Js Plugins -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+
 
 
 </body>

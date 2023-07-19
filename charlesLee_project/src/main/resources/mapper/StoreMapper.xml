@@ -108,5 +108,12 @@
    	 	SELECT store_num FROM store
     	WHERE store_loc LIKE CONCAT(#{storeLoc}, '%')
 	</select>
-  
+  	
+  	<!-- select one -->
+	<select id="getStoreOne" resultMap="storeResultMap">
+		select *
+		from store
+		where store_num = #{storeNum}
+	</select>
+  	
 </mapper>
