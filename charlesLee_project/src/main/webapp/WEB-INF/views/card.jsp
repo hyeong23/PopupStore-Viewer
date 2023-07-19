@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="filterBox" style="margin-top:0px;">
-                        <%@ include file="filterHeader.jsp" %>
+                        <%@ include file="cardFilter.jsp" %>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
@@ -102,8 +102,13 @@
                         </div>
                     </div>
                     <div class="row">
-                                <c:forEach items="${openStoreList}" var="store" varStatus="vs">
-                                <div class="col-lg-4" style="display:flex; justify-content: center;">
+
+
+                        
+ 
+                                <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
+                                <div class="col-lg-4">
+
                                 <div class="storeCard">
                                   	 <p>${store.storeTitle}</p>
                                      <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
