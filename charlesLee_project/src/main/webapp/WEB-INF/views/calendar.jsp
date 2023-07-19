@@ -97,26 +97,8 @@
 		</div>
 		<div id='calendar'></div>
 		<div id=scrolls>
-
-			<div id=of1 class="overflow-auto p-3 bg-light"
-				style="max-width: 250px; max-height: 250px;">
-
-				<p>Store</p>
-				<div>
-					<ul>
-						<c:forEach items="${openStoreList}" var="openStoreList">
-							<li><input type="checkbox"
-								id="storeTitle${openStoreList.storeNum}" name="storeTitle"
-								value="${openStoreList.storeTitle}" checked="checked"> <label
-								for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
-
-			</div>
 			<div id=of2 class="overflow-auto bg-light"
-				style="max-width: 250px; max-height: 465px;">
+				style="max-width: 250px; ">
 				<div>
 					<c:forEach items="${openStoreList}" var="store">
 					<div class="calendar-miniInfo">
@@ -259,6 +241,8 @@
 		aria-hidden="true">
 		<div class="modal-dialog modal-lg"></div>
 	</div>
+	
+	
 
 </body>
 </html>
