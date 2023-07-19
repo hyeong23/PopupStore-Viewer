@@ -15,8 +15,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class StoreVo {
-	private int storeNum;
 	private int memberNum;
+	private String memberCompanyName;
+	private String memberNickname;
+	private int storeNum;
 	private String storeTitle;
 	private String storeIntro;
 	private String storeBody;
@@ -30,8 +32,6 @@ public class StoreVo {
 	private int storeStatus;
 	private Date storeCreate;
 	private Date storeUpdate;
-	private String memberCompanyName;
-	private String memberNickname;
 	private int pictureNum;
 	private String pictureName;
 

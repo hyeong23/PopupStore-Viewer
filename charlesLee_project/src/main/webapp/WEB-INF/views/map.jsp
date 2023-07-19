@@ -115,7 +115,10 @@
 
 	      
 				<hr>
-	        	<p>작성자 : <p>
+	        	<p> 작성자 : <c:if test="${empty map.memberCompanyName}">
+	        	관리자
+	        	</c:if>
+	        	${map.memberCompanyName} <p>
 	        	<p> 개최 기간: ${map.storeStart} ~ ${map.storeEnd} </p>
 	        	<p> 개최 장소: ${map.storeLoc} </p>
 				<hr>
@@ -127,6 +130,9 @@
 				<hr>
 				<p> 조회수 : ${map.storeCount} </p>
 	        	<p> <a href="${map.storeSite}" target="_blank" class="link">${map.storeSite} 홈페이지</a></p>
+	        	<hr>
+	        	<p> 작성일 : ${map.storeCreate} </p>
+	        	<p> 마지막 수정일 : ${map.storeUpdate} </p>
 	      </div>
 	      	 
 	      
