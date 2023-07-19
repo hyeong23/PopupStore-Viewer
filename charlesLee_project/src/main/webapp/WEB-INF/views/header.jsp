@@ -5,10 +5,10 @@
 
 <header class="header">
         <div class="header__top">
-            <div class="container">
+            <div class="container" style="margin-left:15%;">
                 <div class="row">
-                     	 <a href="/main" style="margin: auto;"><img src="/img/logo.png" style="height: 50px;"></a>                 
-                 	 	 <nav class="header__menu" style="margin-right: 200px; margin-left: 250px; padding-top: 24px;">
+                     	 <a href="/main" style="margin: auto;"><img src="/project_image/logo.png" style="width: 170px; margin-left:0px; margin-top:0px;"></a>                 
+                 	 	 <nav class="header__menu" style="margin-right: 200px; margin-left: 200px; padding-top: 24px;">
               	     	    <ul>                 
                	     	       <li><a href="/card">전체보기</a></li>
                	     	       <li><a href="/calendar">캘린더</a>     </li>                             
@@ -17,7 +17,7 @@
              	 	         </ul>
              		     </nav>
       
-                         <div class="header__top__right"  style="width: 200px">
+                         <div class="header__top__right"  style="width: 190px">
                             <a href="/ask"><span style="font-size: 10px; color: black;">문의하기 |</span></a>
                             <a href="/storeList"><span style="font-size: 10px; color: black;">팝업등록신청 |</span></a>
                             <a href="/mypage"><span style="font-size: 10px; color: black;">마이페이지</span></a>

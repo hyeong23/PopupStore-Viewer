@@ -14,6 +14,13 @@
         (category_sequence.nextval, #{storeNum},#{category1})
   </insert>
   
+   <update id="updateCategory"> 
+       	UPDATE category
+       	SET category_num = #{categoryNum},
+       		category = #{category}
+        WHERE store_num = #{storeNum}
+  </update>
+  
     <resultMap id="categoryResultMap" type="popup.dto.Category">
         <result property="categoryNum" column="category_num" />
         <result property="storeNum" column="store_num" />

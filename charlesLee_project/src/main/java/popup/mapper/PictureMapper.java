@@ -10,6 +10,8 @@ import popup.dto.Picture;
 public interface PictureMapper {
 
 	int insertPicture(Picture pictureFile) throws Exception;
+	
+	int updatePicture(Picture pictureFile) throws Exception;
 
 	List<Picture> getPictureByStoreNum(int storeNum);
 

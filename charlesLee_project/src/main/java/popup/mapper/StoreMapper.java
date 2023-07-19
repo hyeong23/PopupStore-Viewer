@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import popup.dto.Announcement;
 import popup.dto.Store;
 import popup.vo.StoreVo;
 
@@ -38,6 +39,10 @@ public interface StoreMapper {
 
 	public List<Integer> getStoreByLoc(String storeLoc) throws Exception;
 
+
+	public Store getStoreOne(int storeNum) throws Exception;
+
 	public Date getDateByStoreNum(int storeNum) throws Exception;
+
 
 }

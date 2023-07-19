@@ -16,8 +16,6 @@ public interface OpenStoreMapper {
 	public List<StoreVo> getOpenStoreList();
 
 	
-	public List<StoreVo> getMapList();
-	
 	public List<StoreVo> getMapList2(int storeNum);
 	
 

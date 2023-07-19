@@ -14,6 +14,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -68,7 +69,7 @@
                         	<div id="ask_stc1">개인정보 수집 및 이용 약관에 동의합니다</div>
                         	<div id="ask_chk"><input type="checkbox" id="check1"> </div>                    
                           </div>
-                        <input type="submit" value="Send Message" class="site-btn" id="send_message" style="color:white;"/>
+                        <input type="submit" value="문의 보내기" class="site-btn" id="send_message" style="color:white;"/>
                     </div>
                 </div>
             </form>
