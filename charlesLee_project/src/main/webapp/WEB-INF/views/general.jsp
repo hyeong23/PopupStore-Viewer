@@ -52,6 +52,7 @@
                         	<br/>
                         <input class="login animated fadeInUp animate2" name="memberPw" id="password" type="password" required placeholder="Password" value="">
 	                        <br/>
+	                        	<span class=login_pw id = "memberPwMsg" style="font-size:8pt"></span>
 	                        <br/>
                         <input class="login animated fadeInUp animate3" name="memberEmail" id="memberEmail" type="text"  required   placeholder="Email" value="" >
 	                        <br/>
@@ -109,6 +110,22 @@
 				memberIdMsg.innerHTML = error.response.data;
 			})
 		}});
+	
+	const inputPassword = document.getElementById('password'); //객체생성
+	const memberPwMsg = document.getElementById("memberPwMsg");
+	
+	inputPassword.addEventListener('blur', () => {
+		if(inputPassword.value == "" || inputPassword.value == null){
+			checkPw = 0;
+			memberPwMsg.innerHTML = '';	
+		}else if(inputPassword.value.length < 8){
+			checkPw = 0;
+			memberPwMsg.innerHTML = '8자리 이상의 비밀번호를 적어주십시오.';
+		}else if(inputPassword.value.length >= 8){
+			checkPw = 1;
+			memberPwMsg.innerHTML = '';
+		}
+	});
 	
 	const inputMemberEmail = document.getElementById('memberEmail'); //객체생성
 	const memberEmailMsg = document.getElementById("memberEmailMsg"); 
@@ -208,6 +225,9 @@
 		}if(checkPhoneNum == 0 ){
 			alert("중복된 전화번호입니다. 다시 입력해주십시오.")
 			return false;		
+		}if(checkPw == 0){
+			alert("비밀번호를 8자리 이상 입력해주십시오.")
+			return false;
 		}		
 		
 		return true;

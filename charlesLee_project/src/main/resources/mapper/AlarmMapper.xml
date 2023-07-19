@@ -4,11 +4,25 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="popup.mapper.AlarmMapper">
   
+  	 <insert id="insertAlarm" > 
+        INSERT INTO alarm
+        (alarm_num,member_num,alarm_content,alarm_time,store_num)
+        VALUES
+        (alarm_sequence.nextval, #{memberNum}, #{alarmContent}, #{alarmTime},  #{storeNum})
+
+ 	 </insert>
+  
+  	<delete id="deleteAlarm" parameterType="_int">
+		DELETE FROM alarm
+		WHERE member_num = #{memberNum} AND store_num = #{storeNum}
+	</delete>
   
   
-  
-  
-  
+  	  <select id="getStoreByAlarm" resultType="_int">
+   	 	SELECT store_num FROM alarm
+    	WHERE member_num = #{customerNum}
+    	ORDER BY store_num
+    	</select>
   
   
   

@@ -21,10 +21,6 @@ public class OpenStoreService {
 	}
 
 	
-	public List<StoreVo> getMapStore() {
-		return openStoreMapper.getMapList();
-	}
-	
 	public List<StoreVo> getMapStore2(int storeNum) {
 		return openStoreMapper.getMapList2(storeNum);
 		//System.out.println("test2");
@@ -39,6 +35,13 @@ public class OpenStoreService {
 	public List<StoreVo> filterStoreList(List<Integer> storeNum) throws SQLException{
 		
 		return openStoreMapper.filterStoreList(storeNum);
+	}
+
+
+	public int countStoreByStoreNum(int storeNum) {
+		return openStoreMapper.countStoreByStoreNum(storeNum);
+		
+		
 	}
 
 

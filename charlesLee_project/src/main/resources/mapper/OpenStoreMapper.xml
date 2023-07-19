@@ -8,28 +8,21 @@
  
   
   <select id="getOpenStoreList" resultMap="openStoreList">
-	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name
+	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name
 	FROM store s
 	JOIN picture p ON p.store_num = s.store_num where p.picture_type = 1
   </select>
   
   <select id="getMapList2" resultMap="openStoreList">
     
-	SELECT *
-	FROM store
-	WHERE store_num = #{storeNum}
+	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, p.picture_name
+	FROM store s
+	JOIN picture p ON p.store_num = s.store_num where s.store_num = #{storeNum} 
 	
       
   </select>
   
-  <select id="getMapList" resultMap="openStoreList">
-    
-	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, p.picture_name
-	FROM store s
-	JOIN picture p ON p.store_num = s.store_num where p.picture_type = 1
-	
-      
-  </select>
+
   
   
  	<resultMap id="openStoreList" type="popup.vo.StoreVo">
@@ -47,6 +40,9 @@
         <result property="storeStatus" column="store_status" />      
         <result property="pictureName" column="picture_name" />
         <result property="pictureNum" column="picture_num" />
+        <result property="storeCount" column="store_count" />
+		<result property="storeCreate" column="store_create" />
+		<result property="storeUpdate" column="store_update" />
     </resultMap>
     
     <select id="getStoreByTitle" resultMap="openStoreList">
@@ -58,16 +54,22 @@
 	
      <select id="filterStoreList" resultMap="openStoreList">
     
-      SELECT store_num ,member_num ,store_title, store_intro, store_body , store_start, store_end , store_favorite , store_loc , store_loc_detail , store_site , store_status 
-      FROM store
-      WHERE store_num IN 
+      SELECT   s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name
+      FROM store s
+      JOIN picture p ON p.store_num = s.store_num
+      WHERE p.picture_type = 1 AND s.store_num IN 
         <foreach item="item" collection="storeNum" open="(" separator="," close=")">
             #{item}
         </foreach>
       	
   </select>
  	
- 
+ 	<!-- 스토어 번호를 통한 조회수 증가 -->
+ 	<update id="countStoreByStoreNum" parameterType = "_int">
+ 		UPDATE store
+ 		SET store_count = store_count + 1
+ 		WHERE store_num = #{storeNum}
+ 	</update>
 
   
   

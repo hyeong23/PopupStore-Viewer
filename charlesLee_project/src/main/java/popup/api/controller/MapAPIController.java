@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import popup.dto.Picture;
 import popup.service.MemberService;
+import popup.service.OpenStoreService;
 import popup.service.PictureService;
 
 @RestController
@@ -20,10 +21,18 @@ public class MapAPIController {
 	@Autowired
 	final PictureService pictureService;
 	
+	@Autowired
+	OpenStoreService openStoreService;
+	
 	@RequestMapping(value = "/api/map/{storeNum}", method = RequestMethod.GET)
 	public List<Picture> getPicture(@PathVariable int storeNum ) throws Exception {
 	
 		List<Picture> result =  pictureService.getPictureByStoreNum(storeNum);
+		
+		if(result != null) {
+			openStoreService.countStoreByStoreNum(storeNum);
+		}
+		
 		System.out.println(result);
 		return result;
 	}

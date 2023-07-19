@@ -34,7 +34,7 @@
  	</update>
   	
   	<select id="getPictureByStoreNum" resultMap="pictureResultMap">
-  		SELECT store_num, picture_name FROM picture WHERE store_num = #{storeNum}
+  		SELECT store_num, picture_name FROM picture WHERE store_num = #{storeNum} order by picture_num
   	</select>
   
   	 <resultMap id="pictureResultMap" type="popup.dto.Picture">

@@ -29,6 +29,7 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+
 .storeCard{
 	width:230px;
 	height:300px;
@@ -36,6 +37,7 @@
 	border-radius: 20px;
 	border: 1px solid black;
 	text-align: center;
+	margin-bottom:30px;
 }
 
 .storeCard-img{
@@ -90,11 +92,11 @@ h6 {
 
 p {
 	font-size: 16px;
-	font-family: "Cairo", sans-serif;
+	
 	color: #6f6f6f;
 	font-weight: 400;
 	line-height: 15px;
-	margin: 0 0 14px 0;
+	margin: 0 0 10px 0;
 }
 
 img {
@@ -144,8 +146,8 @@ ol {
 	bottom: -15px;
 	right: 0;
 	height: 4px;
-	width: 80px;
-	background: #7fad39;
+	width: 120px;
+	background: #ff80c0;
 	content: "";
 	margin: 0 auto;
 }
@@ -195,6 +197,7 @@ ol {
 	display: inline-block;
 	background: #ff80c0;
 	border: none;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .reply-send-btn {
@@ -340,6 +343,8 @@ ol {
 .header__top__right {
 	text-align: right;
 	padding: 10px 0 13px;
+	font-family: 'Noto Sans KR', sans-serif;
+
 }
 
 .header__top__right__social {
@@ -496,7 +501,7 @@ ol {
 }
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
-	color: #7fad39;
+	color: #ff80c0;
 }
 
 .header__menu ul li .header__menu__dropdown li a {
@@ -507,7 +512,7 @@ ol {
 }
 
 .header__menu ul li.active a {
-	color: #7fad39;
+	color: #ff80c0;
 }
 
 .header__menu ul li:hover .header__menu__dropdown {
@@ -517,7 +522,7 @@ ol {
 }
 
 .header__menu ul li:hover>a {
-	color: #7fad39;
+	color: #ff80c0;
 }
 
 .header__menu ul li:last-child {
@@ -1303,7 +1308,7 @@ ol {
 -----------------------*/
 
 .product {
-	padding-top: 80px;
+	padding-top: 60px;
 	padding-bottom: 80px;
 }
 
@@ -1322,7 +1327,7 @@ ol {
 
 .product__discount__title h2:after {
 	margin: 0;
-	width: 100%;
+	width: 105%;
 }
 
 .product__discount__item:hover .product__discount__item__pic .product__item__pic__hover {
@@ -2986,14 +2991,14 @@ margin-bottom: 10px;
 }
 #store_stc{
 	width: 100%;
-	height: 40px;
+	height: auto;
 	display:flex;
 	background-color: #fff;
-align-items:center;
-justify-content: center;
-margin-top: -15px;
-margin-bottom: 10px;
-padding-top:7px;
+align-items:left;
+justify-content: left;
+
+margin-bottom: 15px;
+padding-top:2px;
 }
 
 #store_stc1{
@@ -3003,10 +3008,14 @@ padding-top:7px;
 
 #store_chk{
 	height: 30px;
-	margin:8px;
 	position:relative; 
 	font-size: 15px;
+	margin-top: 7px;
+	margin-right: 20px;
+	
 }
+
+
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {

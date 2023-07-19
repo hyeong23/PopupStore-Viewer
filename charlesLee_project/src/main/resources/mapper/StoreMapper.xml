@@ -16,8 +16,9 @@
   
   <select id = "getStore" resultType="HashMap">
 			SELECT DISTINCT 
-			      s.*, p.picture_num, p.picture_original_name, p.picture_size, p.picture_path || '\' ||  p.picture_name as picture_paths, p.picture_date, c.*
+			      s.*, m.member_nickname,p.picture_num, p.picture_original_name, p.picture_size, p.picture_path || '\' ||  p.picture_name as picture_paths, p.picture_date, c.*
 			      FROM store s
+			      JOIN member m ON s.member_num = m.member_num
 			      JOIN picture p ON s.store_num = p.store_num
 			      JOIN category c ON s.store_num = c.store_num
 	  	  
@@ -108,6 +109,7 @@
    	 	SELECT store_num FROM store
     	WHERE store_loc LIKE CONCAT(#{storeLoc}, '%')
 	</select>
+
   	
   	<!-- select one -->
 	<select id="getStoreOne" resultMap="storeResultMap">
@@ -116,4 +118,16 @@
 		where store_num = #{storeNum}
 	</select>
   	
+
+	
+		<select id="getDateByStoreNum" resultType="Date">
+   	 	SELECT store_start FROM store
+    	WHERE store_num = #{storeNum}
+	</select>
+	
+	
+	
+	
+	
+	
 </mapper>

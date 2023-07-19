@@ -53,7 +53,7 @@
 			    </div>
 
 			    <ul id="imgholder${store2[0].storeNum}" class="imgs">
-					<li><img src = "picture/${store2[0].pictureName}"></li>
+					<li><img src = "/project_image/${store2[0].pictureName}"></li>
 			    </ul>
 			    
 			    

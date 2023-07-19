@@ -14,11 +14,16 @@
 
 <!-- Google Font -->
 <link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap"
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap"
 	rel="stylesheet">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap"
+	rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -112,8 +117,10 @@
 		<div class="card">
 			<div class="table-responsive table-scroll"
 				data-mdb-perfect-scrollbar="true"
-				style="position: relative; height: 500px">
-				<table class="table table-striped mb-0">
+
+				style="position: relative; height: 700px">
+				<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
+
 					<thead
 						style="background-color: #ff80c0; text-align: center; color: white">
 						<tr>
@@ -146,7 +153,9 @@
 								<td>
 									<p align="center">
 										<b><span style="font-size: 12pt;"><a
+
 												href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
+
 									</p>
 								</td>
 								<td><c:if test="${store.memberCompanyName eq null}">
@@ -179,6 +188,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<div align=center>
 

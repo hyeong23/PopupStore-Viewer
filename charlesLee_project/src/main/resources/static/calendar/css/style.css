@@ -68,8 +68,37 @@ position: absolute; bottom: 475px;
   margin-right: 10px;
   background-color: red;
 position:relative;
-height: 750px;
+height: 725px;
 position: absolute; bottom: 0px;
+padding: 5px;
+}
+
+.calendar-miniInfo{
+	display:flex;
+	width:220px;
+	height: 100px;
+	background-color: #ffff80;
+	margin-bottom: 10px;
+}
+
+.calendar-miniInfo-img{
+	width: 100px; height: 100px;
+	background-color: #fffae3;
+	border-radius: 0px;
+	border: 1px solid black;
+	text-align: center;
+	object-fit: cover;
+	margin-left:-1px;
+}
+
+.calendar-miniInfo-p{
+	width: 100px; height: 100px;
+	background-color: #0080ff;
+	border-radius: 0px;
+	border: 1px solid black;
+	text-align: center;
+	object-fit: cover;
+	margin-left:-1px;
 }
 
 

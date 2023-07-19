@@ -17,6 +17,7 @@
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -71,14 +72,14 @@
 									<div class="table-responsive table-scroll"
 										data-mdb-perfect-scrollbar="true"
 										style="position: relative; height: 500px">
-										<table class="table table-striped mb-0">
+										<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
 											<thead
 												style="background-color: #ff80c0; text-align: center; color: white">
 												<tr>
-													<th scope="col">Number</th>
-													<th scope="col">Title</th>
-													<th scope="col">Date</th>
-													<th scope="col">Views</th>
+													<th scope="col">번호</th>
+													<th scope="col">제목</th>
+													<th scope="col">등록 날짜</th>
+													<th scope="col">조회수</th>
 												</tr>
 											</thead>
 											<tbody style="text-align: center;">
@@ -87,16 +88,14 @@
 													<tr>
 														<td colspan="5">
 															<p align="center">
-																<b><span style="font-size: 12pt;">등록된 글이 존재하지
-																		않습니다.</span></b>
-															</p>
+																<p><span style="font-size: 12pt;">등록된 글이 존재하지
+																		않습니다.</span></p>												
 														</td>
 													</tr>
 												</c:if>
 												<!-- 반복 출력 -->
-												<c:forEach items="${requestScope.list}" var="announcement">
+												<c:forEach items="${requestScope.list}" var="announcement" >
 													<tr>
-
 														<td bgcolor="">
 															<p align="center">
 																<span style="font-size: 12pt;"> <!-- 글번호 --> <b>${announcement.announcementNum}</b>
