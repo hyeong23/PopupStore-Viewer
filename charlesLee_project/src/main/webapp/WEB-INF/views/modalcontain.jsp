@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="stylesheet" href="/css/map.css" type="text/css">
+    <link rel="stylesheet" href="/css/openStoreList[0].css" type="text/css">
     <link rel="stylesheet" href="/css/modal.css" type="text/css">
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -34,11 +34,11 @@
     <title>Title</title>
 </head>
 <body>
-<!-- Modal -->
+	<!-- Modal -->
   		<div class="modal-container">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h2 class="modal-title" id="exampleModalCenterTitle">${store2[0].storeTitle}</h2>
+	        <h2 class="modal-title" id="exampleModalCenterTitle">${openStoreList[0].storeTitle}</h2>
 <!-- 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button> -->
@@ -46,39 +46,43 @@
 	      
 <!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
 	      <div class="modal-body">
-			<div class="slider">
-			    <input type="radio" name="slide" id="slide1" checked>
-			    <div class="bullets" id = "bullets${store2[0].storeNum}">
-			        <label for="slide1">&nbsp;</label>
-			    </div>
-
-			    <ul id="imgholder${store2[0].storeNum}" class="imgs">
-					<li><img src = "/project_image/${store2[0].pictureName}"></li>
-			    </ul>
-			    
-			    
-
-			</div>	
-
-	      	 <div>
-
 	      
-	        	<h5>작성자 : </h5>
-	        	<p> 개최 기간: ${store2[0].storeStart} ~ ${store2[0].storeEnd} </p>
-	        	<p> 개최 장소: ${store2[0].storeLoc} </p>
-	        	<p> ${store2[0].storeIntro} </p>
-	        	<div class="modal_bodytext">
-
-			    	${store2[0].storeBody}
-				 </div>
-	      </div>
+				<div class="slider">
+				    <div class="bullets" id = "bullets${openStoreList[0].storeNum}">
+				    
+				    </div>
+				    <ul id="imgholder${openStoreList[0].storeNum}" class="imgs">
+				    
+				    </ul>
+				    
+				    
+	
+				</div>	
+		
+				<div>
+						<hr>
+			        	<p> 작성자 : <c:if test="${empty openStoreList[0].memberCompanyName}">
+			        	관리자
+			        	</c:if>
+			        	${openStoreList[0].memberCompanyName} <p>
+			        	<p> 개최 기간: ${openStoreList[0].storeStart} ~ ${openStoreList[0].storeEnd} </p>
+			        	<p> 개최 장소: ${openStoreList[0].storeLoc} </p>
+						<hr>
+			        	<p> ${openStoreList[0].storeIntro} </p>
+						<hr>
+			        	<div class="modal_bodytext">
+					    	${openStoreList[0].storeBody}
+						</div>
+						<hr>
+						<p> 조회수 : ${openStoreList[0].storeCount} </p>
+			        	<p> <a href="${openStoreList[0].storeSite}" target="_blank" class="link">${openStoreList[0].storeSite} 홈페이지</a></p>
+			        	<hr>
+			        	<p> 작성일 : ${openStoreList[0].storeCreate} </p>
+			        	<p> 마지막 수정일 : ${openStoreList[0].storeUpdate} </p>
+				</div>
 	      	 
 	      
 	      
-	      <!-- <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div> -->
             </div>
             </div>
 			<div class="modal-replywindow">
@@ -88,28 +92,17 @@
 	        </button>
 	        <h2>댓글</h2>
                 
-                <div class="reply-list">
-                
-               <c:forEach items="${getReplyList}" var="reply">
-                <c:if test="${reply.storeNum eq map.storeNum}">
-               <div class="reply-each">
-        		 	<p>${reply.memberNickname}<p>
-     	    	 	<p>${reply.reply}<p>
-      				<p>${reply.replyUpdate}<p> 
-      		   </div>
-      		   </c:if>
-		      </c:forEach>
-      
-      </div>
-      <form  method="POST" onsubmit="return checkReply(event)" id="replyForm">  			 
+
+      <form  method="POST" id="replyForm" name="replyInsertForm">  			 
                 <div class="reply-send">
-               			 
-						<%-- <!-- hidden 영역 -->
-  					      <input type="hidden" name="storeNum" value="${getMapList.storeNum}">
-   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}"> --%>
+						<!-- hidden 영역 -->
+  					      <input type="hidden" name="storeNum" value="${openStoreList[0].storeNum}">
+   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}">
      				   <!-- 입력 영역 -->    				
-                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
-                      <div class="reply_sendBtn"><input type="submit" onclick="return checkReply(event)" value="Send" class="reply-send-btn" id="send_message"/></div>
+                      <div class="reply_textarea"><textarea placeholder="Your Reply" id="replyBody" name=replyBody></textarea></div> 
+                      <div class="reply_sendBtn">
+                      	<input type="submit" value="Send" class="reply-send-btn" id="send_message" name="replyInsertBtn"/>
+                      </div>
                         
                     </div>
                     </form>
@@ -118,5 +111,6 @@
 	    	</div>
 	  
 	  </div>
+	
 </body>
 </html>

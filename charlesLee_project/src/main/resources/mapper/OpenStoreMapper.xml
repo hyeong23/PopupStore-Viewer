@@ -8,16 +8,23 @@
  
   
   <select id="getOpenStoreList" resultMap="openStoreList">
-	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name
+	SELECT m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,
+	store_create, store_update
 	FROM store s
-	JOIN picture p ON p.store_num = s.store_num where p.picture_type = 1
+	JOIN picture p ON p.store_num = s.store_num
+    JOIN member m ON s.member_num = m.member_num
+    where p.picture_type = 1
   </select>
   
   <select id="getMapList2" resultMap="openStoreList">
     
-	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, p.picture_name
+    SELECT m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,
+	store_create, store_update
 	FROM store s
-	JOIN picture p ON p.store_num = s.store_num where s.store_num = #{storeNum} 
+	JOIN picture p ON p.store_num = s.store_num
+    JOIN member m ON s.member_num = m.member_num
+    where p.picture_type = 1 and s.store_num = #{storeNum}
+    
 	
       
   </select>
@@ -28,6 +35,7 @@
  	<resultMap id="openStoreList" type="popup.vo.StoreVo">
         <result property="storeNum" column="store_num" />
          <result property="memberNum" column="member_num" />
+         <result property="memberCompanyName" column="member_company_name" />
         <result property="storeTitle" column="store_title" />
         <result property="storeIntro" column="store_intro" />
         <result property="storeBody" column="store_body" />

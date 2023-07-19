@@ -169,49 +169,13 @@
 	    		alert(event2.event.title);
 	  	    	var event = calendar.getEventById(event2.event.extendedProps.number);
 	  	    	$(".modal-dialog").load("/calendar/" + event2.event.extendedProps.number);
-	  	    	//$("#exampleModalCenter").modal(); 
-	  	    	/*$.ajax({
-		        		type : 'post',
-		        		url : '<c:url value="store2" />',
-		        		data : {
-		            		id : event.id,
-		            	},
-		            	success : function(data){
-		            		console.log('test');
-		            	},error : function(status, error) {
-		      				
-		      				console.log(status, error);
-		      			}
-		  			}); */
-	  	    	//myModal.show();
-	  	    	//var title = $(".modal-header #exampleModalCenterTitle");
-			        //title.val("gtt");
-			        //var body = $(".col-lg-12 col-md-6 #storeBody");
-			        //body.text("test");
-			        //$(".col-lg-12 #storeBody").text(${openStoreList[0].storeNum});
+	  	    	
+	  	    	modalClick(event2.event.extendedProps.number);
+	  	    	
 	  	    	myModal.show();
 	  	    	
-	  	    	//alert(${openStoreList[0].storeNum});
-	  	    	//alert(event);
-	  	    	//alert(event2.event.extendedProps.department);
-	  	    	//alert(event2.event.test1);
-		    	    /*
-			        var title = $(".modal-header #exampleModalCenterTitle");
-			        title.val(event2.event.extendedProps.title);
-			        var title2 = $(".col-lg-12 col-md-6 #storeTitle");
-			        title2.val(event2.event.extendedProps.title);
-			        var intro = $(".col-lg-12 col-md-6 #storeIntro");
-			        intro.val(event2.event.extendedProps.intro);
-			        var body = $(".col-lg-12 col-md-6 #storeBody");
-			        body.val(event2.event.extendedProps.body);
-			        var loc = $(".col-lg-12 col-md-6 #storeLoc");
-			        loc.val(event2.event.extendedProps.loc);
-			        var site = $(".col-lg-12 col-md-6 #storeSite");
-			        site.val(event2.event.extendedProps.site);*/
-	  	    	//var resourceIds = resources.map(function(resource) { return resource.id });
-	  	    	//alert(resources);
-	  	    	///alert(event.id + ' ' + event.title + ' ' + '${openStoreList[2].storeTitle}');
-	  	    	//myModal.show();
+	  	    	
+
 	          }
     	  });
     	  
@@ -227,9 +191,55 @@
 
 	<script>
    	
-    function tempClick(titleHtml){
-    	alert(titleHtml); 
-    }
+	function modalClick(storeNum){
+		// 현재 map의 storeNum의 번호가 안바뀜
+		// 클릭 시 해당 storeNum
+		console.log(storeNum);
+		
+		// 1을 우선 예시로 사용하는 중
+		axios.get('http://localhost:8081/api/map/' + storeNum)
+		.then(response => {
+			var pictureData = response.data;
+			console.log(pictureData);
+			for(var i = 0; i < pictureData.length; i++){
+				var getPictureName = pictureData[i].pictureName;
+				var showPicture = document.querySelector('#imgholder' + pictureData[i].storeNum);
+				console.log(getPictureName);
+				var li = document.createElement("li");
+				var picture = document.createElement("img");
+				picture.src = "/project_image/" + getPictureName;
+				console.log(picture);	
+				if (showPicture.children.length < pictureData.length) {
+			        
+					li.appendChild(picture);
+					showPicture.appendChild(li);
+					
+					// 추가는 되는데 1번 위치에서만 추가됨
+				 	var slideId = "slide" + (showPicture.children.length);
+			        var bulletLabel = document.createElement("label");
+			        bulletLabel.htmlFor = slideId;
+			        bulletLabel.innerHTML = "&nbsp;";
+
+			        var bullets = document.querySelector('#bullets' + pictureData[i].storeNum);
+/* 				        bullets.appendChild(bulletLabel); */
+
+			        var slideInput = document.createElement("input");
+			        slideInput.type = "radio";
+			        slideInput.name = "slide" + storeNum.toString();
+			        slideInput.id = slideId;
+			        slideInput.checked = true;
+			        bullets.parentNode.insertBefore(slideInput, bullets);
+
+			        
+				}
+				
+			};
+			
+		})
+		
+		
+		
+	};
     
     
     </script>

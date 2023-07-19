@@ -63,7 +63,7 @@ public class CalendarController {
 		System.out.println("num" + num);
 		//List<StoreVo> getMapList = openstoreService.getMapStore();
 		List<StoreVo> getMapList = openStoreService.getMapStore2(num);
-		model.addAttribute("store2", getMapList);
+		model.addAttribute("openStoreList", getMapList);
         return "modalcontain";
     }
 	
