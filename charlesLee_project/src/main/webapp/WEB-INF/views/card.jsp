@@ -44,7 +44,7 @@
    
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -107,8 +107,7 @@
                         
  
                                 <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
-                                <div class="col-lg-4">
-
+                                <div class="col-lg-4" style="display:flex; justify-content: center;">
                                 <div class="storeCard">
                                   	 <p>${store.storeTitle}</p>
                                      <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
