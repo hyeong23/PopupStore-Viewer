@@ -18,16 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
     
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/map.css" type="text/css">
-    <link rel="stylesheet" href="css/modal.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/map.css" type="text/css">
+    <link rel="stylesheet" href="/css/modal.css" type="text/css">
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -46,7 +46,7 @@
 
     <!-- Hero Section Begin -->
 	<section class="breadcrumb-section set-bg"
-		data-setbg="img/breadcrumb.jpg">
+		data-setbg="/img/breadcrumb.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -59,13 +59,15 @@
 		
 	</section>
     <!-- Hero Section End -->
+    <div class="content">
+    <%@ include file="mapFilter.jsp" %>
     
+  <div id="map" style="width:1300px;height:680px; margin-bottom: 200px; margin-left: 400px; "></div>
+  
+ 
     
-  <div id="map" style="width:800px;height:400px; margin : auto"></div>
-  
-  
 
-
+</div>
     <!-- Footer Section Begin -->
     	<%@ include file="footer.jsp" %>
     <!-- Footer Section End -->
@@ -84,7 +86,7 @@
 
 	<!-- 수정 -->
 	<!-- Modal -->
-	<c:forEach items="${getMapList}" var="map" varStatus="vs">
+	<c:forEach items="${filterStoreList}" var="map" varStatus="vs">
 	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   		<div class="modal-dialog modal-lg">
   		<div class="modal-container">
@@ -197,7 +199,7 @@
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
 	
-	<c:forEach items="${getMapList}" var="map" varStatus="vs">
+	<c:forEach items="${filterStoreList}" var="map" varStatus="vs">
 
 	var address = '${map.storeLoc}';
 	

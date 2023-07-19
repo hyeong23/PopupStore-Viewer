@@ -93,7 +93,7 @@
 
 	<div class="content">
 		<div class="filterBox" style="margin-top: 90px;">
-			<%@ include file="filterHeader.jsp"%>
+			<%@ include file="calendarFilter.jsp"%>
 		</div>
 		<div id='calendar'></div>
 		<div id=scrolls>
