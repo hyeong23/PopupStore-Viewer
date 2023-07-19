@@ -1,6 +1,6 @@
 .slider{
     width: 490px;
-    height: 650px;
+    height: 520px;
     position: relative;
     margin: 0 auto;
     overflow: hidden; /* 현재 슬라이드 오른쪽에 위치한 나머지 슬라이드 들이 보이지 않도록 가림 */
@@ -183,7 +183,7 @@ ul.imgs li{
 
 .thumbnail{
     width: 490px;
-    height: 650px;
+    height: 270px;
     position: relative;
     margin: 0 auto;
     overflow: hidden; /* 현재 슬라이드 오른쪽에 위치한 나머지 슬라이드 들이 보이지 않도록 가림 */
