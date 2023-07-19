@@ -103,10 +103,10 @@
 	<div id ="store_stc" class="filter-item">
 		
 		 <div id="store_chk">
-				<input type="radio" id="heart0" name="heart" value=0 checked="checked">전체
+				<input type="radio" id="like0" name="heart" value=0 checked="checked">전체
 		 </div>
   	   	 <div id="store_chk">
-				<input type="radio" id="heart1" name="heart" value=1>좋아요만
+				<input type="radio" id="like1" name="heart" value=1>좋아요만
 		 </div>
 	</div>
 	

@@ -15,9 +15,9 @@
   
   <select id="getMapList2" resultMap="openStoreList">
     
-	SELECT *
-	FROM store
-	WHERE store_num = #{storeNum}
+	SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, p.picture_name
+	FROM store s
+	JOIN picture p ON p.store_num = s.store_num where s.store_num = #{storeNum} 
 	
       
   </select>

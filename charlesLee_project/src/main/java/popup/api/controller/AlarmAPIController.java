@@ -39,7 +39,7 @@ public class AlarmAPIController {
             			@RequestParam(name = "storeTitle", required = false) String storeTitle
             			) throws Exception {
 		
-		boolean result = true;
+		boolean result = false;
 
 		int memberNum = (int) session.getAttribute("memberNum");
 		

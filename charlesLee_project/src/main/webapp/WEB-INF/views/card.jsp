@@ -239,13 +239,13 @@
 					const heartId = "heart" + storeNum.toString();
 					const heartRedId = "heartRed" + storeNum.toString();
 					document.getElementById(heartId).style.display = "none";
-					document.getElementById(heartRed).style.display = "block";
+					document.getElementById(heartRedId).style.display = "block";
 				}else{
 					alert("삭제")
 					const heartId = "heart" + storeNum.toString();
 					const heartRedId = "heartRed" + storeNum.toString();
 					document.getElementById(heartId).style.display = "block";
-					document.getElementById(heartRed).style.display = "none";
+					document.getElementById(heartRedId).style.display = "none";
 				}
 		     },
 			error : function(data) {

@@ -86,7 +86,7 @@
 							<a href="/heart">좋아요 목록 보기</a>
 						</div>
 					</div>
-					<form id="mypageUpdateForm" action="/mypageUpdate" method="POST">
+					<form id="mypageUpdateForm" action="/mypageUpdate" method="POST" onsubmit="return confirmModification()">
 						<table id="mypageUpdateTable" class="styled-table">
 							<tr>
 								<th colspan="3" style="text-align: center; font-size: 45px;">회원정보수정</th>
@@ -171,7 +171,7 @@
 							<tr>
 								<td colspan="2" align="right">
 									<div style="text-align: right;">
-										<button type="submit" onclick="confirmModification()">정보수정</button>
+										<button type="submit" >정보수정</button>
 										<button type="button" onclick="removeMember()">회원탈퇴</button>
 									</div>
 								</td>
@@ -207,20 +207,20 @@
 		    if (window.confirm("수정하시겠습니까?")) {
 		        if (newPassword.trim() === '') {
 		            alert('비밀번호를 입력해주세요.');
-		            return;
+		            return false;
 		        }
 		        if (!checkPassword()) {
 		            alert('비밀번호가 일치하지 않습니다.');
 		            goToMyPage();
-		            return;
+		            return false;
 		        }
 		        if (oldPassword === newPassword) {
 		            alert('새 비밀번호가 기존 비밀번호와 동일합니다.');
-		            return;
+		            return false;
 		        }
 		        if (newPassword.length < 8) {
 		            alert('비밀번호는 최소 8자 이상이어야 합니다.');
-		            return;
+		            return false;
 		        }
 		        document.getElementById("mypageUpdateForm").submit();
 		        showCompletionMessage();
