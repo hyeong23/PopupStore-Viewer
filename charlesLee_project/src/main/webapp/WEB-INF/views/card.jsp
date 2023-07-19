@@ -102,11 +102,8 @@
                         </div>
                     </div>
                     <div class="row">
-
-                        
-                            <div class="product__item">
                                 <c:forEach items="${openStoreList}" var="store" varStatus="vs">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4" style="display:flex; justify-content: center;">
                                 <div class="storeCard">
                                   	 <p>${store.storeTitle}</p>
                                      <div class="storeCard-img"><img src="picture/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
@@ -146,20 +143,16 @@
                                 </div>
                                 </c:forEach>
                             </div>
-                      
-                        
-
-                      
-                    </div>
-                    <div class="product__pagination">
+                    <div class="product__pagination"  style="display:flex; justify-content: center;">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
     </section>
     <!-- Product Section End -->
 

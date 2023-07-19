@@ -29,6 +29,7 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+
 .storeCard{
 	width:230px;
 	height:300px;
@@ -196,6 +197,7 @@ ol {
 	display: inline-block;
 	background: #ff80c0;
 	border: none;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .reply-send-btn {
@@ -341,6 +343,8 @@ ol {
 .header__top__right {
 	text-align: right;
 	padding: 10px 0 13px;
+	font-family: 'Noto Sans KR', sans-serif;
+
 }
 
 .header__top__right__social {
@@ -1304,7 +1308,7 @@ ol {
 -----------------------*/
 
 .product {
-	padding-top: 80px;
+	padding-top: 60px;
 	padding-bottom: 80px;
 }
 
