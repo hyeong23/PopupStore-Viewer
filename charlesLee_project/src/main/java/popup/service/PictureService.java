@@ -52,6 +52,44 @@ public class PictureService {
 		
 		return result;
 	}
+	
+	// update
+	public boolean updatePicture(int storeNum, MultipartFile picture , int pictureType) throws Exception {
+		boolean result = false;
+		
+		if(picture == null) {
+			throw new Exception("파일 전달 오류 발생");
+		}
+		
+		String picturePath = "charlesLee_project/src/main/resources/static/picture";
+		String pictureOriginalName = picture.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+		String pictureName = uuid.toString() + "_" + pictureOriginalName;
+		long pictureSize = picture.getSize();
+		
+		Picture pictureFile = Picture.builder().storeNum(storeNum)
+											   .picturePath(picturePath)
+											   .pictureName(pictureName)
+											   .pictureOriginalName(pictureOriginalName)
+											   .pictureSize(pictureSize)
+											   .pictureType(pictureType)
+											   .build();
+											
+		int res = pictureMapper.updatePicture(pictureFile);
+		
+		if(res != 0) {
+			
+			picture.transferTo(new File(picturePath + "/" + pictureName)); 
+			
+			result = true;
+		} else {
+			throw new Exception("부서 생성 실패");
+		}
+		
+		
+		return result;
+	}
+	
 
 	public List<Picture> getPictureByStoreNum(int storeNum) {
 		return pictureMapper.getPictureByStoreNum(storeNum);

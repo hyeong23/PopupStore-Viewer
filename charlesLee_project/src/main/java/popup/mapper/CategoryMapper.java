@@ -11,6 +11,8 @@ public interface CategoryMapper {
 
 	public boolean insertCategory(@Param("storeNum") int storeNum,@Param("category1") String category1) throws Exception;
 	
+	public boolean updateCategory(@Param("storeNum") int storeNum,@Param("category1") String category1) throws Exception;
+	
 	public List<Integer> getStoreByCategory(String category) throws SQLException;
 
 }

@@ -24,6 +24,7 @@
 	rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap"
 	rel="stylesheet">
+
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -116,8 +117,10 @@
 		<div class="card">
 			<div class="table-responsive table-scroll"
 				data-mdb-perfect-scrollbar="true"
+
 				style="position: relative; height: 700px">
 				<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
+
 					<thead
 						style="background-color: #ff80c0; text-align: center; color: white">
 						<tr>
@@ -150,7 +153,9 @@
 								<td>
 									<p align="center">
 										<b><span style="font-size: 12pt;"><a
-												href="/storeRegister">${store.storeTitle}</a></span></b>
+
+												href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
+
 									</p>
 								</td>
 								<td><c:if test="${store.memberCompanyName eq null}">
@@ -183,6 +188,25 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div align=center>
+
+		<span style="font-size: 12pt;"> <input type="button"
+			value="메인으로" onclick="location.href='/main'">
+		</span>
+		<span style="font-size: 12pt;"> <input type="button"
+			value="업로드" onclick="location.href='/storeRegister'">
+		</span>
+		<!-- 관리자 로그인 상태일때만 활성화  -->
+		<%-- 		<c:if test="${memberId == 'admin'}">
+			<span style="font-size: 12pt;"> <input type="button"
+				value="업로드" onclick="location.href='/storeRegister'">
+			</span>
+		</c:if> --%>
+
+	</div>
+
 	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>
 	<!-- Footer Section End -->

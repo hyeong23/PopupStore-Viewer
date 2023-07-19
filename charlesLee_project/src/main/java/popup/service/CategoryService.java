@@ -14,17 +14,21 @@ public class CategoryService {
 	@Autowired
 	CategoryMapper categoryMapper;
 
-	public boolean insertCategory(int storeNum, String category1) throws Exception{
-		
+	public boolean insertCategory(int storeNum, String category1) throws Exception {
+
 		return categoryMapper.insertCategory(storeNum, category1);
-		
+
 	}
-	
-	public List<Integer> getStoreByCategory(String category) throws SQLException{
-		
+
+	public boolean updateCategory(int storeNum, String category1) throws Exception {
+
+		return categoryMapper.updateCategory(storeNum, category1);
+
+	}
+
+	public List<Integer> getStoreByCategory(String category) throws SQLException {
+
 		return categoryMapper.getStoreByCategory(category);
 	}
-	
-	
-	
+
 }

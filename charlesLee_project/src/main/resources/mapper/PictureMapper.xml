@@ -20,6 +20,18 @@
 	
  		)
  	</insert>
+ 	
+ 	<update id="updatePicture" parameterType = "popup.dto.Picture">
+ 		UPDATE picture
+ 		SET picture_num = #{pictureNum},
+ 			picture_path = #{picturePath},
+ 			picture_name = #{pictureName},
+ 			picture_original_name = #{pictureOriginalName},
+ 			picture_size = #{pictureSize},
+ 			picture_date = SYSDATE,
+ 			picture_type = #{pictureType}
+ 		WHERE store_num = #{storeNum}
+ 	</update>
   	
   	<select id="getPictureByStoreNum" resultMap="pictureResultMap">
   		SELECT store_num, picture_name FROM picture WHERE store_num = #{storeNum} order by picture_num
