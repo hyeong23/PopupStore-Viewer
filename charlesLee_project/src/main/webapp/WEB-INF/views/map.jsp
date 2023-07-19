@@ -59,17 +59,17 @@
 		
 	</section>
     <!-- Hero Section End -->
-    <div class="content">
+    <div class="content" style="display:flex; justify-content:center; margin-top:-20px; margin-left:-40px;">
     <%@ include file="mapFilter.jsp" %>
     
-  <div id="map" style="width:1300px;height:680px; margin-bottom: 200px; margin-left: 400px; "></div>
+  <div id="map" style="width:1200px;height:720px; margin-top:80px; margin-left:50px;"></div>
   
- 
-    
-
 </div>
+<br><br><br><br><br>
     <!-- Footer Section Begin -->
+    <div>
     	<%@ include file="footer.jsp" %>
+    	</div>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

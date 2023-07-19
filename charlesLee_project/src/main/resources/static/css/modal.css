@@ -164,14 +164,12 @@ ul.imgs li{
 	
 }
 
-.filterBox{
+ .filterBox{
 	width: 250px;
-	height: 725px;
-
+	height: 100%;
 	margin-top:90px;
 	padding:10px;
 	}
-
 
         
        
