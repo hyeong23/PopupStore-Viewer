@@ -81,12 +81,12 @@ public class StoreController {
 		}
 		
 		
-		
 		try {
 			//login 하면 memberNum session에 보관 시킨 후 가져와서 store의 memberNum에 추가
 			store.setMemberNum((int) session.getAttribute("memberNum"));
 			
 			storeResult = storeService.insertStore(store);
+			
 			
 			//스토어 insert후 storeNum이 가장 큰 값을 가져오면 storeNum을 알수 있음
 			storeNum = storeService.getMaxStoreNum();
@@ -109,7 +109,7 @@ public class StoreController {
 			
 			
 			if(storeResult && categoryResult1 && pictureResult && thumbnailResult) {
-				view = "redirect:storeList";
+				view = "redirect:/storeList";
 			}
 			
 			
@@ -126,22 +126,34 @@ public class StoreController {
 	}
 	
 	// storeUpdate
-	@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.GET)
-	public String storeUpdateForm(Model model) throws Exception{
-		
-		
-		
-		return "storeUpdate";
-	}
+//	@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.GET)
+//	public String storeUpdateForm(Model model) throws Exception{
+//		
+//		
+//		
+//		return "storeUpdate";
+//	}
 	
-	@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.POST)
-	public String updateStore(@ModelAttribute Store store,				  
+	// storeUpdate
+		@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.GET)
+		public String storeUpdateForm(@PathVariable("storeNum") int storeNum,
+									  Model model) throws Exception{
+			
+			model.addAttribute("storeNum", storeNum); // 보조 강사: storeUpdate.jsp에 storeNum 전달
+			
+			
+			return "storeUpdate";
+		}
+	
+	// 보조 강사: POST 요청이기 때문에 /storeUpdate/{storeNum} 에서 변경함
+		@RequestMapping(value = "/storeUpdate", method = RequestMethod.POST)
+	public String updateStore(@ModelAttribute Store store,	
+			@Param("storeNum") int storeNum,
 							  @Param("category1") String category1,
 							  @Param("category2") String category2,
 							  @RequestPart("thumbnail") MultipartFile thumbnail,
 							  @RequestPart("picture") MultipartFile[] pictures,
 							  HttpSession session,
-							  @PathVariable int storeNum,
 							  Model model) throws Exception  {
 		
 		String view = "error";
@@ -152,9 +164,10 @@ public class StoreController {
 		boolean thumbnailResult = false;
 		boolean pictureResult = false;
 		
-		store = storeService.getStoreOne(storeNum);
+		//store = storeService.getStoreOne(storeNum);
 		
 		System.out.println(storeNum);
+		System.out.println("Here I ");
 		
 		int thumbnailType = 1;
 		int pictureType = 0;
@@ -173,8 +186,10 @@ public class StoreController {
 			
 			if(category2 != null) {
 			
-			categoryResult1 = categoryService.updateCategory(storeNum,category1); 
-			categoryResult2 = categoryService.updateCategory(storeNum,category2); 
+				// 보조 강사: 이렇게 하면 category 테이블의 category 필드 값을 category2 값으로 덮어쓰는 건데, 
+				// 굳이 updateCategory(..,category1)을 할 필요를 모르겠습니다.
+				categoryResult1 = categoryService.updateCategory(storeNum,category1); 
+				categoryResult2 = categoryService.updateCategory(storeNum,category2);
 			
 			}else {
 				categoryResult1 = categoryService.updateCategory(storeNum,category1);
@@ -189,7 +204,7 @@ public class StoreController {
 			
 			
 			if(storeResult && categoryResult1 && pictureResult && thumbnailResult) {
-				view = "redirect:storeList";
+				view = "redirect:/storeList";
 			}
 			
 			

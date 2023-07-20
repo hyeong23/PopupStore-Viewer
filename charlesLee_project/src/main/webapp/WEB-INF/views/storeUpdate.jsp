@@ -90,7 +90,8 @@
                    
                 </div>
             </div>
-            <form action="/storeUpdate/${storeNum}" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
+            <form action="/storeUpdate" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
+                <input type="hidden" name= "storeNum" value=${storeNum}> <!-- 보조 강사: storeNum을 Spring에 전달 -->
                 <div class="row">
                    
                     <div class="col-lg-12 col-md-6">
@@ -345,6 +346,7 @@ function previewImage2(event) {
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 window.onload = function(){
+	
     document.getElementById("addressButton").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
         new daum.Postcode({
