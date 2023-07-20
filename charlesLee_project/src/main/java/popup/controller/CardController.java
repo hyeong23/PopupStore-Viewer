@@ -68,6 +68,7 @@ public class CardController {
 		 model.addAttribute("openStoreList", openStoreList); 
 		 model.addAttribute("getReplyList", getReplyList);
 		 model.addAttribute("getBussinessMember", getBussinessMember);
+		 model.addAttribute("filterStoreList", openStoreList);
 		 model.addAttribute("location", location);
 		 return "card";
 		 

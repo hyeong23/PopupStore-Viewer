@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -17,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.RequiredArgsConstructor;
+import popup.dto.Alarm;
 import popup.service.AlarmService;
 import popup.service.PictureService;
 import popup.service.StoreService;
@@ -82,6 +86,29 @@ public class AlarmAPIController {
 		
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/api/getAlarm", method = RequestMethod.GET)
+	public List<Alarm> getAlarm(HttpSession session ,  
+							Model model) throws Exception {
+		
+
+		int memberNum = (int) session.getAttribute("memberNum");	
+
+		List<Alarm> getAlarm = alarmService.getAlarm(memberNum);
+		System.out.println(getAlarm);
+		model.addAttribute("getAlarm", getAlarm);
+			
+		return getAlarm;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

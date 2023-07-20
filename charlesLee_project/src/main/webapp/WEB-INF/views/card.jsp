@@ -44,7 +44,7 @@
    
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -184,8 +184,8 @@
  	            storeNum: storeNum,
  	            storeTitle: storeTitle
  	        },
- 	        success: function(data) {
- 	            alert(data);
+ 	        success: function(response) {
+ 	        	alert("삽입")
  	            // 이미지 속성 변경
  	            	const bellId = "bell" + storeNum.toString();
  	            	const yellowId = "yellow" + storeNum.toString();
@@ -208,8 +208,8 @@
  	        data: {
  	            storeNum: storeNum
  	        },
- 	        success: function(data) {
- 	            alert(data);
+ 	        success: function(response) {
+ 	        	alert("삭제")
  	           const bellId = "bell" + storeNum.toString();
  	           const yellowId = "yellow" + storeNum.toString();
  	          document.getElementById(bellId).style.display = "block";

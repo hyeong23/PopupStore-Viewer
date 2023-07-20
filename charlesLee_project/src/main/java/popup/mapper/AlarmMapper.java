@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import popup.dto.Alarm;
+
 @Mapper
 public interface AlarmMapper {
 
@@ -14,5 +16,7 @@ public interface AlarmMapper {
 	boolean deleteAlarm(int memberNum, int storeNum) throws SQLException;
 
 	List<Integer> getStoreByAlarm(int customerNum)throws Exception;
+
+	List<Alarm> getAlarm(int memberNum);
 
 }

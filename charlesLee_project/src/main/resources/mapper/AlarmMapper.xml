@@ -24,13 +24,28 @@
     	ORDER BY store_num
     	</select>
   
+  <!--  AND alarm_time < sysDate AND alarm_time+1 > sysDate -->
+  	<select id="getAlarm" resultMap="alarmResultMap">
+   	 	SELECT * FROM alarm
+    	WHERE member_num = #{memberNum}
+    	</select>
   
+  	
+  	<resultMap id="alarmResultMap" type="popup.dto.Alarm">
+  		<result property="alarmNum" column="alarm_num" />
+  		<result property="memberNum" column="member_num" />
+  		<result property="storeNum" column="store_num" />
+  		<result property="alarmContent" column="alarm_content" />
+  		<result property="alarmRead" column="alarm_read" />
+  		<result property="alarmTime" column="alarm_time" />
+  		<result property="alarmCheckedTime" column="alarm_checked_time" />
+  		<result property="alarmStatus" column="alarm_status" />
+  		<result property="alarmCreate" column="alarm_create" />
+  		
+  		
+  	</resultMap>
   
-  
-  
-  
-  
-  
+ 
   
   
   

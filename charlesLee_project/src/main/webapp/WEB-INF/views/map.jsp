@@ -62,7 +62,7 @@
     <div class="content">
     <%@ include file="mapFilter.jsp" %>
     
-  <div id="map" style="width:1300px;height:680px; margin-bottom: 200px; margin-left: 400px; "></div>
+  <div id="map" style="width:1300px;height:680px; margin-bottom: 400px; margin-left: 400px; "></div>
   
  
     
