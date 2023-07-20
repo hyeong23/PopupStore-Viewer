@@ -79,81 +79,74 @@
 
 	<!-- nav바  End-->
 
-
-
-
-
-
-
-
-	<!-- Contact Form Begin -->
-	<div class="contact-form spad" style="height: auto">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12"></div>
-			</div>
-			<form action="/storeUpdate/${storeNum}" method="POST"
-				enctype="multipart/form-data" onsubmit="return formChecking()">
-				<div class="row">
-
-					<div class="col-lg-12 col-md-6">
-						<input type="text" placeholder="제목을 입력하세요" name="storeTitle"	id="storeTitle" >
-					</div>
-					<div class="col-lg-12 col-md-6">
-						<input type="text" placeholder="소개를 입력하세요" name="storeIntro" id="storeIntro">
-					</div>
-					<div class="col-lg-12 col-md-6">
-						<span>시작일 : </span><input type="date" name="storeStart"
-							id="storeStart" style="width: auto"> <span>종료일 : </span><input
-							type="date" name="storeEnd" id="storeEnd" style="width: auto">
-						<textarea placeholder="내용을 입력하세요" name="storeBody" id="storeBody"></textarea>
-
-					</div>
-					<div id="store_stc">
-						주 카테고리:
-						<div id="store_chk">
-							<input type="radio" id="radio1" name="category1"
-								value="character">캐릭터
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio2" name="category1" value="food">식음료
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio3" name="category1" value="media">미디어
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio4" name="category1" value="fashion">패션/뷰티
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio5" name="category1" value="other">기타
-						</div>
-					</div>
-					<br> <br> <br>
-					<div id="store_stc">
-						부 카테고리:
-						<div id="store_chk">
-							<input type="radio" id="radio6" name="category2"
-								value="character">캐릭터
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio7" name="category2" value="food">식음료
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio8" name="category2" value="media">미디어
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio9" name="category2" value="fashion">패션/뷰티
-						</div>
-						<div id="store_chk">
-							<input type="radio" id="radio10" name="category2" value="other">기타
-						</div>
-					</div>
-					<br> <br> <br>
-					<div class="col-lg-12 col-md-6">
-						<input type="text" placeholder="주소" name="storeLoc" id="storeLoc"
-							readonly style="width: 70%">
-						<button type="button" id="addressButton" class="charles_btn2">주소 검색</button>
-					</div>
+	
+	
+    <!-- Contact Form Begin -->
+    <div class="contact-form spad" style="height: auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                   
+                </div>
+            </div>
+            <form action="/storeUpdate" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
+                <input type="hidden" name= "storeNum" value=${storeNum}> <!-- 보조 강사: storeNum을 Spring에 전달 -->
+                <div class="row">
+                   
+                    <div class="col-lg-12 col-md-6">
+                        <input type="text" placeholder="제목" name="storeTitle" id="storeTitle">
+                    </div>
+                     <div class="col-lg-12 col-md-6">
+                        <input type="text" placeholder="인트로" name="storeIntro" id="storeIntro">
+                    </div>
+                     <div class="col-lg-12 col-md-6" >
+                        <span>시작일 : </span><input type="date"  name="storeStart" id="storeStart" style="width: auto">
+                        <span>종료일 : </span><input type="date"  name="storeEnd" id="storeEnd" style="width: auto">
+                        <textarea placeholder="내용" name="storeBody" id="storeBody"></textarea>
+                        
+                    </div>
+                    <div id="store_stc">
+    						주 카테고리:
+   							 <div id="store_chk">
+      							  <input type="radio" id="radio1" name="category1" value="character">캐릭터
+  							  </div>    
+   							 <div id="store_chk">                            
+     							   <input type="radio" id="radio2" name="category1" value="food">식음료
+   							 </div>               
+   							 <div id="store_chk">
+    						    <input type="radio" id="radio3" name="category1" value="media">미디어
+  							 </div>    
+   							 <div id="store_chk">
+   						     <input type="radio" id="radio4" name="category1" value="fashion">패션/뷰티
+   							 </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio5" name="category1" value="other">기타
+                                </div>         
+                            </div>
+                          <br> <br> <br>
+                   <div id="store_stc">
+                                부 카테고리:
+                                <div id="store_chk">
+                                    <input type="radio" id="radio6" name="category2" value="character">캐릭터
+                                </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio7" name="category2" value="food">식음료
+                                </div>               
+                                <div id="store_chk">
+                                    <input type="radio" id="radio8" name="category2" value="media">미디어
+                                </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio9" name="category2" value="fashion">패션/뷰티
+                                </div>    
+                                <div id="store_chk">
+                                    <input type="radio" id="radio10" name="category2" value="other">기타
+                                </div>         
+                            </div>
+                          <br> <br> <br>
+                    <div class="col-lg-12 col-md-6">
+    				<input type="text" placeholder="주소" name="storeLoc" id="storeLoc" readonly style="width: 70%">
+    				<button type="button" id="addressButton">주소 검색</button>
+					  </div>
 					<div class="col-lg-12 col-md-6">
 						<input type="text" placeholder="상세주소" name="storeLocDetail"
 							id="storeLocDetail">
@@ -416,6 +409,97 @@
 		};
 	</script>
 
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+
+
+
+	      
+    <!-- Js Plugins -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+    
+ 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+	
+    document.getElementById("addressButton").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("storeLoc").value = data.address; // 주소 넣기
+            }
+        }).open();
+    });
+}
+</script>
+
+
+<script>
+
+function formChecking(){
+	var storeTitle = document.getElementById("storeTitle").value;
+	var storeIntro = document.getElementById("storeIntro").value;
+	var storeStart = document.getElementById("storeStart").value;
+	var storeEnd = document.getElementById("storeEnd").value;
+	var storeBody = document.getElementById("storeBody").value;
+	var storeLoc = document.getElementById("storeLoc").value;
+	var storeLocDetail = document.getElementById("storeLocDetail").value;
+	var storeSite = document.getElementById("storeSite").value;
+
+	var category1 = document.querySelector('input[name="category1"]:checked');
+
+	var thumbnail = document.getElementById("thumbnail");
+	var imgholder = document.getElementById("imgholder");
+	
+	
+	if (storeTitle === "" || storeIntro === "" || storeStart === "" || storeEnd === "" || storeBody === "" || storeLoc === ""|| storeLocDetail === ""|| storeSite === "") {
+		  alert("빈 칸을 채워주세요.");
+		  return false; // 폼 제출 방지
+	}
+
+	
+	if(storeStart > storeEnd){
+		alert("시작일이 종료일 이후로 설정되어 있습니다.");
+		return false;		
+	}
+	
+	if(!category1){
+		 alert("주 카테고리를 선택해 주세요.");
+	        return false;
+	}
+	
+	if (thumbnail.files.length === 0) {
+        alert("썸네일을 선택해주세요.");
+        return false;
+    }
+	
+	
+	
+	 // 추가된 파일이 없을 경우 알림 표시
+    if (imgholder.children.length === 0) {
+        alert("사진을 선택해주세요.");
+        return false;
+    }
+	
+	
+	return true;
+};
+</script>
 
 
 </body>
