@@ -40,18 +40,25 @@
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
 	
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg"
+		data-setbg="/img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>공지 작성</h2>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</section>
+	
 	
 	<!-- Contact Form Begin -->
 	<c:if test="${memberId == 'admin'}">
 	<div class="contact-form spad">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="contact__form__title">
-						<h2>공지 작성</h2>
-					</div>
-				</div>
-			</div>
 			<form action="/announcement/insert" method="POST">
 				<div class="row">
 					<div class="col-lg-12 col-md-6">
@@ -61,7 +68,7 @@
 					<div class="col-lg-12 text-center">
 						<textarea placeholder="내용을 입력하세요" name="announcementBody"
 							id="announcementBody"></textarea>
-						<input type="submit" value="업로드" class="site-btn" style="color: white;" >
+						<input type="submit" value="업로드"  style="color:white; width:100%;" class="charles_btn">
 					</div>
 					
 					<div class="col-lg-12 text-center">

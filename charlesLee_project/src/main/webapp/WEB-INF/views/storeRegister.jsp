@@ -94,16 +94,15 @@
                 <div class="row">
                    
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="제목" name="storeTitle" id="storeTitle">
-                    </div>
+                   <input type="text" placeholder="제목을 입력하세요" name="storeTitle"	id="storeTitle"> </div>
                      <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="인트로" name="storeIntro" id="storeIntro">
-                    </div>
+                   	<input type="text" placeholder="소개를 입력하세요" name="storeIntro" id="storeIntro" >
+					 </div>
                      <div class="col-lg-12 col-md-6" >
                         <span>시작일 : </span><input type="date"  name="storeStart" id="storeStart" style="width: auto">
                         <span>종료일 : </span><input type="date"  name="storeEnd" id="storeEnd" style="width: auto">
-                        <textarea placeholder="내용" name="storeBody" id="storeBody"></textarea>
-                        
+                        <textarea placeholder="내용을 입력하세요" name="storeBody" id="storeBody" ></textarea>
+
                     </div>
                     <div id="store_stc">
     						주 카테고리:
@@ -145,7 +144,7 @@
                           <br> <br> <br>
                     <div class="col-lg-12 col-md-6">
     				<input type="text" placeholder="주소" name="storeLoc" id="storeLoc" readonly style="width: 70%">
-    				<button type="button" id="addressButton">주소 검색</button>
+    				<button type="button" id="addressButton" class="charles_btn2">주소 검색</button>
 					</div>
                     <div class="col-lg-12 col-md-6">
                         <input type="text" placeholder="상세주소" name="storeLocDetail" id="storeLocDetail">
@@ -186,16 +185,16 @@
 
            				  <div class="picture-footer">
                 			<div id="fileContainer"></div>             
-            			   	<button type="button" onclick="deleteImg()" style="height: 60px; width: 60px; border-radius: 50%">삭제</button><br>
-                			<button type="button" onclick="addFileInput()" style="height: 60px; width: 60px; border-radius: 50%">추가</button><br>
+            			   	<button type="button" onclick="deleteImg()" class="charles_btn2" style="margin-right: 3px;">삭제</button><br>
+                			<button type="button" onclick="addFileInput()"  class="charles_btn2" style="margin-right: 3px;">추가</button><br>
                 		  </div>
         	       </div>
                         
                        
                         
-                         <div id="store_stc" style="margin-top: 150px;">     
-                           <input type="submit" value="submit" class="site-btn" id="submit"/>
-                         </div>
+                         <div id="store_stc" style="margin-top: 50px;">     
+                         	<input type="submit" value="등록하기" class="charles_btn" style="width: 100%; color: white;" id="submit" />
+					 </div>
                  
                 </div>  
             </form>
