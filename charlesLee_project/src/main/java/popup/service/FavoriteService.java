@@ -2,6 +2,7 @@ package popup.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,16 @@ public class FavoriteService {
 		boolean result = favoriteMapper.deleteHeart(storeNum, memberNum);
 		return false;
 	}
+	// 회원 번호에 해당하는 사용자의 좋아요 리스트를 가져오는 메서드
+	public List<StoreVo> getLikedStoresByMemberNum(int customerNum) {
+
+		return favoriteMapper.getLikedStoresByMemberNum(customerNum);
+	}
+	
+	// 좋아요 리스트 삭제
+    public void deleteHeart(int memberNum, int storeNum) throws SQLException {
+        favoriteMapper.deleteHeart(memberNum, storeNum);
+    }
+
 
 }
