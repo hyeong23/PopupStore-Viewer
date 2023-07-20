@@ -114,11 +114,9 @@
 	<br>
 	<br>
 	<div class="container">
-		<div class="card">
 			<div class="table-responsive table-scroll"
 				data-mdb-perfect-scrollbar="true"
-
-				style="position: relative; height: 700px">
+				style="position: relative; height: 700px; border: 2px solid #dee2e6;">
 				<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
 
 					<thead
@@ -186,17 +184,17 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
+
 	</div>
 
 
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button"
-			value="메인으로" onclick="location.href='/main'">
+			value="메인으로" onclick="location.href='/main'" class="charles_btn">
 		</span>
 		<span style="font-size: 12pt;"> <input type="button"
-			value="업로드" onclick="location.href='/storeRegister'">
+			value="업로드" onclick="location.href='/storeRegister'" class="charles_btn">
 		</span>
 		<!-- 관리자 로그인 상태일때만 활성화  -->
 		<%-- 		<c:if test="${memberId == 'admin'}">

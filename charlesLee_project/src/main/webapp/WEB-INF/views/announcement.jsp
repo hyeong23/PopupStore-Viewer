@@ -140,12 +140,12 @@
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button"
-			value="메인으로" onclick="location.href='/main'">
+			value="메인으로" onclick="location.href='/main'" class="charles_btn">
 		</span>
 		<!-- 관리자 로그인 상태일때만 활성화  -->
 		<c:if test="${memberId == 'admin'}">
 			<span style="font-size: 12pt;"> <input type="button"
-				value="업로드" onclick="location.href='/announcement/insert'">
+				value="업로드" onclick="location.href='/announcement/insert'" class="charles_btn">
 			</span>
 		</c:if>
 	</div>
