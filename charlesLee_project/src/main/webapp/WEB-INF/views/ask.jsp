@@ -58,18 +58,18 @@
             <form action="/ask" method="POST">
                 <div class="row">
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="답신받을 이메일을 입력하세요" name="askEmail" id="askEmail" style="font-style: italic;">
+                        <input type="text" placeholder="답신받을 이메일을 입력하세요" name="askEmail" id="askEmail">
                     </div>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="문의 제목을 입력하세요" name="askTitle" id="askTitle" style="font-style: italic;">
+                        <input type="text" placeholder="문의 제목을 입력하세요" name="askTitle" id="askTitle" >
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="문의 내용을 입력하세요" name="askBody" id="askBody" style="font-style: italic;"></textarea>
+                        <textarea placeholder="문의 내용을 입력하세요" name="askBody" id="askBody" ></textarea>
                         <div id="ask_stc">
                         	<div id="ask_stc1">개인정보 수집 및 이용 약관에 동의합니다</div>
                         	<div id="ask_chk"><input type="checkbox" id="check1"> </div>                    
                           </div>
-                        <input type="submit" value="문의 보내기" class="site-btn" id="send_message" style="color:white;"/>
+                        <input type="submit" value="문의 보내기" class="charles_btn" id="send_message" style="color:white; width: 100%;"/>
                     </div>
                 </div>
             </form>
