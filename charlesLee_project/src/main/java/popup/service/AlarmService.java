@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import popup.dto.Alarm;
 import popup.mapper.AlarmMapper;
+import popup.vo.AlarmVo;
 
 @Service
 public class AlarmService {
@@ -38,7 +39,7 @@ public class AlarmService {
 		return alarmMapper.getStoreByAlarm(customerNum);
 	}
 
-	public List<Alarm> getAlarm(int memberNum) {
+	public List<AlarmVo> getAlarm(int memberNum) {
 		
 		return alarmMapper.getAlarm(memberNum);
 	}
