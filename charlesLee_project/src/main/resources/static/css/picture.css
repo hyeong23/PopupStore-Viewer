@@ -133,6 +133,10 @@ ul.imgs li{
     max-width: 490px;
 }
 
+.picture-title{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;
+}
 
 .picture-content {
     position: relative;

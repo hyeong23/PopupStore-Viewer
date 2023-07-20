@@ -14,12 +14,19 @@
         (category_sequence.nextval, #{storeNum},#{category1})
   </insert>
   
+  <!-- 보조강사: updateCategory를 통해 카테고리의 기본키(category_num)를 업데이트하는 게 부적절하다고 생각하여 변경하였습니다. -->
    <update id="updateCategory"> 
+       	UPDATE category
+       	SET category = #{category1} <!-- 보조강사 -->
+        WHERE store_num = #{storeNum}
+  </update>
+  
+   <!-- <update id="updateCategory"> 
        	UPDATE category
        	SET category_num = #{categoryNum},
        		category = #{category}
         WHERE store_num = #{storeNum}
-  </update>
+  </update> -->
   
     <resultMap id="categoryResultMap" type="popup.dto.Category">
         <result property="categoryNum" column="category_num" />

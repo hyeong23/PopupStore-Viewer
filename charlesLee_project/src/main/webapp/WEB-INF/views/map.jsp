@@ -59,17 +59,19 @@
 		
 	</section>
     <!-- Hero Section End -->
-    <div class="content">
+    <div class="content" style="display:flex; justify-content:center; margin-top:-20px; margin-left:-40px;">
     <%@ include file="mapFilter.jsp" %>
     
-  <div id="map" style="width:1300px;height:680px; margin-bottom: 400px; margin-left: 400px; "></div>
-  
- 
-    
 
+  <div id="map" style="width:1300px;height:680px; margin-bottom: 400px; margin-left: 400px; "></div>
+
+  
 </div>
+<br><br><br><br><br>
     <!-- Footer Section Begin -->
+    <div>
     	<%@ include file="footer.jsp" %>
+    	</div>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
@@ -114,7 +116,10 @@
 
 	      
 				<hr>
-	        	<p>작성자 : <p>
+	        	<p> 작성자 : <c:if test="${empty map.memberCompanyName}">
+	        	관리자
+	        	</c:if>
+	        	${map.memberCompanyName} <p>
 	        	<p> 개최 기간: ${map.storeStart} ~ ${map.storeEnd} </p>
 	        	<p> 개최 장소: ${map.storeLoc} </p>
 				<hr>
@@ -126,6 +131,9 @@
 				<hr>
 				<p> 조회수 : ${map.storeCount} </p>
 	        	<p> <a href="${map.storeSite}" target="_blank" class="link">${map.storeSite} 홈페이지</a></p>
+	        	<hr>
+	        	<p> 작성일 : ${map.storeCreate} </p>
+	        	<p> 마지막 수정일 : ${map.storeUpdate} </p>
 	      </div>
 	      	 
 	      

@@ -16,6 +16,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -59,13 +60,13 @@
 
     <!-- Product Section Begin -->
     <section class="product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-5">
-                    <div class="filterBox" style="margin-top:0px;">
+        <div class="container" style="min-height: 1000px;">
+        <div class="col-lg-3 col-md-5" style="position: sticky; height: 500px;">
+                    <div style="margin-top:0px;">
                         <%@ include file="cardFilter.jsp" %>
                     </div>
                 </div>
+                
                 <div class="col-lg-9 col-md-7">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
@@ -77,10 +78,9 @@
                             <c:forEach items="${openStoreList}" var="store">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
-                                    <p>${store.storeTitle}</p>
+                                    <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
                                     <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="object-fit: cover;"></div>
-                                    <p>${store.storeStart}</p>
-                                    <p>${store.storeEnd}</p>
+                                    <p style="margin:6px;">${store.storeStart} ~ ${store.storeEnd}</p>
                                 </div>
                                 </div>
                                 </c:forEach>
@@ -107,13 +107,11 @@
                         
  
                                 <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
-                                <div class="col-lg-4">
-
+                                <div class="col-lg-4" style="display:flex; justify-content: center;">
                                 <div class="storeCard">
-                                  	 <p>${store.storeTitle}</p>
-                                     <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="width: 100%; object-fit: cover;"></div>
-                                     <p>${store.storeStart}</p>
-                                   <p>${store.storeEnd}</p>
+                                  	 <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
+                                    <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="object-fit: cover;"></div>
+                                    <p style="margin:6px;">${store.storeStart} ~ ${store.storeEnd}</p>
                                     <c:choose>
                                     	<%-- 로그인 했을때 --%>
                                     	<c:when test="${not empty sessionScope.memberNum}">     
@@ -148,15 +146,10 @@
                                 </div>
                                 </c:forEach>
                             </div>
-                    <div class="product__pagination"  style="display:flex; justify-content: center;">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div>
+                   
                     </div>
                     
-                </div>
+
             </div>
     </section>
     <!-- Product Section End -->

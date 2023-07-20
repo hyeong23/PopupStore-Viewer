@@ -94,15 +94,15 @@
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button" value="목록"
-			onclick="location.href='/announcement'">
+			onclick="location.href='/announcement'"class="charles_btn">
 		</span>
 		<c:if test="${memberId == 'admin'}">
 			<span style="font-size: 12pt;"> <input type="button"
 				value="수정"
-				onclick="location.href='/announcement/modify/${announcementNum}'">
+				onclick="location.href='/announcement/modify/${announcementNum}'" class="charles_btn">
 			</span>
 			<span style="font-size: 12pt;"> <input type="button"
-				value="삭제" onclick="deleteAnnouncement()">
+				value="삭제" onclick="deleteAnnouncement()" class="charles_btn">
 			</span>
 		</c:if>
 	</div>

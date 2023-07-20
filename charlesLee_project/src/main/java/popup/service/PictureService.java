@@ -46,7 +46,7 @@ public class PictureService {
 			
 			result = true;
 		} else {
-			throw new Exception("부서 생성 실패");
+			throw new Exception("이미지 등록 실패");
 		}
 		
 		
@@ -61,7 +61,7 @@ public class PictureService {
 			throw new Exception("파일 전달 오류 발생");
 		}
 		
-		String picturePath = "charlesLee_project/src/main/resources/static/picture";
+		String picturePath = "C:/project_image"; //보조 강사
 		String pictureOriginalName = picture.getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
 		String pictureName = uuid.toString() + "_" + pictureOriginalName;
@@ -74,7 +74,8 @@ public class PictureService {
 											   .pictureSize(pictureSize)
 											   .pictureType(pictureType)
 											   .build();
-											
+		
+		System.out.println("picture: " + pictureFile);
 		int res = pictureMapper.updatePicture(pictureFile);
 		
 		if(res != 0) {
@@ -83,7 +84,7 @@ public class PictureService {
 			
 			result = true;
 		} else {
-			throw new Exception("부서 생성 실패");
+			throw new Exception("이미지 수정 실패");
 		}
 		
 		
