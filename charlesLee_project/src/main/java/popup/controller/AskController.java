@@ -32,7 +32,7 @@ public class AskController {
 			System.out.println(newAsk);
 		 if(askResult) {
 
-			view = "redirect:/main";
+			view = "redirect:/calendar";
 			return view;
 		 }
 		 

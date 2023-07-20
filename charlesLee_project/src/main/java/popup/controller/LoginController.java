@@ -57,7 +57,6 @@ public class LoginController {
 		 session.setAttribute("memberId", member.getMemberId());
 		 session.setAttribute("memberPw", member.getMemberPw());
 		 session.setAttribute("memberNum", member.getMemberNum());
-		
 
 			int memberNum = (int) session.getAttribute("memberNum");	
 
@@ -97,8 +96,9 @@ public class LoginController {
 			session.setAttribute("getAlarm", filteredAlarmList);
 
 			
-		 view = "redirect:/main";
+		 view = "redirect:/calendar";
 		}
+    
 		if(member.getMemberType() == 0) {
 			System.out.println(member.getMemberType());
 			 session.setAttribute("memberId", member.getMemberId());
