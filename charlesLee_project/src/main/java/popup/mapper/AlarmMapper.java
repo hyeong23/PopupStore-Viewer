@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import popup.dto.Alarm;
+import popup.vo.AlarmVo;
 
 @Mapper
 public interface AlarmMapper {
@@ -17,6 +18,6 @@ public interface AlarmMapper {
 
 	List<Integer> getStoreByAlarm(int customerNum)throws Exception;
 
-	List<Alarm> getAlarm(int memberNum);
+	List<AlarmVo> getAlarm(int memberNum);
 
 }

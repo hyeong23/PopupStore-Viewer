@@ -7,10 +7,10 @@
         #popup {
             display: none;
             position: absolute;
-            top: 15%;
+            top: 22%;
             left: 65%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
+            background-color: #FFB;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -23,6 +23,7 @@
             cursor: pointer;
         }
     </style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <header class="header">
         <div class="header__top">
@@ -45,7 +46,10 @@
                            
                           
                            <br>
-                            <img id="notificationBtn" alt="#"  src="/img/yellow.png"  onclick="getAlarm()" style="width: 10%; height: 20%;" >
+                             	<c:if test="${not empty getAlarm}">
+   	    							 <img id="notificationBtn" alt="#"  src="/img/yellow.png"   style="width: 10%; height: 20%;" >
+   	    						</c:if>
+          
                             <c:if test="${empty sessionScope.memberId}"> 
 	                            <div class="header__top__right__auth">
 	                                <a href="/login"><i class="fa fa-user"></i> Login </a>
@@ -64,14 +68,29 @@
 					
     <!-- 알림 팝업 -->
    <div id="overlay"></div>
-<div id="popup">
+<div id="popup" style="overflow: auto; ">
     <span id="closeBtn">&times;</span>
-    <h3>새로운 알림이 있습니다!</h3>
-    <ul id="alarmsContainer"></ul>
+
+   	  <div style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">   
+  		<h4  style="font-weight: 600">새로운 알림이 있습니다!</h4>  
+	 </div>
+	 <div style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt; margin-top: 20px;">   
+   <ul>
+   	    <c:forEach items="${getAlarm}" var="alarm">
+   		<div style="display: flex; justify-content: left; margin-bottom: 5px">
+   	   		 <img id="yellow${alarm.storeNum}" alt="#"  src="/img/delete.png"  onclick="checkAlarm('${alarm.storeNum}')" style="width: 7%; height: 7%; margin-right: 10px" >
+   		     <li id="li${alarm.storeNum}">${alarm.storeTitle} 팝업스토어가 ${alarm.alarmSub}일 남았습니다.</li>	
+   		</div>	
+   	    </c:forEach>
+   </ul>
+ </div>
+   
 </div>
 
-
-  <script>
+                </div>
+            </div>
+        </div>
+        <script>
         // 알림 버튼과 팝업 엘리먼트를 JavaScript로 가져옵니다.
         const notificationBtn = document.getElementById('notificationBtn');
         const overlay = document.getElementById('overlay');
@@ -91,39 +110,31 @@
             overlay.style.display = 'none';
             popup.style.display = 'none';
         });
-    </script> 
-    <script>
-    function getAlarm() {
-        // AJAX 요청을 사용하여 컨트롤러 실행
-        $.ajax({
-            url: '/api/getAlarm', // 알림 데이터를 가져올 URL
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response && response.length > 0) {
-                    response.forEach(function(alarm) {
-                        const popupContent = alarm.alarmContent;
-                        const newAlarmElement = document.createElement('li');
-                        newAlarmElement.innerText = popupContent;
-                        document.getElementById('alarmsContainer').appendChild(newAlarmElement);
-                    });
-
-                    // 팝업 표시
-                    overlay.style.display = 'block';
-                    popup.style.display = 'block';
-                } else {
-                    alert("알림이 없습니다.");
-                }
-            },
-            error: function() {
-                alert("알림 가져오기에 실패했습니다.");
-            }
-        });
-    }
-</script>
-
-                </div>
-            </div>
-        </div>
         
+        function checkAlarm(storeNum) {
+     	    // AJAX 요청을 사용하여 컨트롤러 실행
+     	    $.ajax({
+     	        url: '/api/checkAlarm',
+     	        type: 'POST',
+     	        data: {
+     	            storeNum: storeNum
+     	        },
+     	        success: function(response) {
+				   const liId = "li" + storeNum.toString();
+     	           const yellowId = "yellow" + storeNum.toString();
+     	          document.getElementById(liId).style.display = "none";
+     	          document.getElementById(yellowId).style.display = "none";
+     	          
+     	        },
+     	        error: function() {
+     	            alert("error");
+     	        }
+     	    });
+        }
+        
+        
+        
+     	   </script>
+    
     </header>
+ 
