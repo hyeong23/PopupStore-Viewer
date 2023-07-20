@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import popup.dto.Alarm;
 import popup.mapper.AlarmMapper;
 
 @Service
@@ -35,5 +36,10 @@ public class AlarmService {
 	public List<Integer> getStoreByAlarm(int customerNum) throws Exception{
 		
 		return alarmMapper.getStoreByAlarm(customerNum);
+	}
+
+	public List<Alarm> getAlarm(int memberNum) {
+		
+		return alarmMapper.getAlarm(memberNum);
 	}
 }

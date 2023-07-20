@@ -36,20 +36,25 @@
 
 <!-- 검색 -->
 <div id="bbsList_header">
-		<!-- <div id="leftHeader">
-		<form action="/filterTested" method="GET" name="searchForm">
-		<div style="font-family: 'Orbit', sans-serif; font-size: 18pt; margin-bottom:10px;">통합검색</div>
-			<input type="text" name="inputText"/>
-			<input type="submit" value="검색">	
-		</form>				
+		<div class="filter-box" style="margin-top:0px; margin-left:50px; padding-bottom: 0px">
+		<p>통합검색</p>
+		<form action="/map/search" method="GET" name="searchForm">
 
-		</div>	 -->
+		<div class="filter-item" style="padding-top: 20px; padding-left: 10px;">	
+		
+			<input type="text" name="search" class="filter-item" style="width: 188px;"/>
+			<input type="submit" value="검색" class="filter-item" 
+					style="height: 35px; padding-left: 8px; width: 188px;">
+		</div>
+		</form>				
+	
+	</div>	 
 		
 		
 		<div>
     <form action="/map/filter" method="GET" >	
 	
-	<div class="filter-box" style="margin-top: 80px; margin-left: 50px">
+	<div class="filter-box" style="margin-left: 50px">
 	<div>
 	<p >제목</p>
 	<div class="filter-item" style="padding-top: 5px;">

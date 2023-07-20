@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -128,7 +130,58 @@ public class FilterController {
 	
 	}
 	
+	@RequestMapping(value = "/calendar/search", method = RequestMethod.GET)
+	public String calendarSearch(Model model, HttpSession session , 
+							 @Param("search") String search) throws SQLException  
+										 {
+		
+		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		List<StoreVo> openStoreList = openStoreService.getAllStore();
+		List<String> getBussinessMember = memberService.getBussinessMember();
+		
+		try {
+			List<Integer> storeNum = new ArrayList<>();
+			Set<Integer> uniqueStoreNums = new HashSet<>();
+			
+			List<Integer> searchStoreList = openStoreService.searchStoreByTitleAndLoc(search);
+			uniqueStoreNums.addAll(searchStoreList);
+
+			String[] searchMember = openStoreService.searchMemberByName(search);
+
+				if(searchMember.length == 0) {
+					
+				}else {
+					List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(searchMember);	
+
+					uniqueStoreNums.addAll(getStoreByCompanyName);
+				}
+		
+			storeNum.addAll(uniqueStoreNums);
+
+			List<StoreVo> filterStoreList = openStoreService.filterStoreList(storeNum);
+			model.addAttribute("openStoreList", openStoreList);
+			model.addAttribute("getBussinessMember", getBussinessMember);
+			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
+		} catch (Exception e) {
+			
+			List<StoreVo> filterStoreList = null;
+			
+			
+			model.addAttribute("openStoreList", openStoreList);
+			model.addAttribute("getBussinessMember", getBussinessMember);
+			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
+		}
+		
+		
+
+		
+		
+	return "calendar";
 	
+	}
+
 	
 	
 	@RequestMapping(value = "/card/filter", method = RequestMethod.GET)
@@ -215,7 +268,57 @@ public class FilterController {
 	
 	}
 	
+	@RequestMapping(value = "/card/search", method = RequestMethod.GET)
+	public String cardSearch(Model model, HttpSession session , 
+							 @Param("search") String search) throws SQLException  
+										 {
+		
+		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		List<StoreVo> openStoreList = openStoreService.getAllStore();
+		List<String> getBussinessMember = memberService.getBussinessMember();
+		
+		try {
+			List<Integer> storeNum = new ArrayList<>();
+			Set<Integer> uniqueStoreNums = new HashSet<>();
+			
+			List<Integer> searchStoreList = openStoreService.searchStoreByTitleAndLoc(search);
+			uniqueStoreNums.addAll(searchStoreList);
+
+			String[] searchMember = openStoreService.searchMemberByName(search);
+
+				if(searchMember.length == 0) {
+					
+				}else {
+					List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(searchMember);	
+
+					uniqueStoreNums.addAll(getStoreByCompanyName);
+				}
+		
+			storeNum.addAll(uniqueStoreNums);
+
+			List<StoreVo> filterStoreList = openStoreService.filterStoreList(storeNum);
+			model.addAttribute("openStoreList", openStoreList);
+			model.addAttribute("getBussinessMember", getBussinessMember);
+			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
+		} catch (Exception e) {
+			
+			List<StoreVo> filterStoreList = null;
+			
+			
+			model.addAttribute("openStoreList", openStoreList);
+			model.addAttribute("getBussinessMember", getBussinessMember);
+			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
+		}
+		
+		
+
+		
+		
+	return "card";
 	
+	}
 	
 	@RequestMapping(value = "/map/filter", method = RequestMethod.GET)
 	public String mapFilter(Model model, HttpSession session , 
@@ -301,7 +404,57 @@ public class FilterController {
 	
 	}
 	
+	@RequestMapping(value = "/map/search", method = RequestMethod.GET)
+	public String mapSearch(Model model, HttpSession session , 
+							 @Param("search") String search) throws SQLException  
+										 {
+		
+		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		List<StoreVo> openStoreList = openStoreService.getAllStore();
+		List<String> getBussinessMember = memberService.getBussinessMember();
+		
+		try {
+			List<Integer> storeNum = new ArrayList<>();
+			Set<Integer> uniqueStoreNums = new HashSet<>();
+			
+			List<Integer> searchStoreList = openStoreService.searchStoreByTitleAndLoc(search);
+			uniqueStoreNums.addAll(searchStoreList);
+
+			String[] searchMember = openStoreService.searchMemberByName(search);
+
+				if(searchMember.length == 0) {
+					
+				}else {
+					List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(searchMember);	
+
+					uniqueStoreNums.addAll(getStoreByCompanyName);
+				}
+		
+			storeNum.addAll(uniqueStoreNums);
+
+			List<StoreVo> filterStoreList = openStoreService.filterStoreList(storeNum);
+			model.addAttribute("openStoreList", openStoreList);
+			model.addAttribute("getBussinessMember", getBussinessMember);
+			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
+		} catch (Exception e) {
+			
+			List<StoreVo> filterStoreList = null;
+			
+			
+			model.addAttribute("openStoreList", openStoreList);
+			model.addAttribute("getBussinessMember", getBussinessMember);
+			model.addAttribute("filterStoreList", filterStoreList);
+			model.addAttribute("location", location);
+		}
+		
+		
+
+		
+		
+	return "map";
 	
+	}
 	
 	
 	

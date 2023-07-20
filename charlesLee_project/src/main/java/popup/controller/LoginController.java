@@ -35,7 +35,13 @@ public class LoginController {
 		String view = "error";
 		
 		Member member = memberService.getMemberByIdAndPw(memberId,memberPw);
-	
+		
+		
+		if(member.getMemberCompanyName().equals(null)) {
+			session.setAttribute("memberName", member.getMemberNickname());
+		}else {
+			session.setAttribute("memberName", member.getMemberCompanyName());
+		}
 		
 		if(member.getMemberType() != -1) {
 			

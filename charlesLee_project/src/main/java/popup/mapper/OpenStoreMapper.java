@@ -20,13 +20,16 @@ public interface OpenStoreMapper {
 	
 
 
-	public List<StoreVo> getStoreByTitle(@Param("inputText") String inputText);
+	public List<Integer> searchStoreByTitleAndLoc(@Param("search") String search);
 
 
 	public List<StoreVo> filterStoreList(@Param("storeNum") List<Integer> storeNum) throws SQLException;
 
 
 	public int countStoreByStoreNum(int storeNum);
+
+
+	public String[] searchMemberByName(@Param("search") String search);
 
 
 	
