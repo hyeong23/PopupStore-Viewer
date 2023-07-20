@@ -1,4 +1,4 @@
-package popup.dto;
+package popup.vo;
 
 import java.sql.Date;
 
@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString 
-public class Alarm {
+public class AlarmVo {
 	private int alarmNum;
 	private int memberNum;
 	private int storeNum;
@@ -24,4 +24,5 @@ public class Alarm {
 	private char alarmStatus;
 	private Date alarmCreate;
 	private long alarmSub;
+	private String storeTitle;
 }
