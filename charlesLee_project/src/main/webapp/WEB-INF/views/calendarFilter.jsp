@@ -84,7 +84,7 @@
 
 	
 	<div>
-	<select name="category" id="category" class="filter-item">
+	<select name="category" id="category" class="filter-item-select">
    	 <option value="select">카테고리 선택</option>
    	 <option value="character">캐릭터</option>
    	 <option value="media">미디어</option>
@@ -96,7 +96,7 @@
  
 	<p>Loc</p>
 	<div>
-		<select name="storeLoc" id="storeLoc" class="filter-item" >
+		<select name="storeLoc" id="storeLoc" class="filter-item-select" >
 				<c:forEach items="${location}" var="location">	
 						<option id="storeLoc" value="${location}" >${location}</option>		  		
  				 </c:forEach>	

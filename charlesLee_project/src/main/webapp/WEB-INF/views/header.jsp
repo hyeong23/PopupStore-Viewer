@@ -28,7 +28,7 @@
         <div class="header__top">
             <div class="container" style="display: flex; justify-content: center;">
                 <div class="row">
-                     	 <a href="/main" style="margin: auto;"><img src="/project_image/logo.png" style="width: 170px; margin-left:0px; margin-top:0px;"></a>                 
+                     	 <a href="/calendar" style="margin: auto;"><img src="/project_image/logo.png" style="width: 170px; margin-left:0px; margin-top:0px;"></a>                 
                  	 	 <nav class="header__menu" style="margin-right: 190px; margin-left: 220px; padding-top: 24px;">
               	     	    <ul>                 
                	     	       <li><a href="/card">전체보기</a></li>

@@ -87,12 +87,8 @@
 					</div>
 
 					<!-- Contents -->
-					<div>
-					
-						<table class="table table-striped mb-0"
-							style="text-align: center;">
-
-
+					<div class="card">					
+						<table class="table table-striped mb-0" style="text-align: center;">
 							<tr>
 								<td style="background-color: #ff80c0; color: white" width="200"><b>ID</b></td>
 								<td style="text-align: center;"width="500">${member.memberId }</td>

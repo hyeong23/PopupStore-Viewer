@@ -6,6 +6,7 @@
   padding: 20px;
   justify-content: flex-start !important; /* ¿ÞÂÊ Á¤·Ä */
   align-items: flex-start !important; /* ¿ÞÂÊ Á¤·Ä */
+  width: 250px;
 }
 
 .mypage-item {
@@ -13,17 +14,14 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  text-align: left;
 }
 
 .mypage-item h3 {
   margin-top: 0;
   font-size: 20px;
   color: #333333;
-}
-
-.mypage-item {
-  margin: 10px;
-  text-align: left;
 }
 
 .filter-box {
@@ -37,6 +35,20 @@
 }
 
 .filter-item {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 210px;
+  margin-bottom: 5px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  font-size: 12pt;
+  padding-bottom: 2px;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.filter-item-select {
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -83,6 +95,19 @@
 
 .dropdown-box:hover .dropdown-content{
   display: block;
+}
+
+.admintable{
+	width: 700px;
+	
+}
+
+.admintable td, .admintable th {
+	width:auto;
+    padding: 8px;
+    padding-top:13px;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
 }
 
 

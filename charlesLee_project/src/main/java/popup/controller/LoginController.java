@@ -50,7 +50,7 @@ public class LoginController {
 		 session.setAttribute("memberNum", member.getMemberNum());
 		
 		 
-		 view = "redirect:/main";
+		 view = "redirect:/calendar";
 		}
 		if(member.getMemberType() == 0) {
 			System.out.println(member.getMemberType());

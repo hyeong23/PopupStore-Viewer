@@ -64,7 +64,7 @@
 	&nbsp; 
 	
 	<div align=center>
-		<span style="font-size:12pt;"><input type="button" value="메인으로" onclick="location.href='/main'"></span>
+		<span style="font-size:12pt;"><input type="button" value="메인으로" onclick="location.href='/calendar'"></span>
 	</div>
 
 	&nbsp; &nbsp; &nbsp;
