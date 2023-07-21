@@ -67,7 +67,7 @@
 		style="display: flex; justify-content: center; align-items: center;">
 		<div class="adminViewContainer">
 			<span><input type="button" value="메인페이지로"
-				onclick="location.href='/main'" class="adminViewBtn"></span>
+				onclick="location.href='/calendar'" class="adminViewBtn"></span>
 			<!-- 부서생성 클릭 시, 새로운 부서 정보 입력 페이지로 이동 -->
 			<span><input type="button" value="관리자페이지로"
 				onclick="location.href='/adminpage1'" class="adminViewBtn"></span>
