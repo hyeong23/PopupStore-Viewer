@@ -40,11 +40,23 @@
 	<!-- Header Section Begin -->
 	<%@ include file="header.jsp"%>
 	<!-- Header Section End -->
+	<section class="breadcrumb-section set-bg"
+		data-setbg="/static/img/breadcrumb.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>마이페이지</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<div class="container" style="padding: 0;">
+	<div class="container" style="padding: 0; width:1200px;">
 		<div class="row">
 			<div class="col-lg-12">
-				<div style="display: flex; justify-content: flex-start; align-items: center; height: 100vh; margin-left: 20px;">
+				<div style="display: flex; justify-content: center; align-items: center; ">
 					<div class="mypage-box" style="height: 700px;">
 						<div class="mypage-item">
 							<h3>문의 사항</h3>

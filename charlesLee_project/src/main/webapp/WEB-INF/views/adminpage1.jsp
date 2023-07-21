@@ -71,20 +71,19 @@
 	</section>
 
 
-	<div class="container" style="padding: 0;">
+	<div class="container" style="padding: 0; width:1200px;">
 		<div class="row">
 			<div class="col-lg-12">
-				<div
-					style="display: flex; justify-content: center; align-items: center; margin-left: 20px;">
+				<div style="display: flex; justify-content: center; align-items: center; margin-left:10px;">
 					<div class="mypage-box" style="height: 700px;">
 						<div class="mypage-item">
 							<h3>문의 사항</h3>
 							<!-- 내 정보 내용 추가 -->
-							<a href="/adminpage1">문의사항 관리페이지</a>
+							<a href="/adminpage1">문의사항 관리</a>
 						</div>
 						<div class="mypage-item">
 							<h3>회원가입 신청</h3>
-							<a href="/adminpage2">비치니스 회원가입 신청 페이지</a>
+							<a href="/adminpage2">비즈니스 회원가입 신청 관리</a>
 						</div>
 						<div class="mypage-item">
 							<h3>팝업스토어</h3>
@@ -101,20 +100,20 @@
 												style="font-size: 12pt;">번호</span></b></font>
 									</p>
 								</td>
-								<td bgcolor="#ff80c0" style=" width:270px;">
+								<td bgcolor="#ff80c0" style=" width:240px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">이메일</span></b></font>
 									</p>
 								</td>
-								<td bgcolor="#ff80c0" style=" width:150px;">
+								<td bgcolor="#ff80c0" style=" width:170px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">제목</span></b></font>
 									</p>
 								</td>
 
-								<td bgcolor="#ff80c0" style=" width:50px;">
+								<td bgcolor="#ff80c0" style=" width:30px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">상태</span></b></font>
@@ -123,7 +122,7 @@
 								<td bgcolor="#ff80c0" >
 									<p align="center">
 										<font color="white"><b><span
-												style="font-size: 12pt;">처리</span></b></font>
+												style="font-size: 12pt;margin-left:-10px;">처리</span></b></font>
 									</p>
 								</td>
 							</tr>
@@ -159,7 +158,7 @@
 									</td>
 									<td bgcolor="" style=" width:150px;">
 										<p align="center">
-											<span style="font-size: 12pt;"> <a
+											<span style="font-size: 12pt; margin-right:10px;"> <a
 												href="#a${ask.askNum}" data-toggle="modal"> <b>${ask.askTitle}</b></a>
 											</span>
 										</p>
