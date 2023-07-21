@@ -58,7 +58,7 @@
                             
                             <c:if test="${not empty sessionScope.memberId}">
 	                            <div class="header__top__right__auth">
-	                           <i style="font-size: 14px; color: #1c1c1c;">${sessionScope.memberName}</i>
+	                           <p style="font-size: 14px; color: #1c1c1c; padding-top:8px;">${sessionScope.memberName}</p>
 								   <a href="/logout"><i class="fa fa-user"> </i> Logout</a>								    
 								   </div>
 							</c:if>  
