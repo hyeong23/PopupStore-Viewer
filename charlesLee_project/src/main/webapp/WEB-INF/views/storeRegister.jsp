@@ -91,7 +91,7 @@
                 </div>
             </div>
             <form action="/storeRegister" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
-                <div class="row" style="display: flex;justify-content: center;align-content: center;">
+                <div class="row">
                    
                     <div class="col-lg-12 col-md-6">
                    <input type="text" placeholder="제목을 입력하세요" name="storeTitle"	id="storeTitle"> </div>
@@ -194,8 +194,8 @@
                         
                        
                         
-                         <div style="margin-top: 50px; width: 400px; ">     
-                         	<input type="submit" value="등록하기" class="charles_btn" style="color: white;" id="submit" />
+                         <div id="store_stc" style="margin-top: 50px;">     
+                         	<input type="submit" value="등록하기" class="charles_btn" style="width: 100%; color: white;" id="submit" />
 					 </div>
                  
                 </div>  
