@@ -18,4 +18,6 @@ public interface AskMapper {
 	
 	public int updateAsk(int askNum, int askCheck) throws SQLException;
 
+	public int deleteAsk(int askNum) throws SQLException;
+
 }

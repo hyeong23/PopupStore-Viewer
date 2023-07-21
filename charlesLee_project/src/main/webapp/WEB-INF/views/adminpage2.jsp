@@ -58,7 +58,7 @@
 							</div>
 							<div class="mypage-item">
 								<h3>팝업스토어</h3>
-								<a href="/adminpage4">팝업스토어 신청 페이지</a>
+								<a href="/adminpage3">팝업스토어 신청 페이지</a>
 							</div>
 						</div>
 						<div class="card" style="display: flex; margin-left: 20px;">

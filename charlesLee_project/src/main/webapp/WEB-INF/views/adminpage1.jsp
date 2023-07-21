@@ -31,14 +31,14 @@
 <link rel="stylesheet" href="css/modal.css" type="text/css">
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery.slicknav.js"></script>
+<script src="/js/mixitup.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/main.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -46,6 +46,7 @@
 <style>
 
 </style>
+	
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -90,8 +91,10 @@
 							<a href="/adminpage4">팝업스토어 신청 페이지</a>
 						</div>
 					</div>
-					<div class="card" style="display: flex; margin-left: 20px;">
-						<table class="admintable table-striped mb-0" >
+				<div class="table-responsive table-scroll"
+				data-mdb-perfect-scrollbar="true"
+				style="position: relative; height: 700px; border: 2px solid #dee2e6;">
+					<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
 							<tr>
 								<td bgcolor="#ff80c0">
 									<p align="center">
@@ -111,16 +114,17 @@
 												style="font-size: 12pt;">제목</span></b></font>
 									</p>
 								</td>
+								
 								<td bgcolor="#ff80c0">
 									<p align="center">
 										<font color="white"><b><span
-												style="font-size: 12pt;">내용</span></b></font>
+												style="font-size: 12pt;">문의상태</span></b></font>
 									</p>
 								</td>
 								<td bgcolor="#ff80c0">
 									<p align="center">
 										<font color="white"><b><span
-												style="font-size: 12pt;">문의상태</span></b></font>
+												style="font-size: 12pt;">승인/거부</span></b></font>
 									</p>
 								</td>
 							</tr>
@@ -137,7 +141,7 @@
 							</c:if>
 							<!-- 반복 출력 -->
 							<c:forEach items="${requestScope.ask}" var="ask">
-								<tr style="text-align: center; text-align: justify;">
+								<tr style="text-align: center; text-align: justify; ">
 									<td bgcolor="">
 										<p align="center">
 											<span style="font-size: 12pt;"> <!-- 부서번호 --> <a
@@ -160,16 +164,12 @@
 											</span>
 										</p>
 									</td>
+									
 									<td bgcolor="">
 										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${ask.askBody}</b>
-											</span>
-										</p>
-									</td>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${ask.askCheck}</b>
-											</span>
+											<c:if test="${ask.askCheck == 0}"><span style="font-size: 12pt;"> <!-- 부서위치 --> <b>not check </b></span></c:if>
+											<c:if test="${ask.askCheck == 1}"><span style="font-size: 12pt;"> <!-- 부서위치 --> <b>check </b></span></c:if>
+											
 										</p>
 									</td>
 									<td bgcolor="">
@@ -188,7 +188,7 @@
 									tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 									aria-hidden="true">
 									<div class="modal-dialog modal-lg">
-										<div class="modal-content">
+										<div class="modal-content" style="background-color: #fff4fd">
 											<div class="modal-header">
 												<h2 class="modal-title" id="exampleModalCenterTitle">${ask.askNum}번
 													문의</h2>
@@ -202,37 +202,33 @@
 
 													<!-- Contact Form Begin -->
 													<div class="contact-form spad">
-														<div class="container">
-															<div class="row">
+														
+															<div class="row" style="text-align: center;">
 																<div class="col-lg-12">
 																	<div class="contact__form__title">
 																		<h2>문의 내용 확인</h2>
 																	</div>
 																</div>
-															</div>
-															<div class="row">
+														
+															
 																<input type="hidden" name="storeNum" id="storeNum"
 																	value="${ask.askNum}" />
 																<div class="col-lg-12 col-md-6">
-																	<input type="text" placeholder="Your Email"
-																		name="askEmail" id="askEmail" value="${ask.askEmail}">
+																
+																		<h5>이메일 : ${ask.askEmail}</h5>
 																</div>
 																<div class="col-lg-12 col-md-6">
-																	<input type="text" placeholder="Title" name="askTitle"
-																		id="askTitle" value="${ask.askTitle}">
+																	<h5>제목 : ${ask.askTitle}</h5>
 																</div>
+																</div>
+																<div class="row" style="height: 380px;">
 																<div class="col-lg-12 text-center">
 																	<textarea placeholder="Your message" name="askBody"
 																		id="askBody">${ask.askBody}</textarea>
 																</div>
-																<span style="font-size: 12pt;"> <!-- 부서위치 -->
-																	<button data-user-id="${ask.askNum}" type="button"
-																		value="승인" class="appro">승인</button>
-																	<button data-user-id="${ask.askNum}" type="button"
-																		value="거부" class="deni">거부</button>
-																</span>
-															</div>
-														</div>
+															
+															</div>	
+																
 													</div>
 													<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
 
@@ -266,7 +262,8 @@
 						id : dropId,
 					},
 					success : function(data) {
-						console.log('test');
+						  const row = $(this).closest('tr'); // 클릭한 버튼이 속한 행을 선택
+				          row.find('td:eq(3)').html('<span style="font-size: 12pt;"><b>check</b></span>'); // 해당 행의 4번째 열에 "check"를 표시
 					},
 					error : function(status, error) {
 
@@ -290,7 +287,8 @@
 						id : dropId,
 					},
 					success : function(data) {
-						console.log('test');
+						 const row = $(this).closest('tr'); // 클릭한 버튼이 속한 행을 선택
+				          row.remove(); // 해당 행을 삭제
 					},
 					error : function(status, error) {
 

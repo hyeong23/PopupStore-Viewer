@@ -47,4 +47,18 @@ public class AskService {
 		return result;
 	}
 
+	public boolean deleteAsk(int askNum) throws Exception {
+		boolean result = false;
+		int res = askMapper.deleteAsk(askNum);
+		if(res != 0) {
+			result = true;
+		} else {
+			throw new Exception();
+		}
+			
+		return result;
+
+		
+	}
+
 }

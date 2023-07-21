@@ -69,7 +69,7 @@
 					style="display: flex; justify-content: flex-start; align-items: center; margin-left: 20px;">
 					
 					<!-- Side bar -->
-					<div class="mypage-box" style="background-color: #EEEEEE; height: 600px; ">
+					<div class="mypage-box" style="background-color: #fff4fd; height: 600px; ">
 						<div class="mypage-item" style="width: 200;" >
 							<h3>My page</h3>
 							<!-- 내 정보 내용 추가 -->
