@@ -161,13 +161,15 @@
   
   				          <div class="thumbnail" >  
             	
-                			<input type="file" name="thumbnail" id="thumbnail" onchange="previewImage2(event)" style="margin-bottom: 0px;">
-  							<img id="preview" src="#" alt="Preview">
+                			<input type="file"  name="thumbnail" id="thumbnail" onchange="previewImage2(event)" style="margin-bottom: 0px; display: none;" >
+                			
+  							<img id="preview" >
 							</div>
            				  </div>
 
            				  <div class="picture-footer" >
-                			<span><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
+           				  <label for="thumbnail" class="charles_btn2">썸네일 업로드</label>
+                			<span style="margin-left: 70px;"><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
                 		  </div>
         	       </div>	
                    

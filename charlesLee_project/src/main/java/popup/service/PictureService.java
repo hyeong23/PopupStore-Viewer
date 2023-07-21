@@ -56,7 +56,7 @@ public class PictureService {
 	// update
 	public boolean updatePicture(int storeNum, MultipartFile picture , int pictureType) throws Exception {
 		boolean result = false;
-		
+		System.out.println(pictureType);
 		if(picture == null) {
 			throw new Exception("파일 전달 오류 발생");
 		}
@@ -75,7 +75,7 @@ public class PictureService {
 											   .pictureType(pictureType)
 											   .build();
 		
-		System.out.println("picture: " + pictureFile);
+
 		int res = pictureMapper.updatePicture(pictureFile);
 		
 		if(res != 0) {
@@ -94,5 +94,18 @@ public class PictureService {
 
 	public List<Picture> getPictureByStoreNum(int storeNum) {
 		return pictureMapper.getPictureByStoreNum(storeNum);
+	}
+
+	public String getThumbnailOne(int storeNum) {
+		return pictureMapper.getThumbnailOne(storeNum);
+	}
+
+	public List<String> getPictureOne(int storeNum) {
+		return pictureMapper.getPictureOne(storeNum);
+	}
+
+	public boolean deletePicture(int storeNum, int pictureType) {
+		
+		return  pictureMapper.deletePicture(storeNum,pictureType);
 	}
 }

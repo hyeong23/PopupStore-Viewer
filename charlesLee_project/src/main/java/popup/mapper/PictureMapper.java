@@ -15,6 +15,12 @@ public interface PictureMapper {
 
 	List<Picture> getPictureByStoreNum(int storeNum);
 
+	String getThumbnailOne(int storeNum);
+
+	List<String> getPictureOne(int storeNum);
+
+	boolean deletePicture(int storeNum, int pictureType);
+
 
 
 }

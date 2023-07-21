@@ -42,6 +42,13 @@
 	<resultMap id="storeResultMap" type="popup.vo.StoreVo">
 		<result property="storeNum" column="store_num" />
 		<result property="storeTitle" column="store_title" />
+		<result property="storeIntro" column="store_intro" />
+		<result property="storeStart" column="store_start" />
+		<result property="storeEnd" column="store_end" />
+		<result property="storeBody" column="store_body" />
+		<result property="storeLoc" column="store_loc" />
+		<result property="storeLocDetail" column="store_loc_detail" />
+		<result property="storeSite" column="store_site" />
 		<result property="memberCompanyName"
 			column="member_company_name" />
 		<result property="memberNickname" column="member_nickname" />
@@ -124,7 +131,7 @@
 	<!-- select one -->
 	<select id="getStoreOne" resultMap="storeResultMap">
 		SELECT s.store_num, s.store_title, m.member_company_name,m.member_nickname
-		,s.store_count, s.store_status
+		,s.store_count, s.store_status,s.store_intro,s.store_start,s.store_end,s.store_body,s.store_loc,s.store_loc_detail,s.store_site
 		FROM store s
 		JOIN member m ON s.member_num = m.member_num
 		where store_num = #{storeNum}

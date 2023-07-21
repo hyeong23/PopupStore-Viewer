@@ -30,7 +30,7 @@
  			picture_size = #{pictureSize},
  			picture_date = SYSDATE,
  			picture_type = #{pictureType}
- 		WHERE store_num = #{storeNum}
+ 		WHERE store_num = #{storeNum} And picture_type = 1
  	</update>
   	
   	<select id="getPictureByStoreNum" resultMap="pictureResultMap">
@@ -43,11 +43,18 @@
     </resultMap>
   
   
+  	<select id="getThumbnailOne" resultType="String">
+  		SELECT picture_name FROM picture WHERE store_num = #{storeNum} And picture_type = 1
+  	</select>
   
   
+  <select id="getPictureOne" resultType="String">
+  		SELECT picture_name FROM picture WHERE store_num = #{storeNum} And picture_type = 0
+  	</select>
   
-  
-  
+  <delete id="deletePicture" parameterType="_int">
+  	Delete picture where store_num = #{storeNum} And picture_type = #{pictureType}
+  </delete>
   
   
   
