@@ -53,12 +53,17 @@
 		<result property="storeUpdate" column="store_update" />
     </resultMap>
     
-    <select id="getStoreByTitle" resultMap="openStoreList">
-   	 	SELECT * FROM store
-    	WHERE store_title LIKE '%' || UPPER(#{inputText}) || '%'
-    	OR store_loc LIKE '%' || UPPER(#{inputText}) || '%'
+    <select id="searchStoreByTitleAndLoc" resultType="_int">
+   	 	SELECT store_num FROM store
+    	WHERE store_title LIKE '%' || #{search} || '%'
+    	OR store_loc LIKE '%' || #{search} || '%'
+    	ORDER BY store_num ASC
 	</select>
-    
+
+	 <select id="searchMemberByName" resultType="String">
+   	 	SELECT member_company_name FROM member
+    	WHERE member_company_name LIKE '%' || #{search} || '%'
+	</select>
 	
      <select id="filterStoreList" resultMap="openStoreList">
     
@@ -69,6 +74,7 @@
         <foreach item="item" collection="storeNum" open="(" separator="," close=")">
             #{item}
         </foreach>
+      ORDER BY s.store_start
       	
   </select>
  	

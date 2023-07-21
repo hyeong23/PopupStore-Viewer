@@ -24,13 +24,31 @@
     	ORDER BY store_num
     	</select>
   
+
+  		<select id="getAlarm" resultMap="alarmResultMap">
+   	 	SELECT a.alarm_num ,a.store_num,a.alarm_content,a.alarm_read,a.alarm_time,a.alarm_checked_time,a.alarm_status,a.alarm_create,a.alarm_sub,s.store_title
+   	 	FROM alarm a
+   	 	JOIN store s ON s.store_num = a.store_num
+    	WHERE a.member_num = #{memberNum}
+    	</select>
   
+  	
+  	<resultMap id="alarmResultMap" type="popup.vo.AlarmVo">
+  		<result property="alarmNum" column="alarm_num" />
+  		<result property="memberNum" column="member_num" />
+  		<result property="storeNum" column="store_num" />
+  		<result property="alarmContent" column="alarm_content" />
+  		<result property="alarmRead" column="alarm_read" />
+  		<result property="alarmTime" column="alarm_time" />
+  		<result property="alarmCheckedTime" column="alarm_checked_time" />
+  		<result property="alarmStatus" column="alarm_status" />
+  		<result property="alarmCreate" column="alarm_create" />
+  		<result property="alarmSub" column="alarm_sub" />
+  		<result property="storeTitle" column="store_title" />
+  		
+  	</resultMap>
   
-  
-  
-  
-  
-  
+ 
   
   
   

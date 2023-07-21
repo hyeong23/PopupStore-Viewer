@@ -43,8 +43,7 @@
 	<div class="container" style="padding: 0;">
 		<div class="row">
 			<div class="col-lg-12">
-				<div
-					style="display: flex; justify-content: flex-start; align-items: center; height: 100vh; margin-left: 20px;">
+				<div style="display: flex; justify-content: flex-start; align-items: center; height: 100vh; margin-left: 20px;">
 
 						
 						<div class="mypage-box" style="height: 700px;">
@@ -62,23 +61,23 @@
 								<a href="/adminpage4">팝업스토어 신청 페이지</a>
 							</div>
 						</div>
-						 <h2 align="center" style="margin-top: -600px; text-align: right;">비지니스 회원 관리페이지</h2>
-							<table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" bordercolordark="white" bordercolorlight="black">
+						<div class="card" style="display: flex; margin-left: 20px;">
+							<table class="admintable table-striped mb-0">
 							<tr>
-						        <td bgcolor="#7fad39">
+						        <td bgcolor="#ff80c0">
 						            <p align="center">
 						            <font color="white"><b><span style="font-size:12pt;">회원번호</span></b></font></p>
 						        </td>
-						        <td bgcolor="#7fad39">
+						        <td bgcolor="#ff80c0">
 						            <p align="center"><font color="white"><b><span style="font-size:12pt;">닉네임</span></b></font></p>
 						        </td>
-						        <td bgcolor="#7fad39">
+						        <td bgcolor="#ff80c0">
 						            <p align="center"><font color="white"><b><span style="font-size:12pt;">이메일</span></b></font></p>
 						        </td>
-						        <td bgcolor="#7fad39">
+						        <td bgcolor="#ff80c0">
 						            <p align="center"><font color="white"><b><span style="font-size:12pt;">아이디</span></b></font></p>
 						        </td>
-						        <td bgcolor="#7fad39">
+						        <td bgcolor="#ff80c0">
 						            <p align="center"><font color="white"><b><span style="font-size:12pt;">상태번호</span></b></font></p>
 						        </td>
 						    </tr>
@@ -150,8 +149,9 @@
 								    </tr>
 						    </c:forEach>
 						</table>
+						</div>
 				</div>
-
+</div></div></div>
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 				<script>
 				$(document).ready(function(){

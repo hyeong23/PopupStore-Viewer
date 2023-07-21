@@ -54,15 +54,13 @@
 <script src="/js/mixitup.min.js"></script>
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/main.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>	
 
 
 
-
-<title>Calendar #9</title>
+<title>POP UP!</title>
 
 </head>
 <body>
@@ -90,8 +88,8 @@
 
 
 
-	<div class="content">
-		<div class="filterBox" style="margin-top: 90px;">
+	<div class="content" style="display: flex; margin-top: 20px;">
+		<div class="filterBox" style="display: flex; margin-top: 40px;">
 			<%@ include file="calendarFilter.jsp"%>
 		</div>
 		<div id='calendar'></div>
@@ -99,15 +97,15 @@
 			<div id=of2 class="overflow-auto bg-light"
 				style="max-width: 250px; ">
 				<div>
-					<c:forEach items="${openStoreList}" var="store">
-					<div class="calendar-miniInfo">
-						<div><img src="/project_image/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
-						<div class="calendar-miniInfo-p">
-						<p>${store.storeTitle}</p><hr>
-						<p>${store.storeStart}</p>
-						<p>${store.storeEnd}</p>
+					<c:forEach items="${filterStoreList}" var="store">
+						<div class="calendar-miniInfo" id = "${store.storeNum}" onmouseover="mouse_over('${store.storeNum}')"  onmouseout="mouse_out()">
+							<div><img src="/project_image/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
+							<div class="calendar-miniInfo-p">
+							<p>${store.storeTitle}</p><hr>
+							<p>${store.storeStart}</p>
+							<p>${store.storeEnd}</p>
+							</div>
 						</div>
-					</div>
 					</c:forEach> 
 				</div>
 
@@ -146,9 +144,11 @@
 
 
 	<script>
+	var calendar;
     document.addEventListener('DOMContentLoaded', function() {
+    	  
     	  var calendarEl = document.getElementById('calendar');
-    	  var calendar = new FullCalendar.Calendar(calendarEl, {
+    	  calendar = new FullCalendar.Calendar(calendarEl, {
     	    plugins: [ 'interaction', 'dayGrid' ],
     	    defaultDate: new Date(),
     	    editable: true,
@@ -157,7 +157,8 @@
     	    events: [
 
     	      <c:forEach items="${filterStoreList}" var="store">
-    	        { 
+    	        {
+    	          id : '${store.storeNum}',
     	          number : '${store.storeNum}',
     	          title: '${store.storeTitle}',
     	          start: '${store.storeStart}T00:00:00',
@@ -173,16 +174,27 @@
 	  	    	modalClick(event2.event.extendedProps.number);
 	  	    	
 	  	    	myModal.show();
-	  	    	
-	  	    	
 
 	          }
     	  });
     	  
+    	  var event = calendar.getEventById(9);
+    	  var start = event.start;
+    	  console.log(start.toISOString());
+    	  
+    	  
     	  calendar.render();
     	  var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
 	      	  keyboard: false
-	      	});
+	      	}); 
+    	  
+		  // document.getElementById(${vs.index}).addEventListener
+    	  
+/*     	  function mouse_over(num){
+    		  alert(num);
+    	  } */
+    	  
+    	  
     	});
 
     </script>
@@ -190,6 +202,7 @@
 
 
 	<script>
+
    	
 	function modalClick(storeNum){
 		// 현재 map의 storeNum의 번호가 안바뀜
@@ -251,6 +264,39 @@
 		<div class="modal-dialog modal-lg"></div>
 	</div>
 	
+	
+	
+	
+	
+	
+	
+	<script>
+	function mouse_over(index){
+		console.log(index);
+		const storeVar = "store" + index.toString();
+		const temp1 = document.querySelector(".fc-event")
+		
+		var cal = calendar.getEventById(index);
+		
+		console.log(cal);
+		console.log(cal._def.title);
+		cal._def.ui.backgroundColor = "#c9c9c9";
+		cal._def.ui.borderColor = "red";
+		cal._def.ui.textColor = "green";
+		
+		
+		
+		console.log(storeVar);
+		temp1.style.fontSize = '1.2em';	
+
+	} 
+
+	function mouse_out(title){
+		const temp2 = document.querySelector(".fc-event")
+		temp2.style.fontSize = '0.85em';
+	}
+	
+	</script>
 	
 
 </body>

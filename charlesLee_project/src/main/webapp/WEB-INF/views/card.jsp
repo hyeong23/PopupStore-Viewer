@@ -117,27 +117,27 @@
                                     	<c:when test="${not empty sessionScope.memberNum}">     
                                     	 	<!-- 알람 -->
                           				<c:if test="${getStoreByAlarm.contains(store.storeNum)}">
-                                    		<img id="yellow${store.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${store.storeNum}')" style="width: 10%; height: 10%;" >
-                                    		<img id="bell${store.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${store.storeNum}','${store.storeTitle}')" style="width: 10%; height: 10%; display: none;" >
+                                    		<img id="yellow${store.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 75px" >
+                                    		<img id="bell${store.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${store.storeNum}','${store.storeTitle}')" style="width: 8%; height: 8%; display: none; position:absolute; right : 75px" >
 										</c:if>
 										<c:if test="${not getStoreByAlarm.contains(store.storeNum)}">
-                     						<img id="yellow${store.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${store.storeNum}')" style="width: 10%; height: 10%; display: none;" >
-                                    		<img id="bell${store.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${store.storeNum}','${store.storeTitle}')" style="width: 10%; height: 10%;" >
+                     						<img id="yellow${store.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${store.storeNum}')" style="width: 8%; height: 8%; display: none; position:absolute; right : 75px" >
+                                    		<img id="bell${store.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${store.storeNum}','${store.storeTitle}')" style="width: 8%; height: 8%; position:absolute; right : 75px" >
                   						</c:if>
                                  			<!-- 좋아요 -->
 										<c:if test="${getStoreByHeart.contains(store.storeNum)}">
-                                    		 <img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%;  display: none;">	
-             								 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%;">	
+                                    		 <img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%;  display: none; position:absolute; right : 45px">	
+             								 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 45px">	
 										</c:if>
 										<c:if test="${not getStoreByHeart.contains(store.storeNum)}">
-                     						<img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%; ">	
-             							 	 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 10%; height: 10%; display: none;">	
+                     						<img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 45px">	
+             							 	 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; display: none; position:absolute; right : 45px">	
                   						</c:if>	
                                     	</c:when>
                                     	<%-- 로그인 안했을때 --%>
                                     	<c:otherwise>
-                                    		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 10%; height: 10%;">
-                                    		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 10%; height: 10%;">	   
+                                    		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 8%; position:absolute; height: 8%; right : 75px">
+                                    		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 8%; position:absolute; height: 8%;  right : 45px">	   
                                   	    </c:otherwise>
                                     
                                     </c:choose>
@@ -177,8 +177,8 @@
  	            storeNum: storeNum,
  	            storeTitle: storeTitle
  	        },
- 	        success: function(data) {
- 	            alert(data);
+ 	        success: function(response) {
+ 	        	alert("삽입")
  	            // 이미지 속성 변경
  	            	const bellId = "bell" + storeNum.toString();
  	            	const yellowId = "yellow" + storeNum.toString();
@@ -201,8 +201,8 @@
  	        data: {
  	            storeNum: storeNum
  	        },
- 	        success: function(data) {
- 	            alert(data);
+ 	        success: function(response) {
+ 	        	alert("삭제")
  	           const bellId = "bell" + storeNum.toString();
  	           const yellowId = "yellow" + storeNum.toString();
  	          document.getElementById(bellId).style.display = "block";

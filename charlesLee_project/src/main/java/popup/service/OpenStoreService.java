@@ -27,8 +27,8 @@ public class OpenStoreService {
 	}
 
 
-	public List<StoreVo> getStoreByTitle(String inputText) {
-		return openStoreMapper.getStoreByTitle(inputText);
+	public List<Integer> searchStoreByTitleAndLoc(String search) {
+		return openStoreMapper.searchStoreByTitleAndLoc(search);
 	}
 
 
@@ -42,6 +42,11 @@ public class OpenStoreService {
 		return openStoreMapper.countStoreByStoreNum(storeNum);
 		
 		
+	}
+
+
+	public String[] searchMemberByName(String search) {
+		return openStoreMapper.searchMemberByName(search);
 	}
 
 

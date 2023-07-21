@@ -2,35 +2,55 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="popup.mapper.FavoriteMapper">
-  
-  
-   <select id="getStoreByHeart" resultType="int">
-   	 	SELECT store_num FROM favorite
-    	WHERE member_num = #{customerNum}
+<mapper namespace="popup.mapper.FavoriteMapper">
+
+
+	<select id="getStoreByHeart" resultType="int">
+		SELECT store_num FROM
+		favorite
+		WHERE member_num = #{customerNum}
 	</select>
-  
-  
-  	<select id="checkHeart" resultMap ="getfavorite">
-   	 	SELECT favorite_status FROM favorite
-    	WHERE member_num = #{memberNum} AND store_num = #{storeNum}
+
+	<!-- 사용자의 회원 번호에 해당하는 좋아요 정보를 조회하는 쿼리 -->
+	<select id="getLikedStoresByMemberNum" resultMap="getfavorite2">
+		SELECT p.picture_name,s.store_num, s.store_title, s.store_start, s.store_end
+		FROM store s
+		JOIN favorite f ON f.store_num = s.store_num
+		JOIN picture p ON p.store_num = s.store_num
+		WHERE s.member_num = #{customerNum} AND p.picture_type = 1
 	</select>
-	
+
+	<select id="checkHeart" resultMap="getfavorite">
+		SELECT favorite_status FROM
+		favorite
+		WHERE member_num = #{memberNum} AND store_num = #{storeNum}
+	</select>
+
 	<insert id="insertHeart">
-   	 	INSERT INTO favorite(favorite_num, member_num, store_num, favorite_status) 
-   	 	VALUES(favorite_sequence.nextval, #{memberNum}, #{storeNum}, 1)
+		INSERT INTO favorite(favorite_num, member_num,
+		store_num, favorite_status)
+		VALUES(favorite_sequence.nextval,
+		#{memberNum}, #{storeNum}, 1)
 	</insert>
-	
-  	<delete id="deleteHeart">
-   	 	DELETE FROM favorite
-   	 	WHERE member_num = #{memberNum} AND store_num = #{storeNum}
+
+	<delete id="deleteHeart">
+		DELETE FROM favorite
+		WHERE member_num = #{memberNum}
+		AND store_num = #{storeNum}
 	</delete>
-  	
-  	
-  	
-  	
-  	<resultMap id="getfavorite" type="popup.dto.Favorite">
-        <result property="favoriteStatus" column="favorite_status" />
-    </resultMap>
-  
+
+
+	<resultMap id="getfavorite2" type="popup.vo.StoreVo">
+		<result column="store_num" property="storeNum" />
+		<result column="store_title" property="storeTitle" />
+		<result column="store_start" property="storeStart" />
+		<result column="store_end" property="storeEnd" />
+		<result column="picture_name" property="pictureName" />
+	</resultMap>
+
+
+	<resultMap id="getfavorite" type="popup.dto.Favorite">
+		<result property="favoriteStatus" column="favorite_status" />
+	</resultMap>
+
 </mapper>

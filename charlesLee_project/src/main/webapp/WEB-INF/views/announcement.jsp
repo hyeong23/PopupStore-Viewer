@@ -140,7 +140,7 @@
 	<div align=center>
 
 		<span style="font-size: 12pt;"> <input type="button"
-			value="메인으로" onclick="location.href='/main'" class="charles_btn">
+			value="메인으로" onclick="location.href='/calendar'" class="charles_btn">
 		</span>
 		<!-- 관리자 로그인 상태일때만 활성화  -->
 		<c:if test="${memberId == 'admin'}">
