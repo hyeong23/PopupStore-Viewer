@@ -172,7 +172,7 @@
 		<div align=center>
 
 			<span style="font-size: 12pt;"> <input type="button"
-				value="메인으로" onclick="location.href='/main'" class="charles_btn">
+				value="메인으로" onclick="location.href='/calendar'" class="charles_btn">
 			</span> <span style="font-size: 12pt;"> <input type="button"
 				value="스토어등록" onclick="location.href='/storeRegister'"
 				class="charles_btn">

@@ -102,15 +102,11 @@
                         </div>
                     </div>
                     <div class="row">
-
-
-                        
- 
                                 <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
                                 <div class="col-lg-4" style="display:flex; justify-content: center;">
                                 <div class="storeCard">
                                   	 <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
-                                    <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="object-fit: cover;"></div>
+                                    <div class="storeCard-img"><img src="/project_image/${store.pictureName}" style="width:100%; object-fit:cover;"></div>
                                     <p style="margin:6px;">${store.storeStart} ~ ${store.storeEnd}</p>
                                     <c:choose>
                                     	<%-- 로그인 했을때 --%>

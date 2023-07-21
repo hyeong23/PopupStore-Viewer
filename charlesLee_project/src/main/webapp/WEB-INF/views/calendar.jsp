@@ -82,20 +82,16 @@
 				</div>
 			</div>
 		</div>
-
 	</section>
 
 
-
-
 	<div class="content">
-		<div class="filterBox" style="margin-top: 90px;">
+		<div class="filterBox" style="margin-top: 20px;">
 			<%@ include file="calendarFilter.jsp"%>
 		</div>
 		<div id='calendar'></div>
 		<div id=scrolls>
-			<div id=of2 class="overflow-auto bg-light"
-				style="max-width: 250px; ">
+			<div id=of2 class="overflow-auto bg-light">
 				<div>
 					<c:forEach items="${filterStoreList}" var="store">
 						<div class="calendar-miniInfo" id = "${store.storeNum}" onmouseover="mouse_over('${store.storeNum}')"  onmouseout="mouse_out()" onclick="modalPop('${store.storeNum}')">
@@ -135,13 +131,6 @@
 
 	<!-- 수정 -->
 	<!-- Modal -->
-
-
-
-
-
-
-
 
 	<script>
 	var calendar;
@@ -256,7 +245,7 @@
 	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
 		tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel"
 		aria-hidden="true">
-		<div class="modal-dialog modal-lg"></div>
+		<div class="modal-dialog modal-lg" style="display: flex; flex-direction: row;"></div>
 	</div>
 	
 	
