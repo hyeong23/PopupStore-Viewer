@@ -14,6 +14,7 @@
 	JOIN picture p ON p.store_num = s.store_num
     JOIN member m ON s.member_num = m.member_num
     where p.picture_type = 1
+    ORDER BY s.store_update
   </select>
   
   <select id="getMapList2" resultMap="openStoreList">
@@ -74,7 +75,7 @@
         <foreach item="item" collection="storeNum" open="(" separator="," close=")">
             #{item}
         </foreach>
-      ORDER BY s.store_start
+      ORDER BY s.store_update
       	
   </select>
  	

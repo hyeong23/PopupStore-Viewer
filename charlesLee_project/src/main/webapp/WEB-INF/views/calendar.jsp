@@ -98,7 +98,7 @@
 				style="max-width: 250px; ">
 				<div>
 					<c:forEach items="${filterStoreList}" var="store">
-						<div class="calendar-miniInfo" id = "${store.storeNum}" onmouseover="mouse_over('${store.storeNum}')"  onmouseout="mouse_out()">
+						<div class="calendar-miniInfo" id = "${store.storeNum}" onmouseover="mouse_over('${store.storeNum}')"  onmouseout="mouse_out()" onclick="modalPop('${store.storeNum}')">
 							<div><img src="/project_image/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
 							<div class="calendar-miniInfo-p">
 							<p>${store.storeTitle}</p><hr>
@@ -171,8 +171,8 @@
 	  	    	var event = calendar.getEventById(event2.event.extendedProps.number);
 	  	    	$(".modal-dialog").load("/calendar/" + event2.event.extendedProps.number);
 	  	    	
-	  	    	modalClick(event2.event.extendedProps.number);
 	  	    	
+	  	    	modalClick(event2.event.extendedProps.number);
 	  	    	myModal.show();
 
 	          }
@@ -269,7 +269,6 @@
 	function mouse_over(index){
 		console.log(index);
 		const storeVar = "store" + index.toString();
-		const temp1 = document.querySelector(".fc-event")
 		
 		var cal = calendar.getEventById(index);
 		
@@ -282,13 +281,35 @@
 		
 		
 		console.log(storeVar);
-		temp1.style.fontSize = '1.2em';	
+		var temp1 = document.querySelectorAll(".fc-event")
+		
+		for(var i = 0; i < temp1.length; i++){
+			temp1[i].style.fontSize = '1.2em';				
+		}
+		
+		
+		
+		
 
 	} 
 
 	function mouse_out(title){
-		const temp2 = document.querySelector(".fc-event")
-		temp2.style.fontSize = '0.85em';
+		const temp2 = document.querySelectorAll(".fc-event")
+		
+		for(var i = 0; i < temp2.length; i++){
+			temp2[i].style.fontSize = '0.85em';		
+		}
+		
+	}
+	
+	function modalPop(num){
+		alert(num);
+		$(".modal-dialog").load("/calendar/" + num);
+		var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
+	      	  keyboard: false
+	    });	
+		myModal.show();
+		modalClick(num);
 	}
 	
 	</script>

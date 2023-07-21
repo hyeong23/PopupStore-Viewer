@@ -29,13 +29,15 @@ public class FavoriteService {
 	
 	public List<Favorite> checkHeart(int storeNum, Object memberNum) throws SQLException {
 		List<Favorite> check = favoriteMapper.checkHeart(storeNum, memberNum);
-		System.out.println(check);
 		return check;
 	}
 
 	public boolean deleteHeart(int storeNum, Object memberNum) throws SQLException {
 		boolean result = favoriteMapper.deleteHeart(storeNum, memberNum);
-		return false;
+		if(result == true) {
+			return false;
+		}
+		return true;
 	}
 	// 회원 번호에 해당하는 사용자의 좋아요 리스트를 가져오는 메서드
 	public List<StoreVo> getLikedStoresByMemberNum(int customerNum) {
