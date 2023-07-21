@@ -113,6 +113,8 @@
 	<!-- nav바  End-->
 	<br>
 	<br>
+<c:if test="${memberType == 0 || memberType == 2}">
+	
 	<div class="container">
 		<div class="table-responsive table-scroll"
 			data-mdb-perfect-scrollbar="true"
@@ -202,14 +204,11 @@
 			value="스토어등록" onclick="location.href='/storeRegister'"
 			class="charles_btn">
 		</span>
-		<!-- 관리자 로그인 상태일때만 활성화  -->
-		<%-- 		<c:if test="${memberId == 'admin'}">
-			<span style="font-size: 12pt;"> <input type="button"
-				value="업로드" onclick="location.href='/storeRegister'">
-			</span>
-		</c:if> --%>
 
 	</div>
+	
+</c:if>
+
 
 	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>

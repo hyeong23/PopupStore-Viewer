@@ -18,6 +18,7 @@ public class StoreVo {
 	private int memberNum;
 	private String memberCompanyName;
 	private String memberNickname;
+	private int memberType;
 	private int storeNum;
 	private String storeTitle;
 	private String storeIntro;
