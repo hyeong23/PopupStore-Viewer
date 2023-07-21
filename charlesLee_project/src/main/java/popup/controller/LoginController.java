@@ -109,8 +109,19 @@ public class LoginController {
 			
 			 
 			 view = "redirect:/adminviews";
-		}	 
+		}
 		
+		if(member.getMemberType() == 1 || member.getMemberType() == 2) {
+			System.out.println(member.getMemberType());
+			 session.setAttribute("memberId", member.getMemberId());
+			 session.setAttribute("memberPw", member.getMemberPw());
+			 session.setAttribute("memberNum", member.getMemberNum());
+			 session.setAttribute("memberType", member.getMemberType());
+			 
+			
+			 
+			 view = "redirect:/card";
+		}
 	
 		 return view;
 	}

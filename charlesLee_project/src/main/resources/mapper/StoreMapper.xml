@@ -32,7 +32,7 @@
 	<select id="getStoreList" resultMap="storeResultMap">
 
 		SELECT s.store_num, s.store_title, m.member_company_name,m.member_nickname
-		,s.store_count, s.store_status
+		,s.store_count, s.store_status,m.member_type
 		FROM store s
 		JOIN member m ON s.member_num = m.member_num
 		ORDER BY s.store_num DESC
