@@ -108,7 +108,7 @@
 						<tbody style="text-align: center;">
 							<c:if test="${empty requestScope.store}">
 								<tr>
-									<td colspan="5">
+									<td colspan="6">
 										<p align="center">
 											<b><span style="font-size: 12pt;">등록된 글이 존재하지
 													않습니다.</span></b>
