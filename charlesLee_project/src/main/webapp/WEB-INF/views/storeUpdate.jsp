@@ -89,10 +89,10 @@
                    
                 </div>
             </div>
-            <form action="/storeUpdate" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
+            <form action="/storeUpdate" method="POST" id="detailForm" name="detailForm" enctype="multipart/form-data" onsubmit="return formChecking()">
                 <input type="hidden" name= "storeNum" value=${storeNum}> <!-- 보조 강사: storeNum을 Spring에 전달 -->
                 <div class="row">
-                   
+                   	<span id="storeNum">${store.storeNum}</span>
                     <div class="col-lg-12 col-md-6">
                         <input type="text" placeholder="제목" name="storeTitle" id="storeTitle">
                     </div>
@@ -201,13 +201,19 @@
 					<div id="store_stc" style="margin-top: 50px;">
 						<input type="submit" value="등록하기" class="charles_btn" style="width: 100%; color: white;" id="submit" />
 					</div>
-
+					
+					
+					
 				</div>
 			</form>
+			
 		</div>
 	</div>
-
-
+	<div>
+	<!-- <span style="font-size: 12pt;"> <input type="button"
+				value="삭제" onclick="deleteStore()" class="charles_btn">
+	</span> -->
+	</div>
 
 	<!-- Contact Form End -->
 
@@ -324,7 +330,22 @@
 		}
 	</script>
 
+	<script type="text/javascript">
+		function deleteStore() {
+			let detailForm = document.getElementById("detailForm");
+			let storeNum = document.getElementById("storeNum").innerText;
 
+			let input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = '_method';
+			input.value = 'DELETE';
+			detailForm.appendChild(input);
+
+			detailForm.action = '/storeList/' + storeNum;
+			detailForm.method = 'POST';
+			detailForm.submit();
+		}
+	</script>
 
 
 	<!-- Js Plugins -->

@@ -22,7 +22,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap"
 	rel="stylesheet">
 
 <!-- Css Styles -->
@@ -114,76 +114,82 @@
 	<br>
 	<br>
 	<div class="container">
-			<div class="table-responsive table-scroll"
-				data-mdb-perfect-scrollbar="true"
-				style="position: relative; height: 700px; border: 2px solid #dee2e6;">
-				<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
-
-					<thead
-						style="background-color: #ff80c0; text-align: center; color: white">
+		<div class="table-responsive table-scroll"
+			data-mdb-perfect-scrollbar="true"
+			style="position: relative; height: 500px; border: 2px solid #dee2e6;">
+			<table class="table table-striped mb-0"
+				style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">
+				<form name="detailForm" id="detailForm">
+				<thead
+					style="background-color: #ff80c0; text-align: center; color: white">
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">조회수</th>
+						<th scope="col">승인/거부</th>
+						<th scope="col">스토어 삭제</th>
+					</tr>
+				</thead>
+				<tbody style="text-align: center;">
+					<c:if test="${empty requestScope.store}">
 						<tr>
-							<th scope="col">번호</th>
-							<th scope="col">제목</th>
-							<th scope="col">작성자</th>
-							<th scope="col">조회수</th>
-							<th scope="col">승인/거부</th>
+							<td colspan="5">
+								<p align="center">
+									<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
+								</p>
+							</td>
 						</tr>
-					</thead>
-					<tbody style="text-align: center;">
-						<c:if test="${empty requestScope.store}">
-							<tr>
-								<td colspan="5">
-									<p align="center">
-										<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
-									</p>
-								</td>
-							</tr>
-						</c:if>
-						<c:forEach items="${requestScope.store}" var="store">
-							<tr>
-								<td>
+					</c:if>
+					<c:forEach items="${requestScope.store}" var="store">
+						<tr>
+							<td>
+								<p align="center">
+									<b><span id="storeNum" style="font-size: 12pt;"> ${store.storeNum}</span></b>
+								</p>
+							</td>
+
+							<td>
+								<p align="center">
+									<b><span style="font-size: 12pt;"><a
+											href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
+
+								</p>
+							</td>
+							<td><c:if test="${store.memberCompanyName eq null}">
 									<p align="center">
 										<b><span style="font-size: 12pt;">
-												${store.storeNum}</span></b>
+												${store.memberNickname}</span></b>
 									</p>
-								</td>
-
-								<td>
+								</c:if> <c:if test="${store.memberCompanyName ne null}">
 									<p align="center">
-										<b><span style="font-size: 12pt;"><a
-
-												href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
-
+										<b><span style="font-size: 12pt;">
+												${store.memberCompanyName}</span></b>
 									</p>
-								</td>
-								<td><c:if test="${store.memberCompanyName eq null}">
-										<p align="center">
-											<b><span style="font-size: 12pt;">
-													${store.memberNickname}</span></b>
-										</p>
-									</c:if> <c:if test="${store.memberCompanyName ne null}">
-										<p align="center">
-											<b><span style="font-size: 12pt;">
-													${store.memberCompanyName}</span></b>
-										</p>
-									</c:if></td>
+								</c:if></td>
 
-								<td>
-									<p align="center">
-										<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
-									</p>
-								</td>
-								<td>
-									<p align="center">
-										<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
-									</p>
-								</td>
-							</tr>
-						</c:forEach>
+							<td>
+								<p align="center">
+									<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
+								</p>
+							</td>
+							<td>
+								<p align="center">
+									<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
+								</p>
+							</td>
+							<td>
+							<span style="font-size: 12pt;"> <input type="button"
+								value="삭제" onclick="deleteStore()" class="charles_btn">
+							</span>
+							</td>
+						</tr>
+					</c:forEach>
 
-					</tbody>
-				</table>
-			</div>
+				</tbody>
+				</form>
+			</table>
+		</div>
 
 	</div>
 
@@ -192,9 +198,9 @@
 
 		<span style="font-size: 12pt;"> <input type="button"
 			value="메인으로" onclick="location.href='/main'" class="charles_btn">
-		</span>
-		<span style="font-size: 12pt;"> <input type="button"
-			value="업로드" onclick="location.href='/storeRegister'" class="charles_btn">
+		</span> <span style="font-size: 12pt;"> <input type="button"
+			value="스토어등록" onclick="location.href='/storeRegister'"
+			class="charles_btn">
 		</span>
 		<!-- 관리자 로그인 상태일때만 활성화  -->
 		<%-- 		<c:if test="${memberId == 'admin'}">
@@ -219,6 +225,22 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 
+	<script type="text/javascript">
+		function deleteStore() {
+			let detailForm = document.getElementById("detailForm");
+			let storeNum = document.getElementById("storeNum").innerText;
+
+			let input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = '_method';
+			input.value = 'DELETE';
+			detailForm.appendChild(input);
+
+			detailForm.action = '/storeList/' + storeNum;
+			detailForm.method = 'POST';
+			detailForm.submit();
+		}
+	</script>
 
 
 </body>

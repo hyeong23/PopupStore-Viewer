@@ -40,9 +40,12 @@ public interface StoreMapper {
 	public List<Integer> getStoreByLoc(String storeLoc) throws Exception;
 
 
-	public Store getStoreOne(int storeNum) throws Exception;
+	public StoreVo getStoreOne(int storeNum) throws Exception;
 
 	public Date getDateByStoreNum(int storeNum) throws Exception;
 
+	public int countStore(int storeNum) throws SQLException;
+	
+	public int deleteStore(int storeNum) throws SQLException;
 
 }

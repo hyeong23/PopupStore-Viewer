@@ -54,7 +54,7 @@ public class StoreService {
 	}
 
 	// getStoreOne
-	public Store getStoreOne(int storeNum) throws Exception {
+	public StoreVo getStoreOne(int storeNum) throws Exception {
 		return storeMapper.getStoreOne(storeNum);
 	}
 
@@ -78,6 +78,19 @@ public class StoreService {
 	}
 
 	// delete
+	public boolean deleteStore(int storeNum) throws SQLException, Exception {
+		boolean result = false;
+
+		int res = storeMapper.deleteStore(storeNum);
+
+		if (res != 0) {
+			result = true;
+		} else {
+			throw new Exception("delete fail");
+		}
+
+		return result;
+	}
 
 	public int getMaxStoreNum() throws Exception {
 
@@ -113,4 +126,11 @@ public class StoreService {
 		return storeMapper.getDateByStoreNum(storeNum);
 	}
 
+	// 조회수
+	public int countStore(int storeNum) throws SQLException, Exception{
+		return storeMapper.countStore(storeNum);
+		
+	}
+
+	
 }
