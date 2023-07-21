@@ -59,11 +59,12 @@
 		
 	</section>
     <!-- Hero Section End -->
-    <div class="content" style="display:flex; justify-content:center; margin-top:-20px; margin-left:-40px;">
+    <div class="content" style="display:flex; justify-content:center; height: 800px;">
+    <div style="display: flex; margin-top:20px; margin-left:-10px;">
     <%@ include file="mapFilter.jsp" %>
-    
+    </div>
 
-  <div id="map" style="width:1300px;height:680px; margin-bottom: 400px; margin-left: 400px; "></div>
+  <div id="map" style="width:1250px;height:700px; margin-left: 30px; margin-top:20px; "></div>
 
   
 </div>
