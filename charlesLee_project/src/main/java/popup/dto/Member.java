@@ -21,7 +21,7 @@ public class Member {
 	private String memberEmail;
 	private int memberType;
 	private String memberCompanyName;
-	private int memberCompanyNum;
+	private long memberCompanyNum;
 	private long memberPhoneNum;
 	private Date memberCreate;
 	private Date memberUpdate;

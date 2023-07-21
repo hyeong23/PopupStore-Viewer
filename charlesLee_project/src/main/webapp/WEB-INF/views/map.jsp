@@ -64,7 +64,7 @@
     <%@ include file="mapFilter.jsp" %>
     </div>
 
-  <div id="map" style="width:1250px;height:700px; margin-left: 30px; margin-top:20px; "></div>
+  <div id="map" style="width:1245px;height:700px; margin-left: 45px; margin-top:20px; "></div>
 
   
 </div>
@@ -83,8 +83,8 @@
     <script src="/js/mixitup.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!-- 수정 -->
 	<!-- Modal -->
@@ -130,12 +130,45 @@
 			    	${map.storeBody}
 				</div>
 				<hr>
-				<p> 조회수 : ${map.storeCount} </p>
 	        	<p> <a href="${map.storeSite}" target="_blank" class="link">${map.storeSite} 홈페이지</a></p>
 	        	<hr>
-	        	<p> 작성일 : ${map.storeCreate} </p>
-	        	<p> 마지막 수정일 : ${map.storeUpdate} </p>
-	      </div>
+				<p> 조회수 : ${map.storeCount} </p>
+	        	<p> 작성일 : ${map.storeCreate} <p>
+ 				<p>	마지막 수정일 : ${map.storeUpdate}<p>
+	        	
+	        	<c:choose>
+                                    	<%-- 로그인 했을때 --%>
+                                    	<c:when test="${not empty sessionScope.memberNum}">     
+                                    	 	<!-- 알람 -->
+                          				<c:if test="${getStoreByAlarm.contains(map.storeNum)}">
+                                    		<img id="yellow${map.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${map.storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 80px" >
+                                    		<img id="bell${map.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${map.storeNum}','${map.storeTitle}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 80px" >
+										</c:if>
+										<c:if test="${not getStoreByAlarm.contains(map.storeNum)}">
+                     						<img id="yellow${map.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${map.storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 80px" >
+                                    		<img id="bell${map.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${map.storeNum}','${map.storeTitle}')" style="width: 23pt; height: 23pt; position:absolute; right : 80px" >
+                  						</c:if>
+                                 			<!-- 좋아요 -->
+										<c:if test="${getStoreByHeart.contains(map.storeNum)}">
+                                    		 <img id = "heart${map.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt;  display: none; position:absolute; right : 45px">	
+             								 <img  id = "heartRed${map.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 45px">	
+										</c:if>
+										<c:if test="${not getStoreByHeart.contains(map.storeNum)}">
+                     						<img id = "heart${map.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 45px">	
+             							 	 <img  id = "heartRed${map.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 45px">	
+                  						</c:if>	
+                                    	</c:when>
+                                    	<%-- 로그인 안했을때 --%>
+                                    	<c:otherwise>
+                                    		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 23pt; position:absolute; height: 23pt; right : 80px">
+                                    		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 23pt; position:absolute; height: 23pt;  right : 45px">	   
+                                  	    </c:otherwise>
+                                    
+                </c:choose>
+	        	
+
+
+	      	</div>
 	      	 
 	      
 	      
@@ -328,7 +361,9 @@
 				        slideInput.type = "radio";
 				        slideInput.name = "slide" + storeNum.toString();
 				        slideInput.id = slideId;
-				        slideInput.checked = true;
+				        if(i == 0){
+					        slideInput.checked = true;
+				        }	
 				        bullets.parentNode.insertBefore(slideInput, bullets);
 
 				        
@@ -440,6 +475,90 @@ $(document).ready(function(){
  
 </script>
 
+<script>
+	function insertAlarm(storeNum, storeTitle) {
+	    // AJAX 요청을 사용하여 컨트롤러 실행
+	    $.ajax({
+	        url: '/api/insertAlarm',
+	        type: 'POST',
+	        data: {
+	            storeNum: storeNum,
+	            storeTitle: storeTitle
+	        },
+	        success: function(response) {
+	        	alert("삽입")
+	            // 이미지 속성 변경
+	            	const bellId = "bell" + storeNum.toString();
+	            	const yellowId = "yellow" + storeNum.toString();
+	            	document.getElementById(bellId).style.display = "none";
+	            	document.getElementById(yellowId).style.display = "block";
+              
+	        },
+	        error: function() {
+	            alert("error");
+	        }
+	    });
+	}
+
+
+	function deleteAlarm(storeNum) {
+	    // AJAX 요청을 사용하여 컨트롤러 실행
+	    $.ajax({
+	        url: '/api/deleteAlarm',
+	        type: 'POST',
+	        data: {
+	            storeNum: storeNum
+	        },
+	        success: function(response) {
+	        	alert("삭제")
+	           const bellId = "bell" + storeNum.toString();
+	           const yellowId = "yellow" + storeNum.toString();
+	          document.getElementById(bellId).style.display = "block";
+	          document.getElementById(yellowId).style.display = "none";
+	          
+	        },
+	        error: function() {
+	            alert("error");
+	        }
+	    });
+	}
+ </script>
+<script>
+function clickHeart(storeNum){
+	$.ajax({
+		url : "/api/like",
+		type : 'post',
+		data : {
+			storeNum : storeNum,
+		},
+		success : function(response) {
+			if(response == true){
+				alert("삽입")
+				const heartId = "heart" + storeNum.toString();
+				const heartRedId = "heartRed" + storeNum.toString();
+				document.getElementById(heartId).style.display = "none";
+				document.getElementById(heartRedId).style.display = "block";
+			}else{
+				alert("삭제")
+				const heartId = "heart" + storeNum.toString();
+				const heartRedId = "heartRed" + storeNum.toString();
+				document.getElementById(heartId).style.display = "block";
+				document.getElementById(heartRedId).style.display = "none";
+			}
+	     },
+		error : function(data) {
+			alert("error");
+		}
+	});
+}
+
+
+	function notLogin(){
+					alert("로그인 후 이용바랍니다.")
+}
+
+
+</script>
 
 
 

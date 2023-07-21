@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import popup.dto.Member;
 import popup.dto.Store;
+import popup.service.AlarmService;
 import popup.service.FavoriteService;
 import popup.service.MemberService;
 import popup.service.StoreService;
@@ -40,6 +41,9 @@ public class MyPageController {
 
 	@Autowired
 	FavoriteService favoriteService;
+	
+	@Autowired
+	AlarmService alarmService;
 
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String viewMyPage(Model model, HttpSession session) throws Exception {
@@ -193,8 +197,15 @@ public class MyPageController {
  
             // 사용자의 좋아요 리스트를 가져오는 메서드 호출
             List<StoreVo> likedStores =favoriteService.getLikedStoresByMemberNum(customerNum);
+            List<Integer> getStoreByHeart;
+    		getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
+    		
+    		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
+    		
             System.out.println(likedStores);
             model.addAttribute("likedStores", likedStores);
+            model.addAttribute("getStoreByHeart",getStoreByHeart);
+    		model.addAttribute("getStoreByAlarm",getStoreByAlarm);
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -42,8 +42,7 @@
 		<p>통합검색</p>
 		<form action="/card/search" method="GET" name="searchForm">
 
-		<div class="filter-item" style="padding-top: 20px; padding-left: 10px;">	
-		
+		<div class="filter-item" style="padding-top: 20px; padding-left: 10px;">			
 			<input type="text" name="search" class="filter-item" style="width: 188px;"/>
 			<input type="submit" value="검색" class="filter-item" 
 					style="height: 35px; padding-left: 8px; width: 188px;">

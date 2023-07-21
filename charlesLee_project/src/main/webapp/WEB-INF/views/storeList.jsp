@@ -83,104 +83,112 @@
 
 	
 	<br>
+	<%-- 	${sessionScope.memberType} --%>
 	<br>
-	<div class="container">
-		<div class="table-responsive table-scroll"
-			data-mdb-perfect-scrollbar="true"
-			style="position: relative; height: 500px; border: 2px solid #dee2e6;">
-			<table class="table table-striped mb-0"
-				style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">
-				<form name="detailForm" id="detailForm">
-				<thead
-					style="background-color: #ff80c0; text-align: center; color: white">
-					<tr>
-						<th scope="col">번호</th>
-						<th scope="col">제목</th>
-						<th scope="col">작성자</th>
-						<th scope="col">조회수</th>
-						<th scope="col">승인/거부</th>
-						<th scope="col">스토어 삭제</th>
-					</tr>
-				</thead>
-				<tbody style="text-align: center;">
-					<c:if test="${empty requestScope.store}">
-						<tr>
-							<td colspan="5">
-								<p align="center">
-									<b><span style="font-size: 12pt;">등록된 글이 존재하지 않습니다.</span></b>
-								</p>
-							</td>
-						</tr>
-					</c:if>
-					<c:forEach items="${requestScope.store}" var="store">
-						<tr>
-							<td>
-								<p align="center">
-									<b><span id="storeNum" style="font-size: 12pt;"> ${store.storeNum}</span></b>
-								</p>
-							</td>
+	<c:if test="${memberType == 2 || memberType == 0}">
 
-							<td>
-								<p align="center">
-									<b><span style="font-size: 12pt;"><a
-											href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
+		<div class="container">
+			<div class="table-responsive table-scroll"
+				data-mdb-perfect-scrollbar="true"
+				style="position: relative; height: 500px; border: 2px solid #dee2e6;">
+				<table class="table table-striped mb-0"
+					style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">
+					<form name="detailForm" id="detailForm">
+						<thead
+							style="background-color: #ff80c0; text-align: center; color: white">
+							<tr>
+								<th scope="col">번호</th>
+								<th scope="col">제목</th>
+								<th scope="col">작성자</th>
+								<th scope="col">조회수</th>
+								<th scope="col">승인/거부</th>
+								<th scope="col">스토어 삭제</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+							<c:if test="${empty requestScope.store}">
+								<tr>
+									<td colspan="5">
+										<p align="center">
+											<b><span style="font-size: 12pt;">등록된 글이 존재하지
+													않습니다.</span></b>
+										</p>
+									</td>
+								</tr>
+							</c:if>
+							<c:forEach items="${requestScope.store}" var="store">
+								<tr>
+									<td>
+										<p align="center">
+											<b><span id="storeNum" style="font-size: 12pt;">
+													${store.storeNum}</span></b>
+										</p>
+									</td>
 
-								</p>
-							</td>
-							<td><c:if test="${store.memberCompanyName eq null}">
-									<p align="center">
-										<b><span style="font-size: 12pt;">
-												${store.memberNickname}</span></b>
-									</p>
-								</c:if> <c:if test="${store.memberCompanyName ne null}">
-									<p align="center">
-										<b><span style="font-size: 12pt;">
-												${store.memberCompanyName}</span></b>
-									</p>
-								</c:if></td>
+									<td>
+										<p align="center">
+											<b><span style="font-size: 12pt;"><a
+													href="/storeUpdate/${store.storeNum}">${store.storeTitle}</a></span></b>
 
-							<td>
-								<p align="center">
-									<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
-								</p>
-							</td>
-							<td>
-								<p align="center">
-									<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
-								</p>
-							</td>
-							<td>
-							<span style="font-size: 12pt;"> <input type="button"
-								value="삭제" onclick="deleteStore()" class="charles_btn">
-							</span>
-							</td>
-						</tr>
-					</c:forEach>
+										</p>
+									</td>
+									<td><c:if test="${store.memberCompanyName eq null}">
+											<p align="center">
+												<b><span style="font-size: 12pt;">
+														${store.memberNickname}</span></b>
+											</p>
+										</c:if> <c:if test="${store.memberCompanyName ne null}">
+											<p align="center">
+												<b><span style="font-size: 12pt;">
+														${store.memberCompanyName}</span></b>
+											</p>
+										</c:if></td>
 
-				</tbody>
-				</form>
-			</table>
+									<td>
+										<p align="center">
+											<b><span style="font-size: 12pt;">${store.storeCount}</span></b>
+										</p>
+									</td>
+									<td>
+										<p align="center">
+											<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
+										</p>
+									</td>
+									<td><span style="font-size: 12pt;"> <input
+											type="button" value="삭제" onclick="deleteStore()"
+											class="charles_btn">
+									</span></td>
+								</tr>
+							</c:forEach>
+
+						</tbody>
+					</form>
+				</table>
+			</div>
+
 		</div>
 
-	</div>
 
+		<div align=center>
 
-	<div align=center>
-
-		<span style="font-size: 12pt;"> <input type="button"
-			value="메인으로" onclick="location.href='/main'" class="charles_btn">
-		</span> <span style="font-size: 12pt;"> <input type="button"
-			value="스토어등록" onclick="location.href='/storeRegister'"
-			class="charles_btn">
-		</span>
-		<!-- 관리자 로그인 상태일때만 활성화  -->
-		<%-- 		<c:if test="${memberId == 'admin'}">
 			<span style="font-size: 12pt;"> <input type="button"
-				value="업로드" onclick="location.href='/storeRegister'">
+				value="메인으로" onclick="location.href='/main'" class="charles_btn">
+			</span> <span style="font-size: 12pt;"> <input type="button"
+				value="스토어등록" onclick="location.href='/storeRegister'"
+				class="charles_btn">
 			</span>
-		</c:if> --%>
 
-	</div>
+		</div>
+
+	</c:if>
+	<c:if test="${memberType == 1 }">
+
+		<p align="center">
+			<b><span style="font-size: 12pt;">권한이 없습니다.</span></b>
+		</p>
+
+
+	</c:if>
 
 	<!-- Footer Section Begin -->
 	<%@ include file="footer.jsp"%>
