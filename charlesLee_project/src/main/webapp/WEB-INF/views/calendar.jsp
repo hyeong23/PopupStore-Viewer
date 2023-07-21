@@ -60,7 +60,7 @@
 
 
 
-<title>POP UP!</title>
+<title>Calendar #9</title>
 
 </head>
 <body>
@@ -88,8 +88,8 @@
 
 
 
-	<div class="content" style="display: flex; margin-top: 20px;">
-		<div class="filterBox" style="display: flex; margin-top: 40px;">
+	<div class="content">
+		<div class="filterBox" style="margin-top: 90px;">
 			<%@ include file="calendarFilter.jsp"%>
 		</div>
 		<div id='calendar'></div>
@@ -177,11 +177,6 @@
 
 	          }
     	  });
-    	  
-    	  var event = calendar.getEventById(9);
-    	  var start = event.start;
-    	  console.log(start.toISOString());
-    	  
     	  
     	  calendar.render();
     	  var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
