@@ -90,8 +90,8 @@
 
 
 
-	<div class="content">
-		<div class="filterBox" style="margin-top: 0px;">
+	<div class="content" style="display: flex; margin-top: 20px;">
+		<div class="filterBox" style="display: flex; margin-top: 40px;">
 			<%@ include file="calendarFilter.jsp"%>
 		</div>
 		<div id='calendar'></div>

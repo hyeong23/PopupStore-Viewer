@@ -36,7 +36,7 @@
 
 <!-- 검색 -->
 <div id="bbsList_header">
-		<div class="filter-box" style="margin-top:0px; margin-left:50px; padding-bottom: 0px">
+		<div class="filter-box" style="margin-top:0px; margin-left:50px; margin-bottom: -30px">
 		<p>통합검색</p>
 		<form action="/map/search" method="GET" name="searchForm">
 
