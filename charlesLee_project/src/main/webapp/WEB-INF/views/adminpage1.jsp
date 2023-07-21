@@ -164,7 +164,9 @@
 										</p>
 									</td>
 
-									<td bgcolor="" style=" width:50px;">
+									
+									<td bgcolor="" style="text-align: center;" >
+
 										<p align="center">
 											<c:if test="${ask.askCheck == 0}">
 												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>not
@@ -253,74 +255,51 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
-		$(document)
-				.ready(
-						function() {
 
-							$('.appro')
-									.click(
-											function() {
+  $(document).ready(function() {
+    $('.appro').click(function() {
+      const dropId = $(this).data("userId");
+      console.log(dropId);
+      const clickedButton = $(this); // 클릭한 버튼을 변수에 저장
 
-												const dropId = $(this).data(
-														"userId");
-												console.log(dropId);
-												$
-														.ajax({
-															type : 'post',
-															url : '<c:url value="askupdate" />',
-															data : {
-																id : dropId,
-															},
-															success : function(
-																	data) {
-																const row = $(
-																		this)
-																		.closest(
-																				'tr'); // 클릭한 버튼이 속한 행을 선택
-																row
-																		.find(
-																				'td:eq(3)')
-																		.html(
-																				'<span style="font-size: 12pt;"><b>check</b></span>'); // 해당 행의 4번째 열에 "check"를 표시
-															},
-															error : function(
-																	status,
-																	error) {
 
-																console.log(
-																		status,
-																		error);
-															}
-														}); //end ajax
+      $.ajax({
+        type: 'post',
+        url: '<c:url value="askupdate" />',
+        data: {
+          id: dropId,
+        },
+        success: function(data) {
+          const row = clickedButton.closest('tr'); // 클릭한 버튼이 속한 행을 선택
+          row.find('td:eq(3)').html('<span style="font-size: 12pt;"><b>check</b></span>'); // 해당 행의 4번째 열에 "check"를 표시
+        },
+        error: function(status, error) {
+          console.log(status, error);
+        }
+      });
+    });
 
-											});
+    $('.deni').click(function() {
+      const dropId = $(this).data("userId");
+      console.log(dropId);
+      const clickedButton = $(this); // 클릭한 버튼을 변수에 저장
 
-						});
-		$(document).ready(function() {
-
-			$('.deni').click(function() {
-
-				const dropId = $(this).data("userId");
-				console.log(dropId);
-				$.ajax({
-					type : 'post',
-					url : '<c:url value="/askupdelete" />',
-					data : {
-						id : dropId,
-					},
-					success : function(data) {
-						const row = $(this).closest('tr'); // 클릭한 버튼이 속한 행을 선택
-						row.remove(); // 해당 행을 삭제
-					},
-					error : function(status, error) {
-
-						console.log(status, error);
-					}
-				}); //end ajax
-
-			});
-
-		});
-	</script>
+      $.ajax({
+        type: 'post',
+        url: '<c:url value="/askupdelete" />',
+        data: {
+          id: dropId,
+        },
+        success: function(data) {
+          const row = clickedButton.closest('tr'); // 클릭한 버튼이 속한 행을 선택
+          row.remove(); // 해당 행을 삭제
+        },
+        error: function(status, error) {
+          console.log(status, error);
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
