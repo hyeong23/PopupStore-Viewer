@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import popup.dto.Category;
+import popup.service.AlarmService;
 import popup.service.CategoryService;
 import popup.service.FavoriteService;
 import popup.service.MemberService;
@@ -44,6 +45,9 @@ public class FilterController {
 	
 	@Autowired
 	StoreService storeService;
+	
+	@Autowired
+	AlarmService alarmService;
 	
 	@RequestMapping(value = "/calendar/filter", method = RequestMethod.GET)
 	public String calendarFilter(Model model, HttpSession session , 
@@ -182,7 +186,7 @@ public class FilterController {
 	
 	}
 
-	
+
 	
 	@RequestMapping(value = "/card/filter", method = RequestMethod.GET)
 	public String cardFilter(Model model, HttpSession session , 
@@ -191,13 +195,18 @@ public class FilterController {
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
 								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
-								@Param("storeLoc") String storeLoc) throws SQLException 
+								@Param("storeLoc") String storeLoc) throws Exception 
 										 {
 		
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
 		List<String> getBussinessMember = memberService.getBussinessMember();
+		Integer customerNum = (Integer) session.getAttribute("memberNum");
 		
+		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
+		
+		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
+			
 		try {
 			List<Integer> storeNum = new ArrayList<>();
 			
@@ -223,9 +232,8 @@ public class FilterController {
 		
 			//heart 가 1이면 session member_id 랑 일치하는 store_num 가져오기, 0이면 진행x
 			if(heart == 1) {
-				int customerNum = (int) session.getAttribute("memberNum");
-				List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);			
-				storeNum.retainAll(getStoreByHeart);
+				List<Integer> getStoreByHeart1 = favoriteService.getStoreByHeart(customerNum);			
+				storeNum.retainAll(getStoreByHeart1);
 			}
 			
 			//0이면 실행 x ,1이면 startDate가 sysDate 보다 작은 store 가져오기,2면 starDate가 sysDate 보다 큰 store 가져오기
@@ -249,6 +257,8 @@ public class FilterController {
 			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("filterStoreList", filterStoreList);
 			model.addAttribute("location", location);
+			model.addAttribute("getStoreByHeart",getStoreByHeart);
+			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
 		} catch (Exception e) {
 			
 			List<StoreVo> filterStoreList = null;
@@ -270,13 +280,17 @@ public class FilterController {
 	
 	@RequestMapping(value = "/card/search", method = RequestMethod.GET)
 	public String cardSearch(Model model, HttpSession session , 
-							 @Param("search") String search) throws SQLException  
+							 @Param("search") String search) throws Exception  
 										 {
 		
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
 		List<String> getBussinessMember = memberService.getBussinessMember();
+		Integer customerNum = (Integer) session.getAttribute("memberNum");
 		
+		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
+		
+		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
 		try {
 			List<Integer> storeNum = new ArrayList<>();
 			Set<Integer> uniqueStoreNums = new HashSet<>();
@@ -301,6 +315,8 @@ public class FilterController {
 			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("filterStoreList", filterStoreList);
 			model.addAttribute("location", location);
+			model.addAttribute("getStoreByHeart",getStoreByHeart);
+			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
 		} catch (Exception e) {
 			
 			List<StoreVo> filterStoreList = null;

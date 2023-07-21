@@ -5,7 +5,8 @@
   <mapper namespace="popup.mapper.AskMapper">
   
   <select id="getAllAsk" resultMap="askResultMap">
- 		SELECT * FROM ask
+ 		SELECT * FROM ask where ask_check = 0 or ask_check = 1
+ 		ORDER by ask_num desc
   </select>
   
   <insert id="insertAsk" parameterType="popup.dto.Ask">
@@ -28,7 +29,18 @@
   	 WHERE 
   		ask_num = #{askNum}
   	</update>
-  
+  	
+  	<delete id="deleteAsk" parameterType="_int"> 
+        DELETE ask
+  	 WHERE 
+  		ask_num = #{askNum}
+  	</delete>
+  	
+  	
+  	
+  	
+  	
+  	
       <resultMap id="askResultMap" type="popup.dto.Ask">
         <result property="askNum" column="ask_num" />
         <result property="askEmail" column="ask_email" />

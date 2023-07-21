@@ -50,10 +50,33 @@ public class AdminController {
 		model.addAttribute("ask", ask);
 		return "adminpage1";
 	}
+	@RequestMapping(value = "/askupdate", method = RequestMethod.POST)
+	public String askupdate(@RequestParam("id") int askNum,
+			Model model) throws SQLException, Exception {
+				
+				askService.updateAsk(askNum, 1);
+				return "redirect:/adminpage1";
+	}
+	@RequestMapping(value = "/askupdelete", method = RequestMethod.POST)
+	public String askdelete(@RequestParam("id") int askNum,
+			Model model) throws SQLException, Exception {
+				
+				askService.deleteAsk(askNum);
+				return "redirect:/adminpage1";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/adminpage1", method = RequestMethod.POST)
 	public String adminpage3(Model model) throws SQLException, Exception{
 		return "adminpage1";
 	}
+	
 	@RequestMapping(value = "/adminpage2", method = RequestMethod.GET)
 	public String adminpage2(Model model) throws SQLException, Exception{
 		List<Member> member = memberService.getMember();
@@ -183,20 +206,6 @@ public class AdminController {
 	@RequestMapping(value = "/adminpage5", method = RequestMethod.GET)
 	public String storeRegisterForm22(Model model) throws Exception{
 		return "adminpage5";
-	}
-	@RequestMapping(value = "/askupdate", method = RequestMethod.POST)
-	public String askupdate(@RequestParam("id") int ask_num,
-			Model model) throws SQLException, Exception {
-				System.out.println("login10" + ask_num);
-				boolean ask = askService.updateAsk(ask_num, 1);
-				return "redirect:/adminpage1";
-	}
-	@RequestMapping(value = "/askupdelete", method = RequestMethod.POST)
-	public String askdelete(@RequestParam("id") int ask_num,
-			Model model) throws SQLException, Exception {
-				System.out.println("login10" + ask_num);
-				boolean ask = askService.updateAsk(ask_num, 2);
-				return "redirect:/adminpage1";
 	}
 	
 	@RequestMapping(value = "/businessupate", method = RequestMethod.POST)
