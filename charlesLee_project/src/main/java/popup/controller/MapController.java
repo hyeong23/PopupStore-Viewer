@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import popup.dto.Picture;
+import popup.service.AlarmService;
+import popup.service.FavoriteService;
 import popup.service.MemberService;
 import popup.service.OpenStoreService;
 import popup.service.ReplyService;
@@ -37,14 +39,33 @@ public class MapController {
 	@Autowired
 	MemberService memberService;
 	
+	@Autowired
+	FavoriteService favoriteService;
+	
+	@Autowired
+	AlarmService alarmService;
+	
 	@RequestMapping(value = "/map")
-	public String getMap(Model model, HttpSession session) {
+	public String getMap(Model model, HttpSession session) throws Exception {
 		
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
 		List<ReplyVo> getReplyList = replyService.getReplyList();
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		
+		Integer customerNum = (Integer) session.getAttribute("memberNum");
+		
+		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
+		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
 		try {
 			List<String> getBussinessMember = memberService.getBussinessMember();
+			
+			
+			
+				
+			
+			model.addAttribute("getStoreByHeart",getStoreByHeart);
+			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
+			
 			
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getReplyList", getReplyList);
@@ -53,6 +74,11 @@ public class MapController {
 			model.addAttribute("filterStoreList", openStoreList);
 			
 		} catch (SQLException e) {
+			
+			model.addAttribute("getStoreByHeart",getStoreByHeart);
+			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
+			
+			
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getReplyList", getReplyList);
 			model.addAttribute("location", location);
