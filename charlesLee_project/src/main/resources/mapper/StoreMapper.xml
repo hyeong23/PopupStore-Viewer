@@ -45,6 +45,7 @@
 		<result property="memberCompanyName"
 			column="member_company_name" />
 		<result property="memberNickname" column="member_nickname" />
+		<result property="memberType" column="member_type" />
 		<result property="storeCount" column="store_count" />
 		<result property="storeStatus" column="store_status" />
 		<result property="storeCreate" column="store_create" />
