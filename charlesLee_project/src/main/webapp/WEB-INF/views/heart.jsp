@@ -97,25 +97,14 @@
 									<c:when test="${not empty sessionScope.memberNum}">
 										<!-- 좋아요 -->
 										<c:if test="${getStoreByHeart.contains(store.storeNum)}">
-
-											<img id="heart${store.storeNum}" alt="#" src="/img/heart.png"
-												onclick="clickHeart('${store.storeNum}')"
-												style="width: 10%; height: 10%; display: none;">
-											<img id="heartRed${store.storeNum}" alt="#"
-												src="/img/heartRed.png"
-												onclick="clickHeart('${store.storeNum}')"
-												style="width: 10%; height: 10%;">
+                                    		 <img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%;  display: none; position:absolute; right : 45px">	
+             								 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 45px">	
 										</c:if>
 										<c:if test="${not getStoreByHeart.contains(store.storeNum)}">
-											<img id="heart${store.storeNum}" alt="#" src="/img/heart.png"
-												onclick="clickHeart('${store.storeNum}')"
-												style="width: 10%; height: 10%;">
-											<img id="heartRed${store.storeNum}" alt="#"
-												src="/img/heartRed.png"
-												onclick="clickHeart('${store.storeNum}')"
-												style="width: 10%; height: 10%; display: none;">
-										</c:if>
-									</c:when>
+                     						<img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 45px">	
+             							 	 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; display: none; position:absolute; right : 45px">	
+                  						</c:if>	
+                                    	</c:when>
 								</c:choose>
 
 							</div>
@@ -140,37 +129,41 @@
 	<script src="/js/mixitup.min.js"></script>
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/main.js"></script>
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<script>
-		function clickHeart(storeNum) {
-			$
-					.ajax({
-						url : "/api/like",
-						type : 'post',
-						data : {
-							storeNum : storeNum,
-						},
-						success : function(response) {
-							const heartId = "heart" + storeNum.toString();
-							const heartRedId = "heartRed" + storeNum.toString();
-
-							if (response === true) {
-								alert("삽입");
-								document.getElementById(heartId).style.display = "none";
-								document.getElementById(heartRedId).style.display = "block";
-							} else {
-								alert("삭제");
-								document.getElementById(heartId).style.display = "block";
-								document.getElementById(heartRedId).style.display = "none";
-							}
-						},
-						error : function(data) {
-							alert("error");
-						}
-					});
+	
+	function clickHeart(storeNum) {
+		  $.ajax({
+		    url: "/api/like",
+		    type: 'post',
+		    data: {
+		      storeNum: storeNum,
+		    },
+		    success: function (response) {
+		      if (response == true) {
+		        alert("삽입");
+		        const heartId = "heart" + storeNum.toString();
+		        const heartRedId = "heartRed" + storeNum.toString();
+		        document.getElementById(heartId).style.display = "none";
+		        document.getElementById(heartRedId).style.display = "block";
+		      } else {
+		        alert("삭제");
+		        const heartId = "heart" + storeNum.toString();
+		        const heartRedId = "heartRed" + storeNum.toString();
+		        document.getElementById(heartId).style.display = "block";
+		        document.getElementById(heartRedId).style.display = "none";
+		      }
+		    },
+		    error: function (data) {
+		      alert("error");
+		    }
+		  });
 		}
+
 	</script>
 
 </body>
