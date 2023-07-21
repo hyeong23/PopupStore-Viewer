@@ -17,7 +17,7 @@
 		FROM store s
 		JOIN favorite f ON f.store_num = s.store_num
 		JOIN picture p ON p.store_num = s.store_num
-		WHERE s.member_num = #{customerNum} AND p.picture_type = 1
+		WHERE f.member_num = #{customerNum} AND p.picture_type = 1
 	</select>
 
 	<select id="checkHeart" resultMap="getfavorite">
