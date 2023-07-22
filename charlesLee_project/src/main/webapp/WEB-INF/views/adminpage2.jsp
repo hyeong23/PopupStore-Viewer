@@ -53,10 +53,11 @@
 		</div>
 	</section>
 
-	<div class="container" style="padding: 0; width:1200px;">
+	<div class="container" style="padding: 0; width: 1200px;">
 		<div class="row">
 			<div class="col-lg-12">
-				<div style="display: flex; justify-content: center; align-items: center; ">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
 					<div class="mypage-box" style="height: 700px;">
 						<div class="mypage-item">
 							<h3>문의 사항</h3>
@@ -72,112 +73,96 @@
 							<a href="/adminpage3">팝업스토어 신청 페이지</a>
 						</div>
 					</div>
-					<div class="card" style="display: flex; margin-left: 20px;">
-						<table class="admintable table-striped mb-0">
-							<tr>
-								<td bgcolor="#ff80c0" style=" width:50px;">
-									<p align="center">
-										<font color="white">
-										<b><span style="font-size: 12pt;">번호</span></b>
-										</font>
-									</p>
-								</td>
-								<td bgcolor="#ff80c0"  style=" width:80px;">
-									<p align="center">
-										<font color="white"><b><span
-												style="font-size: 12pt;margin-left:-10px; ">닉네임</span></b></font>
-									</p>
-								</td>
-								<td bgcolor="#ff80c0" style=" width:270px;">
-									<p align="center">
-										<font color="white"><b><span
-												style="font-size: 12pt;">이메일</span></b></font>
-									</p>
-								</td>
-								<td bgcolor="#ff80c0" style=" width:100px;" >
-									<p align="center">
-										<font color="white"><b><span
-												style="font-size: 12pt; margin-left:50px;">아이디</span></b></font>
-									</p>
-								</td>
-								<td bgcolor="#ff80c0" style=" width:75px;">
-									<p align="center">
-										<font color="white"><b><span
-												style="font-size: 12pt; margin-left:10px; ">상태</span></b></font>
-									</p>
-								</td>
-								<td bgcolor="#ff80c0" style=" width:180px;  ">
-									<p align="center">
-										<font color="white"><b><span
-												style="font-size: 12pt;margin-right: 30px;">처리</span></b></font>
-									</p>
-								</td>
-							</tr>
-							</table>
-							<table class="admintable table-striped mb-0 card" style="max-height: 700px; overflow: auto;">
-							<!-- 부서 객체 유무 검증 -->
-							<c:if test="${empty requestScope.member}">
+					<div class="card"
+						style="display: flex; margin-left: 20px; max-height: 700px; overflow: auto; width: 850px;">
+						<table class="admintable table-striped mb-0 table-scroll"
+							data-mdb-perfect-scrollbar="true"
+							style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">
+							<thead
+								style="background-color: #ff80c0; text-align: center; color: white">
 								<tr>
-									<td colspan="5">
-										<p align="center">
-											<b><span style="font-size: 12pt;">객체가 존재하지 않습니다.</span></b>
-										</p>
-									</td>
+									<th scope="col">번호</th>
+									<th scope="col">닉네임</th>
+									<th scope="col">이메일</th>
+									<th scope="col">아이디</th>
+									<th scope="col">상태</th>
+									<th scope="col">처리</th>
 								</tr>
-							</c:if>
-							<!-- 반복 출력 -->
-							<c:forEach items="${requestScope.member}" var="member">
-								<tr>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt; margin-left:10px; margin-right: 10px;"> <!-- 부서번호 --> <b>${member.memberNum}</b>
-											</span>
-										</p>
-									</td>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서번호 --> <b>${member.memberNickname}</b>
-											</span>
-										</p>
-									</td>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt;"> <!--
+							</thead>
+							<tbody style="text-align: center;">
+								<!-- 부서 객체 유무 검증 -->
+								<c:if test="${empty requestScope.member}">
+									<tr>
+										<td colspan="6">
+											<p align="center">
+												<b><span style="font-size: 12pt;">객체가 존재하지 않습니다.</span></b>
+											</p>
+										</td>
+									</tr>
+								</c:if>
+								<!-- 반복 출력 -->
+								<c:forEach items="${requestScope.member}" var="member">
+									<tr>
+										<td bgcolor="">
+											<p align="center">
+												<span
+													style="font-size: 12pt; margin-left: 10px; margin-right: 10px;">
+													<!-- 부서번호 --> <b>${member.memberNum}</b>
+												</span>
+											</p>
+										</td>
+										<td bgcolor="">
+											<p align="center">
+												<span style="font-size: 12pt;"> <!-- 부서번호 --> <b>${member.memberNickname}</b>
+												</span>
+											</p>
+										</td>
+										<td bgcolor="">
+											<p align="center">
+												<span style="font-size: 12pt;"> <!--
 														부서명 클릭 시, 부서번호로 해당부서 상세정보 출력
 													 --> <b> ${member.memberEmail} </b>
-											</span>
-										</p>
-									</td>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${member.memberId}</b>
-											</span>
-										</p>
-									</td>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${member.memberType}</b>
-											</span>
-										</p>
-									</td>
-									<td bgcolor="">
-										<p align="center">
-											<span style="font-size: 12pt; margin-left:20px;"> <!-- 부서위치 -->
-												<button data-user-id="${member.memberNum}" type="button"
-													value="승인" class="appro">승인</button>
-												<button data-user-id="${member.memberNum}" type="button"
-													value="거부" class="deni">거부</button>
-											</span>
-										</p>
-									</td>
-								</tr>
-							</c:forEach>
+												</span>
+											</p>
+										</td>
+										<td bgcolor="">
+											<p align="center">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${member.memberId}</b>
+												</span>
+											</p>
+										</td>
+										<td bgcolor="">
+											<p align="center">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${member.memberType}</b>
+												</span>
+											</p>
+										</td>
+										<td bgcolor="">
+											<p align="center">
+												<span style="font-size: 12pt; margin-left: 20px;"> <!-- 부서위치 -->
+													<button data-user-id="${member.memberNum}" type="button"
+														value="승인" class="appro">승인</button>
+													<button data-user-id="${member.memberNum}" type="button"
+														value="거부" class="deni">거부</button>
+												</span>
+											</p>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Footer Section Begin -->
+	<div style="margin-top: 50px;">
+		<%@ include file="footer.jsp"%>
+	</div>
+	<!-- Footer Section End -->
+	
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
