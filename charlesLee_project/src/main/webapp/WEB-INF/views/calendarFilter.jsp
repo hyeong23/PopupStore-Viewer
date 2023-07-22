@@ -40,11 +40,9 @@
 		<p>통합검색</p>
 		<form action="/calendar/search" method="GET" name="searchForm">
 
-		<div class="filter-item" style="padding-top: 20px; padding-left: 10px;">	
-		
-			<input type="text" name="search" class="filter-item" style="width: 188px;"/>
-			<input type="submit" value="검색" class="filter-item" 
-					style="height: 35px; padding-left: 8px; width: 188px;">
+		<div style="display:flex; flex-direction:row; padding-top: 20px; margin-top:-10px; margin-bottom:-5px;">	
+		<input type="text" name="search" class="filter-input" style="width:140px; "> 
+					<input type="submit" value="검색" class="filter-input" style="width:55px; margin-left:5px;">
 		</div>
 		</form>				
 	

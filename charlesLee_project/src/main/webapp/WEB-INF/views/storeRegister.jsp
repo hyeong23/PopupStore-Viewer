@@ -85,11 +85,6 @@
     <!-- Contact Form Begin -->
     <div class="contact-form spad" style="height: auto">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                   
-                </div>
-            </div>
             <form action="/storeRegister" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
                 <div class="row" style="display: flex;justify-content: center;align-content: center;">
                    
