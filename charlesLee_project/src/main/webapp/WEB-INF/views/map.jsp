@@ -30,6 +30,15 @@
     <link rel="stylesheet" href="/css/modal.css" type="text/css">
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+      <style>
+   div.replyModal { position:relative; z-index:1; display:none}
+   div.modalBackground { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); z-index:-1; }
+   div.modalContent { position:fixed; top:20%; left:calc(50% - 250px); width:500px; height:250px; padding:20px 10px; background:#fff; border:2px solid #666; }
+   div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px; height:200px; }
+   div.modalContent button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
+   div.modalContent button.modal_cancel { margin-left:20px; }
+</style> 
 </head>
 
 <body>
@@ -86,139 +95,6 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<!-- 수정 -->
-	<!-- Modal -->
-	<c:forEach items="${filterStoreList}" var="map" varStatus="vs">
-	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter${vs.index}" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  		<div class="modal-dialog modal-lg">
-  		<div class="modal-container">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h2 class="modal-title" id="exampleModalCenterTitle">${map.storeTitle}</h2>
-<!-- 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button> -->
-	      </div>
-	      
-<!-- 	      <div> <img src="images/singleimage.jpg" alt="about us" class="single-image"> </div> -->
-	      <div class="modal-body">
-			<div class="slider">
-			    <div class="bullets" id = "bullets${map.storeNum}">
-			    </div>
-
-			    <ul id="imgholder${map.storeNum}" class="imgs">
-			    </ul>
-			    
-			    
-
-			</div>	
-
-	      	 <div>
-
-	      
-				<hr>
-	        	<p> 작성자 : <c:if test="${empty map.memberCompanyName}">
-	        	관리자
-	        	</c:if>
-	        	${map.memberCompanyName} <p>
-	        	<p> 개최 기간: ${map.storeStart} ~ ${map.storeEnd} </p>
-	        	<p> 개최 장소: ${map.storeLoc} </p>
-				<hr>
-	        	<p> ${map.storeIntro} </p>
-				<hr>
-	        	<div class="modal_bodytext">
-			    	${map.storeBody}
-				</div>
-				<hr>
-	        	<p> <a href="${map.storeSite}" target="_blank" class="link">${map.storeSite} 홈페이지</a></p>
-	        	<hr>
-				<p> 조회수 : ${map.storeCount} </p>
-	        	<p> 작성일 : ${map.storeCreate} <p>
- 				<p>	마지막 수정일 : ${map.storeUpdate}<p>
-	        	
-	        	<c:choose>
-                                    	<%-- 로그인 했을때 --%>
-                                    	<c:when test="${not empty sessionScope.memberNum}">     
-                                    	 	<!-- 알람 -->
-                          				<c:if test="${getStoreByAlarm.contains(map.storeNum)}">
-                                    		<img id="yellow${map.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${map.storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 80px" >
-                                    		<img id="bell${map.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${map.storeNum}','${map.storeTitle}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 80px" >
-										</c:if>
-										<c:if test="${not getStoreByAlarm.contains(map.storeNum)}">
-                     						<img id="yellow${map.storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${map.storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 80px" >
-                                    		<img id="bell${map.storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${map.storeNum}','${map.storeTitle}')" style="width: 23pt; height: 23pt; position:absolute; right : 80px" >
-                  						</c:if>
-                                 			<!-- 좋아요 -->
-										<c:if test="${getStoreByHeart.contains(map.storeNum)}">
-                                    		 <img id = "heart${map.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt;  display: none; position:absolute; right : 45px">	
-             								 <img  id = "heartRed${map.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 45px">	
-										</c:if>
-										<c:if test="${not getStoreByHeart.contains(map.storeNum)}">
-                     						<img id = "heart${map.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 45px">	
-             							 	 <img  id = "heartRed${map.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${map.storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 45px">	
-                  						</c:if>	
-                                    	</c:when>
-                                    	<%-- 로그인 안했을때 --%>
-                                    	<c:otherwise>
-                                    		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 23pt; position:absolute; height: 23pt; right : 80px">
-                                    		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 23pt; position:absolute; height: 23pt;  right : 45px">	   
-                                  	    </c:otherwise>
-                                    
-                </c:choose>
-	        	
-
-
-	      	</div>
-	      	 
-	      
-	      
-	      <!-- <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div> -->
-            </div>
-            </div>
-			<div class="modal-replywindow">
-            <div class="title">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	        <h2>댓글</h2>
-                
-                <div class="reply-list">
-                
-               <c:forEach items="${getReplyList}" var="reply">
-                <c:if test="${reply.storeNum eq map.storeNum}">
-               <div class="reply-each">
-        		 	<p>${reply.memberNickname}<p>
-     	    	 	<p>${reply.replyBody}<p>
-      				<p>${reply.replyUpdate}<p> 
-      		   </div>
-      		   </c:if>
-		      </c:forEach>
-      
-      </div>
-      <form  method="POST" id="replyForm" name="replyInsertForm">  			 
-                <div class="reply-send">
-						<!-- hidden 영역 -->
-  					      <input type="hidden" name="storeNum" value="${map.storeNum}">
-   					      <input type="hidden" name="memberNum" value="${sessionScope.memberNum}">
-     				   <!-- 입력 영역 -->    				
-                      <div class="reply_textarea"><textarea placeholder="Your Reply" id="replyBody" name=replyBody></textarea></div> 
-                      <div class="reply_sendBtn">
-                      	<input type="submit" value="Send" class="reply-send-btn" id="send_message" name="replyInsertBtn"/>
-                      </div>
-                        
-                    </div>
-                    </form>
-            </div>
-<!--             <div class="close-area">X</div> -->
-	    	</div>
-	  
-	  </div>
-	</div>
-	</div>
-	</c:forEach>
 	
 <%-- <div style="width: 500px; height: 500px; background-color: #a191a5">
 	댓글리스트 
@@ -226,7 +102,120 @@
 		<p> ${reply.replyBody} </p>
 	</c:forEach>
 </div> --%>
+<script>getList()</script>
+	<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+  		
+  			<div class="modal-container">
+  			
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h2 class="modal-title" id="exampleModalCenterTitle">${filterStoreList[2].storeTitle}</h2>
 
+	      </div>
+	      
+	      <div class="modal-body">
+	      
+				<div class="slider">
+				    <div class="bullets" id = "bullets${filterStoreList[2].storeNum}">
+				    
+				    </div>
+				    <ul id="imgholder${filterStoreList[2].storeNum}" class="imgs">
+				    
+				    </ul>
+				    
+				    
+	
+				</div>	
+		
+				<div>
+						<hr>
+			        	<p class="body1"> 작성자 : <c:if test="${empty filterStoreList[2].memberCompanyName}">
+			        	관리자
+			        	</c:if>
+			        	${filterStoreList[2].memberCompanyName} </p>
+			        	<p class="body2"> 개최 기간: ${filterStoreList[2].storeStart} ~ ${filterStoreList[2].storeEnd} </p>
+			        	<p class="body3"> 개최 장소: ${filterStoreList[2].storeLoc} </p>
+						<hr>
+			        	<p class="body4"> ${filterStoreList[2].storeIntro} </p>
+						<hr>
+			        	<div class="modal_bodytext">
+					    	${filterStoreList[2].storeBody}
+						</div>
+						<hr>
+						<p class="body5"> 조회수 : ${filterStoreList[2].storeCount} </p>
+			        	<p class="body6"> <a href="${filterStoreList[2].storeSite}" target="_blank" class="link">${filterStoreList[2].storeSite} 홈페이지</a></p>
+			        	<hr>
+			        	<p class="body7"> 작성일 : ${filterStoreList[2].storeCreate} </p>
+			        	<p class="body8"> 마지막 수정일 : ${filterStoreList[2].storeUpdate} </p>
+				</div>
+
+	      	 
+	      
+	      
+            </div>
+           </div>
+            
+		<div class="modal-replywindow">
+            <div class="title">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h2>댓글</h2>
+                
+                <div  class="reply-list">
+		      
+		      <script> 
+		        //location.reload();
+		      	replyView();
+				</script>
+      
+      </div>
+			<form role="form" method="POST" id="replyForm" autocomplete="off"> 
+               <div class="reply-send">
+               		<input type="hidden" name="storeNum" id="storeNum" value="">
+                	<c:if test="${empty sessionScope.memberId}">
+					  <p>댓글을 작성하려면 <a href="/login">로그인</a>해주세요</p>
+					</c:if>
+               		<c:if test="${not empty sessionScope.memberId}">
+  
+						<!-- hidden 영역 -->
+   					    <input type="hidden" name="memberNum" id="memberNum2" value="${sessionScope.memberNum}">
+     				   <!-- 입력 영역 -->    				
+                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
+                      <div class="reply_sendBtn"><button type="button" class="reply-send-btn" id="send_message">send</button></div>
+                    </c:if>
+  
+                    </div>
+                      </form>  
+            </div>
+<!--             <div class="close-area">X</div> -->
+	    	</div>
+	    	
+	    	
+	    	<div class="replyModal">
+
+   <div class="modalContent">
+      <h2>수정</h2>
+    <div>
+     <textarea class="modal_repCon" name="modal_repCon"></textarea>
+    </div>
+    
+    <div>
+     <button type="button" class="modal_modify_btn">수정</button>
+     <button type="button" class="modal_cancel">취소</button>
+    </div>
+    
+   </div>
+
+   <div class="modalBackground"></div>
+   
+</div>
+	  
+	  </div>
+		</div>
+	</div>
 
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=690096255b88e30ead8c02ac790dd149&libraries=services">
@@ -270,9 +259,10 @@
 	
 	var content = '<div class="wrap">' + 
 	'    <div class="info">' + 
-	'		<a href="#exampleModalCenter${vs.index}" data-toggle="modal">' +
+	//'		<a href="#" onclick = "startModal(' + ${vs.index} + ", " + ${map.storeNum} + ')">' +
+	'		<a href="javascript:void(0);" onclick="startModal(' + ${vs.index} + ", " + ${map.storeNum} + ')">' +
 	'        <div class="title">' + 
-	'			<div class="storeTitle" onclick = "modalClick('+ ${map.storeNum} + ')">'	+
+	'			<div class="storeTitle">'	+
 	'				${map.storeTitle}' + 
 	'			</div>'				+
 	'		</a>				' +
@@ -325,154 +315,256 @@
 	
 
 	
-	function modalClick(storeNum){
-			// 현재 map의 storeNum의 번호가 안바뀜
-			// 클릭 시 해당 storeNum
-			console.log(storeNum);
-			
-			// 1을 우선 예시로 사용하는 중
-			axios.get('http://localhost:8081/api/map/' + storeNum)
-			.then(response => {
-				var pictureData = response.data;
-				console.log(pictureData);
-				for(var i = 0; i < pictureData.length; i++){
-					var getPictureName = pictureData[i].pictureName;
-					var showPicture = document.querySelector('#imgholder' + pictureData[i].storeNum);
-					console.log(getPictureName);
-					var li = document.createElement("li");
-					var picture = document.createElement("img");
-					picture.src = "/project_image/" + getPictureName;
-					console.log(picture);	
-					if (showPicture.children.length < pictureData.length) {
-				        
-						li.appendChild(picture);
-						showPicture.appendChild(li);
-						
-						// 추가는 되는데 1번 위치에서만 추가됨
-					 	var slideId = "slide" + (showPicture.children.length);
-				        var bulletLabel = document.createElement("label");
-				        bulletLabel.htmlFor = slideId;
-				        bulletLabel.innerHTML = "&nbsp;";
 
-				        var bullets = document.querySelector('#bullets' + pictureData[i].storeNum);
-/* 				        bullets.appendChild(bulletLabel); */
-
-				        var slideInput = document.createElement("input");
-				        slideInput.type = "radio";
-				        slideInput.name = "slide" + storeNum.toString();
-				        slideInput.id = slideId;
-				        if(i == 0){
-					        slideInput.checked = true;
-				        }	
-				        bullets.parentNode.insertBefore(slideInput, bullets);
-
-				        
-					}
-					
-				};
-				
-			})
-			
-			
-			
-	};
 	</c:forEach>
 </script>
  
 <script>
-var storeNum = '${map.storeNum}'; //게시글 번호
- 
-$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
-    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-    replyInsert(insertData); //Insert 함수호출(아래)
-});
- 
- 
- 
-//댓글 목록 
-function replyList(){
-    $.ajax({
-        url : '/reply/list',
-        type : 'get',
-        data : {'storeNum':storeNum},
-        success : function(data){
-            var a =''; 
-            $.each(data, function(key, value){ 
-                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                a += '<div class="commentInfo'+value.cno+'">'+'댓글번호 : '+value.cno+' / 작성자 : '+value.writer;
-                a += '<a onclick="commentUpdate('+value.cno+',\''+value.content+'\');"> 수정 </a>';
-                a += '<a onclick="commentDelete('+value.cno+');"> 삭제 </a> </div>';
-                a += '<div class="commentContent'+value.cno+'"> <p> 내용 : '+value.content +'</p>';
-                a += '</div></div>';
-            });
-            
-            $(".replyList").html(a);
-        }
-    });
+var item;
+var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
+	  keyboard: false
+	});
+function startModal(index, sNumber){
+	
+	indexupdate(index);
+  	modalClick(sNumber);
+  	replyView(sNumber);
+  	myModal.show();
 }
- 
-//댓글 등록
-function insertReply(insertData){
-    $.ajax({
-        url : '/reply/insert',
-        type : 'post',
-        data : insertData,
-        success : function(data){
-            if(data == 1) {
-                replyList(); //댓글 작성 후 댓글 목록 reload
-                $('[name=replyBody]').val('');
-            }
-        }
-    });
+function getList(){
+	item = Array();
+	<c:forEach items="${filterStoreList}" var="store">
+		item.push({memberNum:"${store.memberNum}",
+			memberCompanyName:"${store.memberCompanyName}",
+			memberNickname:"${store.memberNickname}",
+							storeNum:"${store.storeNum}",
+							storeTitle:"${store.storeTitle}",
+							storeIntro:"${store.storeIntro}",
+							storeBody:"${store.storeBody}",
+							storeStart:"${store.storeStart}",
+							storeEnd:"${store.storeEnd}",
+							storeFavorite:"${store.storeFavorite}",
+							storeLoc:"${store.storeLoc}",
+							storeLocDetail:"${store.storeLocDetail}",
+							storeSite:"${store.storeSite}",
+							storeCount:"${store.storeCount}",
+							storeStatus:"${store.storeStatus}",
+							storestoreCreate:"${store.storeCreate}",
+							storestoreUpdate:"${store.storeUpdate}",
+							pictureNum:"${store.pictureNum}",
+							pictureName:"${store.pictureName}"})
+	</c:forEach>
 }
- 
-//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
-function updateReply(replyNum, replyBody){
-    var a ='';
-    
-    a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="replyBody'+replyNum+'" value="'+replyNum+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cno+');">수정</button> </span>';
-    a += '</div>';
-    
-    $('.commentContent'+cno).html(a);
-    
+function indexupdate(indexNum){
+	var picturecon = "";
+	//console.log(item[indexNum].storeNum)
+	//document.getElementById("exampleModalCenterTitle").innerHTML = item[indexNum].storeTitle;
+	$(".modal-title").html(item[indexNum].storeTitle);
+	//$(".bullets").attr("id", "bullets" + item[indexNum].storeNum);
+	//$(".imgs").attr("id", "imgholder" + item[indexNum].storeNum);
+	$("#storeNum").attr("value", item[indexNum].storeNum);
+	//$("#storeNum2").val("value2");
+	//<input type="hidden" name="storeNum" id="storeNum" value="num">
+	$(".body1").html("작성자 : <c:if test='${ empty " + item[indexNum].memberCompanyName + "}'> 관리자 </c:if>" + item[indexNum].memberCompanyName);
+	$(".body2").html("개최 기간:  " + item[indexNum].storeStart + " ~ " + item[indexNum].storeEnd);
+	$(".body3").html("개최 장소:  " + item[indexNum].storeLoc);
+	$(".body4").html(item[indexNum].storeIntro);
+	$(".modal_bodytext").html(item[indexNum].storeBody);
+	$(".body6").html("<a href='" + item[indexNum].storeSite +"' target='_blank' class='link'>" + item[indexNum].storeSite + "홈페이지</a>");
+	$(".body7").html("작성일 :  " + item[indexNum].storeCreate);
+	$(".body8").html("마지막 수정일 : " + item[indexNum].storeUpdate); 
+	picturecon += "<div class='bullets' id = 'bullets" + item[indexNum].storeNum + "'>"
+    + "</div>"
+    + "<ul id='imgholder" + item[indexNum].storeNum + "' class='imgs'>"
+    + "</ul>"
+    +  "</div>";
+     $(".slider").html(picturecon);
+	
 }
- 
-//댓글 수정
-function commentUpdateProc(cno){
-    var updateContent = $('[name=content_'+cno+']').val();
-    
-    $.ajax({
-        url : '/comment/update',
-        type : 'post',
-        data : {'content' : updateContent, 'cno' : cno},
-        success : function(data){
-            if(data == 1) commentList(bno); //댓글 수정후 목록 출력 
-        }
-    });
+function modalClick(storeNum){
+	// 현재 map의 storeNum의 번호가 안바뀜
+	// 클릭 시 해당 storeNum
+      //alert('작동확인');
+	// 1을 우선 예시로 사용하는 중
+	axios.get('http://localhost:8081/api/map/' + storeNum)
+	.then(response => {
+		var pictureData = response.data;
+		console.log(pictureData);
+		for(var i = 0; i < pictureData.length; i++){
+			var getPictureName = pictureData[i].pictureName;
+			var showPicture = document.querySelector('#imgholder' + pictureData[i].storeNum);
+			console.log(getPictureName);
+			var li = document.createElement("li");
+			var picture = document.createElement("img");
+			picture.src = "/project_image/" + getPictureName;
+			
+			if (showPicture.children.length < pictureData.length) {
+		        
+				li.appendChild(picture);
+				showPicture.appendChild(li);
+				
+				// 추가는 되는데 1번 위치에서만 추가됨
+			 	var slideId = "slide" + (showPicture.children.length);
+		        var bulletLabel = document.createElement("label");
+		        bulletLabel.htmlFor = slideId;
+		        bulletLabel.innerHTML = "&nbsp;";
+
+		        var bullets = document.querySelector('#bullets' + pictureData[i].storeNum);
+/* 				        bullets.appendChild(bulletLabel); */
+
+		        var slideInput = document.createElement("input");
+		        slideInput.type = "radio";
+		        slideInput.name = "slide" + storeNum.toString();
+		        slideInput.id = slideId;
+		        slideInput.checked = true;
+		        bullets.parentNode.insertBefore(slideInput, bullets);
+
+		        
+			}
+			
+		};
+		
+	})
+	
+	
+	
 }
- 
-//댓글 삭제 
-function commentDelete(cno){
-    $.ajax({
-        url : '/comment/delete/'+cno,
-        type : 'post',
-        success : function(data){
-            if(data == 1) commentList(bno); //댓글 삭제후 목록 출력 
-        }
-    });
+function replyView(snum){
+	 $.getJSON("/getreply" + "?number=" + snum, function(data){
+	  var str = "";
+	  
+	  
+	  $(data).each(function(){
+	   
+	   console.log(data);
+	   
+	   var repDate = new Date(this.replyUpdate);
+	   repDate = repDate.toLocaleDateString("ko-US");
+	   
+	 str += "<div class='reply-each'>"
+		 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
+	     + "<p>" + this.memberNickname + "<p>"
+	     + "<p class='reply-text'>" + this.reply + "<p>"
+	     + "<p>" + repDate + "<p>"
+	     + "<c:if test='${not empty sessionScope.memberId}'>"
+	     + "<div class='replyFooter'>"
+	     + "<button type='button' class='modify' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
+	     + "<button type='button' class='delete' data-replyNum='" + this.replyNum + "'>삭제</button>"
+	     + "</div>"
+	 	 + "</c:if>";
+	  });
+	  
+	  $(".reply-list").html(str);
+	 });
 }
+ $(document).on("click", ".delete", function(){
+	    var deletConfirm = confirm("정말로 삭제할건가요?");
+	    if(deletConfirm) {
+		    var data = {replyNum : $(this).attr("data-replyNum")};
+		     
+		    $.ajax({
+		     url : "/deletereply",
+		     type : "post",
+		     data : data,
+		     success : function(result){
+		    	   
+		    	   if(result == 1) {
+		    	    replyView($('#storeNum').attr('value'));
+		    	   }
+		    	   else if(${empty sessionScope.memberId}){
+		    		   alert("로그인을 하셔야합니다.");  
+		    	   }
+		    	   else {
+		    	    alert("작성자 본인만 할 수 있습니다.");       
+		    	   }
+		    	},
+		    	error : function(){
+		    	  alert("로그인을 하셔야합니다.");
+		    	}
+		    });
+	    }
+	   });
+//var memberNum;
+   $(document).on("click", ".modify", function(){
+	   //$(".replyModal").attr("style", "display:block;");
+	   $(".replyModal").fadeIn(200);
+	   
+	   var replyNum = $(this).attr("data-replyNum");
+	   var reply = $(this).parent().parent().children(".reply-text").text();
+	   //var reply2 = $(this).parent().parent().children("#memberNum").val();
+	   var memberNum = $(this).attr("data-memberNum");
+
+	   
+	   $(".modal_repCon").val(reply);
+	   $(".modal_modify_btn").attr("data-memberNum", memberNum);
+	   $(".modal_modify_btn").attr("data-replyNum", replyNum);
+	   
+	});
+   $(document).on("click", "#send_message", function(){
+   //$("#send_message").click(function(){
+	    
+	    var formObj = $("#reply-send");
+	    var storeNum = $("#storeNum").val();
+	    var memberNum = $("#memberNum2").val();
+	    var reply = $("#reply").val();
+	    
+	    var data = {
+	      storeNum : storeNum,
+	      reply : reply,
+	      memberNum : memberNum
+	      };
+	    
+	    $.ajax({
+	     url : "/insertreply",
+	     type : "post",
+	     data : data,
+	     success : function(){
+	      replyView($('#storeNum').attr('value'));
+	      $("#reply").val("");
+	     }
+	    });
+	   });
+   $(document).on("click", ".modal_modify_btn", function(){
+		   var modifyConfirm = confirm("정말로 수정하시겠습니까?");
+		   
+		   if(modifyConfirm) {
+		    var data = {
+		       replyNum : $(this).attr("data-replyNum"),	
+		       memberNum : $(this).attr("data-memberNum"),
+		       reply : $(".modal_repCon").val()
+		      };  // ReplyVO 형태로 데이터 생성
+		    
+		    $.ajax({
+		     url : "/modifyreply",
+		     type : "post",
+		     data : data,
+		     success : function(result){
+		      
+		      if(result == 1) {
+		       replyView($('#storeNum').attr('value'));
+		       $(".replyModal").fadeOut();
+		      }
+   		   	else if(${empty sessionScope.memberId}){
+	    		   alert("로그인을 하셔야합니다.");  
+	    	   }
+		      else {
+		       alert("작성자 본인만 할 수 있습니다.");         
+		      }
+		     },
+		     error : function(){
+		      alert("로그인하셔야합니다.")
+		     }
+		    });
+		   }
+		   
+		});
+   $(document).on("click", ".modal_cancel", function(){
+   //$("#modal_can").click(function(){
+	     //$(".replyModal").attr("style", "display:none;");
+	     $(".replyModal").fadeOut();
+	  });
  
- 
- 
- 
-$(document).ready(function(){
-    replyList(); //페이지 로딩시 댓글 목록 출력 
-});
- 
- 
- 
+	  getList();
 </script>
 
 <script>

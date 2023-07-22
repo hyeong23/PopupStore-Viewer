@@ -10,8 +10,17 @@
   JOIN member m ON r.member_num = m.member_num
  </select>
  
+ <select id="getReply" resultMap="replyResultMap">
+  SELECT r.reply_num, r.store_num, r.member_num, m.member_nickname, r.reply, r.reply_update
+  FROM reply r
+  JOIN member m ON r.member_num = m.member_num
+  WHERE r.store_num = #{storeNum}
+ </select>
+ 
  <resultMap id="replyResultMap" type="popup.vo.ReplyVo">
+ 		<result property="replyNum" column="reply_num" />
         <result property="storeNum" column="store_num" />
+        <result property="memberNum" column="member_num" />
         <result property="memberNickname" column="member_nickname" />
         <result property="reply" column="reply" />
         <result property="replyUpdate" column="reply_update" />
@@ -21,6 +30,25 @@
     INSERT INTO reply(reply_num, member_num, store_num, reply)
 	VALUES(reply_sequence.nextval, #{memberNum}, #{storeNum}, #{reply})
 	</insert>
+	
+	<delete id="deleteReply">
+	   delete from reply
+	       where reply_num = #{replyNum}
+	           and member_num = #{memberNum}
+	</delete>
+	
+	<update id="modifyReply">
+	   update  reply
+	   	set reply = #{reply}
+	       where reply_num = #{replyNum}
+	           and member_num = #{memberNum}
+	</update>
+	
+	<select id="replyUserIdCheck" resultType="int">
+	   select member_num
+	    from reply
+	        where reply_num = #{replyNum}
+	</select>
   
   
   
