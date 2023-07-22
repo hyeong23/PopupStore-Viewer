@@ -109,7 +109,7 @@
 }
 
 .admintable{
-	width: 800px;
+	width: 831px;
 }
 
 
@@ -121,4 +121,15 @@
     text-align: center;
 }
 
+.fixed-header-table {
+        width: 100%; /* 선택 사항, 필요에 따라 너비를 조정합니다 */
+    }
+
+.admintable thead, .table thead {
+        position: sticky;
+        top: 0;
+        background-color: #ff80c0; /* 헤더의 배경색을 설정하세요 */
+        text-align: center;
+        color: white;
+    }
 

@@ -53,10 +53,11 @@
 		</div>
 	</section>
 
-	<div class="container" style="padding: 0; width:1200px;">
+	<div class="container" style="padding: 0; width: 1200px;">
 		<div class="row">
 			<div class="col-lg-12">
-				<div style="display: flex; justify-content: center; align-items: center; ">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
 					<div class="mypage-box" style="height: 700px;">
 						<div class="mypage-item">
 							<h3>문의 사항</h3>
@@ -72,6 +73,7 @@
 							<a href="/adminpage3">팝업스토어 신청 페이지</a>
 						</div>
 					</div>
+
 					<div class="card" style="display: flex; margin-left: 20px;">
 						<table class="admintable table-striped mb-0">
 							<tr>
@@ -117,13 +119,16 @@
 							<table class="admintable table-striped mb-0 " style="max-height: 700px; overflow: auto;">
 							<!-- 부서 객체 유무 검증 -->
 							<c:if test="${empty requestScope.member}">
+
 								<tr>
-									<td colspan="5">
-										<p align="center">
-											<b><span style="font-size: 12pt;">객체가 존재하지 않습니다.</span></b>
-										</p>
-									</td>
+									<th scope="col">번호</th>
+									<th scope="col">닉네임</th>
+									<th scope="col">이메일</th>
+									<th scope="col">아이디</th>
+									<th scope="col">상태</th>
+									<th scope="col">처리</th>
 								</tr>
+
 							</c:if>
 							<!-- 반복 출력 -->
 							<c:forEach items="${requestScope.member}" var="member">
@@ -186,12 +191,20 @@
 									</td>
 								</tr>
 							</c:forEach>
+
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Footer Section Begin -->
+	<div style="margin-top: 50px;">
+		<%@ include file="footer.jsp"%>
+	</div>
+	<!-- Footer Section End -->
+	
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
