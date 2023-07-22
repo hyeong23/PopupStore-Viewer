@@ -85,13 +85,8 @@
     <!-- Contact Form Begin -->
     <div class="contact-form spad" style="height: auto">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                   
-                </div>
-            </div>
             <form action="/storeRegister" method="POST" enctype="multipart/form-data" onsubmit="return formChecking()">
-                <div class="row">
+                <div class="row" style="display: flex;justify-content: center;align-content: center;">
                    
                     <div class="col-lg-12 col-md-6">
                    <input type="text" placeholder="제목을 입력하세요" name="storeTitle"	id="storeTitle"> </div>
@@ -161,13 +156,15 @@
   
   				          <div class="thumbnail" >  
             	
-                			<input type="file" name="thumbnail" id="thumbnail" onchange="previewImage2(event)" style="margin-bottom: 0px;">
-  							<img id="preview" src="#" alt="Preview">
+                			<input type="file"  name="thumbnail" id="thumbnail" onchange="previewImage2(event)" style="margin-bottom: 0px; display: none;" >
+                			
+  							<img id="preview" >
 							</div>
            				  </div>
 
            				  <div class="picture-footer" >
-                			<span><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
+           				  <label for="thumbnail" class="charles_btn2">썸네일 업로드</label>
+                			<span style="margin-left: 70px;"><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
                 		  </div>
         	       </div>	
                    
@@ -192,8 +189,8 @@
                         
                        
                         
-                         <div id="store_stc" style="margin-top: 50px;">     
-                         	<input type="submit" value="등록하기" class="charles_btn" style="width: 100%; color: white;" id="submit" />
+                         <div style="margin-top: 50px; width: 400px; ">     
+                         	<input type="submit" value="등록하기" class="charles_btn" style="color: white;" id="submit" />
 					 </div>
                  
                 </div>  

@@ -94,66 +94,66 @@
                 <div class="row">
                    	<span id="storeNum">${store.storeNum}</span>
                     <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="제목" name="storeTitle" id="storeTitle">
+                        <input type="text" placeholder="제목" name="storeTitle" id="storeTitle" value="${getStoreOne.storeTitle}">
                     </div>
                      <div class="col-lg-12 col-md-6">
-                        <input type="text" placeholder="인트로" name="storeIntro" id="storeIntro">
+                        <input type="text" placeholder="인트로" name="storeIntro" id="storeIntro" value="${getStoreOne.storeIntro}">
                     </div>
                      <div class="col-lg-12 col-md-6" >
-                        <span>시작일 : </span><input type="date"  name="storeStart" id="storeStart" style="width: auto">
-                        <span>종료일 : </span><input type="date"  name="storeEnd" id="storeEnd" style="width: auto">
-                        <textarea placeholder="내용" name="storeBody" id="storeBody"></textarea>
+                        <span>시작일 : </span><input type="date"  name="storeStart" id="storeStart" style="width: auto" value="${getStoreOne.storeStart}">
+                        <span>종료일 : </span><input type="date"  name="storeEnd" id="storeEnd" style="width: auto" value="${getStoreOne.storeEnd}">
+                        <textarea placeholder="내용" name="storeBody" id="storeBody">${getStoreOne.storeBody}</textarea>
                         
                     </div>
                     <div id="store_stc">
     						주 카테고리:
    							 <div id="store_chk">
-      							  <input type="radio" id="radio1" name="category1" value="character">캐릭터
+      							  <input type="radio" id="radio1" name="category1" value="character"  ${category1 == 'character' ? 'checked' : ''}>캐릭터
   							  </div>    
    							 <div id="store_chk">                            
-     							   <input type="radio" id="radio2" name="category1" value="food">식음료
+     							   <input type="radio" id="radio2" name="category1" value="food"  ${category1 == 'food' ? 'checked' : ''}>식음료
    							 </div>               
    							 <div id="store_chk">
-    						    <input type="radio" id="radio3" name="category1" value="media">미디어
+    						    <input type="radio" id="radio3" name="category1" value="media"  ${category1 == 'media' ? 'checked' : ''}>미디어
   							 </div>    
    							 <div id="store_chk">
-   						     <input type="radio" id="radio4" name="category1" value="fashion">패션/뷰티
+   						     <input type="radio" id="radio4" name="category1" value="fashion"  ${category1 == 'fashion' ? 'checked' : ''}>패션/뷰티
    							 </div>    
                                 <div id="store_chk">
-                                    <input type="radio" id="radio5" name="category1" value="other">기타
+                                    <input type="radio" id="radio5" name="category1" value="other"  ${category1 == 'other' ? 'checked' : ''}>기타
                                 </div>         
                             </div>
                           <br> <br> <br>
                    <div id="store_stc">
                                 부 카테고리:
                                 <div id="store_chk">
-                                    <input type="radio" id="radio6" name="category2" value="character">캐릭터
+                                    <input type="radio" id="radio6" name="category2" value="character" ${category2 == 'character' ? 'checked' : ''}>캐릭터
                                 </div>    
                                 <div id="store_chk">
-                                    <input type="radio" id="radio7" name="category2" value="food">식음료
+                                    <input type="radio" id="radio7" name="category2" value="food" ${category2 == 'food' ? 'checked' : ''}>식음료
                                 </div>               
                                 <div id="store_chk">
-                                    <input type="radio" id="radio8" name="category2" value="media">미디어
+                                    <input type="radio" id="radio8" name="category2" value="media" ${category2 == 'media' ? 'checked' : ''}>미디어
                                 </div>    
                                 <div id="store_chk">
-                                    <input type="radio" id="radio9" name="category2" value="fashion">패션/뷰티
+                                    <input type="radio" id="radio9" name="category2" value="fashion" ${category2 == 'fashion' ? 'checked' : ''}>패션/뷰티
                                 </div>    
                                 <div id="store_chk">
-                                    <input type="radio" id="radio10" name="category2" value="other">기타
+                                    <input type="radio" id="radio10" name="category2" value="other" ${category2 == 'other' ? 'checked' : ''}>기타
                                 </div>         
                             </div>
                           <br> <br> <br>
                     <div class="col-lg-12 col-md-6">
-    				<input type="text" placeholder="주소" name="storeLoc" id="storeLoc" readonly style="width: 70%">
+    				<input type="text" placeholder="주소" name="storeLoc" id="storeLoc" readonly style="width: 70%" value="${getStoreOne.storeLoc}">
     				<button type="button" id="addressButton">주소 검색</button>
 					  </div>
 					<div class="col-lg-12 col-md-6">
 						<input type="text" placeholder="상세주소" name="storeLocDetail"
-							id="storeLocDetail">
+							id="storeLocDetail" value="${getStoreOne.storeLocDetail}">
 					</div>
 					<div class="col-lg-12 col-md-6">
 						<input type="text" placeholder="공식 사이트" name="storeSite"
-							id="storeSite">
+							id="storeSite"  value="${getStoreOne.storeSite}">
 					</div>
 
 					<div class="picture-content">
@@ -161,18 +161,21 @@
 							<h2 class="picture-title" id="PictureCenterTitle">썸네일</h2>
 						</div>
 						<div>
-
-							<div class="thumbnail">
-
-								<input type="file" name="thumbnail" id="thumbnail"
-									onchange="previewImage2(event)" style="margin-bottom: 0px;">
-								<img id="preview" src="#" alt="Preview">
+  
+  				          <div class="thumbnail" >  
+            	
+                			<input type="file"  name="thumbnail" id="thumbnail" onchange="previewImage2(event)" style="margin-bottom: 0px; display: none;" >
+                				 <label for="thumbnail">
+  									<img id="preview" src="/project_image/${thumbnail}">
+  								</label>
 							</div>
-						</div>
+							
+           				  </div>
 
-						<div class="picture-footer">
-							<span><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
-						</div>
+           				  <div class="picture-footer" >
+           				  <label for="thumbnail" class="charles_btn2">썸네일 업로드</label>
+                			<span style="margin-left: 70px;"><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
+                		  </div>
 					</div>
 
 
@@ -184,7 +187,11 @@
 						<div class="slider">
 
 							<div class="bullets"></div>
-							<ul id="imgholder" class="imgs"></ul>
+							<ul id="imgholder" class="imgs" >
+							<%-- 	 <c:forEach items="${picture}" var="picture">
+              						  <li><img src="/project_image/${picture}"></li>
+            					</c:forEach> --%>
+							</ul>
 						</div>
 
 						<div class="picture-footer">
@@ -415,30 +422,15 @@
 				return false;
 			}
 
-			if (thumbnail.files.length === 0) {
-				alert("썸네일을 선택해주세요.");
-				return false;
-			}
+
 
 			// 추가된 파일이 없을 경우 알림 표시
-			if (imgholder.children.length === 0) {
-				alert("사진을 선택해주세요.");
-				return false;
-			}
+			
 
 			return true;
 		};
 	</script>
 
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      preview.src = e.target.result;
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-</script>
 
 
 
@@ -469,58 +461,6 @@ window.onload = function(){
 }
 </script>
 
-
-<script>
-
-function formChecking(){
-	var storeTitle = document.getElementById("storeTitle").value;
-	var storeIntro = document.getElementById("storeIntro").value;
-	var storeStart = document.getElementById("storeStart").value;
-	var storeEnd = document.getElementById("storeEnd").value;
-	var storeBody = document.getElementById("storeBody").value;
-	var storeLoc = document.getElementById("storeLoc").value;
-	var storeLocDetail = document.getElementById("storeLocDetail").value;
-	var storeSite = document.getElementById("storeSite").value;
-
-	var category1 = document.querySelector('input[name="category1"]:checked');
-
-	var thumbnail = document.getElementById("thumbnail");
-	var imgholder = document.getElementById("imgholder");
-	
-	
-	if (storeTitle === "" || storeIntro === "" || storeStart === "" || storeEnd === "" || storeBody === "" || storeLoc === ""|| storeLocDetail === ""|| storeSite === "") {
-		  alert("빈 칸을 채워주세요.");
-		  return false; // 폼 제출 방지
-	}
-
-	
-	if(storeStart > storeEnd){
-		alert("시작일이 종료일 이후로 설정되어 있습니다.");
-		return false;		
-	}
-	
-	if(!category1){
-		 alert("주 카테고리를 선택해 주세요.");
-	        return false;
-	}
-	
-	if (thumbnail.files.length === 0) {
-        alert("썸네일을 선택해주세요.");
-        return false;
-    }
-	
-	
-	
-	 // 추가된 파일이 없을 경우 알림 표시
-    if (imgholder.children.length === 0) {
-        alert("사진을 선택해주세요.");
-        return false;
-    }
-	
-	
-	return true;
-};
-</script>
 
 
 </body>

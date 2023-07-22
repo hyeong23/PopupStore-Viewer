@@ -91,25 +91,24 @@
 				</div>
 			</div>
 		</div>
-
 	</section>
 
 
-
-
 	<div class="content">
-		<div class="filterBox" style="margin-top: 90px;">
+		<div class="filterBox" style="margin-top: 20px;">
 			<%@ include file="calendarFilter.jsp"%>
 		</div>
 		<div id='calendar'></div>
 		<div id=scrolls>
+
 			<div id="of2" class="overflow-auto bg-light"
 				style="max-width: 250px; ">
 				<h3>모든 팝업스토어 목록</h3>
 				<div>
 					<c:forEach items="${filterStoreList}" var="store" varStatus="vs">
 						<div class="calendar-miniInfo" onclick= "startModal(${vs.index}, ${store.storeNum})">
-						<!-- <div class="calendar-miniInfo" id = "${store.storeNum}" onmouseover="mouse_over('${store.storeNum}')"  onmouseout="mouse_out()"> -->
+				
+
 							<div><img src="/project_image/${store.pictureName}" alt="img" class="calendar-miniInfo-img"></div> 
 							<div class="calendar-miniInfo-p">
 							<p>${store.storeTitle}</p><hr>
@@ -148,10 +147,6 @@
 	<!-- Modal -->
 
 
-
-
-
-
 	<script>
 	var calendar;
     document.addEventListener('DOMContentLoaded', function() {
@@ -177,9 +172,11 @@
     	    ],
 	    	  eventClick:function(event2) {
 	  	    	var event = calendar.getEventById(event2.event.extendedProps.number);
+
 	  	    	indexupdate(event2.event.extendedProps.index);
 	  	    	modalClick(event2.event.extendedProps.number);
 	  	    	replyView(event2.event.extendedProps.number);
+
 	  	    	myModal.show();
 
 	          },
@@ -480,6 +477,7 @@
     </script>
 
 	<!-- Modal -->
+
 <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   		<div class="modal-dialog modal-lg">
   		
@@ -501,7 +499,7 @@
 				    
 				    </ul>
 				    
-				    
+
 	
 				</div>	
 		
@@ -599,7 +597,6 @@
 	function mouse_over(index){
 		console.log(index);
 		const storeVar = "store" + index.toString();
-		const temp1 = document.querySelector(".fc-event")
 		
 		var cal = calendar.getEventById(index);
 		
@@ -612,13 +609,35 @@
 		
 		
 		console.log(storeVar);
-		temp1.style.fontSize = '1.2em';	
+		var temp1 = document.querySelectorAll(".fc-event")
+		
+		for(var i = 0; i < temp1.length; i++){
+			temp1[i].style.fontSize = '1.2em';				
+		}
+		
+		
+		
+		
 
 	} 
 
 	function mouse_out(title){
-		const temp2 = document.querySelector(".fc-event")
-		temp2.style.fontSize = '0.85em';
+		const temp2 = document.querySelectorAll(".fc-event")
+		
+		for(var i = 0; i < temp2.length; i++){
+			temp2[i].style.fontSize = '0.85em';		
+		}
+		
+	}
+	
+	function modalPop(num){
+		alert(num);
+		$(".modal-dialog").load("/calendar/" + num);
+		var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
+	      	  keyboard: false
+	    });	
+		myModal.show();
+		modalClick(num);
 	}
 	
 	</script>

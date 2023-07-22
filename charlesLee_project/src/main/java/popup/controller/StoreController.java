@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.io.ResolverUtil.IsA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -124,9 +125,31 @@ public class StoreController {
 	// storeUpdate
 	@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.GET)
 	public String storeUpdateForm(@PathVariable("storeNum") int storeNum, Model model) throws Exception {
+		
+		StoreVo getStoreOne = storeService.getStoreOne(storeNum);
+		
+		List<String> getCategoryOne = categoryService.getCategoryOne(storeNum);
+		
+		if(getCategoryOne.size() == 2) {
+			String category1 = getCategoryOne.get(0);
+			String category2 = getCategoryOne.get(1);
+			
+			model.addAttribute("category1", category1);
+			model.addAttribute("category2", category2);
+		}else {
+			String category1 = getCategoryOne.get(0);
+			model.addAttribute("category1", category1);
+		}
+		
+		String thumbnail = pictureService.getThumbnailOne(storeNum);
+		
 
+		List<String> picture = pictureService.getPictureOne(storeNum);
+		System.out.println(picture);
 		model.addAttribute("storeNum", storeNum); // 보조 강사: storeUpdate.jsp에 storeNum 전달
-
+		model.addAttribute("getStoreOne",getStoreOne);
+		model.addAttribute("thumbnail",thumbnail);
+		model.addAttribute("picture",picture);
 		return "storeUpdate";
 	}
 
@@ -134,7 +157,7 @@ public class StoreController {
 	@RequestMapping(value = "/storeUpdate", method = RequestMethod.POST)
 	public String updateStore(@ModelAttribute Store store, @Param("storeNum") int storeNum,
 			@Param("category1") String category1, @Param("category2") String category2,
-			@RequestPart("thumbnail") MultipartFile thumbnail, @RequestPart("picture") MultipartFile[] pictures,
+			@RequestPart(name = "thumbnail") MultipartFile thumbnail, @RequestPart(name = "picture",required = false) MultipartFile[] pictures,
 			HttpSession session, Model model) throws Exception {
 
 		String view = "error";
@@ -147,8 +170,8 @@ public class StoreController {
 
 		// store = storeService.getStoreOne(storeNum);
 
-		System.out.println(storeNum);
-		System.out.println("Here I ");
+
+
 
 		int thumbnailType = 1;
 		int pictureType = 0;
@@ -173,24 +196,27 @@ public class StoreController {
 			} else {
 				categoryResult1 = categoryService.updateCategory(storeNum, category1);
 			}
-
-			thumbnailResult = pictureService.updatePicture(storeNum, thumbnail, thumbnailType);
+			if(!thumbnail.isEmpty()) {
+				
+				thumbnailResult = pictureService.updatePicture(storeNum, thumbnail, thumbnailType);
+				
+			}
+			if(pictures != null) {
+				for (MultipartFile picture : pictures) {
+					
+					pictureResult = pictureService.deletePicture(storeNum, pictureType);
+					pictureResult = pictureService.insertPicture(storeNum, picture, pictureType);
+					
+				}
+			}
 			// for문으로 여러파일 업로드
-			for (MultipartFile picture : pictures) {
+			
 
-				pictureResult = pictureService.updatePicture(storeNum, picture, pictureType);
-			}
-
-			if (storeResult && categoryResult1 && pictureResult && thumbnailResult) {
-				view = "redirect:/storeList";
-			}
-
+			view = "redirect:/storeList";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return view;
 		}
-
-		System.out.println(view);
 
 		return view;
 	}

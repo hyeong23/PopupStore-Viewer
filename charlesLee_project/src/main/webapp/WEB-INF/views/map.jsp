@@ -73,7 +73,7 @@
     <%@ include file="mapFilter.jsp" %>
     </div>
 
-  <div id="map" style="width:1250px;height:700px; margin-left: 30px; margin-top:20px; "></div>
+  <div id="map" style="width:1245px;height:700px; margin-left: 45px; margin-top:20px; "></div>
 
   
 </div>
@@ -92,8 +92,8 @@
     <script src="/js/mixitup.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	
 <%-- <div style="width: 500px; height: 500px; background-color: #a191a5">
@@ -150,6 +150,7 @@
 			        	<p class="body7"> 작성일 : ${filterStoreList[2].storeCreate} </p>
 			        	<p class="body8"> 마지막 수정일 : ${filterStoreList[2].storeUpdate} </p>
 				</div>
+
 	      	 
 	      
 	      
@@ -314,6 +315,7 @@
 	
 
 	
+
 	</c:forEach>
 </script>
  
@@ -565,6 +567,90 @@ function replyView(snum){
 	  getList();
 </script>
 
+<script>
+	function insertAlarm(storeNum, storeTitle) {
+	    // AJAX 요청을 사용하여 컨트롤러 실행
+	    $.ajax({
+	        url: '/api/insertAlarm',
+	        type: 'POST',
+	        data: {
+	            storeNum: storeNum,
+	            storeTitle: storeTitle
+	        },
+	        success: function(response) {
+	        	alert("삽입")
+	            // 이미지 속성 변경
+	            	const bellId = "bell" + storeNum.toString();
+	            	const yellowId = "yellow" + storeNum.toString();
+	            	document.getElementById(bellId).style.display = "none";
+	            	document.getElementById(yellowId).style.display = "block";
+              
+	        },
+	        error: function() {
+	            alert("error");
+	        }
+	    });
+	}
+
+
+	function deleteAlarm(storeNum) {
+	    // AJAX 요청을 사용하여 컨트롤러 실행
+	    $.ajax({
+	        url: '/api/deleteAlarm',
+	        type: 'POST',
+	        data: {
+	            storeNum: storeNum
+	        },
+	        success: function(response) {
+	        	alert("삭제")
+	           const bellId = "bell" + storeNum.toString();
+	           const yellowId = "yellow" + storeNum.toString();
+	          document.getElementById(bellId).style.display = "block";
+	          document.getElementById(yellowId).style.display = "none";
+	          
+	        },
+	        error: function() {
+	            alert("error");
+	        }
+	    });
+	}
+ </script>
+<script>
+function clickHeart(storeNum){
+	$.ajax({
+		url : "/api/like",
+		type : 'post',
+		data : {
+			storeNum : storeNum,
+		},
+		success : function(response) {
+			if(response == true){
+				alert("삽입")
+				const heartId = "heart" + storeNum.toString();
+				const heartRedId = "heartRed" + storeNum.toString();
+				document.getElementById(heartId).style.display = "none";
+				document.getElementById(heartRedId).style.display = "block";
+			}else{
+				alert("삭제")
+				const heartId = "heart" + storeNum.toString();
+				const heartRedId = "heartRed" + storeNum.toString();
+				document.getElementById(heartId).style.display = "block";
+				document.getElementById(heartRedId).style.display = "none";
+			}
+	     },
+		error : function(data) {
+			alert("error");
+		}
+	});
+}
+
+
+	function notLogin(){
+					alert("로그인 후 이용바랍니다.")
+}
+
+
+</script>
 
 
 

@@ -31,4 +31,9 @@ public class CategoryService {
 		return categoryMapper.getStoreByCategory(category);
 	}
 
+	public List<String> getCategoryOne(int storeNum) {
+
+		return categoryMapper.getCategoryOne(storeNum);
+	}
+
 }

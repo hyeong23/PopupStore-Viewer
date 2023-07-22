@@ -15,4 +15,6 @@ public interface CategoryMapper {
 	
 	public List<Integer> getStoreByCategory(String category) throws SQLException;
 
+	public List<String> getCategoryOne(int storeNum);
+
 }
