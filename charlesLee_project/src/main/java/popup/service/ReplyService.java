@@ -31,4 +31,20 @@ public class ReplyService {
 	public List<ReplyVo> getReplyList() {
 		return replyMapper.getReplyList();
 	}
+	
+	public List<ReplyVo> getReply(int storeNum) {
+		return replyMapper.getReply(storeNum);
+	}
+	
+	public void deleteReply(Reply reply) {
+		replyMapper.deleteReply(reply);
+	}
+	
+	public void modifyReply(Reply reply) {
+		replyMapper.modifyReply(reply);
+	}
+	
+	public int replyUserIdCheck(int replyNum) {
+		return replyMapper.replyUserIdCheck(replyNum);
+	}
 }

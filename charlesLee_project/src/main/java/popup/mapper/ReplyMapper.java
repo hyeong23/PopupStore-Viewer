@@ -14,5 +14,13 @@ public interface ReplyMapper {
 	public int insertReply(Reply reply) throws SQLException;
 
 	public List<ReplyVo> getReplyList();
+	
+	public List<ReplyVo> getReply(int storeNum);
+	
+	public void deleteReply(Reply reply);
+	
+	public void modifyReply(Reply reply);
+	
+	public int replyUserIdCheck(int replyNum);
 
 }
