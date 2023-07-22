@@ -145,7 +145,7 @@
                           <br> <br> <br>
                     <div class="col-lg-12 col-md-6">
     				<input type="text" placeholder="주소" name="storeLoc" id="storeLoc" readonly style="width: 70%" value="${getStoreOne.storeLoc}">
-    				<button type="button" id="addressButton">주소 검색</button>
+    				<button type="button" id="addressButton" class="charles_btn2">주소 검색</button>
 					  </div>
 					<div class="col-lg-12 col-md-6">
 						<input type="text" placeholder="상세주소" name="storeLocDetail"
@@ -177,9 +177,40 @@
                 			<span style="margin-left: 70px;"><b>썸네일 사진은 내용에도 추가됩니다.</b></span>
                 		  </div>
 					</div>
+					
+					
+					
+					
+					
+					
+					<div class="picture-content" id="update">
+						<div class="picture-header">
+							<h2 class="picture-title" id="PictureCenterTitle">사진</h2>
+						</div>
+						<div>
+  
+  				        
+            	
+                		<c:forEach items="${picture}" var="picture">
+						  <div class="thumbnail" >  
+              						 <img src="/project_image/${picture}">
+              				</div>
+            				</c:forEach> 
+							
+							
+           				  </div>
 
+           				  <div class="picture-footer" >
+           				 <button type="button" onclick="updateImg()" class="charles_btn2" >사진변경</button>
+                			<span style="margin-left: 120px;"><b>버튼 클릭시 처음부터 입력.</b></span>
+                		  </div>
+					</div>
+					
+					
 
-					<div class="picture-content">
+					
+							
+					<div class="picture-content" id="add" style="display: none">
 						<div class="picture-header">
 							<h2 class="picture-title" id="PictureCenterTitle">사진 추가</h2>
 						</div>
@@ -188,12 +219,10 @@
 
 							<div class="bullets"></div>
 							<ul id="imgholder" class="imgs" >
-							<%-- 	 <c:forEach items="${picture}" var="picture">
-              						  <li><img src="/project_image/${picture}"></li>
-            					</c:forEach> --%>
+								 
 							</ul>
 						</div>
-
+						
 						<div class="picture-footer">
 							<div id="fileContainer" style="margin-right: -5px;">
 								<button type="button" onclick="deleteImg()" class="charles_btn2" style="margin-right: 3px;">삭제</button>
@@ -206,7 +235,7 @@
 
 
 					<div id="store_stc" style="margin-top: 50px;">
-						<input type="submit" value="등록하기" class="charles_btn" style="width: 100%; color: white;" id="submit" />
+						<input type="submit" value="등록하기" class="charles_btn" style="width: 500px; color: white;" id="submit" />
 					</div>
 					
 					
@@ -336,7 +365,13 @@
 			}
 		}
 	</script>
+	<script>
+		function updateImg() {
 
+			document.getElementById("add").style.display = "flex";
+         	document.getElementById("update").style.display = "none";
+		}
+	</script>
 	<script type="text/javascript">
 		function deleteStore() {
 			let detailForm = document.getElementById("detailForm");

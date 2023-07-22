@@ -189,8 +189,8 @@
                         
                        
                         
-                         <div style="margin-top: 50px; width: 400px; ">     
-                         	<input type="submit" value="등록하기" class="charles_btn" style="color: white;" id="submit" />
+                         <div style="margin-top: 50px; width: 500px; ">     
+                         	<input type="submit" value="등록하기" class="charles_btn" style="color: white; width: 500px;" id="submit" />
 					 </div>
                  
                 </div>  
