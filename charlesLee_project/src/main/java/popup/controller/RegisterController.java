@@ -76,7 +76,7 @@ public class RegisterController {
 						  @RequestParam("memberPw") String memberPw,
 						  @RequestParam("memberEmail") String memberEmail,
 						  @RequestParam("memberCompanyName") String memberCompanyName,
-						  @RequestParam("memberCompanyNum") int memberCompanyNum,
+						  @RequestParam("memberCompanyNum") long memberCompanyNum,
 						  @RequestParam("memberPhoneNum") long memberPhoneNum,
 						  Model model) throws Exception{
 		String view = "/error";

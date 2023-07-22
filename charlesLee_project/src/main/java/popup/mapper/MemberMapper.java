@@ -24,7 +24,7 @@ public interface MemberMapper {
 
 	boolean insertBusinessMember(String memberId, String memberPw, String memberEmail, String memberCompanyName,
 
-			int memberCompanyNum, long memberPhoneNum, int memberType) throws SQLException;
+			long memberCompanyNum, long memberPhoneNum, int memberType) throws SQLException;
 
 	Member getMemberById(String memberId) throws SQLException;
 
@@ -53,7 +53,7 @@ public interface MemberMapper {
 	List<String> getBussinessMember() throws SQLException;
 	
 	//비지니스 회원 가입 승락
-	public int businessupdate(int memberNum, int memberType) throws SQLException;
+	public int businessupdate(int memberNum) throws SQLException;
 	//비지니스 회원 가입 거절
 	public int businessdelete(int member_num) throws SQLException;
 

@@ -13,7 +13,7 @@
 	FROM store s
 	JOIN picture p ON p.store_num = s.store_num
     JOIN member m ON s.member_num = m.member_num
-    where p.picture_type = 1
+    where p.picture_type = 1 And s.store_status = 1
     ORDER BY s.store_update
   </select>
   
@@ -71,7 +71,7 @@
       SELECT   s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name
       FROM store s
       JOIN picture p ON p.store_num = s.store_num
-      WHERE p.picture_type = 1 AND s.store_num IN 
+      WHERE p.picture_type = 1 And s.store_status = 1 AND s.store_num IN 
         <foreach item="item" collection="storeNum" open="(" separator="," close=")">
             #{item}
         </foreach>

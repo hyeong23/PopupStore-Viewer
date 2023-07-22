@@ -46,7 +46,7 @@ public class MemberService {
 
 	// 회원가입(비지니스)
 	public boolean insertBusinessMember(String memberId, String memberPw, String memberEmail, String memberCompanyName,
-			int memberCompanyNum, long memberPhoneNum, int memberType) throws Exception {
+			long memberCompanyNum, long memberPhoneNum, int memberType) throws Exception {
 
 		boolean member = memberMapper.insertBusinessMember(memberId, memberPw, memberEmail, memberCompanyName,
 				memberCompanyNum, memberPhoneNum, memberType);
@@ -197,12 +197,12 @@ public class MemberService {
 	}
 	
 	//비지니스 회원 가입 승락
-			public boolean businessupdate(int memberNum, int memberType) throws SQLException, Exception{
-				System.out.println("테스트 체크");
+			public boolean businessupdate(int memberNum) throws SQLException, Exception{
+
 				boolean result = false;
 				
-				int res = memberMapper.businessupdate(memberNum, memberType);
-				System.out.println("테스트 체크3");
+				int res = memberMapper.businessupdate(memberNum);
+
 				if(res != 0) {
 					result = true;
 				} else {

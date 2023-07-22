@@ -132,5 +132,19 @@ public class StoreService {
 		
 	}
 
+	public boolean storeApprove(int storeNum) {
+		return storeMapper.storeApprove(storeNum);
+		
+	}
+
+	public boolean storeDeny(int storeNum) {
+		return storeMapper.storeDeny(storeNum);
+		
+	}
+
+	public List<StoreVo> getStoreListByMember(int memberNum) {
+		return storeMapper.getStoreListByMember(memberNum);
+	}
+
 	
 }

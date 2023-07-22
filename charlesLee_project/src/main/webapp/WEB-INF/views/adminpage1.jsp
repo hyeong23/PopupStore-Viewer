@@ -87,7 +87,7 @@
 						</div>
 						<div class="mypage-item">
 							<h3>팝업스토어</h3>
-							<a href="/adminpage4">팝업스토어 신청 페이지</a>
+							<a href="/adminpage3">팝업스토어 신청 페이지</a>
 						</div>
 					</div>
 					<div class="card" style="display: flex; margin-left: 20px;">
@@ -113,7 +113,7 @@
 									</p>
 								</td>
 
-								<td bgcolor="#ff80c0" style=" width:30px;">
+								<td bgcolor="#ff80c0" style=" width:50px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">상태</span></b></font>
@@ -127,7 +127,7 @@
 								</td>
 							</tr>
 						</table>
-						<table class="admintable table-striped mb-0 card" style="max-height: 700px; overflow: auto;">
+						<table class="admintable table-striped mb-0 " style="max-height: 700px; overflow: auto;">
 							<!-- 부서 객체 유무 검증 -->
 							<c:if test="${empty requestScope.ask}">
 								<tr>

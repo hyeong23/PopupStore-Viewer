@@ -23,8 +23,11 @@ import popup.dto.Ask;
 import popup.dto.Member;
 import popup.dto.Store;
 import popup.service.AskService;
+import popup.service.CategoryService;
 import popup.service.MemberService;
+import popup.service.PictureService;
 import popup.service.StoreService;
+import popup.vo.StoreVo;
 
 
 @Controller
@@ -35,8 +38,17 @@ public class AdminController {
 	
 	@Autowired
 	MemberService memberService;
+	
 	@Autowired
 	StoreService storeService;
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	@Autowired
+	PictureService pictureService;
+	
+	//admin1페이지	
 	
 	@RequestMapping(value = "/adminviews", method = RequestMethod.GET)
 	public String adminForm(HttpSession session,
@@ -67,184 +79,165 @@ public class AdminController {
 	
 	
 	
-	
-	
-	
-	
-	
-	@RequestMapping(value = "/adminpage1", method = RequestMethod.POST)
-	public String adminpage3(Model model) throws SQLException, Exception{
-		return "adminpage1";
-	}
+	//admin2페이지
 	
 	@RequestMapping(value = "/adminpage2", method = RequestMethod.GET)
 	public String adminpage2(Model model) throws SQLException, Exception{
 		List<Member> member = memberService.getMember();
-		List<Map<String, String>> member2 = storeService.getStore();
+	
 		model.addAttribute("member", member);
-		model.addAttribute("member2", member2);
+
 		return "adminpage2";
-	}
-	@RequestMapping(value = "/adminpage3", method = RequestMethod.GET)
-	public String storeRegisterForm2(Model model) throws Exception{
-		List<Map<String, String>> member = storeService.getStore();
-		model.addAttribute("member", member);
-		for(int i = 0; i < member.size(); i++){
-			//System.out.println("list 순서 " + i + "번쨰"); 
-	        for(Entry<String, String> elem : member.get(i).entrySet() ){ 
-	        	 //System.out.println( String.format("키 : %s, 값 : %s", elem.getKey(), elem.getValue()) );
-	        }
-	            //System.out.println(key + " : " + value);// json객체 
-	        //});
-		}
-
-		return "adminpage3";
-	}
-	@RequestMapping(value = "/storeRegister2", method = RequestMethod.POST)
-	public String storeRegisterForm3(@RequestParam(value = "store") List<Map<String, String>> store,
-									Model model) throws Exception{
-		System.out.println(store); 
-		//List<Map<String, String>> member = storeService.getStore2(storeNum);
-		//List<Store> member = storeService.getStore2(storeNum);
-		//System.out.println(member);
-		//model.addAttribute("member", member);
-		
-		for(int i = 0; i < store.size(); i++){
-			System.out.println("list 순서 " + i + "번쨰"); 
-	        for(Entry<String, String> elem : store.get(i).entrySet() ){ 
-	        	 System.out.println( String.format("키 : %s, 값 : %s", elem.getKey(), elem.getValue()) );
-	        }
-	            //System.out.println(key + " : " + value);
-	        //}
-		}
-
-		return "storeRegister2";
-	}
-	@RequestMapping(value = "/storeRegister2/{num}", method = RequestMethod.GET)
-	public String storeRegisterForm(Model model,
-									@PathVariable int num) throws Exception{
-		List<Map<String, String>> member = storeService.getStore2(num);
-		model.addAttribute("member", member);
-		for(int i = 0; i < member.size(); i++){
-			System.out.println("list 순서 " + i + "번쨰"); 
-	        for(Entry<String, String> elem : member.get(i).entrySet() ){ 
-	        	 System.out.println( String.format("키 : %s, 값 : %s", elem.getKey(), elem.getValue()) );
-	        }
-	            //System.out.println(key + " : " + value);// json객체 
-	        //});
-		}
-
-		return "storeRegister2";
-	}
-	@RequestMapping(value = "/storeRegister2", method = RequestMethod.GET)
-	public String storeRegisterForm(Model model) throws Exception{
-		List<Map<String, String>> member = storeService.getStore2(9);
-		model.addAttribute("member", member);
-		for(int i = 0; i < member.size(); i++){
-			System.out.println("list 순서 " + i + "번쨰"); 
-	        for(Entry<String, String> elem : member.get(i).entrySet() ){ 
-	        	 System.out.println( String.format("키 : %s, 값 : %s", elem.getKey(), elem.getValue()) );
-	        }
-	            //System.out.println(key + " : " + value);// json객체 
-	        //});
-		}
-
-		return "storeRegister2";
-	}
-	@RequestMapping(value = "/adminpage3", method = RequestMethod.POST)
-	public String updateStore(@ModelAttribute Store store,
-							  @Param("category1") String category1,
-							  @Param("category2") String category2,
-							  @RequestPart("picture") MultipartFile[] pictures,
-							  HttpSession session,
-							  Model model)  {
-			String view = "error";
-				
-				boolean storeResult = false;
-				boolean categoryResult1 = false;
-				boolean categoryResult2 = false;
-				boolean pictureResult = false;
-				
-				int storeNum = 0;
-				
-				try {
-					//login 하면 memberNum session에 보관 시킨 후 가져와서 store의 memberNum에 추가
-					//store.setMemberNum((int) session.getAttribute("memberNum"));
-					
-					//storeResult = storeService.updateStore(store);
-					
-					//스토어 insert후 storeNum이 가장 큰 값을 가져오면 storeNum을 알수 있음
-					System.out.println(storeNum + "테스형");
-					//스토어 insert후 storeNum이 가장 큰 값을 가져오면 storeNum을 알수 있음
-					//storeNum = store.getStoreNum();
-					System.out.println(storeNum + "테스형" + category1 + category2);
-					System.out.println(store);
-					if(category2 != null) {
-					System.out.println(category1 + " " + category2);
-					//categoryResult1 = categoryService.updateCategory(storeNum,category1); 
-					//categoryResult2 = categoryService.updateCategory(storeNum,category2); 
-					
-					}else {
-						//categoryResult1 = categoryService.updateCategory(storeNum,category1);
-						System.out.println(category1 + " " + category2);
-					}
-					
-					//for문으로 여러파일 업로드
-					for (MultipartFile picture : pictures) {
-			            System.out.println(picture.getOriginalFilename());
-			            //pictureResult = pictureService.updatePicture(storeNum,picture);
-			        }
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-					return view;
-				}
-		
-		return "adminpage3";
-	}
-	@RequestMapping(value = "/adminpage5", method = RequestMethod.GET)
-	public String storeRegisterForm22(Model model) throws Exception{
-		return "adminpage5";
 	}
 	
 	@RequestMapping(value = "/businessupate", method = RequestMethod.POST)
 	public String update(@RequestParam("id") int member_num,
 						Model model) throws SQLException, Exception {
-		System.out.println("login4" + member_num);
 		
-		boolean member = memberService.businessupdate(member_num, 1);
-		System.out.println("넘기기 테스트체크");
-		//String view = "error";
-		//System.out.println("testd1");
-		//List<Member> member = memberService.getMemberById();
-		//System.out.println("testd3");
-		//sSystem.out.println(member.get(0));
-		
-		//System.out.println("testd");
-		//model.addAttribute("member", member);
-			 
-		 //view = "login3";
+		 memberService.businessupdate(member_num);
 	
 		 return "redirect:/adminpage2";
 	}
+	
+	
 	@RequestMapping(value = "/businessdelete", method = RequestMethod.POST)
 	public String delete(@RequestParam("id") int member_num,
 						Model model) throws SQLException, Exception {
-		System.out.println("login5" + member_num);
 		
-		boolean member = memberService.businessdelete(member_num);
-		//String view = "error";
-		//System.out.println("testd1");
-		//List<Member> member = memberService.getMemberById();
-		//System.out.println("testd3");
-		//sSystem.out.println(member.get(0));
-		
-		//System.out.println("testd");
-		//model.addAttribute("member", member);
-			 
-		 //view = "login3";
+		memberService.businessdelete(member_num);
 	
 		 return "redirect:/adminpage2";
 	}
+	
+	
+	
+	
+	
+	//admin3페이지
+	
+	@RequestMapping(value = "/adminpage3", method = RequestMethod.GET)
+	public String storeRegisterForm2(Model model) throws Exception{
+		
+		List<StoreVo> store = storeService.getStoreList();
+		
+		model.addAttribute("store", store);
+
+		return "adminpage3";
+	}
+	
+	@RequestMapping(value = "/storeManagement/{storeNum}", method = RequestMethod.GET)
+	public String storeManagement(@PathVariable("storeNum") int storeNum, Model model) throws Exception {
+		
+		StoreVo getStoreOne = storeService.getStoreOne(storeNum);
+		
+		List<String> getCategoryOne = categoryService.getCategoryOne(storeNum);
+		
+		if(getCategoryOne.size() == 2) {
+			String category1 = getCategoryOne.get(0);
+			String category2 = getCategoryOne.get(1);
+			
+			model.addAttribute("category1", category1);
+			model.addAttribute("category2", category2);
+		}else {
+			String category1 = getCategoryOne.get(0);
+			model.addAttribute("category1", category1);
+		}
+		
+		String thumbnail = pictureService.getThumbnailOne(storeNum);
+		
+
+		List<String> picture = pictureService.getPictureOne(storeNum);
+		System.out.println(picture);
+		model.addAttribute("storeNum", storeNum); // 보조 강사: storeUpdate.jsp에 storeNum 전달
+		model.addAttribute("getStoreOne",getStoreOne);
+		model.addAttribute("thumbnail",thumbnail);
+		model.addAttribute("picture",picture);
+		return "storeManagement";
+	}
+	
+	
+	@RequestMapping(value = "/storeManagement", method = RequestMethod.POST)
+	public String UpdateManagement(@ModelAttribute Store store, @Param("storeNum") int storeNum,
+			@Param("category1") String category1, @Param("category2") String category2,
+			@RequestPart(name = "thumbnail") MultipartFile thumbnail, @RequestPart(name = "picture",required = false) MultipartFile[] pictures,
+			HttpSession session, Model model) throws Exception {
+
+		String view = "error";
+
+		boolean storeResult = false;
+		boolean categoryResult1 = false;
+		boolean categoryResult2 = false;
+		boolean thumbnailResult = false;
+		boolean pictureResult = false;
+
+		// store = storeService.getStoreOne(storeNum);
+
+
+
+
+		int thumbnailType = 1;
+		int pictureType = 0;
+
+		if (category1 == category2) {
+			category2 = null;
+		}
+
+		try {
+			// login 하면 memberNum session에 보관 시킨 후 가져와서 store의 memberNum에 추가
+//			store.setMemberNum((int) session.getAttribute("memberNum"));
+
+			storeResult = storeService.updateStore(store);
+
+			if (category2 != null) {
+
+				// 보조 강사: 이렇게 하면 category 테이블의 category 필드 값을 category2 값으로 덮어쓰는 건데,
+				// 굳이 updateCategory(..,category1)을 할 필요를 모르겠습니다.
+				categoryResult1 = categoryService.updateCategory(storeNum, category1);
+				categoryResult2 = categoryService.updateCategory(storeNum, category2);
+
+			} else {
+				categoryResult1 = categoryService.updateCategory(storeNum, category1);
+			}
+			if(!thumbnail.isEmpty()) {
+				
+				thumbnailResult = pictureService.updatePicture(storeNum, thumbnail, thumbnailType);
+				
+			}
+			if(pictures != null) {
+				for (MultipartFile picture : pictures) {
+					
+					pictureResult = pictureService.deletePicture(storeNum, pictureType);
+					pictureResult = pictureService.insertPicture(storeNum, picture, pictureType);
+					
+				}
+			}
+			// for문으로 여러파일 업로드
+			
+
+			view = "redirect:/adminpage3";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return view;
+		}
+
+		return view;
+	}
+	@RequestMapping(value = "/storeApprove", method = RequestMethod.POST)
+	public String storeApprove(@RequestParam("id") int storeNum,
+			Model model) throws SQLException, Exception {
+				
+				storeService.storeApprove(storeNum);
+				return "redirect:/adminpage3";
+	}
+	@RequestMapping(value = "/storeDeny", method = RequestMethod.POST)
+	public String storeDeny(@RequestParam("id") int storeNum,
+			Model model) throws SQLException, Exception {
+				
+				storeService.storeDeny(storeNum);
+				return "redirect:/adminpage3";
+	}
+
+	
+	
+
 }

@@ -48,4 +48,10 @@ public interface StoreMapper {
 	
 	public int deleteStore(int storeNum) throws SQLException;
 
+	public boolean storeApprove(int storeNum);
+
+	public boolean storeDeny(int storeNum);
+
+	public List<StoreVo> getStoreListByMember(int memberNum);
+
 }

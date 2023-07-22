@@ -85,10 +85,10 @@
 								<td bgcolor="#ff80c0"  style=" width:80px;">
 									<p align="center">
 										<font color="white"><b><span
-												style="font-size: 12pt;margin-left:-10px; ">닉네임</span></b></font>
+												style="font-size: 12pt;margin-left:-10px; ">회사명</span></b></font>
 									</p>
 								</td>
-								<td bgcolor="#ff80c0" style=" width:270px;">
+								<td bgcolor="#ff80c0" style=" width:150px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">이메일</span></b></font>
@@ -97,7 +97,7 @@
 								<td bgcolor="#ff80c0" style=" width:100px;" >
 									<p align="center">
 										<font color="white"><b><span
-												style="font-size: 12pt; margin-left:50px;">아이디</span></b></font>
+												style="font-size: 12pt;">아이디</span></b></font>
 									</p>
 								</td>
 								<td bgcolor="#ff80c0" style=" width:75px;">
@@ -114,7 +114,7 @@
 								</td>
 							</tr>
 							</table>
-							<table class="admintable table-striped mb-0 card" style="max-height: 700px; overflow: auto;">
+							<table class="admintable table-striped mb-0 " style="max-height: 700px; overflow: auto;">
 							<!-- 부서 객체 유무 검증 -->
 							<c:if test="${empty requestScope.member}">
 								<tr>
@@ -136,7 +136,7 @@
 									</td>
 									<td bgcolor="">
 										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서번호 --> <b>${member.memberNickname}</b>
+											<span style="font-size: 12pt;"> <!-- 부서번호 --> <b>${member.memberCompanyName}</b>
 											</span>
 										</p>
 									</td>
@@ -156,8 +156,22 @@
 									</td>
 									<td bgcolor="">
 										<p align="center">
-											<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>${member.memberType}</b>
-											</span>
+
+											<c:if test="${member.memberType == 0}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>관리자</b></span>
+											</c:if>
+											<c:if test="${member.memberType == 1}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>일반회원
+												</b></span>
+											</c:if>
+											<c:if test="${member.memberType == 2}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>비지니스
+												</b></span>
+											</c:if>
+											<c:if test="${member.memberType == -1}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>승인 전
+												</b></span>
+											</c:if>
 										</p>
 									</td>
 									<td bgcolor="">
@@ -186,7 +200,7 @@
 			$('.appro').click(function() {
 
 				const dropId = $(this).data("userId");
-				console.log(dropId);
+				  const clickedButton = $(this); 
 				$.ajax({
 					type : 'post',
 					url : '<c:url value="businessupate" />',
@@ -194,7 +208,8 @@
 						id : dropId,
 					},
 					success : function(data) {
-						console.log('test');
+						 const row = clickedButton.closest('tr'); // 클릭한 버튼이 속한 행을 선택
+				         row.find('td:eq(4)').html('<span style="font-size: 12pt;"><b>비지니스</b></span>'); // 해당 행의 4번째 열에 "check"를 표시
 					},
 					error : function(status, error) {
 
@@ -210,7 +225,7 @@
 			$('.deni').click(function() {
 
 				const dropId = $(this).data("userId");
-				console.log(dropId);
+				  const clickedButton = $(this); 
 				$.ajax({
 					type : 'post',
 					url : '<c:url value="businessdelete" />',
@@ -218,7 +233,8 @@
 						id : dropId,
 					},
 					success : function(data) {
-						console.log('test');
+						  const row = clickedButton.closest('tr'); // 클릭한 버튼이 속한 행을 선택
+				          row.remove(); // 해당 행을 삭제
 					},
 					error : function(status, error) {
 

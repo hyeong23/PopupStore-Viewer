@@ -38,7 +38,19 @@
 		ORDER BY s.store_num DESC
 
 	</select>
+	
+	<select id="getStoreListByMember" parameterType="int" resultMap="storeResultMap">
 
+		SELECT s.store_num, s.store_title, m.member_company_name,m.member_nickname
+		,s.store_count, s.store_status
+		FROM store s
+		JOIN member m ON s.member_num = m.member_num
+ 		where s.member_num = #{memberNum}
+		ORDER BY s.store_num DESC
+		
+	</select>
+	
+	
 	<resultMap id="storeResultMap" type="popup.vo.StoreVo">
 		<result property="storeNum" column="store_num" />
 		<result property="storeTitle" column="store_title" />
@@ -157,7 +169,20 @@
 		DELETE FROM store
 		WHERE store_num = #{storeNum}
 	</delete>
-
+	
+	
+	<update id="storeApprove" parameterType="int">
+		UPDATE store
+		SET
+		store_status = 1
+		WHERE store_num = #{storeNum}
+	</update>
+	<update id="storeDeny" parameterType="int">
+		UPDATE store
+		SET
+		store_status = 2
+		WHERE store_num = #{storeNum}
+	</update>
 
 
 </mapper>
