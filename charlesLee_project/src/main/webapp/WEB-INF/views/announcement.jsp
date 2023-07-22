@@ -71,7 +71,7 @@
 								<div class="card-body p-0">
 									<div class="table-responsive table-scroll"
 										data-mdb-perfect-scrollbar="true"
-										style="position: relative; height: 500px">
+										style="position: relative; height: 500px;">
 										<table class="table table-striped mb-0" style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;" >
 											<thead
 												style="background-color: #ff80c0; text-align: center; color: white">
