@@ -62,7 +62,7 @@
 	</section>
 
 	<!-- content Begin -->
-	<div class="container" style="margin: 0 auto; padding: 0;">
+	<div class="col-lg-9" style="margin: 0 auto; padding: 0;">
 		<div class="row">
 			<div class="col-lg-12">
 				<div
@@ -90,7 +90,7 @@
 					<div class="card">					
 						<table class="table table-striped mb-0" style="text-align: center;">
 							<tr>
-								<td style="background-color: #ff80c0; color: white" width="200"><b>ID</b></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;"><b>ID</b></td>
 								<td style="text-align: center;"width="500">${member.memberId }</td>
 							</tr>
 							<tr id="nicknameRow">

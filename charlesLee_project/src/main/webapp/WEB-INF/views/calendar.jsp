@@ -103,7 +103,6 @@
 
 			<div id="of2" class="overflow-auto bg-light"
 				style="max-width: 250px; ">
-				<h3>모든 팝업스토어 목록</h3>
 				<div>
 					<c:forEach items="${filterStoreList}" var="store" varStatus="vs">
 						<div class="calendar-miniInfo" onclick= "startModal(${vs.index}, ${store.storeNum})">

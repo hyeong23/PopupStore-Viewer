@@ -89,7 +89,7 @@ getList();
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
 
-                            <c:forEach items="${openStoreList}" var="store" varStatus="vs">
+                            <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
                                     <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
@@ -329,9 +329,7 @@ getList();
  	        }
  	    });
  	}
-	 </script>
-	<script >
-	function clickHeart(storeNum){
+ 	function clickHeart(storeNum){
 		$.ajax({
 			url : "/api/like",
 			type : 'post',
@@ -361,6 +359,9 @@ getList();
 		function notLogin(){
 						alert("로그인 후 이용바랍니다.")
 	}
+	 </script>
+	<script >
+	
 		
 		var item;
 		var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'), {
@@ -383,7 +384,7 @@ getList();
 									storeNum:"${store.storeNum}",
 									storeTitle:"${store.storeTitle}",
 									storeIntro:"${store.storeIntro}",
-									storeBody:"${store.storeBody}",
+									storeBody: `<c:out value="${store.storeBody}" />`,
 									storeStart:"${store.storeStart}",
 									storeEnd:"${store.storeEnd}",
 									storeFavorite:"${store.storeFavorite}",
@@ -392,8 +393,8 @@ getList();
 									storeSite:"${store.storeSite}",
 									storeCount:"${store.storeCount}",
 									storeStatus:"${store.storeStatus}",
-									storestoreCreate:"${store.storeCreate}",
-									storestoreUpdate:"${store.storeUpdate}",
+									storeCreate:"${store.storeCreate}",
+									storeUpdate:"${store.storeUpdate}",
 									pictureNum:"${store.pictureNum}",
 									pictureName:"${store.pictureName}"})
 			</c:forEach>
@@ -607,7 +608,7 @@ getList();
 			     $(".replyModal").fadeOut();
 			  });
 	
-	
+			
 	</script>
 	
 	    <!-- Js Plugins -->

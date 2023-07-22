@@ -22,6 +22,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -31,7 +34,7 @@
 <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
 <link rel="stylesheet" href="css/mypage.css" type="text/css">
 <link rel="stylesheet" href="css/mypageUpdate.css" type="text/css">
 
@@ -53,7 +56,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Mypage</h2>
+						<h2>마이페이지</h2>
 					</div>
 				</div>
 			</div>
@@ -62,15 +65,14 @@
 
 
 
-	<div class="container" style="padding: 0;">
-		<div class="row">
-			<div class="col-lg-12">
-
+	<div class="col-lg-9" style="padding: 0;">
+		<div class="row" style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
+			<div class="col-lg-12" >
 				<div
-					style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+					style="display: flex; justify-content: center; align-items: center;">
 					<!-- Side bar -->
 					<div class="mypage-box"
-						style=" height: 600px;">
+						style="background-color: #fff4fd;; height: 600px;">
 						<div class="mypage-item" style="width: 200;">
 							<h3>My page</h3>
 							<!-- 내 정보 내용 추가 -->
@@ -86,54 +88,57 @@
 							<a href="/heart">좋아요 목록 보기</a>
 						</div>
 					</div>
+					<div style="display: flex; flex-direction: column; margin-left:20px;">
+					<div>회원정보 수정</div>
 					<form id="mypageUpdateForm" action="/mypageUpdate" method="POST" onsubmit="return confirmModification()">
-						<table id="mypageUpdateTable" class="styled-table">
+						<table id="mypageUpdateTable" class="table mb-0" style="border-radius: 10px; border:2px solid #ececec">
 							<tr>
-								<th colspan="3" style="text-align: center; font-size: 45px;">회원정보수정</th>
-							</tr>
-							<tr>
-								<td style="text-align: right;">* 아이디</td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 아이디</td>
 								<td style="text-align: left;">${member.memberId }</td>
-								<td><input type="hidden" name="memberId"
-									value="${member.memberId}"></td>
+								<td>
+								<input type="hidden" name="memberId" value="${member.memberId}">
+								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 새 비밀번호</td>
-								<td style="text-align: left;"><input type="password"
-									name="memberPw" id="memberPw" value="" required></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 새 비밀번호</td>
+								<td style="text-align: left;">
+								<input type="password"	name="memberPw" id="memberPw" value="" required style="width:200px;">
+								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 새 비밀번호 확인</td>
-								<td style="text-align: left;"><input type="password"
-									name="memberPwCheck" id="memberPwCheck" value="" required></td>
-								<td id="errorMessage" style="color: red;"></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 새 비밀번호 확인</td>
+								<td style="text-align: left;">
+								<input type="password"name="memberPwCheck" id="memberPwCheck" value="" required style="width:200px;"></td>
+								<td id="errorMessage" style="color: red;">
+								</td>
 							</tr>
 
 							<tr id="nicknameRow">
-								<td style="text-align: right;">* 닉네임</td>
-								<td style="text-align: left;"><input type="text"
-									id="memberNickname" name="memberNickname"
-									value="${member.memberNickname}"></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 닉네임</td>
+								<td style="text-align: left;">
+								<input type="text" id="memberNickname" name="memberNickname" value="${member.memberNickname}" style="width:200px;">
+								</td>
 							</tr>
 							<tr id="companyNameRow">
-								<td style="text-align: right;">* 업체명</td>
-								<td style="text-align: left;"><input type="text"
-									id="memberCompanyName" name="memberCompanyName"
-									value="${member.memberCompanyName}" readonly></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 업체명</td>
+								<td style="text-align: left;">
+								<input type="text" id="memberCompanyName" name="memberCompanyName" value="${member.memberCompanyName}" readonly style="width:200px;">
+								</td>
 							</tr>
 							<tr id="companyNumRow">
-								<td style="text-align: right;">* 사업자번호</td>
-								<td style="text-align: left;"><input type="text"
-									id="memberCompanyNum" name="memberCompanyNum"
-									value="${member.memberCompanyNum}"></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 사업자번호</td>
+								<td style="text-align: left;">
+								<input type="text" id="memberCompanyNum" name="memberCompanyNum" value="${member.memberCompanyNum}" style="width:200px;">
+								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 이메일</td>
-								<td style="text-align: left;"><input type="text"
-									name="memberEmail" value="${member.memberEmail}"></td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 이메일</td>
+								<td style="text-align: left;padding-right:25px;" >
+								<input type="text" name="memberEmail" value="${member.memberEmail}" style="width:200px;">
+								</td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 유저타입</td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 유저타입</td>
 								<td style="text-align: left;">
 									<%-- memberType 값을 문자열로 변환 후 출력 --%> <%
  	String memberTypeString;
@@ -157,27 +162,28 @@
 									value="<%=member.getMemberType()%>"></td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 생성일</td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 생성일</td>
 								<td style="text-align: left;">${member.memberCreate}</td>
 								<td><input type="hidden" name="memberCreate"
 									value="${member.memberCreate}"></td>
 							</tr>
 							<tr>
-								<td style="text-align: right;">* 수정일</td>
+								<td style="background-color: #ff80c0; color: white; width:200px;">* 수정일</td>
 								<td style="text-align: left;">${member.memberUpdate}</td>
 								<td><input type="hidden" name="memberUpdate"
 									value="${member.memberUpdate}"></td>
 							</tr>
 							<tr>
 								<td colspan="2" align="right">
-									<div style="text-align: right;">
-										<button type="submit" >정보수정</button>
-										<button type="button" onclick="removeMember()">회원탈퇴</button>
+									<div>
+										<button type="submit" class="charles_btn" style="height: 47px; margin-top:5px;">정보수정</button>
+										<button type="button" onclick="removeMember()" class="charles_btn2" style="height: 45px; margin-top:5px;">회원탈퇴</button>
 									</div>
 								</td>
 							</tr>
 						</table>
 					</form>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -16,6 +16,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 
 
@@ -61,7 +63,7 @@
 			<div class="col-lg-3">
 				<!-- Side bar -->
 				<div class="mypage-box"
-					style="height: 600px;">
+					style="background-color: #fff4fd; height: 600px;">
 					<div class="mypage-item" style="width: 200;">
 						<h3>My page</h3>
 						<!-- 내 정보 내용 추가 -->
