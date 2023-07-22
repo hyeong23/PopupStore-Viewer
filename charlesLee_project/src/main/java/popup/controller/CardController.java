@@ -43,21 +43,19 @@ public class CardController {
 		
 		//필터링을 위한 데이터
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
-		System.out.println(openStoreList.size());
 		List<ReplyVo> getReplyList = replyService.getReplyList();
 		List<String> getBussinessMember = memberService.getBussinessMember();
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
 	try {
 		Integer customerNum = (Integer) session.getAttribute("memberNum");
 	
-		List<Integer> getStoreByHeart;
-		getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
-		
+		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
 		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
 			
 		
 		model.addAttribute("getStoreByHeart",getStoreByHeart);
 		model.addAttribute("getStoreByAlarm",getStoreByAlarm);
+		
 		model.addAttribute("openStoreList", openStoreList);
 		model.addAttribute("getReplyList", getReplyList);
 		model.addAttribute("getBussinessMember", getBussinessMember);

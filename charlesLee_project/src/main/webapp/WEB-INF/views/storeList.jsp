@@ -151,7 +151,19 @@
 									</td>
 									<td>
 										<p align="center">
-											<b><span style="font-size: 12pt;">${store.storeStatus}</span></b>
+			
+											<c:if test="${store.storeStatus == 0}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>승인 전</b></span>
+											</c:if>
+											<c:if test="${store.storeStatus == 1}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>승인
+												</b></span>
+											</c:if>
+											<c:if test="${store.storeStatus == 2}">
+												<span style="font-size: 12pt;"> <!-- 부서위치 --> <b>거부
+												</b></span>
+											</c:if>
+											
 										</p>
 									</td>
 									<td><span style="font-size: 12pt;"> <input

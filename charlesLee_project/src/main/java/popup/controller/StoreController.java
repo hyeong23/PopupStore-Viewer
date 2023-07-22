@@ -39,10 +39,13 @@ public class StoreController {
 	PictureService pictureService;
 
 	@RequestMapping(value = "/storeList", method = RequestMethod.GET)
-	public String storeListForm(Model model) throws Exception {
-
-		List<StoreVo> store = storeService.getStoreList();
-
+	public String storeListForm(Model model ,HttpSession session) throws Exception {
+		
+		int memberNum = (int) session.getAttribute("memberNum");
+		System.out.println(memberNum);
+		List<StoreVo> store = storeService.getStoreListByMember(memberNum);
+		System.out.println(store);
+//		List<StoreVo> store = storeService.getStoreList();
 		model.addAttribute("store", store);
 
 		return "storeList";
@@ -113,14 +116,7 @@ public class StoreController {
 		return view;
 	}
 
-	// storeUpdate
-//	@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.GET)
-//	public String storeUpdateForm(Model model) throws Exception{
-//		
-//		
-//		
-//		return "storeUpdate";
-//	}
+
 
 	// storeUpdate
 	@RequestMapping(value = "/storeUpdate/{storeNum}", method = RequestMethod.GET)

@@ -51,18 +51,15 @@ public class MapController {
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
 		List<ReplyVo> getReplyList = replyService.getReplyList();
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		List<String> getBussinessMember = memberService.getBussinessMember();
 		
-		Integer customerNum = (Integer) session.getAttribute("memberNum");
-		
-		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
-		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
 		try {
-			List<String> getBussinessMember = memberService.getBussinessMember();
+			Integer customerNum = (Integer) session.getAttribute("memberNum");
 			
+			List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
+			List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
 			
-			
-				
-			
+		
 			model.addAttribute("getStoreByHeart",getStoreByHeart);
 			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
 			
@@ -74,15 +71,14 @@ public class MapController {
 			model.addAttribute("filterStoreList", openStoreList);
 			
 		} catch (SQLException e) {
+
 			
-			model.addAttribute("getStoreByHeart",getStoreByHeart);
-			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
-			
-			
+			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getReplyList", getReplyList);
 			model.addAttribute("location", location);
 			model.addAttribute("filterStoreList", openStoreList);
+			return "map";
 		}
 
 

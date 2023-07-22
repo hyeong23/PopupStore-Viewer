@@ -42,7 +42,7 @@
 	</select>
 	
 	 <select id = "getMember" resultMap="memberResultMap">
-			SELECT * From member
+			SELECT * From member Order By member_num desc
  	</select>
 
 	<select id="getMemberById" resultMap="memberResultMap">
@@ -142,11 +142,11 @@
 	 <!-- 비지니스 회원가입 승인 -->
 	<update id="businessupdate" parameterType="_int">
 	 		UPDATE member 
-	 		SET member_type = #{memberType}
+	 		SET member_type = 2
 	 		WHERE member_num = #{memberNum}
  	  </update>
  	 <!-- 비지니스 회원가입 거절(삭제)-->
- 	  <delete id="businessdelete" parameterType="popup.dto.Member">
+ 	  <delete id="businessdelete" parameterType="_int">
 	 		DELETE FROM member
 	 		WHERE member_num = #{memberNum}
  	  </delete>
