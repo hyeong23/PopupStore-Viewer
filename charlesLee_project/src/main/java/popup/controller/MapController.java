@@ -70,7 +70,7 @@ public class MapController {
 			model.addAttribute("location", location);
 			model.addAttribute("filterStoreList", openStoreList);
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 
 			
 			model.addAttribute("getBussinessMember", getBussinessMember);
