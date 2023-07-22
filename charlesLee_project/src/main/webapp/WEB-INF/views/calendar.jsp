@@ -256,7 +256,7 @@
 								storeNum:"${store.storeNum}",
 								storeTitle:"${store.storeTitle}",
 								storeIntro:"${store.storeIntro}",
-								storeBody:"${store.storeBody}",
+								storeBody: `<c:out value="${store.storeBody}" />`,
 								storeStart:"${store.storeStart}",
 								storeEnd:"${store.storeEnd}",
 								storeFavorite:"${store.storeFavorite}",
@@ -265,8 +265,8 @@
 								storeSite:"${store.storeSite}",
 								storeCount:"${store.storeCount}",
 								storeStatus:"${store.storeStatus}",
-								storestoreCreate:"${store.storeCreate}",
-								storestoreUpdate:"${store.storeUpdate}",
+								storeCreate:"${store.storeCreate}",
+								storeUpdate:"${store.storeUpdate}",
 								pictureNum:"${store.pictureNum}",
 								pictureName:"${store.pictureName}"})
 		</c:forEach>
