@@ -64,7 +64,7 @@
 					<article>
 						<!-- Post title-->
 						<div class="text-muted fst-italic mb-2">
-							<span id="announcementNum">${announcement.announcementNum}
+							<span id="announcementNum" hidden="true">${announcement.announcementNum}
 							</span>
 						</div>
 						<h2 class="fw-bolder mb-1">

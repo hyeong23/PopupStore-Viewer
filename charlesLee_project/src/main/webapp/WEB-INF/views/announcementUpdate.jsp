@@ -64,11 +64,11 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-6">
 						<input type="text" placeholder="제목을 입력하세요" name="announcementTitle"
-							id="announcementTitle" >
+							id="announcementTitle" value="${announcement.announcementTitle}">
 					</div>
 					<div class="col-lg-12 text-center">
 						<textarea placeholder="내용을 입력하세요" name="announcementBody"
-							id="announcementBody"></textarea>
+							id="announcementBody">${announcement.announcementBody}</textarea>
 						<input type="submit" value="수정완료" style="color:white; width:100%;" class="charles_btn">
 					</div>
 

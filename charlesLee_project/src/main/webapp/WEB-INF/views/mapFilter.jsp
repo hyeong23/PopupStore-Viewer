@@ -64,7 +64,9 @@
 		
 		<div>
 				<p >제목</p>
-				<div class="filter-item" style="padding-top: 5px;">
+				<div class="filter-item" style="padding-top: 5px; overflow-x: hidden;
+       									 text-overflow: ellipsis;
+     								     white-space: nowrap;">
 						<ul>
 						<c:forEach items="${openStoreList}" var="openStoreList" >		
 			  		    	<li>

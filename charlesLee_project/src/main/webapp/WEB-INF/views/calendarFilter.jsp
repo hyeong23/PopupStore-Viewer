@@ -50,7 +50,9 @@
 		
 		
 	<div>
-	    <form action="/calendar/filter" method="GET" >	
+
+ <form action="/calendar/filter" method="GET" >	
+
 		
 		<div class="filter-box"
 					style="margin-top: -10px; margin-left: -30px;">
@@ -65,7 +67,9 @@
 					
 					<div>
 						<p>제목</p>
-						<div class="filter-item" style="padding-top: 5px;">
+						<div class="filter-item" style="padding-top: 5px; overflow-x: hidden;
+       									 text-overflow: ellipsis;
+     								     white-space: nowrap;">
 							<ul>
 								<c:forEach items="${openStoreList}" var="openStoreList">
 									<li><input type="checkbox" class="checkSub"

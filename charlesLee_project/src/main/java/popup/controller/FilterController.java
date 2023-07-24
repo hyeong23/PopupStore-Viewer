@@ -56,7 +56,7 @@ public class FilterController {
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
 								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
-								@Param("storeLoc") String storeLoc) throws SQLException 
+								@Param("storeLoc") String storeLoc) throws Exception 
 										 {
 		
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
@@ -136,7 +136,7 @@ public class FilterController {
 	
 	@RequestMapping(value = "/calendar/search", method = RequestMethod.GET)
 	public String calendarSearch(Model model, HttpSession session , 
-							 @Param("search") String search) throws SQLException  
+							 @Param("search") String search) throws Exception  
 										 {
 		
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
@@ -201,14 +201,23 @@ public class FilterController {
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
 		List<String> getBussinessMember = memberService.getBussinessMember();
-		Integer customerNum = (Integer) session.getAttribute("memberNum");
 		
-		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
-		
-		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
+		if((Integer) session.getAttribute("memberNum") != null) {
+			Integer memberNum = (Integer) session.getAttribute("memberNum");
+			
+			List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(memberNum);
+			
+			List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(memberNum);
+			
+			model.addAttribute("getStoreByHeart",getStoreByHeart);
+			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
+		}
+
 			
 		try {
 			List<Integer> storeNum = new ArrayList<>();
+			
+			
 			
 			//storeTitle 같은 store 가져오기
 			if(storeTitle != null) {
@@ -232,6 +241,7 @@ public class FilterController {
 		
 			//heart 가 1이면 session member_id 랑 일치하는 store_num 가져오기, 0이면 진행x
 			if(heart == 1) {
+				int customerNum = (int) session.getAttribute("memberNum");
 				List<Integer> getStoreByHeart1 = favoriteService.getStoreByHeart(customerNum);			
 				storeNum.retainAll(getStoreByHeart1);
 			}
@@ -250,15 +260,15 @@ public class FilterController {
 				storeNum.retainAll(getStoreByLoc);
 			}
 	
-						
+			
+			
 			List<StoreVo> filterStoreList = openStoreService.filterStoreList(storeNum);
 			
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("filterStoreList", filterStoreList);
 			model.addAttribute("location", location);
-			model.addAttribute("getStoreByHeart",getStoreByHeart);
-			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
+			
 		} catch (Exception e) {
 			
 			List<StoreVo> filterStoreList = null;
@@ -286,14 +296,23 @@ public class FilterController {
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
 		List<StoreVo> openStoreList = openStoreService.getAllStore();
 		List<String> getBussinessMember = memberService.getBussinessMember();
-		Integer customerNum = (Integer) session.getAttribute("memberNum");
 		
-		List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(customerNum);
+		if((Integer) session.getAttribute("memberNum") != null) {
+			Integer memberNum = (Integer) session.getAttribute("memberNum");
+			
+			List<Integer> getStoreByHeart = favoriteService.getStoreByHeart(memberNum);
+			
+			List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(memberNum);
+			
+			model.addAttribute("getStoreByHeart",getStoreByHeart);
+			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
+		}
 		
-		List<Integer> getStoreByAlarm = alarmService.getStoreByAlarm(customerNum);
 		try {
 			List<Integer> storeNum = new ArrayList<>();
 			Set<Integer> uniqueStoreNums = new HashSet<>();
+			
+			
 			
 			List<Integer> searchStoreList = openStoreService.searchStoreByTitleAndLoc(search);
 			uniqueStoreNums.addAll(searchStoreList);
@@ -309,14 +328,12 @@ public class FilterController {
 				}
 		
 			storeNum.addAll(uniqueStoreNums);
-
+		
 			List<StoreVo> filterStoreList = openStoreService.filterStoreList(storeNum);
 			model.addAttribute("openStoreList", openStoreList);
 			model.addAttribute("getBussinessMember", getBussinessMember);
 			model.addAttribute("filterStoreList", filterStoreList);
 			model.addAttribute("location", location);
-			model.addAttribute("getStoreByHeart",getStoreByHeart);
-			model.addAttribute("getStoreByAlarm",getStoreByAlarm);
 		} catch (Exception e) {
 			
 			List<StoreVo> filterStoreList = null;
@@ -343,7 +360,7 @@ public class FilterController {
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
 								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
-								@Param("storeLoc") String storeLoc) throws SQLException 
+								@Param("storeLoc") String storeLoc) throws Exception 
 										 {
 		
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
@@ -422,7 +439,7 @@ public class FilterController {
 	
 	@RequestMapping(value = "/map/search", method = RequestMethod.GET)
 	public String mapSearch(Model model, HttpSession session , 
-							 @Param("search") String search) throws SQLException  
+							 @Param("search") String search) throws Exception  
 										 {
 		
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
