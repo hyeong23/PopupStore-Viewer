@@ -84,7 +84,7 @@
 							</ul>
 						</div>
 
-						<p>브랜드</p>
+					<%-- 	<p>브랜드</p>
 						<div class="filter-item" style="padding-top: 5px;">
 							<ul>
 								<c:forEach items="${getBussinessMember}" var="member">
@@ -94,7 +94,7 @@
 										for="memberCompanyName${member}">${member}</label></li>
 								</c:forEach>
 							</ul>
-						</div>
+						</div> --%>
 					</div>
 
 

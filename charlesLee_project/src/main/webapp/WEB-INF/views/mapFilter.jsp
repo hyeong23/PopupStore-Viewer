@@ -77,17 +77,7 @@
 						</ul>
 				</div>	
 				
-			 <p>브랜드</p>
-			 <div class="filter-item" style="padding-top: 5px;" >
-				 <ul>
-			 		<c:forEach items="${getBussinessMember}" var="member">
-			 			<li style="list-style-type: none;">
-							<input type="checkbox" class="checkSub" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
-			 			    <label for="memberCompanyName${member}">${member}</label> 
-						</li>
-					</c:forEach>
-			   	 </ul>
-			 </div>
+			
 		</div>		
 		
 	
