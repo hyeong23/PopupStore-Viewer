@@ -92,7 +92,9 @@ getList();
                             <c:forEach items="${openStoreList}" var="store" varStatus="vs" begin="0" end="5">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
-                                    <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
+                                    <h4 style="font-weight: 500; margin:6px;overflow: hidden;
+       									 text-overflow: ellipsis;
+     								     white-space: nowrap;">${store.storeTitle}</h4>
                                     <div class="storeCard-img" onclick = "startModal(${vs.index}, ${store.storeNum})"><img src="/project_image/${store.pictureName}" style="object-fit: cover;"></div>
                                     <p style="margin:6px;">${store.storeStart} ~ ${store.storeEnd}</p>
                                 </div>
