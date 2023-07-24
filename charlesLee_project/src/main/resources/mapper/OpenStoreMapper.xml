@@ -9,11 +9,11 @@
   
   <select id="getOpenStoreList" resultMap="openStoreList">
 	SELECT m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,
-	store_create, store_update
+	s.store_favorite
 	FROM store s
 	JOIN picture p ON p.store_num = s.store_num
     JOIN member m ON s.member_num = m.member_num
-    where p.picture_type = 1 And s.store_status = 1
+    where p.picture_type = 1 And s.store_status = 1 AND s.store_end &gt; sysDate
     ORDER BY s.store_update
   </select>
   
@@ -68,10 +68,10 @@
 	
      <select id="filterStoreList" resultMap="openStoreList">
     
-      SELECT   s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name
+      SELECT   s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,s.store_favorite
       FROM store s
       JOIN picture p ON p.store_num = s.store_num
-      WHERE p.picture_type = 1 And s.store_status = 1 AND s.store_num IN 
+      WHERE p.picture_type = 1 And s.store_status = 1 AND s.store_end &gt; sysDate AND s.store_num IN 
         <foreach item="item" collection="storeNum" open="(" separator="," close=")">
             #{item}
         </foreach>
@@ -85,7 +85,17 @@
  		SET store_count = store_count + 1
  		WHERE store_num = #{storeNum}
  	</update>
-
+	
+	
+	<select id="top6FavoriteList" resultMap="openStoreList">
+ 	  SELECT  m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,
+		s.store_favorite
+      FROM store s
+      JOIN picture p ON p.store_num = s.store_num
+      JOIN member m ON s.member_num = m.member_num
+      WHERE p.picture_type = 1 And s.store_status = 1 AND s.store_end &gt; sysDate 
+      ORDER BY store_favorite DESC
+	</select>
   
   
 </mapper>

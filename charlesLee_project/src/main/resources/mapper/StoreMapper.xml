@@ -183,6 +183,21 @@
 		store_status = 2
 		WHERE store_num = #{storeNum}
 	</update>
+	
+	<update id="addFavorite" parameterType="int">
+		UPDATE store
+		SET
+		store_favorite = store_favorite + 1
+		WHERE store_num = #{storeNum}
+	</update>
+	
+	
+	<update id="subFavorite" parameterType="int">
+		UPDATE store
+		SET
+		store_favorite = store_favorite - 1
+		WHERE store_num = #{storeNum}
+	</update>
 
 
 </mapper>

@@ -16,37 +16,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import popup.dto.Favorite;
 import popup.service.FavoriteService;
+import popup.service.StoreService;
 @RestController
 public class FavoriteAPIController {
 	
 	@Autowired
 	FavoriteService favoriteService;
 	
+	@Autowired
+	StoreService storeService;
+	
 	//storeNum과 memberId 필요
 	@RequestMapping(value = "/api/like", method = RequestMethod.POST)
 	public boolean checkHeart(@RequestParam("storeNum") int storeNum, 
 						  HttpSession session,
-						  Model model) throws SQLException {
+						  Model model) throws Exception {
 		boolean result = false;
-		
+		boolean result2 = false;
 		Object memberNum = session.getAttribute("memberNum");
-		
-		System.out.println(storeNum);
-		System.out.println(memberNum);
-		
+
 
 
 		List<Favorite> check = favoriteService.checkHeart(storeNum, memberNum);
 
 		if(check.isEmpty()) {
 			result = favoriteService.insertHeart(storeNum, memberNum);
+			result2= storeService.addFavorite(storeNum);
 		}else {
-			result = favoriteService.deleteHeart(storeNum, memberNum);				
+			result = favoriteService.deleteHeart(storeNum, memberNum);	
+			result2= storeService.subFavorite(storeNum);
 		}
 		
 		
-		
-		System.out.println(result);
 		
 		
 		return result;
