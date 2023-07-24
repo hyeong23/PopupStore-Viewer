@@ -21,5 +21,5 @@ public class ReplyVo {
 	private Date replyCreate;
 	private Date replyUpdate;
 	private String memberNickname;
-	
+	private String memberCompanyName;
 }

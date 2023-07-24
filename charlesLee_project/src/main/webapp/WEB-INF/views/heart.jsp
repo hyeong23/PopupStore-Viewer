@@ -99,11 +99,11 @@ getList();
 			<div class="col-lg-9" style="margin-left:-50px;">
 				<!-- Cards -->
 				<div class="row">
-					<c:forEach var="store" items="${likedStores}" varStatus="vs">
+					<c:forEach var="store" items="${filterStoreList}" varStatus="vs">
 						<div class="col-lg-4"
 							style="display: flex; justify-content: center;">
-							<div class="storeCard">
-								<h4 style="font-weight: 500; margin: 6px;">${store.storeTitle}</h4>
+							<div class="storeCard" style="height: 330px">
+								<h4 style="font-weight: 500; margin: 6px; ">${store.storeTitle}</h4>
 
 								               <div class="storeCard-img" onclick = "startModal(${vs.index}, ${store.storeNum})"><img src="/project_image/${store.pictureName}" style=" width:100%; object-fit: cover;"></div>
 

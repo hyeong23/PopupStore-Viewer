@@ -84,23 +84,18 @@ public class ReplyController {
 	@RequestMapping(value = "/modifyreply", method = RequestMethod.POST)
 	public int modifyReply(Reply reply, HttpSession session) throws Exception {
 		 int result = 0;
-		   System.out.println("확인 " + reply);
+
 		   int member = (int)session.getAttribute("memberNum");
-		   System.out.println(member);
-		   System.out.println("test");
-		   System.out.println(reply.getReplyNum());
-		   //int checkId = replyService.replyUserIdCheck(reply.getReplyNum());
-		   //System.out.println("test22" + checkId);
+
+
 		   if(member == reply.getMemberNum()) {
-			   System.out.println("test2 resul");
-			   System.out.println("tes" + reply);
-			 //reply.setMemberNum(member);
+
 			 reply.setMemberNum(member);
-			 System.out.println("tes2" + reply);
+
 		    replyService.modifyReply(reply);
 		    
 		    result = 1;
-		    System.out.println("test2 resul");
+
 		   }
 		   
 		   return result;

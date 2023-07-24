@@ -51,8 +51,7 @@ public class FilterController {
 	
 	@RequestMapping(value = "/calendar/filter", method = RequestMethod.GET)
 	public String calendarFilter(Model model, HttpSession session , 
-								@Param("category") String category,
-								@RequestParam(value = "memberCompanyName", required = false) String[] memberCompanyName,						
+								@Param("category") String category,					
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
 								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
@@ -72,12 +71,7 @@ public class FilterController {
 				storeNum.addAll(getStoreByStoreTitle);
 				}
 			//companyName이 같은 member의 store_num 가져오기
-			if(memberCompanyName != null) {		
-				List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(memberCompanyName);
-				storeNum.retainAll(getStoreByCompanyName);
-			}else {
-				storeNum = null;
-			}
+			
 			//category가 같은 store_num 가져오기 , select 면 실행x
 			if(!"select".equals(category)) {
 				List<Integer> getStoreByCategory = categoryService.getStoreByCategory(category);	
@@ -190,8 +184,7 @@ public class FilterController {
 	
 	@RequestMapping(value = "/card/filter", method = RequestMethod.GET)
 	public String cardFilter(Model model, HttpSession session , 
-								@Param("category") String category,
-								@RequestParam(value = "memberCompanyName", required = false) String[] memberCompanyName,						
+								@Param("category") String category,					
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
 								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
@@ -225,12 +218,7 @@ public class FilterController {
 				storeNum.addAll(getStoreByStoreTitle);
 				}
 			//companyName이 같은 member의 store_num 가져오기
-			if(memberCompanyName != null) {		
-				List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(memberCompanyName);				
-				storeNum.retainAll(getStoreByCompanyName);
-			}else {
-				storeNum = null;
-			}
+			
 			//category가 같은 store_num 가져오기 , select 면 실행x
 			if(!"select".equals(category)) {
 				List<Integer> getStoreByCategory = categoryService.getStoreByCategory(category);					
@@ -355,8 +343,7 @@ public class FilterController {
 	
 	@RequestMapping(value = "/map/filter", method = RequestMethod.GET)
 	public String mapFilter(Model model, HttpSession session , 
-								@Param("category") String category,
-								@RequestParam(value = "memberCompanyName", required = false) String[] memberCompanyName,						
+								@Param("category") String category,					
 								@Param("heart") int heart,
 								@Param("startDate") int startDate,
 								@RequestParam(value = "storeTitle", required = false) String[] storeTitle,
@@ -376,12 +363,7 @@ public class FilterController {
 				storeNum.addAll(getStoreByStoreTitle);
 				}
 			//companyName이 같은 member의 store_num 가져오기
-			if(memberCompanyName != null) {		
-				List<Integer> getStoreByCompanyName = storeService.getStoreByCompanyName(memberCompanyName);				
-				storeNum.retainAll(getStoreByCompanyName);
-			}else {
-				storeNum = null;
-			}
+			
 			//category가 같은 store_num 가져오기 , select 면 실행x
 			if(!"select".equals(category)) {
 				List<Integer> getStoreByCategory = categoryService.getStoreByCategory(category);					
