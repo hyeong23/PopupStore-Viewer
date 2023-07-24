@@ -124,7 +124,7 @@
 					<div id="store_stc" class="filter-item">
 
 						<div id="store_chk">
-							<input type="radio" class="checkSub"  id="like0" name="heart" value=0
+							<input type="radio"  id="like0" name="heart" value=0
 								checked="checked">전체
 						</div>
 						<div id="store_chk">
@@ -136,7 +136,7 @@
 					<div id="store_stc" class="filter-item"
 						style="flex-direction: column;">
 						<div id="store_chk">
-							<input type="radio" id="startDate0" class="checkSub" name="startDate" value=0
+							<input type="radio" id="startDate0" name="startDate" value=0
 								checked="checked">전체
 						</div>
 						<div id="store_chk">
