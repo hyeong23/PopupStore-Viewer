@@ -99,7 +99,7 @@ getList();
 			<div class="col-lg-9" style="margin-left:-50px;">
 				<!-- Cards -->
 				<div class="row">
-					<c:forEach var="store" items="${filterStoreList}" varStatus="vs">
+					<c:forEach var="store" items="${likedStores}" varStatus="vs">
 						<div class="col-lg-4"
 							style="display: flex; justify-content: center;">
 							<div class="storeCard" style="height: 330px">
@@ -293,7 +293,7 @@ function startModal(index, sNumber){
 }
 function getList(){
 	item = Array();
-	<c:forEach items="${filterStoreList}" var="store">
+	<c:forEach items="${likedStores}" var="store">
 		item.push({memberNum:"${store.memberNum}",
 			memberCompanyName:"${store.memberCompanyName}",
 			memberNickname:"${store.memberNickname}",
@@ -403,19 +403,25 @@ function replyView(snum){
 	   
 	   var repDate = new Date(this.replyUpdate);
 	   repDate = repDate.toLocaleDateString("ko-US");
-	   
-	 str += "<div class='reply-each'>"
-		 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
-	     + "<p>" + this.memberNickname + "<p>"
-	     + "<p class='reply-text'>" + this.reply + "<p>"
-	     + "<p>" + repDate + "<p>"
-	     + "<c:if test='${not empty sessionScope.memberId}'>"
-	     + "<div class='replyFooter'>"
-	     + "<button type='button' class='modify' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
-	     + "<button type='button' class='delete' data-replyNum='" + this.replyNum + "'>삭제</button>"
-	     + "</div>"
-	 	 + "</c:if>";
-	  });
+	   var memberName = this.memberNickname ? this.memberNickname : this.memberCompanyName;
+	   str += "<div class='reply-each'>"
+		     + "<div style='display:flex; flex-direction:column;'>"
+		     + "<div>"
+			 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
+			 + "<div style='display:flex; flex-direction:row;  justify-content: space-between; margin-top:10px;'>"
+		     + "<p>" + memberName + "<p>"
+		     + "<p>" + repDate + "<p>"
+		     + "</div>"
+		     + "<p class='reply-text' style='width:255px; height:auto; '>" + this.reply + "<p>"	     
+		     + "</div>"
+		     + "<c:if test='${not empty sessionScope.memberId}'>"
+		     + "<div class='replyFooter' style='display:flex; flex-direction:row; justify-content:flex-end; margin-top:5px;'>"
+		     + "<button type='button' class='modify' style='width:50px;' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
+		     + "<button type='button' class='delete'style='width:50px;' data-replyNum='" + this.replyNum + "'>삭제</button>"
+		     + "</div>"
+		     + "</div>"
+		 	 + "</c:if>";
+		  });
 	  
 	  $(".reply-list").html(str);
 	 });
