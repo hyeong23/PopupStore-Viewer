@@ -354,7 +354,7 @@
 		   repDate = repDate.toLocaleDateString("ko-US");
 		   
 		   str += "<div class='reply-each'>"
-			     + "<div style='display:flex; flex-direction:row; padding:10px;'>"
+			     + "<div style='display:flex; flex-direction:column;'>"
 			     + "<div>"
 				 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
 				 + "<div style='display:flex; flex-direction:row;  justify-content: space-between; margin-top:10px;'>"
@@ -364,9 +364,9 @@
 			     + "<p class='reply-text' style='width:255px; height:auto; '>" + this.reply + "<p>"	     
 			     + "</div>"
 			     + "<c:if test='${not empty sessionScope.memberId}'>"
-			     + "<div class='replyFooter' style='display:flex; flex-direction:column; margin-top:5px;'>"
-			     + "<button type='button' class='modify' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
-			     + "<button type='button' class='delete' data-replyNum='" + this.replyNum + "'>삭제</button>"
+			     + "<div class='replyFooter' style='display:flex; flex-direction:row; justify-content:flex-end; margin-top:5px;'>"
+			     + "<button type='button' class='modify' style='width:50px;' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
+			     + "<button type='button' class='delete'style='width:50px;' data-replyNum='" + this.replyNum + "'>삭제</button>"
 			     + "</div>"
 			     + "</div>"
 			 	 + "</c:if>";
@@ -541,10 +541,10 @@
 		            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
-            <div class="title">
+            <div class="title" style="margin-left:-1px;">
 
                 
-                <div  class="reply-list">
+                <div  class="reply-list" style="padding:10px;">
 		      
 		      <script> 
 		        //location.reload();
@@ -556,7 +556,7 @@
                <div class="reply-send">
                		<input type="hidden" name="storeNum" id="storeNum" value="">
                 	<c:if test="${empty sessionScope.memberId}">
-					  <p>댓글을 작성하려면 <a href="/login">로그인</a>해주세요</p>
+					  <p><br><br><br>댓글을 작성하려면 <a href="/login">로그인</a>해주세요</p>
 					</c:if>
                		<c:if test="${not empty sessionScope.memberId}">
   
