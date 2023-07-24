@@ -88,7 +88,7 @@ public class AnnouncementController {
 	@RequestMapping(value = "/announcement/modify/{announcementNum}", method = RequestMethod.GET)
 	public String updateAnnouncementForm(@PathVariable int announcementNum, Model model) throws Exception {
 		Announcement announcement = announcementService.getAnnouncement(announcementNum);
-
+		
 		model.addAttribute("announcement", announcement);
 
 		return "announcementUpdate";
