@@ -28,9 +28,9 @@
 <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/modal.css" type="text/css">
 <link rel="stylesheet" href="/css/mypage.css" type="text/css">
 <link rel="stylesheet" href="/css/card.css" type="text/css">
-<link rel="stylesheet" href="/css/modal.css" type="text/css">
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -379,7 +379,9 @@ function modalClick(storeNum){
 		        slideInput.type = "radio";
 		        slideInput.name = "slide" + storeNum.toString();
 		        slideInput.id = slideId;
-		        slideInput.checked = true;
+		        if(i == 0){
+			        slideInput.checked = true;		        	
+		        }
 		        bullets.parentNode.insertBefore(slideInput, bullets);
 
 		        
