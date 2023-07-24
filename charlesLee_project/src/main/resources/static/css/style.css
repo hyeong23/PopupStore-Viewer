@@ -303,14 +303,13 @@ ol {
 	background-color:#fff;
 	width: 325px;
 	height: 100px;
-	border: 1px solid gray;
+	border: 1px solid #ececec;
 	margin-top: -3px;
 }
 
  .reply_textarea{
  			width:250px;
  			height:100px;
- 			background-color: #545334;
  }
   .reply_sendBtn{
   			left:200px;
