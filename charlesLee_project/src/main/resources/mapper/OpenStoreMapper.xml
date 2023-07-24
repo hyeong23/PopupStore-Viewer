@@ -14,7 +14,17 @@
 	JOIN picture p ON p.store_num = s.store_num
     JOIN member m ON s.member_num = m.member_num
     where p.picture_type = 1 And s.store_status = 1 AND s.store_end &gt; sysDate
-    ORDER BY s.store_update
+    ORDER BY s.store_favorite Desc
+  </select>
+  
+   <select id="top6FavoriteList" resultMap="openStoreList">
+	SELECT m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,
+	s.store_favorite
+	FROM store s
+	JOIN picture p ON p.store_num = s.store_num
+    JOIN member m ON s.member_num = m.member_num
+    where p.picture_type = 1 And s.store_status = 1 AND s.store_end &gt; sysDate
+    ORDER BY s.store_favorite Desc
   </select>
   
   <select id="getMapList2" resultMap="openStoreList">
@@ -75,9 +85,11 @@
         <foreach item="item" collection="storeNum" open="(" separator="," close=")">
             #{item}
         </foreach>
-      ORDER BY s.store_update
+      ORDER BY s.store_favorite Desc
       	
   </select>
+  
+  
  	
  	<!-- 스토어 번호를 통한 조회수 증가 -->
  	<update id="countStoreByStoreNum" parameterType = "_int">
@@ -86,16 +98,7 @@
  		WHERE store_num = #{storeNum}
  	</update>
 	
-	
-	<select id="top6FavoriteList" resultMap="openStoreList">
- 	  SELECT  m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,
-		s.store_favorite
-      FROM store s
-      JOIN picture p ON p.store_num = s.store_num
-      JOIN member m ON s.member_num = m.member_num
-      WHERE p.picture_type = 1 And s.store_status = 1 AND s.store_end &gt; sysDate 
-      ORDER BY store_favorite DESC
-	</select>
-  
+ 
+   
   
 </mapper>
