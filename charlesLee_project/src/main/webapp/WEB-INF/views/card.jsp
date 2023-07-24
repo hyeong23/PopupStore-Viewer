@@ -467,7 +467,9 @@ getList();
 				        slideInput.type = "radio";
 				        slideInput.name = "slide" + storeNum.toString();
 				        slideInput.id = slideId;
-				        slideInput.checked = true;
+				        if(i == 0){
+					        slideInput.checked = true;	        	
+				        }
 				        bullets.parentNode.insertBefore(slideInput, bullets);
 
 				        
