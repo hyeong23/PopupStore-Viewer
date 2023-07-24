@@ -53,84 +53,93 @@
     <form action="/map/filter" method="GET" >	
 	
 	<div class="filter-box" style="margin-left: 50px">
-	<div>
-	<p >제목</p>
-	<div class="filter-item" style="padding-top: 5px; overflow-x: hidden;
+		<ul>
+			<li>
+				<input type="checkbox" id = "allCheck" onclick = "allClick">
+				<label>전체 선택</label>
+			</li>
+		</ul>
+		
+		<br>
+		
+		<div>
+				<p >제목</p>
+				<div class="filter-item" style="padding-top: 5px; overflow-x: hidden;
        									 text-overflow: ellipsis;
      								     white-space: nowrap;">
-			<ul>
-			<c:forEach items="${openStoreList}" var="openStoreList" >		
-  		    	<li>
- 				  <input type="checkbox" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
- 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
-				</li>			
-			</c:forEach>
-			</ul>
-	</div>	
-	
- <p>브랜드</p>
- <div class="filter-item" style="padding-top: 5px;" >
-	 <ul>
- 		<c:forEach items="${getBussinessMember}" var="member">
- 			<li style="list-style-type: none;">
-				<input type="checkbox" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
- 			    <label for="memberCompanyName${member}">${member}</label> 
-			</li>
-		</c:forEach>
-   	 </ul>
- </div>
-	</div>		
-	
-
-	
-	<div>
-	<select name="category" id="category" class="filter-item-select">
-   	 <option value="select">카테고리 선택</option>
-   	 <option value="character">캐릭터</option>
-   	 <option value="media">미디어</option>
-   	 <option value="food">식음료</option>
-   	 <option value="fashion">패션</option>
-   	 <option value="others">기타</option>
-   </select>
-	</div>
- 
-	<p>Loc</p>
-	<div>
-		<select name="storeLoc" id="storeLoc" class="filter-item-select" >
-				<c:forEach items="${location}" var="location">	
-						<option id="storeLoc" value="${location}" >${location}</option>		  		
- 				 </c:forEach>	
-	  </select>
+						<ul>
+						<c:forEach items="${openStoreList}" var="openStoreList" >		
+			  		    	<li>
+			 				  <input type="checkbox" class="checkSub" id="storeTitle${openStoreList.storeNum}" name="storeTitle" value="${openStoreList.storeTitle}" checked="checked">
+			 				  <label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
+							</li>			
+						</c:forEach>
+						</ul>
+				</div>	
+				
+			 <p>브랜드</p>
+			 <div class="filter-item" style="padding-top: 5px;" >
+				 <ul>
+			 		<c:forEach items="${getBussinessMember}" var="member">
+			 			<li style="list-style-type: none;">
+							<input type="checkbox" class="checkSub" id="memberCompanyName${member}" name="memberCompanyName" value="${member}" checked="checked">
+			 			    <label for="memberCompanyName${member}">${member}</label> 
+						</li>
+					</c:forEach>
+			   	 </ul>
+			 </div>
+		</div>		
 		
-	</div>		
- 
-	<p>좋아요</p>
-	<div id ="store_stc" class="filter-item">
-		
-		 <div id="store_chk">
-				<input type="radio" id="like0" name="heart" value=0 checked="checked">전체
-		 </div>
-  	   	 <div id="store_chk">
-				<input type="radio" id="like1" name="heart" value=1>좋아요만
-		 </div>
-	</div>
 	
-	<p>오픈 상태</p>
-	<div id ="store_stc" class="filter-item" style="flex-direction: column;">
-		 <div id="store_chk">
-			    <input type="radio" id="startDate0" name="startDate" value=0 checked="checked">전체
-		 </div>
-	 	 <div id="store_chk">
-				<input type="radio" id="startDate1" name="startDate" value=1>진행중
-		 </div>
-		 <div id="store_chk">
-				<input type="radio" id="startDate2" name="startDate" value=2>진행 예정
-		 </div>
-  		
-	</div>
-
-			<input type="submit" value="적용" class="filter-item" 
-					style="height: 35px; padding-left: 8px; padding-bottom: 5px;">
+		
+		<div>
+		<select name="category" id="category" class="filter-item-select">
+	   	 <option value="select">카테고리 선택</option>
+	   	 <option value="character">캐릭터</option>
+	   	 <option value="media">미디어</option>
+	   	 <option value="food">식음료</option>
+	   	 <option value="fashion">패션</option>
+	   	 <option value="others">기타</option>
+	   </select>
+		</div>
+	 
+		<p>Loc</p>
+		<div>
+			<select name="storeLoc" id="storeLoc" class="filter-item-select" >
+					<c:forEach items="${location}" var="location">	
+							<option id="storeLoc" value="${location}" >${location}</option>		  		
+	 				 </c:forEach>	
+		  </select>
+			
+		</div>		
+	 
+		<p>좋아요</p>
+		<div id ="store_stc" class="filter-item">
+			
+			 <div id="store_chk">
+					<input type="radio" class="checkSub" id="like0" name="heart" value=0 checked="checked">전체
+			 </div>
+	  	   	 <div id="store_chk">
+					<input type="radio" id="like1" name="heart" value=1>좋아요만
+			 </div>
+		</div>
+		
+		<p>오픈 상태</p>
+		<div id ="store_stc" class="filter-item" style="flex-direction: column;">
+			 <div id="store_chk">
+				    <input type="radio" class="checkSub" id="startDate0" name="startDate" value=0 checked="checked">전체
+			 </div>
+		 	 <div id="store_chk">
+					<input type="radio" id="startDate1" name="startDate" value=1>진행중
+			 </div>
+			 <div id="store_chk">
+					<input type="radio" id="startDate2" name="startDate" value=2>진행 예정
+			 </div>
+	  		
+		</div>
+	
+				<input type="submit" value="적용" class="filter-item" 
+						style="height: 35px; padding-left: 8px; padding-bottom: 5px;">
 	</div>
 
 
@@ -151,7 +160,15 @@
     <script src="/js/mixitup.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
-    
+<script>
+$('#allCheck').click(function (){
+	if($(this).is(":checked")){
+		$(".checkSub").attr("checked", true);
+	}else{
+		$(".checkSub").attr("checked", false);
+	}
+});
+</script>    
   
 
 
