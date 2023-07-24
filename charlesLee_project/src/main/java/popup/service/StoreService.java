@@ -146,5 +146,14 @@ public class StoreService {
 		return storeMapper.getStoreListByMember(memberNum);
 	}
 
+
+	public boolean addFavorite(int storeNum) {
+		return storeMapper.addFavorite(storeNum);
+	}
+
+	public boolean subFavorite(int storeNum) {
+		return storeMapper.subFavorite(storeNum);
+	}
+
 	
 }

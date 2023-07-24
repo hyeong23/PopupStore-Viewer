@@ -50,6 +50,11 @@ public class OpenStoreService {
 	}
 
 
+	public List<StoreVo> top6FavoriteList() {
+		return openStoreMapper.top6FavoriteList();
+	}
+
+
 	
 	
 	

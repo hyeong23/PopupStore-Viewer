@@ -54,4 +54,8 @@ public interface StoreMapper {
 
 	public List<StoreVo> getStoreListByMember(int memberNum);
 
+	public boolean addFavorite(int storeNum);
+
+	public boolean subFavorite(int storeNum);
+
 }

@@ -3,6 +3,7 @@ package popup.controller;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -46,6 +47,12 @@ public class CardController {
 		List<ReplyVo> getReplyList = replyService.getReplyList();
 		List<String> getBussinessMember = memberService.getBussinessMember();
 		List<String> location = Arrays.asList("전체","서울", "경기","인천","강원","제주","부산","경남","대구","경북","울산","대전","충남","충북","광주","전남","전북");
+		List<StoreVo> top6FavoriteList = openStoreService.top6FavoriteList();
+		
+		List<StoreVo> newTop6FavoriteList = top6FavoriteList.stream()
+                .limit(6)
+                .collect(Collectors.toList());
+	
 	try {
 		Integer customerNum = (Integer) session.getAttribute("memberNum");
 	
@@ -61,7 +68,7 @@ public class CardController {
 		model.addAttribute("getBussinessMember", getBussinessMember);
 		model.addAttribute("filterStoreList", openStoreList);
 		model.addAttribute("location", location);
-		
+		model.addAttribute("newTop5FavoriteList", newTop6FavoriteList);
 	} catch (Exception e) {
 
 		 model.addAttribute("openStoreList", openStoreList); 
@@ -69,6 +76,7 @@ public class CardController {
 		 model.addAttribute("getBussinessMember", getBussinessMember);
 		 model.addAttribute("filterStoreList", openStoreList);
 		 model.addAttribute("location", location);
+		 model.addAttribute("newTop5FavoriteList", newTop6FavoriteList);
 		 return "card";
 		 
 

@@ -89,7 +89,7 @@ getList();
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
 
-                            <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
+                            <c:forEach items="${newTop5FavoriteList}" var="store" varStatus="vs">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
                                     <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
@@ -115,15 +115,18 @@ getList();
                             
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" >
                                 <c:forEach items="${filterStoreList}" var="store" varStatus="vs">
                                 <div class="col-lg-4" style="display:flex; justify-content: center;">
                                 <div class="storeCard">
-                                  	 <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
+                                  	 <h4 style="font-weight: 500; margin:6px; overflow: hidden;
+       									 text-overflow: ellipsis;
+     								     white-space: nowrap;">${store.storeTitle}</h4>
 
                                     <div class="storeCard-img" onclick = "startModal(${vs.index}, ${store.storeNum})"><img src="/project_image/${store.pictureName}" style=" width:100%; object-fit: cover;"></div>
 
                                     <p style="margin:6px;">${store.storeStart} ~ ${store.storeEnd}</p>
+                                     
                                     <c:choose>
                                     	<%-- 로그인 했을때 --%>
                                     	<c:when test="${not empty sessionScope.memberNum}">     
@@ -138,16 +141,19 @@ getList();
                   						</c:if>
                                  			<!-- 좋아요 -->
 										<c:if test="${getStoreByHeart.contains(store.storeNum)}">
+										 	 <span style="margin: 6px;position: absolute;right: 115px;bottom: 35px;">${store.storeFavorite}명이 좋아합니다.</span>
                                     		 <img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%;  display: none; position:absolute; right : 45px">	
              								 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 45px">	
 										</c:if>
 										<c:if test="${not getStoreByHeart.contains(store.storeNum)}">
+											  <span style="margin: 6px;position: absolute;right: 115px;bottom: 35px;">${store.storeFavorite}명이 좋아합니다.</span>
                      						<img id = "heart${store.storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; position:absolute; right : 45px">	
              							 	 <img  id = "heartRed${store.storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${store.storeNum}')" style="width: 8%; height: 8%; display: none; position:absolute; right : 45px">	
                   						</c:if>	
                                     	</c:when>
                                     	<%-- 로그인 안했을때 --%>
                                     	<c:otherwise>
+                                    	 	<span style="margin: 6px;position: absolute;right: 115px;bottom: 35px;">${store.storeFavorite}명이 좋아합니다.</span>
                                     		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 8%; position:absolute; height: 8%; right : 75px">
                                     		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 8%; position:absolute; height: 8%;  right : 45px">	   
                                   	    </c:otherwise>
