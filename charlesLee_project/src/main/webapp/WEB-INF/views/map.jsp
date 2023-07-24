@@ -149,6 +149,38 @@
 			        	<hr>
 			        	<p class="body7"> 작성일 : ${filterStoreList[2].storeCreate} </p>
 			        	<p class="body8"> 마지막 수정일 : ${filterStoreList[2].storeUpdate} </p>
+						<div class="body9">
+						<c:choose>
+                                    	<%-- 로그인 했을때 --%>
+                                    	<c:when test="${not empty sessionScope.memberNum}">     
+                                    	 	<!-- 알람 -->
+                          				<c:if test="${getStoreByAlarm.contains(filterStoreList[2].storeNum)}">
+                                    		<img id="yellow${filterStoreList[2].storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 80px" >
+                                    		<img id="bell${filterStoreList[2].storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${filterStoreList[2].storeNum}','${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 80px" >
+										</c:if>
+										<c:if test="${not getStoreByAlarm.contains(filterStoreList[2].storeNum)}">
+                     						<img id="yellow${filterStoreList[2].storeNum}" alt="#"  src="/img/yellow.png"  onclick="deleteAlarm('${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 80px" >
+                                    		<img id="bell${filterStoreList[2].storeNum}" alt="#" src="/img/bell.png" onclick="insertAlarm('${filterStoreList[2].storeNum}','${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 80px" >
+                  						</c:if>
+                                 			<!-- 좋아요 -->
+										<c:if test="${getStoreByHeart.contains(filterStoreList[2].storeNum)}">
+                                    		 <img id = "heart${filterStoreList[2].storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt;  display: none; position:absolute; right : 45px">	
+             								 <img  id = "heartRed${filterStoreList[2].storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 45px">	
+										</c:if>
+										<c:if test="${not getStoreByHeart.contains(filterStoreList[2].storeNum)}">
+                     						<img id = "heart${filterStoreList[2].storeNum}" alt="#" src="/img/heart.png" onclick = "clickHeart('${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; position:absolute; right : 45px">	
+             							 	 <img  id = "heartRed${filterStoreList[2].storeNum}" alt="#" src="/img/heartRed.png" onclick = "clickHeart('${filterStoreList[2].storeNum}')" style="width: 23pt; height: 23pt; display: none; position:absolute; right : 45px">	
+                  						</c:if>	
+                                    	</c:when>
+                                    	<%-- 로그인 안했을때 --%>
+                                    	<c:otherwise>
+                                    		<img class = "bell" id = "bell" alt="#" src="/img/bell.png" onclick = "notLogin()"   style="width: 23pt; position:absolute; height: 23pt; right : 80px">
+                                    		<img class = "heart" id = "heart" alt="#" src="/img/heart.png" onclick = "notLogin()"  style="width: 23pt; position:absolute; height: 23pt;  right : 45px">	   
+                                  	    </c:otherwise>
+
+                		</c:choose>
+			        	</div>
+			        	
 				</div>
 
 	      	 
@@ -380,6 +412,9 @@ function indexupdate(indexNum){
     +  "</div>";
      $(".slider").html(picturecon);
 	
+
+     
+     
 }
 function modalClick(storeNum){
 	// 현재 map의 storeNum의 번호가 안바뀜
@@ -416,7 +451,9 @@ function modalClick(storeNum){
 		        slideInput.type = "radio";
 		        slideInput.name = "slide" + storeNum.toString();
 		        slideInput.id = slideId;
-		        slideInput.checked = true;
+		        if(i == 0){
+			        slideInput.checked = true;	        	
+		        }
 		        bullets.parentNode.insertBefore(slideInput, bullets);
 
 		        
@@ -570,6 +607,7 @@ function replyView(snum){
 <script>
 	function insertAlarm(storeNum, storeTitle) {
 	    // AJAX 요청을 사용하여 컨트롤러 실행
+	    alert("insertAlarm")
 	    $.ajax({
 	        url: '/api/insertAlarm',
 	        type: 'POST',
@@ -591,8 +629,6 @@ function replyView(snum){
 	        }
 	    });
 	}
-
-
 	function deleteAlarm(storeNum) {
 	    // AJAX 요청을 사용하여 컨트롤러 실행
 	    $.ajax({
@@ -617,6 +653,7 @@ function replyView(snum){
  </script>
 <script>
 function clickHeart(storeNum){
+	alert(storeNum);
 	$.ajax({
 		url : "/api/like",
 		type : 'post',
@@ -643,13 +680,9 @@ function clickHeart(storeNum){
 		}
 	});
 }
-
-
 	function notLogin(){
 					alert("로그인 후 이용바랍니다.")
 }
-
-
 </script>
 
 
