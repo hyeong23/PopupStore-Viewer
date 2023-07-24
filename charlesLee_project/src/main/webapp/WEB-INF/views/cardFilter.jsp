@@ -54,17 +54,26 @@
 		</div>
 
 
-		<div>
+		<div id="filterBox">
 			<form action="/card/filter" method="GET" id="filterForm">
 
 				<div class="filter-box"
 					style="margin-top: -10px; margin-left: -30px;">
+					<ul>
+						<li>
+							<input type="checkbox" id = "allCheck" onclick = "allClick">
+							<label>전체 선택</label>
+						</li>
+					</ul>
+					
+					<br>
+					
 					<div>
 						<p>제목</p>
 						<div class="filter-item" style="padding-top: 5px;">
 							<ul>
 								<c:forEach items="${openStoreList}" var="openStoreList">
-									<li><input type="checkbox"
+									<li><input type="checkbox" class="checkSub"
 										id="storeTitle${openStoreList.storeNum}" name="storeTitle"
 										value="${openStoreList.storeTitle}" checked="checked">
 										<label for="storeTitle${openStoreList.storeNum}">${openStoreList.storeTitle}</label>
@@ -78,7 +87,7 @@
 							<ul>
 								<c:forEach items="${getBussinessMember}" var="member">
 									<li style="list-style-type: none;"><input type="checkbox"
-										id="memberCompanyName${member}" name="memberCompanyName"
+										id="memberCompanyName${member}" class="checkSub" name="memberCompanyName"
 										value="${member}" checked="checked"> <label
 										for="memberCompanyName${member}">${member}</label></li>
 								</c:forEach>
@@ -113,7 +122,7 @@
 					<div id="store_stc" class="filter-item">
 
 						<div id="store_chk">
-							<input type="radio" id="like0" name="heart" value=0
+							<input type="radio" class="checkSub"  id="like0" name="heart" value=0
 								checked="checked">전체
 						</div>
 						<div id="store_chk">
@@ -125,7 +134,7 @@
 					<div id="store_stc" class="filter-item"
 						style="flex-direction: column;">
 						<div id="store_chk">
-							<input type="radio" id="startDate0" name="startDate" value=0
+							<input type="radio" id="startDate0" class="checkSub" name="startDate" value=0
 								checked="checked">전체
 						</div>
 						<div id="store_chk">
@@ -162,7 +171,15 @@
 	<script src="/js/main.js"></script>
 
 
-
+<script>
+$('#allCheck').click(function (){
+	if($(this).is(":checked")){
+		$(".checkSub").attr("checked", true);
+	}else{
+		$(".checkSub").attr("checked", false);
+	}
+});
+</script>
 
 </body>
 
