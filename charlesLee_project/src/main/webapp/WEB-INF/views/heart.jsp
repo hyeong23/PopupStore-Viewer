@@ -191,7 +191,6 @@ getList();
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
-	        <h2>댓글</h2>
                 
                 <div  class="reply-list">
 		      
