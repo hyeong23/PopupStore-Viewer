@@ -226,11 +226,11 @@ getList();
            </div>
             
 		<div class="modal-replywindow">
-            <div class="title">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
-	        <h2>댓글</h2>
+            <div class="title">
+            
                 
                 <div  class="reply-list">
 		      
@@ -244,16 +244,17 @@ getList();
                <div class="reply-send">
                		<input type="hidden" name="storeNum" id="storeNum" value="">
                 	<c:if test="${empty sessionScope.memberId}">
-					  <p>댓글을 작성하려면 <a href="/login">로그인</a>해주세요</p>
+                	
+					  <p> <br> <br>댓글을 작성하려면 <a href="/login">로그인</a>해주세요</p>
 					</c:if>
                		<c:if test="${not empty sessionScope.memberId}">
   
 						<!-- hidden 영역 -->
    					    <input type="hidden" name="memberNum" id="memberNum2" value="${sessionScope.memberNum}">
      				   <!-- 입력 영역 -->    				
-                      <div class="reply_textarea"><textarea placeholder="Your Reply" name="reply" id="reply" ></textarea></div> 
-                      <div class="reply_sendBtn"><button type="button" class="reply-send-btn" id="send_message">send</button></div>
-                    </c:if>
+                      <div class="reply_textarea" style="margin-top:-1px; margin-left:-1px; height: 102px;"><textarea placeholder="내용을 입력하세요" name="reply" id="reply"></textarea></div> 
+                      <div class="reply_sendBtn"><button type="button" class="reply-send-btn" id="send_message">댓글 입력</button></div>
+                     </c:if>
   
                     </div>
                       </form>  
@@ -494,18 +495,24 @@ getList();
 			   var repDate = new Date(this.replyUpdate);
 			   repDate = repDate.toLocaleDateString("ko-US");
 			   
-			 str += "<div class='reply-each'>"
-				 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
-			     + "<p>" + this.memberNickname + "<p>"
-			     + "<p class='reply-text'>" + this.reply + "<p>"
-			     + "<p>" + repDate + "<p>"
-			     + "<c:if test='${not empty sessionScope.memberId}'>"
-			     + "<div class='replyFooter'>"
-			     + "<button type='button' class='modify' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
-			     + "<button type='button' class='delete' data-replyNum='" + this.replyNum + "'>삭제</button>"
-			     + "</div>"
-			 	 + "</c:if>";
-			  });
+			   str += "<div class='reply-each'>"
+				     + "<div style='display:flex; flex-direction:row; padding:10px;'>"
+				     + "<div>"
+					 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
+					 + "<div style='display:flex; flex-direction:row;  justify-content: space-between; margin-top:10px;'>"
+				     + "<p>" + this.memberNickname + "<p>"
+				     + "<p>" + repDate + "<p>"
+				     + "</div>"
+				     + "<p class='reply-text' style='width:255px; height:auto; '>" + this.reply + "<p>"	     
+				     + "</div>"
+				     + "<c:if test='${not empty sessionScope.memberId}'>"
+				     + "<div class='replyFooter' style='display:flex; flex-direction:column; margin-top:5px;'>"
+				     + "<button type='button' class='modify' data-replyNum='" + this.replyNum + "' data-memberNum='" + this.memberNum + "'>수정</button>"
+				     + "<button type='button' class='delete' data-replyNum='" + this.replyNum + "'>삭제</button>"
+				     + "</div>"
+				     + "</div>"
+				 	 + "</c:if>";
+				  });
 			  
 			  $(".reply-list").html(str);
 			 });

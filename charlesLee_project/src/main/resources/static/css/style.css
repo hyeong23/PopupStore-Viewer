@@ -292,7 +292,7 @@ ol {
 	font-weight: 800;
 	text-transform: uppercase;
 	display: inline-block;
-	background: #7fad39;
+	background: #ff80c0;
 	border: none;
 	height: 100%;
 	width: 100%;
@@ -300,9 +300,11 @@ ol {
 
 .reply-send{
 	display:flex;
-	background-color:#568214;
+	background-color:#fff;
 	width: 325px;
 	height: 100px;
+	border: 1px solid gray;
+	margin-top: -3px;
 }
 
  .reply_textarea{
