@@ -83,16 +83,16 @@ getList();
 					<div class="mypage-item" style="width: 200;">
 						<h3>My page</h3>
 						<!-- 내 정보 내용 추가 -->
-						<a href="/mypage">내 정보 보기</a>
+						<a href="/mypage" style="font-size : 10pt">내 정보 보기</a>
 					</div>
 					<div class="mypage-item" style="width: 200;">
 						<h3>My page more</h3>
 						<!-- 내 정보 내용 추가 -->
-						<a href="/mypageUpdate">회원정보 수정 및 탈퇴</a>
+						<a href="/mypageUpdate" style="font-size : 10pt">회원정보 수정 및 탈퇴</a>
 					</div>
 					<div class="mypage-item" style="width: 200;">
 						<h3>Like list</h3>
-						<a href="/heart">좋아요 목록 보기</a>
+						<a href="/heart" style="font-size : 10pt">좋아요 목록 보기</a>
 					</div>
 				</div>
 			</div>
