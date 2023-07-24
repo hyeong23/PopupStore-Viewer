@@ -89,7 +89,7 @@ getList();
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
 
-                            <c:forEach items="${newTop5FavoriteList}" var="store" varStatus="vs">
+                            <c:forEach items="${openStoreList}" var="store" varStatus="vs" begin="0" end="5">
                                 <div class="col-lg-4">
                                 <div class="storeCard">
                                     <h4 style="font-weight: 500; margin:6px;">${store.storeTitle}</h4>
@@ -375,7 +375,6 @@ getList();
 			  keyboard: false
 			});
 		function startModal(index, sNumber){
-			
 			//replyView(sNumber);
 			indexupdate(index);
 		  	modalClick(sNumber);
@@ -435,7 +434,7 @@ getList();
 		}
 		function modalClick(storeNum){
 			// 현재 map의 storeNum의 번호가 안바뀜
-		      //alert('작동확인');
+
 			// 1을 우선 예시로 사용하는 중
 			axios.get('http://localhost:8081/api/map/' + storeNum)
 			.then(response => {
@@ -444,12 +443,11 @@ getList();
 				for(var i = 0; i < pictureData.length; i++){
 					var getPictureName = pictureData[i].pictureName;
 					var showPicture = document.querySelector('#imgholder' + pictureData[i].storeNum);
-					console.log(getPictureName);
+
 					var li = document.createElement("li");
 					var picture = document.createElement("img");
 					picture.src = "/project_image/" + getPictureName; 
-					console.log(picture);	
-					
+
 					if (showPicture.children.length < pictureData.length) {
 				        
 						li.appendChild(picture);
@@ -473,7 +471,7 @@ getList();
 				        }
 				        bullets.parentNode.insertBefore(slideInput, bullets);
 
-				        
+	
 					}
 					
 				};

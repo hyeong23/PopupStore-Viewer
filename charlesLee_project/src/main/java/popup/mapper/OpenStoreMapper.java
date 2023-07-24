@@ -32,8 +32,6 @@ public interface OpenStoreMapper {
 	public String[] searchMemberByName(@Param("search") String search);
 
 
-	public List<StoreVo> top6FavoriteList();
-
 
 	
 
