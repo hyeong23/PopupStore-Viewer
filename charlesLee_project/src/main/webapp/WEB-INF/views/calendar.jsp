@@ -103,6 +103,10 @@
 
 			<div id="of2" class="overflow-auto bg-light"
 				style="max-width: 250px; ">
+				<br>
+				<p> 모든 팝업 스토어 목록</p>
+				<hr>
+				<br>
 				<div>
 					<c:forEach items="${filterStoreList}" var="store" varStatus="vs">
 						<div class="calendar-miniInfo" onclick= "startModal(${vs.index}, ${store.storeNum})">
@@ -203,7 +207,7 @@
 	var item;
 	function makeCard(indexNum, sNum){
 		var popupList = "선택한 팝업스토어 목록"//팝업스토어 카드위에 안내 타이틀
-		var card =	'<h3>' + popupList  + '</h3>' +
+		var card =	'<br>' + '<p>' + popupList  + '<p>' + '<hr>' + '<br>' + 
 			
 			'   <div>' +
 		'      <div class="calendar-miniInfo" onclick= "startModal(' + indexNum + ',' + sNum + ')">' +
@@ -220,7 +224,7 @@
 	function makeCard2(){
 		
 		var popupList = "모든 팝업스토어 목록"//팝업스토어 카드위에 안내 타이틀
-			var card =	'<h3>' + popupList  + '</h3>' +
+			var card =	'<br>' + '<p>' + popupList  + '<p>' + '<hr>' + '<br>' +
 			
 			'   <div>' +
 		'    <c:forEach items="${filterStoreList}" var="store" varStatus="vs">' +
