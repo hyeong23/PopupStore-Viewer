@@ -102,7 +102,7 @@
 		<div id=scrolls>
 
 			<div id="of2" class="overflow-auto bg-light"
-				style="max-width: 250px; ">
+				style="max-width: 270px; ">
 				<br>
 				<p> 모든 팝업 스토어 목록</p>
 				<hr>
