@@ -13,8 +13,9 @@
 
 	<!-- 사용자의 회원 번호에 해당하는 좋아요 정보를 조회하는 쿼리 -->
 	<select id="getLikedStoresByMemberNum" resultMap="getfavorite2">
-		SELECT s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,s.store_favorite
+		SELECT m.member_company_name, s.store_num, s.store_loc, s.store_loc_detail, s.store_title, s.store_body, s.store_intro, s.store_start, s.store_end, s.store_site, s.store_count, s.store_create , s.store_update , p.picture_name,s.store_favorite
 		FROM store s
+		JOIN member m ON m.member_num = s.member_num
 		JOIN favorite f ON f.store_num = s.store_num
 		JOIN picture p ON p.store_num = s.store_num
 		WHERE f.member_num = #{customerNum} AND p.picture_type = 1
