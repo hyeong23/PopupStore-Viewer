@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/modal.css" type="text/css">
 <link rel="stylesheet" href="/css/mypage.css" type="text/css">
 <link rel="stylesheet" href="/css/modal.css" type="text/css">
 
@@ -377,7 +378,7 @@ function modalClick(storeNum){
 		        slideInput.name = "slide" + storeNum.toString();
 		        slideInput.id = slideId;
 		        if(i == 0){
-			        slideInput.checked = true;	        	
+			        slideInput.checked = true;		        	
 		        }
 		        bullets.parentNode.insertBefore(slideInput, bullets);
 
