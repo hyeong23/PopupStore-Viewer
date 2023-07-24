@@ -28,8 +28,8 @@
 <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/modal.css" type="text/css">
 <link rel="stylesheet" href="/css/mypage.css" type="text/css">
-<link rel="stylesheet" href="/css/card.css" type="text/css">
 <link rel="stylesheet" href="/css/modal.css" type="text/css">
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -260,13 +260,11 @@ getList();
 		    },
 		    success: function (response) {
 		      if (response == true) {
-		        alert("삽입");
 		        const heartId = "heart" + storeNum.toString();
 		        const heartRedId = "heartRed" + storeNum.toString();
 		        document.getElementById(heartId).style.display = "none";
 		        document.getElementById(heartRedId).style.display = "block";
 		      } else {
-		        alert("삭제");
 		        const heartId = "heart" + storeNum.toString();
 		        const heartRedId = "heartRed" + storeNum.toString();
 		        document.getElementById(heartId).style.display = "block";
@@ -379,7 +377,9 @@ function modalClick(storeNum){
 		        slideInput.type = "radio";
 		        slideInput.name = "slide" + storeNum.toString();
 		        slideInput.id = slideId;
-		        slideInput.checked = true;
+		        if(i == 0){
+			        slideInput.checked = true;		        	
+		        }
 		        bullets.parentNode.insertBefore(slideInput, bullets);
 
 		        
