@@ -90,36 +90,36 @@
 							<a href="/adminpage3">팝업스토어 신청 페이지</a>
 						</div>
 					</div>
-					<div class="card" style="display: flex; margin-left: 20px;">
+					<div class="card" style="display: flex; margin-left: 20px; max-height: 700px; overflow-x: hidden; width: 830px;">
 						<table class="admintable table-striped mb-0"
 							style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">
 							<tr>
-								<td bgcolor="#ff80c0" style=" width:50px;">
+								<td bgcolor="#ff80c0" style="width:50px;" >
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">번호</span></b></font>
 									</p>
 								</td>
-								<td bgcolor="#ff80c0" style=" width:240px;">
+								<td bgcolor="#ff80c0"  style="width:260px;" >
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">작성자</span></b></font>
 									</p>
 								</td>
-								<td bgcolor="#ff80c0" style=" width:170px;">
+								<td bgcolor="#ff80c0"  style="width:150px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">제목</span></b></font>
 									</p>
 								</td>
 
-								<td bgcolor="#ff80c0" style=" width:50px;">
+								<td bgcolor="#ff80c0" >
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;">상태</span></b></font>
 									</p>
 								</td>
-								<td bgcolor="#ff80c0" >
+								<td bgcolor="#ff80c0"   style="width:200px;">
 									<p align="center">
 										<font color="white"><b><span
 												style="font-size: 12pt;margin-left:-10px;">처리</span></b></font>

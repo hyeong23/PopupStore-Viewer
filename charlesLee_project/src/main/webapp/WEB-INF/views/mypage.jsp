@@ -50,7 +50,7 @@
 
 	<section class="breadcrumb-section set-bg"
 		data-setbg="img/breadcrumb.jpg">
-		<div class="container">
+		<div class="container" >
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
@@ -62,11 +62,11 @@
 	</section>
 
 	<!-- content Begin -->
-	<div class="col-lg-9" style="margin: 0 auto; padding: 0;">
+	<div class="col-lg-9" style="margin: 0 auto; padding: 0; margin-top:40px;">
 		<div class="row">
 			<div class="col-lg-12">
 				<div
-					style="display: flex; justify-content: flex-start; align-items: center; margin-left: 20px;">
+					style="display: flex; justify-content: center; align-items: center; margin-left: 20px;">
 					
 					<!-- Side bar -->
 					<div class="mypage-box" style="background-color: #fff4fd; height: 600px; ">
@@ -87,7 +87,7 @@
 					</div>
 
 					<!-- Contents -->
-					<div class="card">					
+					<div class="card" style="margin-left: 80px; width: 700px;">					
 						<table class="table table-striped mb-0" style="text-align: center;">
 							<tr>
 								<td style="background-color: #ff80c0; color: white; width:200px;"><b>ID</b></td>

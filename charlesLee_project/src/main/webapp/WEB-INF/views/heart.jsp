@@ -71,8 +71,10 @@ getList();
 		</div>
 	</section>
 	<!-- Contents -->
+
 	<section class="product spad">
-	<div class="container" style="margin: 0 auto; padding: 0;">
+	<div class="container" style="margin-top:40px;">
+
 		<div class="row">
 			<div class="col-lg-3">
 				<!-- Side bar -->
@@ -94,7 +96,7 @@ getList();
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-9">
+			<div class="col-lg-9" style="margin-left:-50px;">
 				<!-- Cards -->
 				<div class="row">
 					<c:forEach var="store" items="${likedStores}" varStatus="vs">
@@ -102,8 +104,12 @@ getList();
 							style="display: flex; justify-content: center;">
 							<div class="storeCard">
 								<h4 style="font-weight: 500; margin: 6px;">${store.storeTitle}</h4>
-								<div class="storeCard-img" onclick = "startModal(${vs.index}, ${store.storeNum})"><img src="/project_image/${store.pictureName}" style="object-fit: cover;"></div>
-								<p style="margin: 6px;">${store.storeStart} ~ ${store.storeEnd}</p>
+
+								               <div class="storeCard-img" onclick = "startModal(${vs.index}, ${store.storeNum})"><img src="/project_image/${store.pictureName}" style=" width:100%; object-fit: cover;"></div>
+
+								<p style="margin: 6px;">${store.storeStart}~
+									${store.storeEnd}</p>
+
 								<c:choose>
 									<%-- 로그인 했을때 --%>
 									<c:when test="${not empty sessionScope.memberNum}">
