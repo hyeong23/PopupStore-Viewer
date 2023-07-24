@@ -345,7 +345,7 @@
 		
 		
 	}
-    function replyView(snum){
+	function replyView(snum){
 		 $.getJSON("/getreply" + "?number=" + snum, function(data){
 		  var str = "";
 		  
@@ -356,13 +356,13 @@
 		   
 		   var repDate = new Date(this.replyUpdate);
 		   repDate = repDate.toLocaleDateString("ko-US");
-		   
+		   var memberName = this.memberNickname ? this.memberNickname : this.memberCompanyName;
 		   str += "<div class='reply-each'>"
 			     + "<div style='display:flex; flex-direction:column;'>"
 			     + "<div>"
 				 + "<input type='hidden' name='memberNum' id='memberNum' value='" + this.memberNum + "''>"
 				 + "<div style='display:flex; flex-direction:row;  justify-content: space-between; margin-top:10px;'>"
-			     + "<p>" + this.memberNickname + "<p>"
+			     + "<p>" + memberName + "<p>"
 			     + "<p>" + repDate + "<p>"
 			     + "</div>"
 			     + "<p class='reply-text' style='width:255px; height:auto; '>" + this.reply + "<p>"	     
@@ -378,7 +378,7 @@
 		  
 		  $(".reply-list").html(str);
 		 });
-    }
+	}
      $(document).on("click", ".delete", function(){
 		    var deletConfirm = confirm("정말로 삭제할건가요?");
 		    if(deletConfirm) {

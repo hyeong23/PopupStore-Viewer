@@ -223,7 +223,6 @@ public class MyPageController {
     		model.addAttribute("openStoreList", openStoreList);
     		model.addAttribute("getReplyList", getReplyList);
     		model.addAttribute("getBussinessMember", getBussinessMember);
-    		model.addAttribute("filterStoreList", likedStores);
     		model.addAttribute("location", location);
 
         } catch (Exception e) {
