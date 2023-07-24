@@ -115,5 +115,6 @@ select.form-control[multiple],select.form-control[size]{height:auto}
             height: 100%;
             position: relative;
             padding: 10px;
+            border-radius: 5px;
         }
 /*# sourceMappingURL=bootstrap.min.css.map */
