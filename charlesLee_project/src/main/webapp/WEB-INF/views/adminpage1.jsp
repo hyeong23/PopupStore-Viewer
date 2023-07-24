@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					<div class="card"
-						style="display: flex; margin-left: 20px; max-height: 700px; overflow: auto; width: 850px;">
+						style="display: flex; margin-left: 20px; max-height: 700px; overflow-x: hidden; width: 830px;">
 						<table class="admintable table-striped mb-0 table-scroll"
 							data-mdb-perfect-scrollbar="true"
 							style="font-family: 'Noto Sans KR', sans-serif; font-size: 13pt;">

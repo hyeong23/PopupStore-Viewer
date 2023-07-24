@@ -40,7 +40,7 @@
 
 
 </head>
-<body>
+<body >
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -52,7 +52,7 @@
 
 	<section class="breadcrumb-section set-bg"
 		data-setbg="img/breadcrumb.jpg">
-		<div class="container">
+		<div class="container" >
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
@@ -65,8 +65,7 @@
 
 
 
-	<div class="col-lg-9" style="padding: 0;">
-		<div class="row" style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
+		<div class="row" style="display: flex; flex-direction: row; justify-content: center; width: 100%;margin:40px;">
 			<div class="col-lg-12" >
 				<div
 					style="display: flex; justify-content: center; align-items: center;">
@@ -88,8 +87,7 @@
 							<a href="/heart">좋아요 목록 보기</a>
 						</div>
 					</div>
-					<div style="display: flex; flex-direction: column; margin-left:20px;">
-					<div>회원정보 수정</div>
+					<div style="display: flex; flex-direction: column; margin-left:120px;">
 					<form id="mypageUpdateForm" action="/mypageUpdate" method="POST" onsubmit="return confirmModification()">
 						<table id="mypageUpdateTable" class="table mb-0" style="border-radius: 10px; border:2px solid #ececec">
 							<tr>
@@ -187,7 +185,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
 
 	<!-- Footer Section Begin -->

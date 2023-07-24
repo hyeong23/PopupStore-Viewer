@@ -167,8 +167,8 @@ getList();
     <!-- Product Section End -->
     
     <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  		<div class="modal-dialog modal-lg">
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  		<div class="modal-dialog modal-lg" style="left:-150px;">
   		
   			<div class="modal-container">
   			
